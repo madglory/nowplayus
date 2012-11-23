@@ -1,0 +1,16 @@
+common: &common
+  adapter: postgresql
+  username: nowplayus
+  password:
+
+development:
+  <<: *common
+  database: nowplayus_development
+
+test:
+  <<: *common
+  database: nowplayus_test
+
+production:
+  <<: *common
+  database: nowplayus_production
