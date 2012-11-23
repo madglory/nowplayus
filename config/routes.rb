@@ -2,10 +2,15 @@ Nowplayus::Application.routes.draw do
 
   resources :user_sessions
   resources :users
+
+  match "oauth/callback" => "oauths#callback"
+  match "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
     
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout
 
+
+  root :to => 'users#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -56,7 +61,7 @@ Nowplayus::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
 

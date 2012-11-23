@@ -14,7 +14,8 @@
       <%= link_to "Logout", :logout %>
     <% else %>
       <%= link_to "Register", new_user_path %> |
-      <%= link_to "Login", :login %>
+      <%= link_to "Login", :login %> |
+      <%= link_to 'Login with Twitter', auth_at_provider_path(:provider => :twitter) %>
     <% end %>
   </div>
   <div>
