@@ -38,3 +38,4 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 gem 'sorcery'
+gem "friendly_id", "~> 4.0.1"

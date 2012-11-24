@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121123183111) do
+ActiveRecord::Schema.define(:version => 20121124174128) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(:version => 20121123183111) do
     t.string   "salt"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.string   "slug"
   end
+
+  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
 
 end

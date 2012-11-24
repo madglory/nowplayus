@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :username, use: :slugged
+
   authenticates_with_sorcery! do |config|
     config.authentications_class = Authentication
   end

@@ -15,6 +15,7 @@ class OauthsController < ApplicationController
       begin
         @user = create_from(provider)
         # NOTE: this is the place to add '@user.activate!' if you are using user_activation submodule
+        @user.save! # get slug
 
         reset_session # protect from session fixation attack
         auto_login(@user)
