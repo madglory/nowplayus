@@ -39,3 +39,6 @@ gem 'jquery-rails'
 
 gem 'sorcery'
 gem "friendly_id", "~> 4.0.1"
+
+gem 'chronic'
+gem 'chronic_duration'

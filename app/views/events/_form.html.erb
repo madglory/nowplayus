@@ -1,0 +1,36 @@
+<%= form_for([@user, @event]) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :starts_at_raw %><br />
+    <%= f.text_field :starts_at_raw %>
+  </div>
+  <div class="field">
+    <%= f.label :duration_raw %><br />
+    <%= f.text_field :duration_raw %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :slots %><br />
+    <%= f.select :slots, (1..10).to_a %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

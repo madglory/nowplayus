@@ -1,7 +1,9 @@
 Nowplayus::Application.routes.draw do
 
   resources :user_sessions
-  resources :users
+  resources :users do 
+    resources :events 
+  end
 
   match "oauth/callback" => "oauths#callback"
   match "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider

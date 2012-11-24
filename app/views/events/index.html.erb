@@ -1,0 +1,8 @@
+<ul>
+<% @events.each do |event| %>
+  <li>
+    <%= event.description %>    
+    <%= event.starts_at %> until <%= event.starts_at+event.duration %>
+  </li>
+<% end %>
+</ul>
