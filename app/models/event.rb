@@ -5,6 +5,9 @@ class Event < ActiveRecord::Base
   before_save :parse_chronic
   attr_accessible :starts_at_raw, :duration_raw, :description, :slots
 
+  has_many :players
+  has_many :users, :through => :players
+
   belongs_to :user
   validates :user_id, :presence => true
   # validates :starts_at, :presence => true

@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @events = @user.events
+    @events = @user.events_created
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class EventsController < ApplicationController
 
   def show
     @user = User.find(params[:user_id])
-    @event = @user.events.find(params[:id])
+    @event = @user.events_created.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,7 +25,7 @@ class EventsController < ApplicationController
   # GET /users/new.json
   def new
     @user = current_user
-    @event = @user.events.new
+    @event = @user.events_created.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,7 +35,7 @@ class EventsController < ApplicationController
 
   def create
     @user = current_user
-    @event = @user.events.new(params[:event])
+    @event = @user.events_created.new(params[:event])
 
     respond_to do |format|
       if @event.save

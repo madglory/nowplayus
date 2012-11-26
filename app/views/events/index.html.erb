@@ -3,6 +3,7 @@
   <li>
     <%= event.description %>    
     <%= event.starts_at %> until <%= event.starts_at+event.duration %>
+    <%= link_to "link", user_event_path(@user, event) %>
   </li>
 <% end %>
 </ul>

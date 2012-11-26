@@ -1,1 +1,26 @@
-SHOW
+
+<h2>Event Details</h2>
+<h3>User:   <%= @event.user.username %></h3>
+<ul>
+  <li>
+    <%= @event.description %>    
+    <%= @event.starts_at %> until <%= @event.starts_at+@event.duration %>
+  </li>
+  <li>
+    Looking for <%= @event.slots %> players <% if @event.slots_filled > 0 %><%= @event.slots_filled %> found.<% end %>
+  </li>
+
+  <li>
+    <% if @event.user == current_user %>
+      You are hosting this event!
+    <% else %>
+      <% if @event.players.exists?(:user_id => current_user) %>
+        <%= link_to "Can't play", user_event_players_leave_path(@event.user, @event) %>
+      <% else %>
+        <%= link_to "Join the team", user_event_players_join_path(@event.user, @event) %>
+      <% end %>
+    <% end %>
+  </li>
+</ul>
+
+
