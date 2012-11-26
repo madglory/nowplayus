@@ -21,6 +21,17 @@
       <% end %>
     <% end %>
   </li>
+
+  <% if @event.players.size > 0 %>
+  <li>
+    Who's Playing?
+    <ul>
+      <% @event.players.each do |player| %>
+        <li><%= player.user.username %></li>
+      <% end %>
+    </ul>
+  </li>
+  <% end %>
 </ul>
 
 
