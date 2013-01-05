@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   before_filter :require_login
 
   protected
-  def not_authenticated
-    redirect_to login_path, :alert => "Please login first."
-  end
+    def not_authenticated
+      redirect_to login_path, :alert => "Please login first."
+    end
 
 end

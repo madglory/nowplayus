@@ -7,9 +7,15 @@
       <%= csrf_meta_tags %>
   </head>
   <body>
+
+  <header>
+    <h1>NowPlay.us</h1>
+  </header>
     
   <div id="nav">
     <% if current_user %>
+      <%= link_to "My Events", user_events_path(current_user) %>
+      <%= link_to "Add Event", new_user_event_path(current_user) %>
       <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
       <%= link_to "Logout", :logout %>
     <% else %>
@@ -22,7 +28,16 @@
     <p id="notice"><%= notice %></p>
     <p id="alert"><%= alert %></p>
   </div>
+
+  <section rel="main" id="main">
   <%= yield %>
-    
+  </section>
+
+
+  <footer>
+    <p>&copy; 2013, NowPlay.us</p>
+    <p>A service of <a href="http://madgloryint.com">MadGlory Interactive</a>
+  </footer>
+
   </body>
 </html>
