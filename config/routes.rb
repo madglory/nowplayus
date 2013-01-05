@@ -1,10 +1,7 @@
 Nowplayus::Application.routes.draw do
 
-  get "home/index"
-
   resources :user_sessions
   resources :users do 
-    match 'dashboard' => 'users#new', :as => :dashboard
     resources :events do
         get 'players/join' => "players#join"
         get 'players/leave' => "players#leave"

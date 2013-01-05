@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  skip_before_filter :show, :index
+  skip_before_filter :require_login, :only => [:index, :show]
 
   def index
     @user = User.find(params[:user_id])
