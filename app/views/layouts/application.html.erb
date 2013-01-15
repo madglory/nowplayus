@@ -2,40 +2,82 @@
 <html>
   <head>
     <title>Now Play Us</title>
-      <%= stylesheet_link_tag    "application" %>
-      <%= javascript_include_tag "application" %>
-      <%= csrf_meta_tags %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="../assets/ico/favicon.png">
+
   </head>
   <body>
 
-  <header>
-    <h1>NowPlay.us</h1>
-  </header>
-    
-  <div id="nav">
-    <% if current_user %>
-      <%= link_to "My Events", user_events_path(current_user) %>
-      <%= link_to "Add Event", new_user_event_path(current_user) %>
-      <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
-      <%= link_to "Logout", :logout %>
-    <% else %>
-      <%= link_to 'Login with Twitter', auth_at_provider_path(:provider => :twitter) %>
-    <% end %>
-  </div>
-  <div>
-    <p id="notice"><%= notice %></p>
-    <p id="alert"><%= alert %></p>
-  </div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">NowPlay.us</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+            <% if current_user %>
+              <li><%= link_to "My Events", user_events_path(current_user) %></li>
+              <li><%= link_to "Add Event", new_user_event_path(current_user) %></li>
+              <li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
+              <li><%= link_to "Logout", :logout %></li>
+            <% else %>
+              <li><%= link_to 'Login with Twitter', auth_at_provider_path(:provider => :twitter) %></li>
+            <% end %>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
 
-  <section rel="main" id="main">
-  <%= yield %>
-  </section>
+    <div class="container">
+      <div>
+        <p id="notice"><%= notice %></p>
+        <p id="alert"><%= alert %></p>
+      </div>
+
+      <section rel="main" id="main">
+      <%= yield %>
+      </section>
 
 
-  <footer>
-    <p>&copy; 2013, NowPlay.us</p>
-    <p>A service of <a href="http://madgloryint.com">MadGlory Interactive</a>
-  </footer>
+      <footer>
+        <p>&copy; 2013, NowPlay.us</p>
+        <p>A service of <a href="http://madgloryint.com">MadGlory Interactive</a>
+      </footer>
+    </div>
 
   </body>
 </html>
+
+
+
+
+    
