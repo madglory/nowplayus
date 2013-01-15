@@ -42,3 +42,5 @@ gem "friendly_id", "~> 4.0.1"
 
 gem 'chronic'
 gem 'chronic_duration'
+
+gem 'anjlab-bootstrap-rails', '>= 2.2', :require => 'bootstrap-rails'
