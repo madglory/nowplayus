@@ -3,6 +3,7 @@
 <h3>User:   <%= @event.user.username %></h3>
 <ul>
   <li>
+    <h2><%= @event.title %></h2>    
     <%= @event.description %>    
     <%= @event.starts_at %> until <%= @event.starts_at+@event.duration %>
   </li>

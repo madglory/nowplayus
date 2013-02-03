@@ -1,9 +1,19 @@
-<ul>
-<% @events.each do |event| %>
-  <li>
-    <%= event.description %>    
-    <%= event.starts_at %> until <%= event.starts_at+event.duration %>
-    <%= link_to "link", user_event_path(@user, event) %>
-  </li>
-<% end %>
-</ul>
+	
+	<% @events.each do |event| %>
+
+	<ul class="event">
+	  <li class="game title">
+	    <%= event.title %>
+	  </li>
+	  <li class="time title"> 
+	    <%= event.starts_at %>  <%= event.starts_at %>
+	    <% if !event.duration.nil? %>
+	    	until <%= event.duration %>
+	    <% end %>
+	  </li>
+	  <li>
+	    <%= link_to "link title", user_event_path(@user, event) %>
+	  </li>
+	</ul>
+	<% end %>
+	

@@ -1,4 +1,12 @@
-<%= form_for([@user, @event]) do |f| %>
+<div class="row-fluid">
+    <div class="span1">
+    </div>
+
+        <div class="span10">
+          <div class="hero-unit">
+  
+
+  <%= form_for([@user, @event]) do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@event.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -11,10 +19,17 @@
     </div>
   <% end %>
 
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+
   <div class="field">
     <%= f.label :starts_at_raw %><br />
     <%= f.text_field :starts_at_raw %>
   </div>
+
   <div class="field">
     <%= f.label :duration_raw %><br />
     <%= f.text_field :duration_raw %>
@@ -33,4 +48,17 @@
   <div class="actions">
     <%= f.submit %>
   </div>
-<% end %>
+
+  <% end %>
+
+
+
+
+
+          </div>
+        </div><!--/span-->
+
+    <div class="span1">
+    </div>
+
+</div><!--/row-->

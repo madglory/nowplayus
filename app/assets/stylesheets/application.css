@@ -14,4 +14,42 @@
  */
 
 
+.container-fluid{
+	padding:0;
+}
 
+h1 {
+	font-family: 'Maven Pro', sans-serif;
+	font-size: 30px;
+	line-height: 35px;
+	font-weight: 700;
+}
+
+a.brand {
+	background: url("now-play-us-logo.png") no-repeat 20px 8px;
+	text-indent: -9999px;
+	width: 118px;
+}
+
+li {
+	list-style-type: none;
+}
+
+.event {
+	border-top: 1px solid #bbbbbb;
+	height:70px;
+	margin: 0;
+	padding: 5px;
+	border-left: 7px solid #72bae4;
+}
+
+div.field input {
+	padding: 12px;
+	border: 1px solid #CFCDC4;
+	width: 100%;
+}
+
+footer {
+	border-top: 1px solid #bbbbbb;
+	padding: 15px;
+}
