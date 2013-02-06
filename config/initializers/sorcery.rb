@@ -89,7 +89,7 @@ Rails.application.config.sorcery.configure do |config|
   if Rails.env == "production"
     config.twitter.callback_url = "http://nowplayus.herokuapp.com/oauth/callback?provider=twitter"
   else
-    config.twitter.callback_url = "http://nowplayus.madglory.i.devsite.at:3000/oauth/callback?provider=twitter"
+    config.twitter.callback_url = "http://localhost:3000/oauth/callback?provider=twitter"
   end
   config.twitter.user_info_mapping = {:username => "screen_name"}
 

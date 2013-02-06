@@ -15,15 +15,16 @@
   <div class="row">
     <span class="span6">
       <div class="field">
-        <%= f.label :title %><br />
-        <%= f.text_field :title %>
+        <%= f.label :title, "Game title" %>
+        <%= f.text_field :title, :placeholder => "Eg: Borderland 2, Halo 4"  %>
       </div>
     </span>
 
+
     <span class="span6">
       <div class="field">
-        <%= f.label :description %><br />
-        <%= f.text_area :description %>
+        <%= f.label :platform %>
+        <%= f.text_field :platform, :placeholder => "Eg: XBOX, PS3" %>
       </div>
     </span>
   </div>
@@ -31,22 +32,30 @@
   <div class="row">
     <span class="span6">
       <div class="field">
-        <%= f.label :starts_at_raw %><br />
-        <%= f.text_field :starts_at_raw %>
+        <%= f.label :starts_at_raw %>
+        <%= f.text_field :starts_at_raw, :placeholder => "Eg: Tonight 8pm" %>
       </div>
     </span>
 
     <span class="span6">
       <div class="field">
-        <%= f.label :duration_raw %><br />
-        <%= f.text_field :duration_raw %>
+        <%= f.label :duration_raw %>
+        <%= f.text_field :duration_raw, :placeholder => "2 Hours"  %>
       </div>
     </span>
   </div>
 
+  <div class="row">
+    <span class="span12">
+      <div class="field">
+        <%= f.label :description, "Additional Information" %>
+        <%= f.text_area :description  %>
+      </div>
+    </span>
+  </div>
 
   <div class="field">
-    <%= f.label :slots %><br />
+    <%= f.label :slots, "Number of Players" %>
     <%= f.select :slots, (1..10).to_a %>
   </div>
 
