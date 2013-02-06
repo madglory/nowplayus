@@ -2,13 +2,13 @@
 	<span class="span12">
 	<table class="events">
 		<% @events.each do |event| %>
-		<a href="#">
 		<tr class="event">
 			<td class="date">
 				<span class="date"><%= event.starts_at.strftime('%e') %></span>
 				<span class="day"><%= event.starts_at.strftime('%a') %></span>
 			</td>
 		  <td class="description">
+				<a href="<%= user_event_path(event.user, event) %>">
 		    <h2 class="game"><%= event.title %></h2>
 		    <span class="time"><%= (event.starts_at).strftime('%I:%M%p') %>
 					<% if !event.duration.nil?  %>
@@ -16,6 +16,7 @@
 					<% end %>
 					<%= (event.starts_at).strftime('%Z') %>
 		    </span>
+				</a>
 		  </td>
 		  <td class="host">
 		    <%= link_to "HOST", user_event_path(@user, event) %>
@@ -27,7 +28,6 @@
 		  	TWEET
 		  </td>
 		</tr>
-		</a>
 		<% end %>
 	</table>
 	</span>
