@@ -3,7 +3,7 @@ require 'chronic_duration'
 
 class Event < ActiveRecord::Base
   before_save :parse_chronic
-  attr_accessible :starts_at_raw, :duration_raw, :description, :slots
+  attr_accessible :starts_at_raw, :duration_raw, :description, :slots, :title
 
   has_many :players
   has_many :users, :through => :players

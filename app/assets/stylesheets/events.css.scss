@@ -1,3 +1,91 @@
 // Place all the styles related to the events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table.events {
+  td.date {
+    padding: 0 10px;
+    font-size: 30px;
+    line-height: 35px;
+    text-align: center;
+
+    span {
+      display: block;
+    }
+
+    span.date {
+        font-weight: 700;
+    }
+    span.day {
+      font-size: 18px;
+      font-weight: 300;
+      text-transform: uppercase;;
+    }
+  }
+
+  td.description {
+    padding: 0 10px;
+    border-left: 1px solid #aaa;
+    width: 100%;
+
+    .title {
+      font-size: 30px;
+      line-height: 35px;
+      list-style-type: none;
+      padding-left: 20px;
+    }
+    h2.game {
+      padding:0; margin: 0;
+      font-weight: 700;
+    }
+    .time {
+      font-weight: 100;
+    }
+  }
+
+  td.host {
+    min-width: 100px;
+  }
+  td.slots {
+    min-width: 100px;
+    font-size: 30px;
+    line-height: 35px;
+    font-weight: normal;
+    color: #999;
+  }
+  td.promote {
+    min-width: 100px;
+    border-right: 1px solid #aaa;
+  }
+
+  margin-top: 3em;
+  width: 100%;
+  font-family: 'Maven Pro', sans-serif;
+}
+
+  /* ####### */
+  /* $LOGIN  */
+  /* ####### */
+  /* line 80, ../sass/typica-login.scss */
+  .form-wrapper {
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    border-radius: 15px;
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    margin-top: -185px;
+    margin-left: -235px;
+    padding: 25px;
+    width: 420px;
+    height: 320px;
+    background: white;
+    text-align: center;
+  }
+
