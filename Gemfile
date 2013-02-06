@@ -48,3 +48,7 @@ gem 'chronic'
 gem 'chronic_duration'
 
 gem 'anjlab-bootstrap-rails', '>= 2.2', :require => 'bootstrap-rails'
+
+gem "populator", "~> 1.0.0"
+gem 'forgery', '0.5.0'
+gem 'faker'

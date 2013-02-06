@@ -9,7 +9,7 @@
 			</td>
 		  <td class="description">
 				<a href="<%= user_event_path(event.user, event) %>">
-		    <h2 class="game"><%= event.title %></h2>
+		    <h2 class="game"><%= event.title %> (<%= event.platform %>)</h2>
 		    <span class="time"><%= (event.starts_at).strftime('%I:%M%p') %>
 					<% if !event.duration.nil?  %>
 						 - <%= (event.starts_at+event.duration).strftime('%I:%M%p') %>
