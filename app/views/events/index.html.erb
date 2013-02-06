@@ -1,19 +1,34 @@
-	
-	<% @events.each do |event| %>
-
-	<ul class="event">
-	  <li class="game title">
-	    <%= event.title %>
-	  </li>
-	  <li class="time title"> 
-	    <%= event.starts_at %>  <%= event.starts_at %>
-	    <% if !event.duration.nil? %>
-	    	until <%= event.duration %>
-	    <% end %>
-	  </li>
-	  <li>
-	    <%= link_to "link title", user_event_path(@user, event) %>
-	  </li>
-	</ul>
-	<% end %>
-	
+<div class="row">
+	<span class="span12">
+	<table class="events">
+		<% @events.each do |event| %>
+		<a href="#">
+		<tr class="event">
+			<td class="date">
+				<span class="date"><%= event.starts_at.strftime('%e') %></span>
+				<span class="day"><%= event.starts_at.strftime('%a') %></span>
+			</td>
+		  <td class="description">
+		    <h2 class="game"><%= event.title %></h2>
+		    <span class="time"><%= (event.starts_at).strftime('%I:%M%p') %>
+					<% if !event.duration.nil?  %>
+						 - <%= (event.starts_at+event.duration).strftime('%I:%M%p') %>
+					<% end %>
+					<%= (event.starts_at).strftime('%Z') %>
+		    </span>
+		  </td>
+		  <td class="host">
+		    <%= link_to "HOST", user_event_path(@user, event) %>
+		  </td>
+		  <td class="slots">
+		  	 <%= event.slots_filled %> / <%= event.slots %>
+		  </td>
+		  <td class="promote">
+		  	TWEET
+		  </td>
+		</tr>
+		</a>
+		<% end %>
+	</table>
+	</span>
+</div>

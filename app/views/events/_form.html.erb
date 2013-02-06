@@ -1,11 +1,3 @@
-<div class="row-fluid">
-    <div class="span1">
-    </div>
-
-        <div class="span10">
-          <div class="hero-unit">
-  
-
   <%= form_for([@user, @event]) do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
@@ -20,25 +12,38 @@
   <% end %>
 
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+  <div class="row">
+    <span class="span6">
+      <div class="field">
+        <%= f.label :title %><br />
+        <%= f.text_field :title %>
+      </div>
+    </span>
+
+    <span class="span6">
+      <div class="field">
+        <%= f.label :description %><br />
+        <%= f.text_area :description %>
+      </div>
+    </span>
   </div>
 
-  <div class="field">
-    <%= f.label :starts_at_raw %><br />
-    <%= f.text_field :starts_at_raw %>
+  <div class="row">
+    <span class="span6">
+      <div class="field">
+        <%= f.label :starts_at_raw %><br />
+        <%= f.text_field :starts_at_raw %>
+      </div>
+    </span>
+
+    <span class="span6">
+      <div class="field">
+        <%= f.label :duration_raw %><br />
+        <%= f.text_field :duration_raw %>
+      </div>
+    </span>
   </div>
 
-  <div class="field">
-    <%= f.label :duration_raw %><br />
-    <%= f.text_field :duration_raw %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
 
   <div class="field">
     <%= f.label :slots %><br />
@@ -50,15 +55,3 @@
   </div>
 
   <% end %>
-
-
-
-
-
-          </div>
-        </div><!--/span-->
-
-    <div class="span1">
-    </div>
-
-</div><!--/row-->
