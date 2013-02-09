@@ -12,8 +12,8 @@ class Event < ActiveRecord::Base
   validates :user_id, :presence => true
   validates :title, :presence => true
   validates :platform, :presence => true
-  # validates :starts_at, :presence => true
-  # validates :duration, :presence => true, :numericality => { :only_integer => true, :greater_than => 0, :less_than => 480 }
+  validates :starts_at, :presence => true
+  validates :duration, :presence => true
   validates :slots, :presence => true, :numericality => { :only_integer => true, :greater_than => 0, :less_than => 10 }
 
 protected
