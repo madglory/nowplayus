@@ -4,10 +4,11 @@
 
 table.events {
   td.date {
-    padding: 0 10px;
+    padding: 0 20px;
     font-size: 30px;
     line-height: 35px;
     text-align: center;
+    color: #000000;
 
     span {
       display: block;
@@ -19,12 +20,13 @@ table.events {
     span.day {
       font-size: 18px;
       font-weight: 300;
-      text-transform: uppercase;;
+      text-transform: uppercase;
+      line-height: 28px;
     }
   }
 
   td.description {
-    padding: 0 10px;
+    padding: 0 20px;
     border-left: 1px solid #aaa;
     width: 100%;
 
@@ -35,25 +37,46 @@ table.events {
       padding-left: 20px;
     }
     h2.game {
+      font-family: "Maven Pro";
       padding:0; margin: 0;
       font-weight: 700;
+      margin-top: -5px;
+      padding-bottom: 5px;
+    }
+    h2.game:hover {
+
+      color: #444444;
     }
     .time {
+      font-family: "Maven Pro";
+      font-size: 20px;
       font-weight: 100;
+      color: #252525;
     }
   }
 
   td.host {
     min-width: 100px;
+
+    a {
+      width: 50px;
+      height: 50px;
+      border-radius: 100px;
+    }
   }
   td.slots {
+    font-family: "Maven Pro";
+    letter-spacing: -0.3ex;
     min-width: 100px;
-    font-size: 30px;
+    font-size: 36px;
     line-height: 35px;
     font-weight: normal;
-    color: #999;
+    color: #000;
+    text-align: center;
   }
   td.promote {
+    background: url("twitter-icon-lg.png") no-repeat 28px 15px;
+    text-indent: -9999px;
     min-width: 100px;
     border-right: 1px solid #aaa;
   }
@@ -62,30 +85,4 @@ table.events {
   width: 100%;
   font-family: 'Maven Pro', sans-serif;
 }
-
-  /* ####### */
-  /* $LOGIN  */
-  /* ####### */
-  /* line 80, ../sass/typica-login.scss */
-  .form-wrapper {
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    -ms-border-radius: 15px;
-    -o-border-radius: 15px;
-    border-radius: 15px;
-    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    display: block;
-    margin-top: -185px;
-    margin-left: -235px;
-    padding: 25px;
-    width: 420px;
-    height: 320px;
-    background: white;
-    text-align: center;
-  }
 
