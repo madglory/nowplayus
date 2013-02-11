@@ -1,5 +1,6 @@
 /*
  *= require_self
+ *= require_tree .
  */
 
 @import "bootstrap";
@@ -7,6 +8,7 @@
 
 body {
 	padding-top: 30px;
+	background-color: #333;
 }
 
 h1 {
@@ -24,14 +26,6 @@ a.brand {
 
 li {
 	list-style-type: none;
-}
-
-.event {
-	border-top: 1px solid #bbbbbb;
-	height:70px;
-	margin: 0;
-	padding: 5px;
-	border-left: 7px solid #72bae4;
 }
 
 div.field {
