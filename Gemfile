@@ -1,54 +1,42 @@
 source 'https://rubygems.org'
 
+gem 'chronic'
+gem 'chronic_duration'
+gem 'friendly_id', '~> 4.0.1'
+gem 'haml'
+gem 'jquery-rails'
+gem 'pg'
+gem 'populator', '~> 1.0.0'
 gem 'rails', '3.2.11'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'sass-rails', '~> 3.2.3'
+gem 'sorcery'
 
 group :development do
+  gem 'awesome_print'
+  gem 'faker'
+  gem 'forgery', '0.5.0'
+  gem 'guard-livereload'
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'haml-rails'
+  gem 'spork'
+end
+
+group :development, :test do
+  gem 'pry'
+  gem 'rspec-rails'
 	gem 'sqlite3'
 end
 
-gem 'pg'
-
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier', '>= 1.0.3'
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'fuubar'
+  gem 'shoulda'
 end
 
-gem 'jquery-rails'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
-
-gem 'sorcery'
-gem "friendly_id", "~> 4.0.1"
-
-gem 'chronic'
-gem 'chronic_duration'
-
-gem 'anjlab-bootstrap-rails', '>= 2.2', :require => 'bootstrap-rails'
-
-gem "populator", "~> 1.0.0"
-gem 'forgery', '0.5.0'
-gem 'faker'
+group :assets do
+  gem 'bootstrap-sass'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier', '>= 1.0.3'
+end
