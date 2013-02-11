@@ -1,98 +1,118 @@
-.event {
-  border-top: 1px solid #bbbbbb;
-  height:70px;
-  margin: 0;
-  padding: 5px;
-  border-left: 7px solid #72bae4;
-}
 
-table.events {
+@import "variables";
+
+section.events {
   a {
+    display: block;
     &:hover {
       color: #000;
       text-decoration: none;
     }
   }
-  td.date {
-    padding: 0 20px;
+  .event {
+    border-right: 1px solid #aaa;
+    border-top: 1px solid #bbbbbb;
+    border-bottom: 1px solid #aaa;
+    margin: 0;
+    padding: 10px 0;
+    height: 60px;
+    &.theirs {
+      border-left: 7px solid $aqua-blue;
+      &:after {
+        border-top: 10px solid transparent;
+        border-right: 10px solid $background-color;
+        border-bottom: 10px solid transparent;
+        position: relative;
+        content: "";
+        top: -42px;
+        left: -7px;
+      }
+    }
+    &.mine {
+      border-left: 7px solid $light-blue;
+      &:after {
+        border-top: 10px solid transparent;
+        border-left: 10px solid $light-blue;
+        border-bottom: 10px solid transparent;
+        position: relative;
+        content: "";
+        top: -42px;
+        left: -4px;
+      }
+    }
+  }
+  .schedule {
+    margin: 0;
+    padding: 0;
     font-size: 30px;
     line-height: 35px;
     text-align: center;
     color: #000000;
 
-    span {
+    > span {
       display: block;
-    }
-
-    span.date {
+      &.date {
         font-weight: 700;
-    }
-    span.day {
-      font-size: 18px;
-      font-weight: 300;
-      text-transform: uppercase;
-      line-height: 28px;
+      }
+      &.day {
+        font-size: 18px;
+        font-weight: 300;
+        text-transform: uppercase;
+        line-height: 28px;
+      }
     }
   }
-
-  td.description {
-    padding: 0 20px;
+  .description {
+    margin: 0;
     border-left: 1px solid #aaa;
-    width: 100%;
-
+    a:hover {
+      h2 {
+        color: #444;
+      }
+    }
     .title {
       font-size: 30px;
       line-height: 35px;
       list-style-type: none;
-      padding-left: 20px;
     }
     h2.game {
       font-family: "Maven Pro";
-      padding:0; margin: 0;
+      padding:0 0 0 10px;
+      margin: 0;
       font-weight: 700;
       margin-top: -5px;
       padding-bottom: 5px;
       color: #000;
     }
-    h2.game:hover {
-      color: #444444;
-    }
     .time {
+      padding: 0 0 0 10px;
       font-family: "Maven Pro";
       font-size: 20px;
       font-weight: 100;
       color: #252525;
     }
   }
-
-  td.host {
-    min-width: 100px;
-
+  .host {
     a {
       width: 50px;
       height: 50px;
       border-radius: 100px;
     }
   }
-  td.slots {
-    font-family: "Maven Pro";
+  .slots {
     letter-spacing: -0.3ex;
-    min-width: 100px;
     font-size: 36px;
     line-height: 35px;
     font-weight: normal;
     color: #000;
     text-align: center;
   }
-  td.promote {
-    background: url("twitter-icon-lg.png") no-repeat 28px 15px;
+  .promote {
+    margin: auto;
+    width: 48px;
+    height: 36px;
+    background: url("twitter-icon-lg.png") no-repeat;
     text-indent: -9999px;
-    min-width: 100px;
-    border-right: 1px solid #aaa;
   }
-
-  margin-top: 3em;
-  width: 100%;
-  font-family: 'Maven Pro', sans-serif;
 }
 

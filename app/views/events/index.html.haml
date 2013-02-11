@@ -1,0 +1,9 @@
+%section.events
+  - @events.each do |event|
+    %article.event.row{ class: (current_user == event.user ? 'mine' : 'theirs')}
+      .schedule.span1= render partial: 'events/schedule', locals: { event: event }
+      .description.span8= render partial: 'events/description', locals: { event: event }
+      .host.span1= link_to "HOST", user_path(event.user)
+      .slots.span1= "#{event.slots_filled} / #{event.slots}"
+      .span1
+        .promote TWEET

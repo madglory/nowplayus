@@ -1,0 +1,42 @@
+
+.row
+  .span12
+    %h2= "#{@event.title} (#{@event.platform})"
+    %h3
+      - if @event.user == current_user
+        You are hosting this event!
+        = "Host: #{@event.user.username}"
+
+    %p= @event.description
+    %p
+      = @event.starts_at.to_s(:short)
+      until
+      = @event.starts_at+@event.duration
+
+
+    - if @event.players.size >= 0
+      %h4
+        = "Looking for #{@event.slots} players"
+        - if @event.slots_filled > 0
+          = "#{@event.slots_filled} found."
+
+
+
+.row
+  .span6
+    %h3 Joining
+    %ul
+      - @event.players.each do |player|
+        %li= player.user.username
+
+    - if @event.user != current_user
+      - if @event.players.exists?(:user_id => current_user)
+        = link_to "Can't play", user_event_players_leave_path(@event.user, @event)
+      - else
+        = link_to "Join the team", user_event_players_join_path(@event.user, @event)
+
+  .span6
+    %h3 Pending
+    %ul
+      - @event.players.each do |player|
+        %li= player.user.username

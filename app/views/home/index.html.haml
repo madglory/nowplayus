@@ -1,0 +1,22 @@
+.row
+  .span12
+    %h2 What is NowPlay.us?
+    %ul
+      %li Feature n*
+    %h3>Some people playing soon...
+
+    %table.events
+      - @events.each do |event|
+        %tr.event
+          %td.date
+            %span.date= event.starts_at.strftime('%e')
+            %span.day= event.starts_at.strftime('%a')
+          %td.description
+            = link_to user_event_path(event.user, event) do
+              %h2.game= "#{event.title} (#{event.platform})"
+              %span.time= event.scheduled_time
+          %td.host
+            = link_to "HOST", user_event_path(event.user, event)
+          %td.slots
+            = "#{event.slots_filled} / #{event.slots}"
+          %td.promote TWEET

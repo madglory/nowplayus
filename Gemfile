@@ -9,7 +9,9 @@ gem 'pg'
 gem 'populator', '~> 1.0.0'
 gem 'rails', '3.2.11'
 gem 'sass-rails', '~> 3.2.3'
+gem 'simple_form'
 gem 'sorcery'
+gem 'will_paginate', '~> 3.0'
 
 group :development do
   gem 'awesome_print'

@@ -1,0 +1,53 @@
+!!!
+%html{lang: 'en'}
+  %head
+    %title= @title.nil? ? "Now Play Us" : @title
+
+    %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
+    %meta{ name: "description", content: "" }
+    %meta{ name: "author", content: "" }
+
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+    /[if lt IE 9]
+      %script(src="http://html5shiv.googlecode.com/svn/trunk/html5.js")
+    /[if lt IE 8]
+
+    / Fav and touch icons
+    %link{ rel: "apple-touch-icon-precomposed", sizes: "144x144", href: "../assets/ico/apple-touch-icon-144-precomposed.png" }
+    %link{ rel: "apple-touch-icon-precomposed", sizes: "114x114", href: "../assets/ico/apple-touch-icon-114-precomposed.png" }
+    %link{ rel: "apple-touch-icon-precomposed", sizes: "72x72", href: "../assets/ico/apple-touch-icon-72-precomposed.png" }
+    %link{ rel: "apple-touch-icon-precomposed", href: "../assets/ico/apple-touch-icon-57-precomposed.png" }
+    %link{ rel: "shortcut icon", href: "../assets/ico/favicon.png" }
+    %link{ href: 'http://fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900', rel: 'stylesheet', type: 'text/css' }
+  %body
+
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container
+          .row
+            .span12
+              = link_to 'NowPlay.us', root_url, class: 'brand'
+              .nav-collapse.collapse
+                %ul.nav
+                  - if current_user
+                    %li= link_to "My Events", user_events_path(current_user)
+                    %li= link_to "Add Event", new_user_event_path(current_user)
+                    %li= link_to "Edit Profile", edit_user_path(current_user.id)
+                    %li= link_to "Logout", :logout
+                  -else
+                    %li= link_to 'Login with Twitter', auth_at_provider_path(provider: :twitter)
+    %section.container#main{ rel: 'main' }
+      - flash.each do |name, msg|
+        = content_tag :div, link_to('×', '#', class: 'close') + msg, class: "alert fade in alert-#{name == :notice ? 'success' : 'error'}", data: { dismiss: 'alert' } if msg.is_a?(String)
+      = yield
+
+    %footer.container
+      .row
+        .span12
+          %p &copy; 2013, NowPlay.us
+          %p
+            A service of
+            %a{ href: "http://madgloryint.com" } MadGlory Interactive

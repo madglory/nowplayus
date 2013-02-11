@@ -5,14 +5,18 @@
 
 @import "bootstrap";
 @import "bootstrap-responsive";
+@import "variables";
 
 body {
 	padding-top: 30px;
-	background-color: #ededed;
+	background-color: $background-color;
 	color: #333;
-	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-family: Maven Pro, sans-serif;
 	font-size: 13px;
 	line-height: 18px;
+	#main {
+		margin-top: 11px;
+	}
 }
 
 h1 {
@@ -54,6 +58,7 @@ div.field textarea {
 div.field label {}
 
 footer {
+	margin-top: 20px;
 	border-top: 1px solid #bbbbbb;
 	padding: 15px;
 }
