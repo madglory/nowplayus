@@ -17,6 +17,7 @@ body {
 	#main {
 		margin-top: 11px;
 	}
+
 }
 
 h1 {
@@ -36,29 +37,47 @@ li {
 	list-style-type: none;
 }
 
-div.field {
+.input {
 	margin-bottom: 2em;
 }
 
-div.field input {
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+ .uneditable-input {
 	padding: 12px;
 	margin: 0;
 	border: 1px solid #CFCDC4;
 	width: 100%;
 }
 
-div.field textarea {
-	padding: 12px;
-	margin: 0;
-	border: 1px solid #CFCDC4;
-	width: 100%;
-	height: 60px;
+label {
+	
 }
-
-div.field label {}
 
 footer {
 	margin-top: 20px;
 	border-top: 1px solid #bbbbbb;
 	padding: 15px;
+}
+
+@media (max-width: 980px){
+	.navbar-text.pull-right {
+		float: none;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
 }
