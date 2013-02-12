@@ -1,0 +1,21 @@
+= npu_form_for [@user, @event] do |f|
+  .row
+    .span6
+      .field
+        = f.input :title, label: 'Game Title', placeholder: 'Eg: Borderlands 2, Halo 4'
+    .span6
+      .field
+        = f.input :platform, placeholder: 'Eg: XBOX, PS3'
+
+  .row
+    .span6
+      = f.input :starts_at_raw, placeholder: 'Eg: Tonight 8pm'
+    .span6
+      = f.input :duration_raw, placeholder: 'Eg: 2 Hours'
+  .row
+    .span12
+      = f.input :description, label: 'Additional Information'
+
+      = f.input :slots, label: 'Number of Players'
+  
+      = f.button :submit, class: 'btn btn-primary'
