@@ -1,7 +1,8 @@
 
 @import "variables";
 
-section.events {
+.events {
+  border-top: 1px solid #bbbbbb;
   a {
     display: block;
     &:hover {
@@ -11,7 +12,6 @@ section.events {
   }
   .event {
     border-right: 1px solid #aaa;
-    border-top: 1px solid #bbbbbb;
     border-bottom: 1px solid #aaa;
     margin: 0;
     padding: 10px 0;
@@ -44,7 +44,7 @@ section.events {
   .schedule {
     margin: 0;
     padding: 0;
-    font-size: 30px;
+    font-size: 48px;
     line-height: 35px;
     text-align: center;
     color: #000000;
@@ -53,6 +53,7 @@ section.events {
       display: block;
       &.date {
         font-weight: 700;
+        letter-spacing: -0.2ex;
       }
       &.day {
         font-size: 18px;
@@ -92,18 +93,11 @@ section.events {
       color: #252525;
     }
   }
-  .host {
-    a {
-      width: 50px;
-      height: 50px;
-      border-radius: 100px;
-    }
-  }
   .slots {
     letter-spacing: -0.3ex;
     font-size: 36px;
     line-height: 35px;
-    font-weight: normal;
+    font-weight: 300;
     color: #000;
     text-align: center;
   }
@@ -116,3 +110,25 @@ section.events {
   }
 }
 
+.event-detail{
+  &.mine {
+    border-left: 7px solid $light-blue;
+  }
+  &.theirs {
+    border-left: 7px solid $aqua-blue;   
+  }
+}
+
+.events, .event-detail {
+  .host {
+    a {
+      width: 50px;
+      height: 50px;
+      border-radius: 100px;
+      overflow: hidden;
+      img {
+        width: 50px;
+      }
+    }
+  }
+}
