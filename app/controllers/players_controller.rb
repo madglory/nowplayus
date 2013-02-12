@@ -8,7 +8,7 @@ class PlayersController < ApplicationController
     # if not exists create it
     player = Player.find_by_event_id_and_user_id(event.id, current_user.id)
     unless player
-      player = Player.new event: event, user: current_user
+      player = Player.new event_id: event.id, user_id: current_user.id
 
       player.save
 
