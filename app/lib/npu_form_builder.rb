@@ -1,3 +1,3 @@
-class NpuFormBuilder < SimpleForm::NpuFormBuilder
+class NpuFormBuilder < SimpleForm::FormBuilder
   include BootstrapFormBuilder
 end

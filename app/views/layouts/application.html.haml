@@ -26,25 +26,29 @@
 
     .navbar.navbar-inverse.navbar-fixed-top
       .navbar-inner
-        .container
-          .row
-            .span12
-              = link_to 'NowPlay.us', root_url, class: 'brand'
-              .nav-collapse.collapse
-                %ul.nav
-                  - if current_user
-                    %li= link_to "My Events", user_events_path(current_user)
-                    %li= link_to "Add Event", new_user_event_path(current_user)
-                    %li= link_to "Edit Profile", edit_user_path(current_user.id)
-                    %li= link_to "Logout", :logout
-                  -else
-                    %li= link_to 'Login with Twitter', auth_at_provider_path(provider: :twitter)
-    %section.container#main{ rel: 'main' }
+        .container-fluid
+          %button.btn.btn-navbar{ type: 'button', data: { toggle: 'collapse', target: '.nav-collapse' } }
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to 'NowPlay.us', root_url, class: 'brand'
+          .nav-collapse.in.collapse
+            %p.navbar-text.pull-right
+              - if current_user
+                = link_to "Logout", :logout, class: 'navbar-link'
+              - else
+                = link_to 'Login with Twitter', auth_at_provider_path(provider: :twitter), class: 'navbar-link'
+            %ul.nav
+              - if current_user
+                %li= link_to "My Events", user_events_path(current_user)
+                %li= link_to "Add Event", new_user_event_path(current_user)
+                %li= link_to "Edit Profile", edit_user_path(current_user.id)
+    .container-fluid#main{ rel: 'main' }
       - flash.each do |name, msg|
         = content_tag :div, link_to('×', '#', class: 'close') + msg, class: "alert fade in alert-#{name == :notice ? 'success' : 'error'}", data: { dismiss: 'alert' } if msg.is_a?(String)
       = yield
 
-    %footer.container
+    %footer.container-fluid
       .row
         .span12
           %p &copy; 2013, NowPlay.us
