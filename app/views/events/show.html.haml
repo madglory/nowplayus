@@ -9,6 +9,8 @@
       %span.host
         = @event.host
     %p= @event.description
+    - if @event.user == current_user
+      %p= link_to "I can't make it! Please cancel.", user_event_path(current_user,@event), confirm: "Are you sure?", method: :delete
     .row
       .span5
         %h3 Joining
