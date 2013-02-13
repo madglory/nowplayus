@@ -45,4 +45,18 @@ class EventsController < ApplicationController
       end
     end
   end
+
+  def destroy
+    event = Event.find(params[:id])
+    respond_to do |format|
+      if event.user == current_user
+        event.destroy
+        format.html { redirect_to user_events_path(current_user), notice: 'Your event has been cancelled.' }
+        format.json { render json: event, notice: 'Your event has been cancelled.' }
+      else
+        format.html { redirect_to user_events_path(current_user), notice: 'Not authorized!' }
+        format.json { render json: event, notice: 'Not authorized!' }
+      end
+    end
+  end
 end

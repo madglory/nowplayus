@@ -2,14 +2,15 @@ require 'chronic'
 require 'chronic_duration'
 
 class Event < ActiveRecord::Base
+  attr_accessor :duration_raw, :starts_at_raw
   before_validation :parse_chronic
   attr_accessible :starts_at_raw, :duration_raw, :description, :slots, :title, :platform, :time_zone
+  acts_as_paranoid
 
   has_many :players, dependent: :destroy
-  has_many :users, through: :players
-
   belongs_to :user
-  validates :user_id, presence: true
+
+  validates :user, presence: true
   validates :title, presence: true
   validates :platform, presence: true
   validates :starts_at, presence: true
@@ -22,10 +23,11 @@ class Event < ActiveRecord::Base
   end
 
   def host_avatar_url
+    return if user.blank?
     user.avatar_url
   end
 
-  def scheduled_time
+  def scheduled_time_with_duration
     "#{scheduled_start} - #{scheduled_end} #{scheduled_timezone}"
   end
 
@@ -46,6 +48,7 @@ class Event < ActiveRecord::Base
 
 private
   def parse_chronic
+    return false if starts_at_raw.blank? || duration_raw.blank?
     self.starts_at = Chronic.parse(starts_at_raw)
     self.duration = ChronicDuration.parse(duration_raw);
   end
