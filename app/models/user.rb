@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :username, use: :slugged
+  attr_accessible :username, :email, :password, :password_confirmation, :time_zone
 
   authenticates_with_sorcery! do |config|
     config.authentications_class = Authentication
@@ -13,7 +14,6 @@ class User < ActiveRecord::Base
   has_many :events, through: :players
   has_many :events_created, class_name: "Event"
 
-  attr_accessible :username, :email, :password, :password_confirmation
 
   validates :username, presence: true
   validates :time_zone, presence: true
