@@ -120,6 +120,12 @@
 }
 
 .events, .event-detail {
+  h2.with {
+    font-weight: 300;
+    span.host {
+      font-weight: bold;
+    }
+  }
   .host {
     a {
       width: 50px;
