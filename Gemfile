@@ -38,6 +38,10 @@ group :test do
   gem 'shoulda'
 end
 
+group :production do
+  gem 'unicorn'
+end
+
 group :assets do
   gem 'bootstrap-sass'
   gem 'coffee-rails', '~> 3.2.1'
