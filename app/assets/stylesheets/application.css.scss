@@ -25,6 +25,10 @@ body {
 	height: 292px;
 }
 
+#main {
+	min-height: 600px;
+}
+
 h1 {
 	font-family: 'Maven Pro', sans-serif;
 	font-size: 30px;
@@ -88,7 +92,6 @@ footer {
 	margin-top: 20px;
 	border-top: 1px solid #bbbbbb;
 	padding: 15px;
-	position: absolute;
 	bottom: 0;
 }
 
