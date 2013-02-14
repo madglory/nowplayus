@@ -19,5 +19,6 @@
 
 # Ignore local dev config files
 .sublime*
-.rbenv*
 .rvm*
+.rbenv*
+.DS_Store

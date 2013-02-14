@@ -20,11 +20,27 @@ body {
 
 }
 
+.index {
+	background: url("header-bg.jpg") repeat-x 0px 0px;
+	height: 292px;
+}
+
 h1 {
 	font-family: 'Maven Pro', sans-serif;
 	font-size: 30px;
 	line-height: 35px;
 	font-weight: 700;
+}
+
+h2.home {
+	color: white;
+	font-weight: 100;
+	font-size: 48px;
+	line-height: 58px;
+}
+
+h2.home span {
+	color: #72bae4;
 }
 
 a.brand {
@@ -72,6 +88,8 @@ footer {
 	margin-top: 20px;
 	border-top: 1px solid #bbbbbb;
 	padding: 15px;
+	position: absolute;
+	bottom: 0;
 }
 
 @media (max-width: 980px){
