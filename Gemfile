@@ -39,7 +39,8 @@ group :test do
 end
 
 group :production do
-  gem 'unicorn'
+  gem 'puma'
+  gem 'party_foul'
 end
 
 group :assets do
