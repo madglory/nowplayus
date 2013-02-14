@@ -65,12 +65,14 @@ GEM
     eventmachine (1.0.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    faker (1.1.2)
-      i18n (~> 0.5)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.2.1)
+      factory_girl (~> 4.2.0)
+      railties (>= 3.0.0)
     faraday (0.8.4)
       multipart-post (~> 1.1)
     ffi (1.3.1)
-    forgery (0.5.0)
     friendly_id (4.0.9)
     fuubar (1.1.0)
       rspec (~> 2.0)
@@ -143,7 +145,6 @@ GEM
       io-console (~> 0.3.0)
     pg (0.14.1)
     polyglot (0.3.3)
-    populator (1.0.0)
     pry (0.9.11.4)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -251,8 +252,7 @@ DEPENDENCIES
   chronic_duration
   coffee-rails (~> 3.2.1)
   database_cleaner
-  faker
-  forgery (= 0.5.0)
+  factory_girl_rails
   friendly_id (~> 4.0.1)
   fuubar
   guard-livereload
@@ -264,7 +264,6 @@ DEPENDENCIES
   paranoia
   party_foul
   pg
-  populator (~> 1.0.0)
   pry
   puma
   rails (= 3.2.11)

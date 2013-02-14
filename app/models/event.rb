@@ -9,6 +9,7 @@ class Event < ActiveRecord::Base
 
   has_many :players, dependent: :destroy
   belongs_to :user
+  belongs_to :platform
 
   validates :user, presence: true
   validates :title, presence: true
@@ -20,6 +21,11 @@ class Event < ActiveRecord::Base
   def host
     return if user.blank?
     user.username
+  end
+
+  def platform_name
+    return if user.blank?
+    platform.name
   end
 
   def host_avatar_url

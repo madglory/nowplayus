@@ -1,16 +1,16 @@
 require 'spec_helper'
 
 describe Event do
+  let(:user) { create :user }
+  let(:platform) { create :platform }
   subject do 
     Event.new(
       title: 'Foo',
-      platform: 'Bar',
+      platform: platform,
       slots: 5,
       starts_at_raw: 'Tomorrow 5pm',
       duration_raw: '5hr')
   end
-
-  let(:user) { User.create! username: 'claptrap', time_zone: 'EST' }
 
   before(:each) do
     subject.user = user

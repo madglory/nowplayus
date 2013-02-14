@@ -7,7 +7,7 @@ Spork.prefork do
   require 'rspec/rails'
   require 'rspec/autorun'
   require 'database_cleaner'
-
+  require 'factory_girl'
   
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
@@ -44,6 +44,9 @@ Spork.prefork do
     config.order = "random"
 
     ActionMailer::Base.delivery_method = :test
+
+    # Add FactoryGirl methods
+    config.include FactoryGirl::Syntax::Methods
   end
 end
 
