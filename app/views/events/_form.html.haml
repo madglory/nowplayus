@@ -1,11 +1,15 @@
-= npu_form_for [@user, @event] do |f|
+= simple_form_for [@user, @event] do |f|
   .row
     .span6
       .field
         = f.input :title, label: 'Game Title', placeholder: 'Eg: Borderlands 2, Halo 4'
+  .row
     .span6
       .field
-        = f.input :platform, placeholder: 'Eg: XBOX, PS3'
+        = f.collection_select :platform_id, Platform.select('id,name').all, :id, :name, include_blank: true, label: 'Platform'
+    .span6
+      .field
+        = f.text_field :new_platform_name, label: 'Or add a new platform' 
 
   .row
     .span6

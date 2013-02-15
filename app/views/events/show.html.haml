@@ -8,24 +8,26 @@
       w/
       %span.host
         = @event.host_name
+      - if @event.host != current_user
+        - if @event.players.exists?(:id => current_user)
+          = link_to "Can't play", user_event_participants_leave_path(@event.host, @event), class: 'btn btn-danger', confirm: 'Are you sure?'
+        - else
+          = link_to "Join in!", user_event_participants_join_path(@event.host, @event), class: 'btn btn-primary'
+      - else
+        = link_to "I can't make it! Please cancel.", user_event_path(current_user,@event), confirm: "Are you sure?", method: :delete, class: 'btn btn-danger'
     %p= @event.description
-    - if @event.host == current_user
-      %p= link_to "I can't make it! Please cancel.", user_event_path(current_user,@event), confirm: "Are you sure?", method: :delete
     .row
       .span5
         %h3
-          Joining
-          - if @event.host != current_user
-            - if @event.players.exists?(:id => current_user)
-              = link_to "Can't play", user_event_participants_leave_path(@event.host, @event), class: 'btn', confirm: 'Are you sure?'
-            - else
-              = link_to "Join the team", user_event_participants_join_path(@event.host, @event), class: 'btn btn-primary'
+          On the Team
         %ul
-          - @event.players.each do |player|
-            %li= player.username
+          - @event.team_players.each do |player|
+            %li.host
+              = link_to image_tag(player.avatar_url), user_path(player), title: player.username
 
       .span5
-        %h3 Pending
+        %h3 On the Bench
         %ul
-          - @event.players.each do |player|
-            %li= player.username
+          - @event.bench_players.each do |player|
+            %li.host
+              = link_to image_tag(player.avatar_url), user_path(player), title: player.username

@@ -71,7 +71,6 @@ CREATE TABLE events (
     starts_at timestamp without time zone,
     duration integer,
     slots integer DEFAULT 1 NOT NULL,
-    slots_filled integer DEFAULT 0 NOT NULL,
     bench_count integer DEFAULT 0 NOT NULL,
     user_id integer,
     created_at timestamp without time zone NOT NULL,
@@ -415,3 +414,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130214182408');
 INSERT INTO schema_migrations (version) VALUES ('20130215030548');
 
 INSERT INTO schema_migrations (version) VALUES ('20130215031444');
+
+INSERT INTO schema_migrations (version) VALUES ('20130215153724');

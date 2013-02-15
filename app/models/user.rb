@@ -8,12 +8,13 @@ class User < ActiveRecord::Base
   end
 
   has_many :authentications, dependent: :destroy
-  accepts_nested_attributes_for :authentications
-
+  has_many :platform_accounts, dependent: :destroy
   has_many :participants
   has_many :events, through: :participants
   has_many :events_created, class_name: 'Event'
 
+  accepts_nested_attributes_for :authentications
+  accepts_nested_attributes_for :platform_accounts, reject_if: :all_blank, allow_destroy: true
 
   validates :username, presence: true
   validates :time_zone, presence: true

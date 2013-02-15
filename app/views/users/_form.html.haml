@@ -1,0 +1,21 @@
+.row
+  = simple_form_for @user do |f|
+    .span6
+      .field
+        = f.input :username
+      .field
+        = f.input :email
+      .field
+        = f.input :password
+      .field
+        = f.input :password_confirmation
+    .span6
+      %fieldset
+        %legend Platform Accounts
+        %ul
+          - @platform_accounts.each do |platform_account|
+            %li= platform_account.platform.name
+    .span12
+      .actions
+        = f.button :submit
+

@@ -12,29 +12,14 @@ class ParticipantsController < ApplicationController
     redirect_to user_event_path(@host, @event)
   end
 
-  def join_bench
-
-    # event must not have open slots
-    # user must not already be playing
-    participant = Participant.find_or_create_by_event_id_and_user_id @event.id, current_user.id
-
-  end
-
   def leave
-    host = User.find(params[:user_id])
-    event = host.events_created.find(params[:event_id])
-
     # find participant
     # if exists destroy it
-    participant = Participant.find_by_event_id_and_user_id(event.id, current_user.id)
-    if participant
-      participant.destroy
-      event.slots_filled = event.slots_filled - 1
-      event.save
-    else
-      # not playing!
-    end
-    redirect_to user_event_path(host, event)
+    participant = Participant.find_by_event_id_and_user_id(@event.id, current_user.id)
+    
+    participant.destroy if participant
+
+    redirect_to user_event_path(@host, @event)
   end
 
 private

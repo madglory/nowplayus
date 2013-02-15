@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @platform_accounts = @user.platform_accounts.includes :platform
 
     respond_to do |format|
       format.html # show.html.erb
@@ -30,6 +31,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @platform_accounts = @user.platform_accounts.includes :platform
     if @user.id != current_user.id
       redirect_to root_path, notice: "Not permitted"
     end
