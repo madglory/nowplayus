@@ -68,8 +68,6 @@ ALTER SEQUENCE authentications_id_seq OWNED BY authentications.id;
 CREATE TABLE events (
     id integer NOT NULL,
     description text,
-    starts_at_raw character varying(255),
-    duration_raw character varying(255),
     starts_at timestamp without time zone,
     duration integer,
     slots integer DEFAULT 1 NOT NULL,
@@ -101,6 +99,38 @@ CREATE SEQUENCE events_id_seq
 --
 
 ALTER SEQUENCE events_id_seq OWNED BY events.id;
+
+
+--
+-- Name: participants; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE participants (
+    id integer NOT NULL,
+    event_id integer,
+    user_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: participants_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE participants_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: participants_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE participants_id_seq OWNED BY participants.id;
 
 
 --
@@ -168,39 +198,6 @@ ALTER SEQUENCE platforms_id_seq OWNED BY platforms.id;
 
 
 --
--- Name: players; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE players (
-    id integer NOT NULL,
-    event_id integer,
-    user_id integer,
-    status character varying(255),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: players_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE players_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: players_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE players_id_seq OWNED BY players.id;
-
-
---
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -264,6 +261,13 @@ ALTER TABLE ONLY events ALTER COLUMN id SET DEFAULT nextval('events_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY participants ALTER COLUMN id SET DEFAULT nextval('participants_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY platform_accounts ALTER COLUMN id SET DEFAULT nextval('platform_accounts_id_seq'::regclass);
 
 
@@ -272,13 +276,6 @@ ALTER TABLE ONLY platform_accounts ALTER COLUMN id SET DEFAULT nextval('platform
 --
 
 ALTER TABLE ONLY platforms ALTER COLUMN id SET DEFAULT nextval('platforms_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY players ALTER COLUMN id SET DEFAULT nextval('players_id_seq'::regclass);
 
 
 --
@@ -324,7 +321,7 @@ ALTER TABLE ONLY platforms
 -- Name: players_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY players
+ALTER TABLE ONLY participants
     ADD CONSTRAINT players_pkey PRIMARY KEY (id);
 
 
@@ -414,3 +411,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130214180633');
 INSERT INTO schema_migrations (version) VALUES ('20130214181752');
 
 INSERT INTO schema_migrations (version) VALUES ('20130214182408');
+
+INSERT INTO schema_migrations (version) VALUES ('20130215030548');
+
+INSERT INTO schema_migrations (version) VALUES ('20130215031444');

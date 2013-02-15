@@ -6,7 +6,7 @@ Platform.all.each { |p| p.destroy }
 User.all.each { |p| p.destroy }
 PlatformAccount.all.each { |p| p.destroy }
 Event.all.each { |p| p.destroy }
-Player.all.each { |p| p.destroy }
+Participant.all.each { |p| p.destroy }
 
 # Make some Platforms
 p1 = Platform.create! name: 'XBOX'
@@ -47,6 +47,6 @@ e2 = Event.new title: 'League of Legends', platform: p2, starts_at_raw: 'Friday 
 e2.user = u2
 e2.save!
 
-# Make some Players
-Player.create! user_id: u2.id, event_id: e1.id
-Player.create! user_id: u1.id, event_id: e2.id
+# Make some Participants
+Participant.create! user_id: u2.id, event_id: e1.id
+Participant.create! user_id: u1.id, event_id: e2.id

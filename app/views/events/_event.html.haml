@@ -1,7 +1,7 @@
-%article.event.row{ class: (current_user == event.user ? 'mine' : 'theirs')}
+%article.event.row{ class: (current_user == event.host ? 'mine' : 'theirs')}
   .schedule.span1= render partial: 'events/schedule', locals: { event: event }
   .description.span8= render partial: 'events/description', locals: { event: event }
-  .host.span1= link_to image_tag(event.host_avatar_url), user_path(event.user)
+  .host.span1= link_to image_tag(event.host_avatar_url), user_path(event.host)
   .slots.span1= "#{event.slots_filled} / #{event.slots}"
   .span1
     .promote TWEET

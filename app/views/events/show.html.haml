@@ -2,30 +2,30 @@
   = render @event
 .event-detail.row{ class: @event_owner}
   .host.span1
-    = link_to image_tag(@event.host_avatar_url), user_path(@event.user)
+    = link_to image_tag(@event.host_avatar_url), user_path(@event.host)
   .span11
     %h2.with
       w/
       %span.host
-        = @event.host
+        = @event.host_name
     %p= @event.description
-    - if @event.user == current_user
+    - if @event.host == current_user
       %p= link_to "I can't make it! Please cancel.", user_event_path(current_user,@event), confirm: "Are you sure?", method: :delete
     .row
       .span5
-        %h3 Joining
+        %h3
+          Joining
+          - if @event.host != current_user
+            - if @event.players.exists?(:id => current_user)
+              = link_to "Can't play", user_event_participants_leave_path(@event.host, @event), class: 'btn', confirm: 'Are you sure?'
+            - else
+              = link_to "Join the team", user_event_participants_join_path(@event.host, @event), class: 'btn btn-primary'
         %ul
           - @event.players.each do |player|
-            %li= player.user.username
-
-        - if @event.user != current_user
-          - if @event.players.exists?(:user_id => current_user)
-            = link_to "Can't play", user_event_players_leave_path(@event.user, @event)
-          - else
-            = link_to "Join the team", user_event_players_join_path(@event.user, @event)
+            %li= player.username
 
       .span5
         %h3 Pending
         %ul
           - @event.players.each do |player|
-            %li= player.user.username
+            %li= player.username

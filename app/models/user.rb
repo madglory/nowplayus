@@ -7,12 +7,12 @@ class User < ActiveRecord::Base
     config.authentications_class = Authentication
   end
 
-  has_many :authentications, :dependent => :destroy
+  has_many :authentications, dependent: :destroy
   accepts_nested_attributes_for :authentications
 
-  has_many :players
-  has_many :events, through: :players
-  has_many :events_created, class_name: "Event"
+  has_many :participants
+  has_many :events, through: :participants
+  has_many :events_created, class_name: 'Event'
 
 
   validates :username, presence: true

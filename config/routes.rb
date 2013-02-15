@@ -3,8 +3,8 @@ Nowplayus::Application.routes.draw do
   resources :user_sessions
   resources :users do 
     resources :events do
-        get 'players/join' => "players#join"
-        get 'players/leave' => "players#leave"
+        get 'participants/join' => "participants#join"
+        get 'participants/leave' => "participants#leave"
     end
   end
 

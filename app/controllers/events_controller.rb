@@ -14,7 +14,7 @@ class EventsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @event = @user.events_created.find(params[:id], include: :players)
-    @event_owner = (current_user == @event.user ? 'mine' : 'theirs')
+    @event_owner = (current_user == @event.host ? 'mine' : 'theirs')
 
     respond_to do |format|
       format.html # show.html.erb
@@ -49,7 +49,7 @@ class EventsController < ApplicationController
   def destroy
     event = Event.find(params[:id])
     respond_to do |format|
-      if event.user == current_user
+      if event.host == current_user
         event.destroy
         format.html { redirect_to user_events_path(current_user), notice: 'Your event has been cancelled.' }
         format.json { render json: event, notice: 'Your event has been cancelled.' }

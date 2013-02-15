@@ -7,9 +7,10 @@ class Event < ActiveRecord::Base
   attr_accessible :starts_at_raw, :duration_raw, :description, :slots, :title, :platform, :time_zone
   acts_as_paranoid
 
-  has_many :players, dependent: :destroy
-  belongs_to :user
   belongs_to :platform
+  belongs_to :user
+  has_many :participants
+  has_many :players, through: :participants, foreign_key: :user_id, class_name: 'User', source: :user
 
   validates :user, presence: true
   validates :title, presence: true
@@ -19,6 +20,10 @@ class Event < ActiveRecord::Base
   validates :slots, presence: true, numericality: { only_integer: true, greater_than: 0, less_than: 10 }
 
   def host
+    user
+  end
+
+  def host_name
     return if user.blank?
     user.username
   end

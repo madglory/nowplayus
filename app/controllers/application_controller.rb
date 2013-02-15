@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :require_login, except: :rescue_404
 
-  unless config.consider_all_requests_local #|| Rails.env != 'production'
+  unless config.consider_all_requests_local || Rails.env != 'production'
     rescue_from Exception, with: :render_error
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
     rescue_from ActionController::RoutingError, with: :render_not_found
@@ -29,7 +29,7 @@ private
 
   def render_error(exception=nil)
     logger.error exception
-    PartyFoul::RacklessExceptionHandler.handle(exception)
+    PartyFoul::RacklessExceptionHandler.handle(exception, params: exception.message)
     respond_to do |type|
       type.html { render template: "error_pages/500", layout: "application", status: "500 Internal Server Error" }
       type.all  { render nothing: true, status: "500 Internal Server Error" }
