@@ -33,15 +33,15 @@ class EventsController < ApplicationController
   end
 
   def create
-    event = current_user.events_created.new(params[:event])
+    @event = current_user.events_created.new(params[:event])
 
     respond_to do |format|
-      if event.save
+      if @event.save
         format.html { redirect_to user_events_path(current_user), notice: 'Event was successfully created.' }
-        format.json { render json: event, status: :created }
+        format.json { render json: @event, status: :created }
       else
         format.html { render action: "new" }
-        format.json { render json: event.errors, status: :unprocessable_entity }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
   end

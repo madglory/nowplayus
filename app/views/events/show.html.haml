@@ -10,9 +10,9 @@
         = @event.host_name
       - if @event.host != current_user
         - if @event.players.exists?(:id => current_user)
-          = link_to "Can't play", user_event_participants_leave_path(@event.host, @event), class: 'btn btn-danger', confirm: 'Are you sure?'
+          = link_to "Can't play", user_event_participant_path(@event.host, @event), class: 'btn btn-danger', confirm: 'Are you sure?', method: :delete
         - else
-          = link_to "Join in!", user_event_participants_join_path(@event.host, @event), class: 'btn btn-primary'
+          = link_to "Join in!", user_event_participants_path(@event.host, @event), class: 'btn btn-primary', method: :post
       - else
         = link_to "I can't make it! Please cancel.", user_event_path(current_user,@event), confirm: "Are you sure?", method: :delete, class: 'btn btn-danger'
     %p= @event.description
