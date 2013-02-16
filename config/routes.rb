@@ -1,11 +1,11 @@
 Nowplayus::Application.routes.draw do
 
-  resources :user_sessions
+  resources :user_sessions, only: [:new, :create, :destroy]
   resources :users do 
     resources :events do
-        get 'participants/join' => "participants#join"
-        get 'participants/leave' => "participants#leave"
+      resources :participants, only: [:create, :destroy]
     end
+    resources :platform_accounts, only: [:new, :create, :destroy]
   end
 
   match "oauth/callback" => "oauths#callback"
