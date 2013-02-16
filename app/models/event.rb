@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
   belongs_to :platform
   belongs_to :user
   has_many :participants
-  has_many :players, through: :participants, foreign_key: :user_id, class_name: 'User', source: :user
+  has_many :players, through: :participants, foreign_key: :user_id, class_name: 'User', source: :user, order: 'created_at ASC'
   accepts_nested_attributes_for :platform, reject_if: ->(attributes) { attributes['name'].blank? }
 
   validates :user, presence: true
@@ -23,11 +23,11 @@ class Event < ActiveRecord::Base
   validate :platform_id_or_name_present?
 
   def bench_players
-    players.order('participants.created_at ASC').offset(slots)
+    players.drop(slots)
   end
 
   def team_players
-    players.order('participants.created_at ASC').limit(slots)
+    players.first(slots)
   end
 
   def host
