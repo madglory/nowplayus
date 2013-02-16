@@ -1,20 +1,22 @@
 .row
-  = simple_form_for @user do |f|
+  = simple_nested_form_for @user do |f|
     .span6
       .field
         = f.input :username
       .field
         = f.input :email
       .field
-        = f.input :password
+        = f.input :password, label: 'Change Your Password'
       .field
         = f.input :password_confirmation
     .span6
       %fieldset
         %legend Platform Accounts
-        %ul
-          - @platform_accounts.each do |platform_account|
-            %li= platform_account.platform.name
+        = f.fields_for :platform_accounts do |paf|
+          = paf.collection_select :platform_id, Platform.select('id,name').all, :id, :name, label: 'Platform'
+          = paf.text_field :username
+          = paf.link_to_remove 'Remove Platform Account'
+        = f.link_to_add 'Add a Platform Account', :platform_accounts
     .span12
       .actions
         = f.button :submit

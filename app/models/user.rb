@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true
   validates :time_zone, presence: true
-  validates_length_of :password, :minimum => 3, :message => "password must be at least 3 characters long", :if => :password
-  validates_confirmation_of :password, :message => "should match confirmation", :if => :password
+  validates_length_of :password, minimum: 3, message: "password must be at least 3 characters long", if: 'password.present?'
+  validates_confirmation_of :password, message: "should match confirmation", if: 'password.present?'
+
+  def platform_username(platform)
+    platform_accounts.select('username').find_by_platform_id(platform)
+  end
 end
