@@ -2,7 +2,7 @@
 @import "variables";
 
 .events {
-  border-top: 1px solid #bbbbbb;
+  margin-top: 2em;
   a {
     display: block;
     &:hover {
@@ -11,11 +11,15 @@
     }
   }
   .event {
-    border-right: 1px solid #d0d0d0;
-    border-bottom: 1px solid #d0d0d0;
     margin: 0;
-    padding: 10px 0;
-    height: 60px;
+    padding: 1em 0;
+    height: 6.5em;
+    border-right: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    &:first-child {
+      border-top: 1px solid #bbbbbb;
+    }
+
     &.theirs {
       border-left: 7px solid $aqua-blue;
       &:after {
@@ -42,18 +46,21 @@
     }
   }
   .schedule {
-    margin: 0;
-    padding: 0;
-    font-size: 48px;
-    line-height: 35px;
+    padding-left: 0;
+    font-size: 4.8em;
     text-align: center;
+<<<<<<< HEAD
     color: #000000;
     padding-right: 10px;
+=======
+    color: #000;
+>>>>>>> Event listing is unsemantic and has proper line heights to vertically align elements
 
     > span {
       display: block;
       &.date {
         font-weight: 700;
+        line-height: .8;
         letter-spacing: -0.2ex;
       }
       &.day {
@@ -65,9 +72,13 @@
     }
   }
   .description {
+<<<<<<< HEAD
     margin: 0;
     border-left: 1px solid #d0d0d0;
     padding-left: 10px;
+=======
+    border-left: 1px solid #aaa;
+>>>>>>> Event listing is unsemantic and has proper line heights to vertically align elements
     a:hover {
       h2 {
         color: #444;
@@ -79,22 +90,19 @@
       list-style-type: none;
     }
     h2.game {
-      font-family: "Maven Pro";
-      padding:0 0 0 10px;
-      margin: 0;
-      font-weight: 700;
-      margin-top: -5px;
-      padding-bottom: 5px;
+      margin: 0 0 .2em 0;
+      padding: 0;
+      font-size: 3em;
+      line-height: 1;
       color: #000;
     }
     .time {
-      padding: 0 0 0 10px;
-      font-family: "Maven Pro";
-      font-size: 20px;
+      font-size: 2em;
       font-weight: 100;
       color: #252525;
     }
   }
+<<<<<<< HEAD
   .slots {
     letter-spacing: -0.3ex;
     font-size: 36px;
@@ -131,24 +139,48 @@
       font-weight: bold;
     }
   }
+=======
+>>>>>>> Event listing is unsemantic and has proper line heights to vertically align elements
   .host {
+    
     a {
+      margin: 1em auto;
       width: 50px;
       height: 50px;
       border-radius: 100px;
       overflow: hidden;
+<<<<<<< HEAD
       margin-top: 5px;
       margin-left: 10px;
       display: block;
+=======
+      
+>>>>>>> Event listing is unsemantic and has proper line heights to vertically align elements
       img {
         width: 50px;
       }
     }
   }
+<<<<<<< HEAD
   .players {
     margin-top: 40px;
     .span5 {
       border-bottom: 1px solid #d0d0d0;
     }
+=======
+  .slots {
+    font-size: 3.6em;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #000;
+    text-align: center;
+  }
+  .promote {
+    margin: 1.5em 0;
+    width: 48px;
+    height: 36px;
+    background: url("twitter-icon-lg.png") no-repeat;
+    text-indent: -9999px;
+>>>>>>> Event listing is unsemantic and has proper line heights to vertically align elements
   }
 }
