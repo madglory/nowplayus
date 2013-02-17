@@ -75,7 +75,7 @@ header {
 	}
 
 	#logo {
-		background: transparent url(now-play-us-logo.png) no-repeat 0 0;
+		background: transparent url(now-play-us-logo.png) no-repeat 10px 0;
 		text-indent: -9999px;
 		height: 23px;
 	}
@@ -108,12 +108,15 @@ header {
 }
 
 #main {
-	margin: 0 auto;
-	width: 80%;
-	min-height: 600px;
+	min-height: 60em;
 }
 
-nav.page-link {
+.wrapper {
+	margin: 0 auto;
+	width: 80%;
+}
+
+nav.page-links {
 	margin-top: 1.42857143em;
 	font-size: 1.4em;
 }

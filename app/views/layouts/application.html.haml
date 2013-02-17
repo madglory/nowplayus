@@ -25,7 +25,7 @@
   %body
 
     %header
-      %nav.grid-container
+      %nav.wrapper.grid-container
         = link_to 'NowPlay.us', root_url, id: 'logo', class: 'grid-33'
         %ul#main-menu.grid-33
           - if current_user
@@ -38,16 +38,20 @@
           - else
             %li= link_to 'Login with Twitter', auth_at_provider_path(provider: :twitter), class: 'navbar-link'
 
+    - if current_page?(root_path)
+      #banner
+        .wrapper.grid-container
+          %h2 Why play games with yourself... </br>when you can <span>play</span> with us
 
-    #main{ rel: 'main' }
+    #main.wrapper{ rel: 'main' }
       - flash.each do |name, msg|
         = content_tag :div, msg, class: "alert alert-#{name == :notice ? 'success' : 'error'}", data: { dismiss: 'alert' } if msg.is_a?(String)
       = yield
 
-    %footer.grid-container
-      %p &copy; 2013, NowPlay.us
-      %p
-        A service of
-        %a{ href: "http://madgloryint.com" } MadGlory Interactive
-
-    = render partial: "shared/analytics"
+    %footer
+      .wrapper.grid-container
+        %p &copy; 2013, NowPlay.us
+        %p
+          A service of
+          %a{ href: "http://madgloryint.com" } MadGlory Interactive
+      = render partial: "shared/analytics"

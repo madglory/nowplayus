@@ -2,7 +2,7 @@
 @import "variables";
 
 .events {
-  margin-top: 2em;
+  margin: 2em 0;
   a {
     display: block;
     &:hover {
@@ -49,12 +49,7 @@
     padding-left: 0;
     font-size: 4.8em;
     text-align: center;
-<<<<<<< HEAD
-    color: #000000;
-    padding-right: 10px;
-=======
     color: #000;
->>>>>>> Event listing is unsemantic and has proper line heights to vertically align elements
 
     > span {
       display: block;
@@ -72,13 +67,8 @@
     }
   }
   .description {
-<<<<<<< HEAD
-    margin: 0;
-    border-left: 1px solid #d0d0d0;
-    padding-left: 10px;
-=======
     border-left: 1px solid #aaa;
->>>>>>> Event listing is unsemantic and has proper line heights to vertically align elements
+
     a:hover {
       h2 {
         color: #444;
@@ -102,45 +92,7 @@
       color: #252525;
     }
   }
-<<<<<<< HEAD
-  .slots {
-    letter-spacing: -0.3ex;
-    font-size: 36px;
-    line-height: 35px;
-    font-weight: 300;
-    color: #000;
-    text-align: center;
-    margin-top: 10px;
-  }
-  .promote {
-    margin: auto;
-    width: 48px;
-    height: 36px;
-    background: url("twitter-icon-lg.png") no-repeat;
-    text-indent: -9999px;
-    margin-top: 10px;
-  }
-}
 
-.event-detail{
-  margin-top: 20px;
-  &.mine {
-    border-left: 7px solid $light-blue;
-  }
-  &.theirs {
-    border-left: 7px solid $aqua-blue;   
-  }
-}
-
-.events, .event-detail {
-  h2.with {
-    font-weight: 300;
-    span.host {
-      font-weight: bold;
-    }
-  }
-=======
->>>>>>> Event listing is unsemantic and has proper line heights to vertically align elements
   .host {
     
     a {
@@ -149,25 +101,13 @@
       height: 50px;
       border-radius: 100px;
       overflow: hidden;
-<<<<<<< HEAD
-      margin-top: 5px;
-      margin-left: 10px;
-      display: block;
-=======
-      
->>>>>>> Event listing is unsemantic and has proper line heights to vertically align elements
+
       img {
         width: 50px;
       }
     }
   }
-<<<<<<< HEAD
-  .players {
-    margin-top: 40px;
-    .span5 {
-      border-bottom: 1px solid #d0d0d0;
-    }
-=======
+
   .slots {
     font-size: 3.6em;
     font-weight: 300;
@@ -181,6 +121,12 @@
     height: 36px;
     background: url("twitter-icon-lg.png") no-repeat;
     text-indent: -9999px;
->>>>>>> Event listing is unsemantic and has proper line heights to vertically align elements
+  }
+}
+
+.event-details {
+  
+  h2 {
+    margin: 0;
   }
 }
