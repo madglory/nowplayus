@@ -1,6 +1,6 @@
-.row
-  .span12
-    %h1 Schedule a Game
-= render 'form'
-
-= link_to 'Back', user_path(@user)
+.grid-container
+  %h1 Schedule a Game
+  = render 'form'
+  
+  .back-link
+    = link_to 'Back', user_path(@user)

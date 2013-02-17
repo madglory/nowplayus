@@ -15,6 +15,16 @@ body {
 	color: #333;
 	font: normal 62.5%/1.5 'Maven Pro', Verdana, Arial, sans-serif;
 
+	a {
+		color: #08c;
+		text-decoration: none;
+
+		&:hover {
+			color: #005580;
+			text-decoration: underline;
+		}
+	}
+
 	p {
 		font-size: 1.4em;
 	}
@@ -26,6 +36,10 @@ body {
 	h1 { font-size: 3em; }
 	h2 { font-size: 2.8em; }
 	h3 { font-size: 2.4em; }
+
+	fieldset {
+		border: none;
+	}
 }
 
 header {
@@ -94,7 +108,14 @@ header {
 }
 
 #main {
+	margin: 0 auto;
+	width: 80%;
 	min-height: 600px;
+}
+
+.back-link {
+	margin-top: 1.42857143em;
+	font-size: 1.4em;
 }
 
 .alert {
@@ -156,37 +177,6 @@ header {
 			color:#3a87ad;
 		}
 	}
-
-li {
-	list-style-type: none;
-}
-
-.input {
-	margin-bottom: 2em;
-}
-
-select,
-textarea,
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"],
- .uneditable-input {
-	padding: 12px;
-	margin: 0;
-	border: 1px solid #CFCDC4;
-	width: 100%;
-}
 
 footer {
 	margin-top: 2em;

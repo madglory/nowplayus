@@ -1,13 +1,13 @@
 form fieldset {
-	margin: 0 0 20px 0;
-	font-size: 14px;
+	margin: 0 0 1em 0;
 	}
 form fieldset.form-actions {
 	margin: 0;
 	}
 form fieldset label {
 	display: block;
-	margin: 0 0 5px 0;
+	margin: 0 0 .3125em 0;
+	font-size: 1.6em;
 	font-weight: bold;
 	}
 form fieldset.check label {
@@ -21,9 +21,9 @@ form fieldset.radio ul li label {
 form fieldset input.form-text,
 form fieldset textarea {
 	display: block;
-	width: 50%;
-	padding: 5px;
-	font-size: 14px;
+	width: 100%;
+	padding: .3125em;
+	font-size: 1.6em;
 	border: 1px solid #ddd;
 	background: #f5f5f5;
 	-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.05);
@@ -33,7 +33,7 @@ form fieldset textarea {
 	-moz-border-radius: 4px;
 	border-radius: 4px;
 	}
-form fieldset input.form-text:focus {
+form fieldset input:focus {
 	border: 1px solid #ccc;
 	background: #fff;
 	}
@@ -43,6 +43,7 @@ form fieldset textarea {
 form fieldset select {
 	min-width: 25%;
 	margin: 0;
+	font-size: 1.6em;
 	}
 form fieldset.radio ul {
 	margin-top: 5px;
@@ -58,23 +59,25 @@ form fieldset p.form-help {
 	font-size: 12px;
 	color: #999;
 	}
-form input[type="submit"] {
-	margin: 0;
-	padding: 5px 10px;
-	font-size: 12px;	
-	font-weight: bold;
-	border: 1px solid #ccc;
-	background: #eee;
+form input[type="submit"],
+form button[type="submit"] {
+	padding: .25em .75em;
+	font-size: 1.6em;
+	color:#fff;
+	text-shadow:0 -1px 0 rgba(0,0,0,0.25);
+	background-color:#006ccc;
+	background-image:-moz-linear-gradient(top, #08c, #04c);
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#08c), to(#04c));
+	background-image:-webkit-linear-gradient(top, #08c, #04c);
+	background-image:-o-linear-gradient(top, #08c, #04c);
+	background-image:linear-gradient(to bottom, #08c, #04c);
+	background-repeat:repeat-x;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF0088CC', endColorstr='#FF0044CC', GradientType=0);
+	border-color:#04c #04c #002a80;
+	border-color:rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+	*background-color:#04c;
+	filter:progid:DXImageTransform.Microsoft.gradient(enabled=false);
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
 	}
-form input[type="submit"]:hover,
-form input[type="submit"]:focus {
-	border: 1px solid #bbb;
-	background: #e5e5e5;
-	}
-form input[type="submit"]:active {
-	border: 1px solid #ccc;
-	background: #eee;
-	}				
