@@ -27,16 +27,16 @@
     %header
       %nav.wrapper.grid-container
         = link_to 'NowPlay.us', root_url, id: 'logo', class: 'grid-33'
-        %ul#main-menu.grid-33
+        %ul#main-menu.grid-66
           - if current_user
             %li= link_to "My Events", user_events_path(current_user)
             %li= link_to "Add Event", new_user_event_path(current_user)
             %li= link_to "Edit Profile", edit_user_path(current_user.id)
-        %ul#session-menu.grid-33
           - if current_user
             %li= link_to "Logout", :logout, class: 'navbar-link'
           - else
             %li= link_to 'Login with Twitter', auth_at_provider_path(provider: :twitter), class: 'navbar-link'
+          
 
     - if current_page?(root_path)
       #banner

@@ -75,17 +75,18 @@ header {
 	}
 
 	#logo {
-		background: transparent url(now-play-us-logo.png) no-repeat 10px 0;
-		text-indent: -9999px;
+		display: block;
 		height: 23px;
+		text-indent: -9999px;
+		background: transparent url(now-play-us-logo.png) no-repeat 10px 0;
 	}
 
-	#main-menu li {
-		margin-right: 1em;
-	}
-
-	#session-menu {
+	#main-menu {
 		text-align: right;
+
+		li {
+			margin-left: 1em;
+		}
 	}
 }
 
@@ -186,17 +187,14 @@ footer {
 	border-top: 1px solid #bbbbbb;
 	padding: 1.5;
 	bottom: 0;
-
-	p {
-		font-size: 14px;
-		margin: 0;
-	}
 }
 
-@media (max-width: 980px){
-	.navbar-text.pull-right {
-		float: none;
-		padding-left: 15px;
-		padding-right: 15px;
+@media (max-width: 60em) {
+	#banner h2 {
+		font-size: 3em;
+	}
+
+	#main {
+		min-height: inherit;
 	}
 }
