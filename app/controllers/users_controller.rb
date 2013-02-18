@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  skip_before_filter :require_login, :only => [:index, :show, :new, :create]
+  skip_before_filter :require_login, only: [:index, :show, :new, :create]
+  before_filter :load_platforms, only: [:new, :edit, :update, :complete_registration]
+  before_filter :load_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -11,7 +13,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @platform_accounts = @user.platform_accounts.includes :platform
     @future_events = @user.events_created.future(5)
     @past_events   = @user.events_created.past(5)
@@ -32,7 +33,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
     @platform_accounts = @user.platform_accounts.includes :platform
     if @user.id != current_user.id
       redirect_to root_path, notice: "Not permitted"
@@ -54,8 +54,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-
+    @platform_accounts = @user.platform_accounts.includes :platform
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -68,12 +67,55 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url }
+      format.html { redirect_to users_path }
       format.json { head :no_content }
     end
+  end
+
+  def complete_registration
+    @user = current_user
+    @platform_accounts = @user.platform_accounts.includes :platform
+  end
+
+  def confirm_registration
+    @user = current_user
+    respond_to do |format|
+      if @user.update_attributes params[:user]
+        format.html { redirect_to @user, notice: 'Registration complete!' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "complete_registration" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def change_password
+    @user = current_user
+  end
+
+  def update_password
+    @user = current_user
+    respond_to do |format|
+      if @user.update_attributes params[:user]
+        format.html { redirect_to @user, notice: 'Password was successfully updated' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "change_password" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+private
+  def load_platforms
+    @platforms = Platform.select('id,name').all
+  end
+
+  def load_user
+    @user = User.find params[:id]
   end
 end

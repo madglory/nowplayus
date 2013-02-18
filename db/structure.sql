@@ -219,7 +219,8 @@ CREATE TABLE users (
     updated_at timestamp without time zone NOT NULL,
     slug character varying(255),
     time_zone character varying(255),
-    avatar_url character varying(255)
+    avatar_url character varying(255),
+    keep_notified boolean
 );
 
 
@@ -416,3 +417,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130215030548');
 INSERT INTO schema_migrations (version) VALUES ('20130215031444');
 
 INSERT INTO schema_migrations (version) VALUES ('20130215153724');
+
+INSERT INTO schema_migrations (version) VALUES ('20130218170157');

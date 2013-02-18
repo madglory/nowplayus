@@ -10,18 +10,21 @@ class OauthsController < ApplicationController
   def callback
     provider = params[:provider]
     if @user = login_from(provider)
-      redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
+      if @user.registration_complete?
+        redirect_back_or_to root_path, notice: "Logged in from #{provider.titleize}!"
+      else
+        redirect_to edit_user_path(@user), notice: 'Please complete your registration!'
+      end
     else
       begin
         @user = create_from(provider)
-        # NOTE: this is the place to add '@user.activate!' if you are using user_activation submodule
-        @user.save! # get slug
+        @user.save validate: false # get slug w/o triggering (on: :update) validation on :email
 
         reset_session # protect from session fixation attack
         auto_login(@user)
-        redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
+        redirect_to edit_user_path(@user), notice: "Please complete your registration!"
       rescue
-        redirect_to root_path, :alert => "Failed to login from #{provider.titleize}!"
+        redirect_back_or_to root_path, alert: "Failed to login from #{provider.titleize}!"
       end
     end
   end
