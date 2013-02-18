@@ -1,10 +1,12 @@
 %section.events.grid-container
   = render @event
 
-.event-details.grid-container{ class: @event_owner}
-  %h2
-    Commanding Officer:
-    = link_to @event.host_name, user_path(@event.host_name)
+.event-details{ class: @event_owner}
+  .grid-container
+    = link_to_function "Back", "history.back()", class: 'previous-page grid-10 mobile-grid-20'
+    %h2.grid-90.mobile-grid-80
+      w/
+      = link_to @event.host_name, user_path(@event.host_name)
 
   %nav.page-links  
     - if @event.host != current_user
@@ -18,7 +20,7 @@
   - if @event.description.present?
     %p= @event.description
     
-  %section.roster
+  %section.roster.grid-container
     .grid-50
       %h3 On the Team
       %ul

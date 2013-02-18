@@ -120,6 +120,7 @@ header {
 nav.page-links {
 	margin-top: 1.42857143em;
 	font-size: 1.4em;
+	text-align: center;
 }
 	nav.page-links .button {
 		font-size: 100%;
@@ -128,6 +129,14 @@ nav.page-links {
 		color: #fff;
 		text-decoration: none;
 	}
+
+.previous-page {
+	display: block;
+	width: 50px;
+	height: 50px;
+	background: transparent url(previous-icon.png) no-repeat 50% 0;
+	text-indent: -9999px;
+}
 
 .alert {
 	padding: 1.428571429em;
@@ -203,5 +212,11 @@ footer {
 
 	#main {
 		min-height: inherit;
+	}
+
+	.previous-page {
+		width: 40px;
+		height: 40px;
+		background-size: 40px;
 	}
 }
