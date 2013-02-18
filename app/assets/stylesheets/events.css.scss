@@ -5,6 +5,9 @@
   margin: 2em 0;
   a {
     display: block;
+    &.callout-button {
+      display: inline;
+    }
     &:hover {
       color: #000;
       text-decoration: none;

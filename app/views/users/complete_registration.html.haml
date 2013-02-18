@@ -3,6 +3,7 @@
   = unsemantic_nested_form_for @user do |f|
     = f.input :email
     = f.input :keep_notified, label: 'Keep me notified', hint: 'Allow Now Play Us to send occasional updates on new features and functionality.', input_html: { checked: true }
+    = f.time_zone_select :time_zone, @time_zones
     %fieldset.platform-accounts
       %legend Platform Accounts
       %p Add a platform account to display your username to others when playing a game on different networks (ie. XBOX, PSN, EA, etc.)

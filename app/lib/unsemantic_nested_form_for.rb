@@ -14,4 +14,8 @@ class UnsemanticNestedFormFor < NestedForm::SimpleBuilder
   def collection_select(attribute, choices, value_method, text_method, options = {}, html_options = {}, *args, &block)
     wrap_input super
   end
+
+  def time_zone_select(attribute, priority_zones = nil, options = {}, html_options = {})
+    wrap_input super
+  end
 end
