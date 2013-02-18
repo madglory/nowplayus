@@ -16,7 +16,7 @@
       - else
         = link_to "I can't make it! Please cancel.", user_event_path(current_user,@event), confirm: "Are you sure?", method: :delete, class: 'btn btn-danger'
     %p= @event.description
-    .row
+    .row.players
       .span5
         %h3
           On the Team

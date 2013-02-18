@@ -11,8 +11,8 @@
     }
   }
   .event {
-    border-right: 1px solid #aaa;
-    border-bottom: 1px solid #aaa;
+    border-right: 1px solid #d0d0d0;
+    border-bottom: 1px solid #d0d0d0;
     margin: 0;
     padding: 10px 0;
     height: 60px;
@@ -48,6 +48,7 @@
     line-height: 35px;
     text-align: center;
     color: #000000;
+    padding-right: 10px;
 
     > span {
       display: block;
@@ -65,7 +66,8 @@
   }
   .description {
     margin: 0;
-    border-left: 1px solid #aaa;
+    border-left: 1px solid #d0d0d0;
+    padding-left: 10px;
     a:hover {
       h2 {
         color: #444;
@@ -100,6 +102,7 @@
     font-weight: 300;
     color: #000;
     text-align: center;
+    margin-top: 10px;
   }
   .promote {
     margin: auto;
@@ -107,10 +110,12 @@
     height: 36px;
     background: url("twitter-icon-lg.png") no-repeat;
     text-indent: -9999px;
+    margin-top: 10px;
   }
 }
 
 .event-detail{
+  margin-top: 20px;
   &.mine {
     border-left: 7px solid $light-blue;
   }
@@ -132,9 +137,18 @@
       height: 50px;
       border-radius: 100px;
       overflow: hidden;
+      margin-top: 5px;
+      margin-left: 10px;
+      display: block;
       img {
         width: 50px;
       }
+    }
+  }
+  .players {
+    margin-top: 40px;
+    .span5 {
+      border-bottom: 1px solid #d0d0d0;
     }
   }
 }
