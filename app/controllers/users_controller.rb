@@ -78,6 +78,7 @@ class UsersController < ApplicationController
   def complete_registration
     @user = current_user
     @platform_accounts = @user.platform_accounts.includes :platform
+    render layout: 'minimal'
   end
 
   def confirm_registration
@@ -87,7 +88,7 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, notice: 'Registration complete!' }
         format.json { head :no_content }
       else
-        format.html { render action: "complete_registration" }
+        format.html { render action: "complete_registration", layout: 'minimal' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
