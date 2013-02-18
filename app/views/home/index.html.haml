@@ -1,13 +1,24 @@
 .grid-container
   #intro
-    %h2 What is now<span class="highlight">play</span>us?
-    %p Tired not being able to play your favorite multiplayer games because you can never get your friends* online at the same time? Use <strong>now<span class="highlight">play</span>us</strong> to schedule your gameplay, and make sure you're all online at the right time.
+    %h2
+      What is now
+      %span.highlight play
+      us?
+    %p
+      Tired not being able to play your favorite multiplayer games because you can never get your friends* online at the same time? Use 
+      %strong
+        now
+        %span.highlight play
+        us
+      to schedule your gameplay, and make sure you're all online at the right time.
     %p.footnote * or make new friends!
-  
-    - if !current_user
+    - unless current_user
       = link_to 'Login', auth_at_provider_path(provider: :twitter), class: 'twitter-button'
 
-    %h3 Scheduled game events with now<span class="highlight">play</span>us
+    %h3
+      Scheduled game events with now
+      %span.highlight play
+      us
 
   %section.events
     - @events.each do |event|
