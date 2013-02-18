@@ -9,11 +9,11 @@
   %nav.page-links  
     - if @event.host != current_user
       - if @event.players.exists?(:id => current_user)
-        = link_to "Can't play", user_event_participant_path(@event.host, @event), confirm: 'Are you sure?', method: :delete
+        = link_to "Can't play", user_event_participant_path(@event.host, @event), confirm: 'Are you sure?', method: :delete, class: 'button'
       - else
-        = link_to "Join in!", user_event_participants_path(@event.host, @event), method: :post
+        = link_to "Join in!", user_event_participants_path(@event.host, @event), method: :post, class: 'button'
     - else
-      = link_to "I can't make it! Please cancel.", user_event_path(current_user,@event), confirm: "Are you sure?", method: :delete
+      = link_to "I can't make it! Please cancel.", user_event_path(current_user,@event), confirm: "Are you sure?", method: :delete, class: 'button button-danger'
   
   - if @event.description.present?
     %p= @event.description
