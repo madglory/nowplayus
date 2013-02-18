@@ -3,112 +3,198 @@
  *= require_tree .
  */
 
-@import "bootstrap";
-@import "bootstrap-responsive";
 @import "variables";
 
+@import "unsemantic";
+@import "forms";
+
 body {
-	padding-top: 30px;
+	margin: 0;
+	padding: 0;
 	background-color: $background-color;
 	color: #333;
-	font-family: Maven Pro, sans-serif;
-	font-size: 13px;
-	line-height: 18px;
-	#main {
-		margin-top: 11px;
+	font: normal 62.5%/1.5 'Maven Pro', Verdana, Arial, sans-serif;
+
+	a {
+		color: #08c;
+		text-decoration: none;
+
+		&:hover {
+			color: #005580;
+			text-decoration: underline;
+		}
 	}
 
+	p {
+		font-size: 1.4em;
+	}
+
+	h1, h2, h3 {
+		 margin-bottom: 0;
+		 font-weight: 700;
+	}
+	h1 { font-size: 3em; }
+	h2 { font-size: 2.8em; }
+	h3 { font-size: 2.4em; }
+
+	fieldset {
+		border: none;
+	}
 }
 
-.index {
+header {
+	padding: 1em 0;
+	background-color: #000;
+	background-color:#1b1b1b;
+	background-image:-moz-linear-gradient(top, #222, #111);
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#222), to(#111));
+	background-image:-webkit-linear-gradient(top, #222, #111);
+	background-image:-o-linear-gradient(top, #222, #111);
+	background-image:linear-gradient(to bottom, #222, #111);
+	background-repeat:repeat-x;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF222222', endColorstr='#FF111111', GradientType=0);
+	border-color:#252525;
+
+	a {
+		color: #777;
+		text-decoration: none;
+
+		&:hover {
+			color: #fff;
+		}
+	}
+
+	ul {
+		margin: 0;
+		height: 2.3em;
+
+		li {
+			display: inline-block;
+			font-size: 1.4em;
+		}
+	}
+
+	#logo {
+		display: block;
+		height: 23px;
+		text-indent: -9999px;
+		background: transparent url(now-play-us-logo.png) no-repeat 10px 0;
+	}
+
+	#main-menu {
+		text-align: right;
+
+		li {
+			margin-left: 1em;
+		}
+	}
+}
+
+#banner {
+	margin-bottom: 2em;
 	background: url("header-bg.jpg") repeat-x 0px 0px;
 	height: 292px;
+
+	h2 {
+		margin: 0;
+		font-weight: normal;
+		font-size: 4.8em;
+		line-height: 1.5;
+		color: #fff;
+
+		span {
+			color: #72bae4;
+		}
+	}
 }
 
 #main {
-	min-height: 600px;
+	min-height: 60em;
 }
 
-p {
-	font-family: 'Maven Pro', sans-serif;
-	font-size: 22px;
-	color: #4f4f4f;
+.wrapper {
+	margin: 0 auto;
+	width: 80%;
 }
 
-h1 {
-	font-family: 'Maven Pro', sans-serif;
-	font-size: 30px;
-	line-height: 35px;
-	font-weight: 700;
+nav.page-links {
+	margin-top: 1.42857143em;
+	font-size: 1.4em;
 }
 
-h2.home {
-	color: white;
-	font-weight: 100;
-	font-size: 48px;
-	line-height: 58px;
+.alert {
+	padding: 1.428571429em;
+	font-size: 1.4em;
+}
+	.alert-success {
+		color: #468847;
+		background-color: #dff0d8;
+		border-color: #d6e9c6;
+	}
+
+.alert{
+	padding: 1.428571429em;
+	font-size: 1.4em;
+	background-color: #fcf8e3;
+	border: 1px solid #fbeed5;
 }
 
-h2.home span {
-	color: #72bae4;
-}
+	.alert,
+	.alert h4{
+		color:#c09853;
+	}
+	.alert h4{
+		margin:0;
+	}
+	.alert .close{
+		position:relative;
+		top:-2px;
+		right:-21px;
+		line-height:20px
+	}
 
-a.brand {
-	background: url("now-play-us-logo.png") no-repeat 20px 08px;
-	text-indent: -9999px;
-	width: 118px;
-}
+	.alert-success{
+		color:#468847;
+		background-color:#dff0d8;
+		border-color:#d6e9c6;
 
-li {
-	list-style-type: none;
-}
+		h4 {
+			color:#468847;
+		}
+	}
+	.alert-success .alert-danger,
+	.alert-error {
+		color:#b94a48;
+		background-color:#f2dede;
+		border-color:#eed3d7;
+	}
+	.alert-danger h4,
+	.alert-error h4 {
+		color:#b94a48;
+	}
+	.alert-info{
+		color:#3a87ad;
+		background-color:#d9edf7;
+		border-color: #bce8f1;
 
-.input {
-	margin-bottom: 2em;
-}
-
-select,
-textarea,
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"],
- .uneditable-input {
-	padding: 12px;
-	margin: 0;
-	border: 1px solid #CFCDC4;
-	width: 100%;
-}
-
-label {
-	
-}
+		h4 {
+			color:#3a87ad;
+		}
+	}
 
 footer {
-	margin-top: 20px;
+	margin-top: 2em;
 	border-top: 1px solid #bbbbbb;
-	padding: 15px;
+	padding: 1.5;
 	bottom: 0;
-	p {
-		font-size: 14px;
-		margin: 0;
-	}
 }
 
-@media (max-width: 980px){
-	.navbar-text.pull-right {
-		float: none;
-		padding-left: 15px;
-		padding-right: 15px;
+@media (max-width: 60em) {
+	#banner h2 {
+		font-size: 3em;
+	}
+
+	#main {
+		min-height: inherit;
 	}
 }
