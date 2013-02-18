@@ -13,6 +13,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @platform_accounts = @user.platform_accounts.includes :platform
+    @future_events = @user.events_created.future(5)
+    @past_events   = @user.events_created.past(5)
 
     respond_to do |format|
       format.html # show.html.erb

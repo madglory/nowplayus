@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @events = (@user.events_created + @user.events).sort { |a,b| b.starts_at <=> a.starts_at }
+    @events = (@user.events_created.future + @user.events.future).sort { |a,b| b.starts_at <=> a.starts_at }
 
     respond_to do |format|
       format.html # index.html.erb

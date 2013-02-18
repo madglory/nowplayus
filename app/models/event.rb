@@ -22,6 +22,25 @@ class Event < ActiveRecord::Base
   validates :slots, presence: true, numericality: { only_integer: true, greater_than: 0, less_than: 10 }
   validate :platform_id_or_name_present?
 
+
+  def self.past(cut_off = nil)
+    events = where(["starts_at < :d", d: Time.now]).order("starts_at DESC")
+    if cut_off
+      events.limit(cut_off)
+    else
+      events
+    end
+  end
+
+  def self.future(cut_off = nil)
+    events = where(["starts_at >= :d", d: Time.now]).order("starts_at ASC")
+    if cut_off
+      events.limit(cut_off)
+    else
+      events
+    end
+  end
+
   def bench_players
     players.drop(slots)
   end

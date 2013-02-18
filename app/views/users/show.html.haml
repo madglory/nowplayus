@@ -1,0 +1,19 @@
+%section.events.grid-container
+  = render @user
+
+.user-details
+  .grid-container
+
+  %section.events.grid-container
+    .grid-100
+      - if @future_events.length > 0
+        %h3 Future Events
+        - @future_events.each do |event|
+          = render event
+
+    / .grid-100
+    /   - if @past_events.length > 0
+    /     %h3 Past Events
+    /     - @past_events.each do |event|
+    /       = render event
+
