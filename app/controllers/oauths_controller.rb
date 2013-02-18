@@ -13,7 +13,7 @@ class OauthsController < ApplicationController
       if @user.registration_complete?
         redirect_back_or_to root_path, notice: "Logged in from #{provider.titleize}!"
       else
-        redirect_to edit_user_path(@user), notice: 'Please complete your registration!'
+        redirect_to complete_registration_path, notice: 'Please complete your registration!'
       end
     else
       begin
@@ -22,7 +22,7 @@ class OauthsController < ApplicationController
 
         reset_session # protect from session fixation attack
         auto_login(@user)
-        redirect_to edit_user_path(@user), notice: "Please complete your registration!"
+        redirect_to complete_registration_path, notice: "Please complete your registration!"
       rescue
         redirect_back_or_to root_path, alert: "Failed to login from #{provider.titleize}!"
       end
