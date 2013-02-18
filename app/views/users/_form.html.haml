@@ -1,18 +1,12 @@
-= simple_nested_form_for @user do |f|
-  %fieldset
-    = f.input :username, input_html: { class: 'form-text' }
-  %fieldset
-    = f.input :email, input_html: { class: 'form-text' }
-  %fieldset
-    = f.input :password, label: 'Change Your Password', input_html: { class: 'form-text' }
-  %fieldset
-    = f.input :password_confirmation, input_html: { class: 'form-text' }
+= unsemantic_nested_form_for @user do |f|
+  = f.input :email
+  = f.input :keep_notified, label: 'Keep me notified', hint: 'Allow Now Play Us to send occasional updates on new features and functionality.'
 
-  %fieldset
+  %fieldset.platform-accounts
     %legend Platform Accounts
     = f.fields_for :platform_accounts do |paf|
-      = paf.collection_select :platform_id, Platform.select('id,name').all, :id, :name, label: 'Platform'
-      = paf.text_field :username
+      = paf.collection_select :platform_id, @platforms, :id, :name, label: 'Platform'
+      = paf.input :username
       = paf.link_to_remove 'Remove Platform Account'
     = f.link_to_add 'Add a Platform Account', :platform_accounts
 

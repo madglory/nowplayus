@@ -40,10 +40,10 @@ pa1.platform = p2
 pa1.save!
 
 # Make some Events
-e1 = Event.new title: 'Call of Duty: Black Ops 2', platform: p1, starts_at_raw: 'Thursday 5pm', duration_raw: '2hr'
+e1 = Event.new title: 'Call of Duty: Black Ops 2', platform_id: p1.id, starts_at_raw: 'Thursday 5pm', duration_raw: '2hr'
 e1.user = u1
 e1.save!
-e2 = Event.new title: 'League of Legends', platform: p2, starts_at_raw: 'Friday 10:30pm', duration_raw: '4 hours'
+e2 = Event.new title: 'League of Legends', platform_id: p2.id, starts_at_raw: 'Friday 10:30pm', duration_raw: '4 hours'
 e2.user = u2
 e2.save!
 

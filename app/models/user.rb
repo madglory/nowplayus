@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :username, use: :slugged
-  attr_accessible :username, :email, :password, :password_confirmation, :time_zone
+  attr_accessible :username, :email, :password, :password_confirmation, :time_zone, :keep_notified
 
   authenticates_with_sorcery! do |config|
     config.authentications_class = Authentication
@@ -18,8 +18,13 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true
   validates :time_zone, presence: true
+  validates_presence_of :email, on: :update
   validates_length_of :password, minimum: 3, message: "password must be at least 3 characters long", if: 'password.present?'
   validates_confirmation_of :password, message: "should match confirmation", if: 'password.present?'
+
+  def registration_complete?
+    email.present?
+  end
 
   def platform_username(platform)
     platform_accounts.select('username').find_by_platform_id(platform)

@@ -18,7 +18,15 @@ form fieldset.radio ul li label {
 	display: inline;
 	font-weight: normal;
 	}
-form fieldset input.form-text,
+
+form fieldset.platform-accounts legend {
+	font-size: 1.6em;
+	font-weight: bold;
+	border-bottom: 1px solid #ddd;
+}
+
+form fieldset input.string,
+form fieldset input.password,
 form fieldset textarea {
 	display: block;
 	width: 100%;
