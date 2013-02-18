@@ -1,7 +1,8 @@
-%article.event.row{ class: (current_user == event.host ? 'mine' : 'theirs')}
-  .schedule.span1= render partial: 'events/schedule', locals: { event: event }
-  .description.span8= render partial: 'events/description', locals: { event: event }
-  .host.span1= link_to image_tag(event.host_avatar_url), user_path(event.host)
-  .slots.span1= "#{event.slots_filled} / #{event.slots}"
-  .span1
-    .promote TWEET
+%article.event{ class: (current_user == event.host ? 'mine' : 'theirs')}
+  .grid-70.mobile-grid-100
+    .schedule.grid-10.mobile-grid-25= render partial: 'events/schedule', locals: { event: event }
+    .description.grid-90.mobile-grid-75= render partial: 'events/description', locals: { event: event }
+  .players.grid-30.mobile-grid-100
+    .host.grid-33.mobile-grid-33= link_to image_tag(event.host_avatar_url), user_path(event.host)
+    .slots.grid-33.mobile-grid-33= "#{event.slots_filled}/#{event.slots}"
+    .promote.grid-33.mobile-grid-33 TWEET

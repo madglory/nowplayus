@@ -1,25 +1,24 @@
 = simple_form_for [@user, @event] do |f|
-  .row
-    .span6
-      .field
-        = f.input :title, label: 'Game Title', placeholder: 'Eg: Borderlands 2, Halo 4'
-  .row
-    .span6
-      .field
-        = f.collection_select :platform_id, Platform.select('id,name').all, :id, :name, include_blank: true, label: 'Platform'
-    .span6
-      .field
-        = f.text_field :new_platform_name, label: 'Or add a new platform' 
-
-  .row
-    .span6
-      = f.input :starts_at_raw, placeholder: 'Eg: Tonight 8pm'
-    .span6
-      = f.input :duration_raw, placeholder: 'Eg: 2 Hours'
-  .row
-    .span12
-      = f.input :description, label: 'Additional Information'
-
-      = f.input :slots, label: 'Number of Players'
+  %fieldset
+    = f.input :title, label: 'Game Title', placeholder: 'Eg: Borderlands 2, Halo 4', input_html: { class: 'form-text' }
   
-      = f.button :submit, class: 'btn btn-primary'
+  %fieldset
+    = f.collection_select :platform_id, Platform.select('id,name').all, :id, :name, include_blank: true, label: 'Platform'
+  
+  %fieldset
+    = f.input :new_platform_name, label: 'Or add a new platform', input_html: { class: 'form-text' }
+
+  %fieldset
+    = f.input :starts_at_raw, label: 'Start Time', placeholder: 'Eg: Tonight 8pm', input_html: { class: 'form-text' }
+    
+  %fieldset
+    = f.input :duration_raw, label: 'Duration', placeholder: 'Eg: 2 Hours', input_html: { class: 'form-text' }
+
+  %fieldset
+    = f.input :description, label: 'Additional Information'
+
+  %fieldset
+    = f.input :slots, label: 'Number of Players', input_html: { class: 'form-text' }
+  
+  %fieldset.form-actions
+    = f.button :submit

@@ -1,33 +1,34 @@
-%section.events
+%section.events.grid-container
   = render @event
-.event-detail.row{ class: @event_owner}
-  .host.span1
-    = link_to image_tag(@event.host_avatar_url), user_path(@event.host)
-  .span11
-    %h2.with
-      w/
-      %span.host
-        = @event.host_name
-      - if @event.host != current_user
-        - if @event.players.exists?(:id => current_user)
-          = link_to "Can't play", user_event_participant_path(@event.host, @event), class: 'btn btn-danger', confirm: 'Are you sure?', method: :delete
-        - else
-          = link_to "Join in!", user_event_participants_path(@event.host, @event), class: 'btn btn-primary', method: :post
-      - else
-        = link_to "I can't make it! Please cancel.", user_event_path(current_user,@event), confirm: "Are you sure?", method: :delete, class: 'btn btn-danger'
-    %p= @event.description
-    .row.players
-      .span5
-        %h3
-          On the Team
-        %ul
-          - @event.team_players.each do |player|
-            %li.host
-              = link_to image_tag(player.avatar_url), user_path(player), title: player.username
 
-      .span5
-        %h3 On the Bench
-        %ul
-          - @event.bench_players.each do |player|
-            %li.host
-              = link_to image_tag(player.avatar_url), user_path(player), title: player.username
+.event-details.grid-container{ class: @event_owner}
+  %h2
+    Commanding Officer:
+    = link_to @event.host_name, user_path(@event.host_name)
+
+  %nav.page-links  
+    - if @event.host != current_user
+      - if @event.players.exists?(:id => current_user)
+        = link_to "Can't play", user_event_participants_leave_path(@event.host, @event), confirm: 'Are you sure?'
+      - else
+        = link_to "Join in!", user_event_participants_join_path(@event.host, @event)
+    - else
+      = link_to "I can't make it! Please cancel.", user_event_path(current_user,@event), confirm: "Are you sure?", method: :delete
+  
+  - if @event.description.present?
+    %p= @event.description
+    
+  %section.roster
+    .grid-50
+      %h3 On the Team
+      %ul
+        - @event.team_players.each do |player|
+          %li.host
+            = link_to image_tag(player.avatar_url), user_path(player), title: player.username
+
+    .grid-50
+      %h3 On the Bench
+      %ul
+        - @event.bench_players.each do |player|
+          %li.host
+            = link_to image_tag(player.avatar_url), user_path(player), title: player.username
