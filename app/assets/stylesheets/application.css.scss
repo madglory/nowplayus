@@ -101,15 +101,20 @@ header {
 		font-size: 4.8em;
 		line-height: 1.5;
 		color: #fff;
-
-		span {
-			color: #72bae4;
-		}
 	}
 }
 
 #main {
 	min-height: 60em;
+}
+
+#intro {
+	padding-top: 4em;
+	text-align: center;
+
+	h3 {
+		margin-top: 2em;
+	}
 }
 
 .wrapper {
@@ -130,6 +135,10 @@ nav.page-links {
 		text-decoration: none;
 	}
 
+span.highlight {
+	color: #72bae4;
+}
+
 .previous-page {
 	display: block;
 	width: 50px;
@@ -137,6 +146,35 @@ nav.page-links {
 	background: transparent url(previous-icon.png) no-repeat 50% 0;
 	text-indent: -9999px;
 }
+
+.twitter-button {
+	padding: .5em 3em .5em 1.5em;
+
+	color: #4283a9;
+	font-size: 2.4em;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+	border-radius: 40px;
+	border: 10px solid #efefef;
+	
+
+
+	background: #83c2e7; /* Old browsers */
+	background-image: url(twitter-button-icon.png), -moz-linear-gradient(top,  #83c2e7 0%, #64a4c9 100%); /* FF3.6+ */
+	background-image: url(twitter-button-icon.png), -webkit-gradient(linear, left top, left bottom, color-stop(0%,#83c2e7), color-stop(100%,#64a4c9)); /* Chrome,Safari4+ */
+	background-image: url(twitter-button-icon.png), -webkit-linear-gradient(top,  #83c2e7 0%,#64a4c9 100%); /* Chrome10+,Safari5.1+ */
+	background-image: url(twitter-button-icon.png), -o-linear-gradient(top,  #83c2e7 0%,#64a4c9 100%); /* Opera 11.10+ */
+	background-image: url(twitter-button-icon.png), -ms-linear-gradient(top,  #83c2e7 0%,#64a4c9 100%); /* IE10+ */
+	background-image: url(twitter-button-icon.png), linear-gradient(to bottom,  #83c2e7 0%,#64a4c9 100%); /* W3C */
+	background-repeat: no-repeat, repeat;
+	background-position: 105px 16px, 0 0;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#83c2e7', endColorstr='#64a4c9',GradientType=0 ); /* IE6-9 */
+	-moz-background-clip: padding, padding;     /* Firefox 3.6 */
+	-webkit-background-clip: padding, padding;  /* Safari 4? Chrome 6? */
+	background-clip: padding-box, padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
+}
+	.twitter-button:hover {
+		text-decoration: none;
+	}
 
 .alert {
 	padding: 1.428571429em;

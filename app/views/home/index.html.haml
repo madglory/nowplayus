@@ -1,6 +1,10 @@
 .grid-container
-  %p Now Play Us is the easiest way to schedule a game with your friends.
-  %h3 Check out some upcoming games...
+  #intro
+    - if !current_user
+      = link_to 'Login', auth_at_provider_path(provider: :twitter), class: 'twitter-button'
+
+    %h3 Scheduled game events with now<span class="highlight">play</span>us
+
   %section.events
     - @events.each do |event|
       = render event
