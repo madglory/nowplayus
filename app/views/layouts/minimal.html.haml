@@ -1,7 +1,7 @@
 !!!
 %html{lang: 'en'}
   %head
-    %title= @title.nil? ? "Now Play Us" : @title
+    %title Now Play Us
 
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
     %meta{ name: "description", content: "" }
@@ -19,10 +19,12 @@
   %body
 
     %header
-      = render partial: 'shared/navigation'
+      %nav.wrapper.grid-container
+        = link_to 'NowPlay.us', '#', id: 'logo', class: 'grid-33'
 
     #main.wrapper{ rel: 'main' }
-      = render partial: 'shared/flash_messages'
+      - flash.each do |name, msg|
+        = content_tag :div, msg, class: "alert alert-#{name == :notice ? 'success' : 'error'}", data: { dismiss: 'alert' } if msg.is_a?(String)
       = yield
 
     %footer
