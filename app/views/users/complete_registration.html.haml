@@ -1,0 +1,14 @@
+.grid-container
+  %h1 Complete your registration
+  = unsemantic_nested_form_for @user do |f|
+    = f.input :email
+    = f.input :keep_notified, label: 'Keep me notified', hint: 'Allow Now Play Us to send occasional updates on new features and functionality.', input_html: { checked: true }
+    %fieldset.platform-accounts
+      %legend Platform Accounts
+      %p Add a platform account to display your username to others when playing a game on different networks (ie. XBOX, PSN, EA, etc.)
+      = f.fields_for :platform_accounts do |paf|
+        = paf.collection_select :platform_id, @platforms, :id, :name, label: 'Platform'
+        = paf.input :username
+        = paf.link_to_remove 'Remove Platform Account'
+      = f.link_to_add 'Add a Platform Account', :platform_accounts
+    = f.button :submit, 'Now Play!'
