@@ -172,3 +172,7 @@ form button[type="submit"],
 .hint {
   font-size: 1.5em;
 }
+
+.required abbr {
+  color: #9a1a1a;
+}
