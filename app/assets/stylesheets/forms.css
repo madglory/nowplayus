@@ -7,7 +7,7 @@ form fieldset.form-actions {
 form fieldset label {
 	display: block;
 	margin: 0 0 .3125em 0;
-	font-size: 1.6em;
+	font-size: 1.9em;
 	font-weight: bold;
 	}
 form fieldset.check label {
@@ -167,4 +167,8 @@ form button[type="submit"],
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2f96b4', GradientType=0);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.hint {
+  font-size: 1.5em;
 }
