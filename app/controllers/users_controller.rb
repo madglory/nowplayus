@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:index, :show, :new, :create]
   before_filter :load_platforms, only: [:new, :edit, :update, :complete_registration]
   before_filter :load_user, only: [:show, :edit, :update, :destroy]
+  before_filter :load_time_zones, only: [:edit, :update, :complete_registration]
 
   def index
     @users = User.all
@@ -118,5 +119,9 @@ private
 
   def load_user
     @user = User.find params[:id]
+  end
+
+  def load_time_zones
+    @time_zones = ActiveSupport::TimeZone.us_zones
   end
 end

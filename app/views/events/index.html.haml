@@ -1,3 +1,5 @@
 %section.events.grid-container
   - @events.each do |event|
     = render event
+  - if @events.blank?
+    = link_to 'Create an Event', new_user_event_path(current_user), class: 'callout-button'
