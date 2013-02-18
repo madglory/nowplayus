@@ -72,6 +72,14 @@ class Event < ActiveRecord::Base
     players.count >= slots ? slots : players.count
   end
 
+  def past?
+    starts_at < Time.now ? true : false if starts_at.present?
+  end
+ 
+  def upcoming?
+    past? == false
+  end
+
 private
   def parse_chronic
     return false if starts_at_raw.blank? || duration_raw.blank?
