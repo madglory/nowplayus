@@ -109,11 +109,11 @@ header {
 }
 
 #intro {
-	padding-top: 4em;
+	padding-top: 8em;
 	text-align: center;
 
 	h3 {
-		margin-top: 2em;
+		margin-top: 4em;
 	}
 }
 
@@ -246,6 +246,14 @@ footer {
 @media (max-width: 60em) {
 	.wrapper {
 		width: 100%;
+	}
+
+	#intro {
+		padding-top: 4em;
+
+		h3 {
+			margin-top: 2em;
+		}
 	}
 	
 	#banner h2 {
