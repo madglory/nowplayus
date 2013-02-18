@@ -1,7 +1,8 @@
-%h1 Editing user
+.grid-container
+  %h1 Editing user
+  = render 'form'
 
-= render 'form'
-
-= link_to 'View Profile', @user
-|
-= link_to 'Back', users_path
+  %nav.page-link
+    = link_to 'View Profile', @user
+    |
+    = link_to 'Back', users_path
