@@ -34,7 +34,7 @@ private
 
   def render_error(exception=nil)
     logger.error exception
-    PartyFoul::RacklessExceptionHandler.handle(exception, params: exception.message)
+    PartyFoul::ExceptionHandler.handle(exception,env)
     respond_to do |type|
       type.html { render template: "error_pages/500", layout: "application", status: "500 Internal Server Error" }
       type.all  { render nothing: true, status: "500 Internal Server Error" }
