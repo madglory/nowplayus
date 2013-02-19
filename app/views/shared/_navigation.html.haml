@@ -7,4 +7,4 @@
       %li= link_to "Edit Profile", edit_user_path(current_user)
       %li= link_to "Logout", :logout, class: 'navbar-link'
     - else
-      %li= link_to 'Login with Twitter', auth_at_provider_path(provider: :twitter), class: 'navbar-link'
+      %li= link_to 'Login with Twitter', '/auth/twitter', class: 'navbar-link'
