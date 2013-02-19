@@ -13,6 +13,7 @@ gem 'rails', '3.2.11'
 gem 'sass-rails', '~> 3.2.3'
 gem 'simple_form'
 gem 'sorcery'
+gem 'twitter'
 gem 'will_paginate', '~> 3.0'
 
 group :development do
