@@ -70,7 +70,7 @@ Rails.application.config.sorcery.configure do |config|
   # What providers are supported by this app, i.e. [:twitter, :facebook, :github, :google, :liveid] .
   # Default: `[]`
   #
-  config.external_providers = [:twitter]
+  # config.external_providers = [:twitter]
 
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'
@@ -83,19 +83,19 @@ Rails.application.config.sorcery.configure do |config|
   # Twitter wil not accept any requests nor redirect uri containing localhost,
   # make sure you use 0.0.0.0:3000 to access your app in development
   #
-  config.twitter.key = ENV['TWITTER_KEY']
-  config.twitter.secret = ENV['TWITTER_SECRET']
+  # config.twitter.key = ENV['TWITTER_KEY']
+  # config.twitter.secret = ENV['TWITTER_SECRET']
 
-  if Rails.env == "production"
-    config.twitter.callback_url = "http://nowplay.us/oauth/callback?provider=twitter"
-  else
-    config.twitter.callback_url = "http://localhost:3000/oauth/callback?provider=twitter"
-  end
-  config.twitter.user_info_mapping = {
-    username: 'screen_name',
-    time_zone: 'time_zone',
-    avatar_url: 'profile_image_url'
-  }
+  # if Rails.env == "production"
+  #   config.twitter.callback_url = "http://nowplay.us/oauth/callback?provider=twitter"
+  # else
+  #   config.twitter.callback_url = "http://localhost:3000/oauth/callback?provider=twitter"
+  # end
+  # config.twitter.user_info_mapping = {
+  #   username: 'screen_name',
+  #   time_zone: 'time_zone',
+  #   avatar_url: 'profile_image_url'
+  # }
 
   # config.facebook.key = ""
   # config.facebook.secret = ""
@@ -380,7 +380,7 @@ Rails.application.config.sorcery.configure do |config|
     # Class which holds the various external provider data for this user.
     # Default: `nil`
     #
-    user.authentications_class = Authentication
+    # user.authentications_class = Authentication
 
 
     # User's identifier in authentications class.

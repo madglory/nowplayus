@@ -38,7 +38,9 @@ CREATE TABLE authentications (
     provider character varying(255) NOT NULL,
     uid character varying(255) NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    token character varying(255),
+    token_secret character varying(255)
 );
 
 
@@ -419,3 +421,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130215031444');
 INSERT INTO schema_migrations (version) VALUES ('20130215153724');
 
 INSERT INTO schema_migrations (version) VALUES ('20130218170157');
+
+INSERT INTO schema_migrations (version) VALUES ('20130219183118');

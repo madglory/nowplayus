@@ -14,7 +14,7 @@
     %p.footnote * or make new friends!
     - unless current_user
       %fieldset.callout
-        = link_to 'Login', auth_at_provider_path(provider: :twitter), class: 'callout-button twitter'
+        = link_to 'Login', '/auth/twitter', class: 'callout-button twitter'
 
     %h3
       Scheduled game events with now
