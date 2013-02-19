@@ -3,8 +3,7 @@
 
 .event-details{ class: @event_owner}
   .grid-container
-    = link_to_function "Back", "history.back()", class: 'previous-page grid-10 mobile-grid-20'
-    %h2.grid-90.mobile-grid-80
+    %h2
       w/
       = link_to @event.host_name, user_path(@event.host_name)
 
@@ -15,24 +14,34 @@
     %nav.page-links
       - if @event.host != current_user
         - if @event.players.exists?(:id => current_user)
-          = link_to "Can't play", user_event_participant_path(@event.host, @event), confirm: 'Are you sure?', method: :delete, class: 'button'
+          = link_to "Sorry, I can't make it.", user_event_participant_path(@event.host, @event), confirm: 'Are you sure?', method: :delete, class: 'button'
         - else
-          = link_to "Join in!", user_event_participants_path(@event.host, @event), method: :post, class: 'button'
+          = link_to "I want to join!", user_event_participants_path(@event.host, @event), method: :post, class: 'button'
       - else
-        = link_to "I can't make it! Please cancel.", user_event_path(current_user,@event), confirm: "Are you sure?", method: :delete, class: 'button button-danger'
+        = link_to "Cancel the entire event!", user_event_path(current_user,@event), confirm: "Are you sure?", method: :delete, class: 'button button-danger'
       = link_to "Promote on Twitter", '', class: 'button button-info hide-on-desktop'
   
   %section.roster.grid-container
-    .grid-50
+    .grid-50.mobile-grid-50
       %h3 On the Team
-      %ul
-        - @event.team_players.each do |player|
-          %li.host
-            = link_to image_tag(player.avatar_url), user_path(player), title: player.username
+      - if @event.bench_players.present?
+        %ul
+          - @event.team_players.each do |player|
+            %li.host
+              = link_to image_tag(player.avatar_url), user_path(player), title: player.username
+      - else
+        %p 
+          Hmmm, no one has joined yet?
+          %br
+          Why don't you promote this more on
+          = link_to "Twitter!", "#"
 
-    .grid-50
+    .grid-50.mobile-grid-50
       %h3 On the Bench
-      %ul
-        - @event.bench_players.each do |player|
-          %li.host
-            = link_to image_tag(player.avatar_url), user_path(player), title: player.username
+      - if @event.bench_players.present?
+        %ul
+          - @event.bench_players.each do |player|
+            %li.host
+              = link_to image_tag(player.avatar_url), user_path(player), title: player.username
+      - else
+        %p Awesome! No one is left out warming the bench.

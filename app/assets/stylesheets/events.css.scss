@@ -131,6 +131,15 @@
   h2 {
     margin: 0;
   }
+
+  .page-links {
+    padding-bottom: 1em;
+    border-bottom: 1px solid #d0d0d0;
+  }
+
+  .roster h3 {
+    margin-top: 0;
+  }
 }
 
 @media (max-width: 60em) {

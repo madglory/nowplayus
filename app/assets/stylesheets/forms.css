@@ -75,9 +75,10 @@ form button[type="submit"],
 	display: inline-block;
   *display: inline;
   padding: .285714286em .857142857em;
-  margin-bottom: 0;
+  margin: 0;
   *margin-left: .214285714em;
   font-size: 1.4em;
+  line-height: inherit;
   color: #fff;
   text-align: center;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -105,6 +106,11 @@ form button[type="submit"],
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
      -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+
+    &:hover {
+      color: #fff;
+      text-decoration: none;
+    }
 	}
 .button-warning {
   color: #ffffff;
