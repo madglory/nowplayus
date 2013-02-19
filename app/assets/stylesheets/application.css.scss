@@ -288,7 +288,7 @@ footer {
 
 @media (max-width: 60em) {
 	.wrapper {
-		width: 100%;
+		width: 95%;
 	}
 
 	#intro {
@@ -297,6 +297,10 @@ footer {
 		h3 {
 			margin-top: 2em;
 		}
+	}
+
+	header #main-menu li {
+		margin-left: .5em;
 	}
 
 	#banner {

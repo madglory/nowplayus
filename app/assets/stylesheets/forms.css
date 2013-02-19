@@ -188,3 +188,11 @@ form button[type="submit"],
 .add_nested_fields, .remove_nested_fields {
   font-size: 1.5em;
 }
+
+@media (max-width: 60em) {
+  form fieldset input.string,
+  form fieldset input.password,
+  form fieldset textarea {
+    width: 90%;
+  }
+}
