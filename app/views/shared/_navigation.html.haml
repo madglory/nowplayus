@@ -3,7 +3,7 @@
   %ul#main-menu.grid-66
     - if current_user
       %li= link_to "My Events", user_events_path(current_user)
-      %li= link_to "Add Event", new_user_event_path(current_user)
+      %li= link_to "Add Event", new_event_path
       %li= link_to "Edit Profile", edit_user_path(current_user)
       %li= link_to "Logout", :logout, class: 'navbar-link'
     - else

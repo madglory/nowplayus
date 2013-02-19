@@ -1,4 +1,4 @@
-= unsemantic_form_for [@user, @event] do |f|
+= unsemantic_form_for @event do |f|
   = f.input :title, label: 'Game Title', placeholder: 'Eg: Borderlands 2, Halo 4', input_html: { class: 'form-text' }
   %fieldset
     = f.label "Platform", required: true

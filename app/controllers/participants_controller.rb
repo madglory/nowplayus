@@ -7,10 +7,10 @@ class ParticipantsController < ApplicationController
     participant = Participant.find_or_create_by_event_id_and_user_id(@event.id, current_user.id)
     respond_to do |format|
       if participant
-        format.html { redirect_to [@host, @event], notice: 'You joined the game!' }
+        format.html { redirect_to @event, notice: 'You joined the game!' }
         format.json { render json: participant, status: :created }
       else
-        format.html { redirect_to [@host, @event], alert: 'Something went wrong' }
+        format.html { redirect_to @event, alert: 'Something went wrong' }
         format.json { render json: participant.errors, status: :unprocessable_entity }
       end
     end
@@ -23,7 +23,7 @@ class ParticipantsController < ApplicationController
     respond_to do |format|
       if current_user_is_participant?
         @participant.destroy
-        format.html { redirect_to [@host, @event], notice: 'You have left the game.' }
+        format.html { redirect_to @event, notice: 'You have left the game.' }
         format.json { render json: @participant, notice: 'You have left the game.' }
       else
         format.html { redirect_to current_user, alert: 'Not authorized!' }
@@ -42,7 +42,7 @@ private
   end
 
   def redirect_host
-    redirect_to user_event_path(current_user, @event) if current_user == @event.host
+    redirect_to event_path(@event) if current_user == @event.host
   end
 
   def current_user_is_participant?

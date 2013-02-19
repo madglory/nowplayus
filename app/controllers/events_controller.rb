@@ -12,8 +12,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
-    @event = @user.events_created.find(params[:id], include: :players)
+    @event = Event.find params[:id], include: :players
     @event_owner = (current_user == @event.host ? 'mine' : 'theirs')
 
     respond_to do |format|

@@ -1,10 +1,12 @@
 Nowplayus::Application.routes.draw do
 
-  resources :users do 
-    resources :events do
-      resources :participants, only: [:create, :destroy]
-    end
+  resources :users do
+    resources :events, only: [:index]
     resources :platform_accounts, only: [:new, :create, :destroy]
+  end
+
+  resources :events, except: [:index] do
+    resources :participants, only: [:create, :destroy]
   end
 
   match '/tweet', to: 'twitter#update', as: :tweet, via: :post

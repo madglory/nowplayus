@@ -12,7 +12,7 @@
     .grid-20
       - if @event.host == current_user
         = content_tag :div, class: 'cancel' do
-          = link_to "cancel event", user_event_path(current_user,@event), confirm: "Are you sure?", method: :delete, class: 'button button-danger mobile-grid-100'
+          = link_to "cancel event", @event, confirm: "Are you sure?", method: :delete, class: 'button button-danger mobile-grid-100'
     %section
       .grid-50.roster
         .grid-container
