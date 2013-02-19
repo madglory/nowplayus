@@ -57,7 +57,7 @@ class Event < ActiveRecord::Base
   end
 
   def platform_name
-    return if user.blank?
+    return if platform.blank?
     platform.name
   end
 
