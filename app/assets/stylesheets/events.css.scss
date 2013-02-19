@@ -4,7 +4,6 @@
 .events {
   margin: 0 0 2em 0;
   a {
-    display: block;
     &.callout-button {
       display: inline-block;
     }
@@ -71,9 +70,12 @@
   .description {
     border-left: 1px solid #d0d0d0;
 
-    a:hover {
-      h2 {
-        color: #444;
+    a {
+      display: block;
+      &:hover {
+        h2 {
+          color: #444;
+        }
       }
     }
     .title {
@@ -96,8 +98,8 @@
   }
 
   .host {
-    
     a {
+      display: block;
       margin: 1em auto;
       width: 50px;
       height: 50px;
@@ -118,11 +120,15 @@
     text-align: center;
   }
   .promote {
+    display: block;
     margin: 1.5em 0;
     width: 48px;
     height: 36px;
     background: url("twitter-icon-lg.png") no-repeat;
     text-indent: -9999px;
+    &:hover{
+      opacity: 0.6;
+    }
   }
 }
 
@@ -132,13 +138,21 @@
     margin: 0;
   }
 
-  .page-links {
-    padding-bottom: 1em;
-    border-bottom: 1px solid #d0d0d0;
-  }
-
-  .roster h3 {
-    margin-top: 0;
+  .roster {
+    h3 {
+      margin: 0;
+    }
+    .grid-container {
+      border-bottom: 1px solid #d0d0d0;
+    }
+    nav.page-links {
+      margin: 0;
+      a {
+        display: inline;
+        margin: 0;
+        padding: 5px 10px;
+      }
+    }
   }
 }
 

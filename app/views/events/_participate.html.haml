@@ -1,0 +1,5 @@
+%nav.page-links
+  - if @event.players.exists?(:id => current_user)
+    = link_to "Leave", user_event_participant_path(@event.host, @event), confirm: 'Are you sure?', method: :delete, class: 'button button-danger mobile-grid-100'
+  - else
+    = link_to "Join In", user_event_participants_path(@event.host, @event), method: :post, class: 'button mobile-grid-100'
