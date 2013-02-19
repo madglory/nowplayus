@@ -27,8 +27,8 @@ private
   def render_not_found(exception=nil)
     logger.error exception
     respond_to do |type|
-      type.html { render template: "error_pages/404", layout: "application", status: "404 Not Found" }
-      type.all  { render nothing: true, status: "404 Not Found" }
+      type.html { render template: "error_pages/404", status: 404 }
+      type.all  { render nothing: true, status: 404 }
     end
   end
 
@@ -36,8 +36,8 @@ private
     logger.error exception
     PartyFoul::ExceptionHandler.handle(exception,env)
     respond_to do |type|
-      type.html { render template: "error_pages/500", layout: "application", status: "500 Internal Server Error" }
-      type.all  { render nothing: true, status: "500 Internal Server Error" }
+      type.html { render template: "error_pages/500", status: 500 }
+      type.all  { render nothing: true, status: 500 }
     end
   end
 end
