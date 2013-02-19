@@ -35,8 +35,8 @@ class UsersController < ApplicationController
 
   def edit
     @platform_accounts = @user.platform_accounts.includes :platform
-    if @user.id != current_user.id
-      redirect_to root_path, notice: "Not permitted"
+    unless @user == current_user
+      redirect_to root_path, alert: "Not permitted"
     end
   end
 

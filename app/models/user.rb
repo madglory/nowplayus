@@ -16,14 +16,14 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :authentications
   accepts_nested_attributes_for :platform_accounts, reject_if: :all_blank, allow_destroy: true
 
-  validates :username, presence: true
+  validates :username, presence: true, uniqueness: true
   validates :time_zone, presence: true
   validates_presence_of :email, on: :update
-  validates_length_of :password, minimum: 3, message: "password must be at least 3 characters long", if: 'password.present?'
+  validates_length_of :password, minimum: 3, message: "must be at least 3 characters long", if: 'password.present?'
   validates_confirmation_of :password, message: "should match confirmation", if: 'password.present?'
 
   def registration_complete?
-    email.present?
+    email.present? && time_zone.present?
   end
 
   def platform_username(platform)

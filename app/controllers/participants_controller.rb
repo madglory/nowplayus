@@ -10,7 +10,7 @@ class ParticipantsController < ApplicationController
         format.html { redirect_to [@host, @event], notice: 'You joined the game!' }
         format.json { render json: participant, status: :created }
       else
-        format.html { redirect_to [@host, @event], notice: 'Something went wrong' }
+        format.html { redirect_to [@host, @event], alert: 'Something went wrong' }
         format.json { render json: participant.errors, status: :unprocessable_entity }
       end
     end
@@ -26,8 +26,8 @@ class ParticipantsController < ApplicationController
         format.html { redirect_to [@host, @event], notice: 'You have left the game.' }
         format.json { render json: @participant, notice: 'You have left the game.' }
       else
-        format.html { redirect_to current_user, notice: 'Not authorized!' }
-        format.json { render json: {}, notice: 'Not authorized' }
+        format.html { redirect_to current_user, alert: 'Not authorized!' }
+        format.json { render json: {}, alert: 'Not authorized' }
       end
     end
   end
