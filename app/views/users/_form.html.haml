@@ -1,7 +1,7 @@
 = unsemantic_nested_form_for @user do |f|
   = f.input :email
   = f.input :keep_notified, label: 'Keep me notified', hint: 'Allow Now Play Us to send occasional updates on new features and functionality.'
-  = f.time_zone_select :time_zone, @time_zones
+  = f.input :time_zone, priority: @time_zones
 
   %fieldset.platform-accounts
     %legend Platform Accounts
