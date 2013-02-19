@@ -23,8 +23,7 @@
         = link_to 'NowPlay.us', '#', id: 'logo', class: 'grid-33'
 
     #main.wrapper{ rel: 'main' }
-      - flash.each do |name, msg|
-        = content_tag :div, msg, class: "alert alert-#{name == :notice ? 'success' : 'error'}", data: { dismiss: 'alert' } if msg.is_a?(String)
+      = render partial: 'shared/flash_messages'
       = yield
 
     %footer
@@ -32,5 +31,5 @@
         %p &copy; 2013, NowPlay.us
         %p
           A social experiement of
-          %a{ href: "http://madgloryint.com" } MadGlory Interactive
+          = link_to 'MadGlory Interactive', 'http://madgloryint.com'
       = render partial: "shared/analytics"

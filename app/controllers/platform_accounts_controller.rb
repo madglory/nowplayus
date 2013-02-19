@@ -26,8 +26,8 @@ class PlatformAccounts < ApplicationController
         format.html { redirect_to current_user, notice: 'Your Platform Account has been deleted.' }
         format.json { render json: platform_account, notice: 'Platform Account has been destroyed.' }
       else
-        format.html { redirect_to current_user, notice: 'Not authorized!' }
-        format.json { render json: {}, notice: 'Not authorized!' }
+        format.html { redirect_to current_user, alert: 'Not authorized!' }
+        format.json { render json: {}, alert: 'Not authorized!' }
       end
     end
   end
