@@ -13,7 +13,8 @@
       to schedule your gameplay, and make sure you're all online at the right time.
     %p.footnote * or make new friends!
     - unless current_user
-      = link_to 'Login', auth_at_provider_path(provider: :twitter), class: 'callout-button twitter'
+      %fieldset.callout
+        = link_to 'Login', auth_at_provider_path(provider: :twitter), class: 'callout-button twitter'
 
     %h3
       Scheduled game events with now

@@ -2,4 +2,6 @@
   - @events.each do |event|
     = render event
   - if @events.blank?
-    = link_to 'Create an Event', new_user_event_path(current_user), class: 'callout-button'
+    %p It looks like you don't have any scheduled game events.
+    %fieldset.callout
+      = link_to 'Create an Event', new_user_event_path(current_user), class: 'callout-button'

@@ -159,8 +159,13 @@ span.highlight {
 	background: transparent url(previous-icon.png) no-repeat 50% 0;
 	text-indent: -9999px;
 }
+fieldset.callout {
+	margin: 2em 0;
+	padding: 0;
+	text-align: center;
+}
 .callout-button {
-	display: inline;
+	display: inline-block;
 	padding: .5em 1.5em;
 
 	color: #4283a9;
