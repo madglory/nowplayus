@@ -21,7 +21,7 @@ private
   end
 
   def not_authenticated
-    redirect_to login_path, :alert => "Please login first."
+    redirect_to login_path, alert: "Please login first."
   end
 
   def render_not_found(exception=nil)
