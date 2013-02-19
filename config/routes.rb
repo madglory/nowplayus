@@ -7,6 +7,8 @@ Nowplayus::Application.routes.draw do
     resources :platform_accounts, only: [:new, :create, :destroy]
   end
 
+  match '/tweet', to: 'twitter#update', as: :tweet, via: :post
+
   match '/complete_registration', to: 'users#complete_registration', as: :complete_registration
   match '/confirm_registration', to: 'users#confirm_registration', via: :put
 
