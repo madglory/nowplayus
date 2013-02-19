@@ -13,9 +13,14 @@
       - if @event.host == current_user
         = content_tag :div, class: 'cancel' do
           = link_to "cancel event", user_event_path(current_user,@event), confirm: "Are you sure?", method: :delete, class: 'button button-danger mobile-grid-100'
-    %section.roster.grid-container
-      .grid-50
-        %h3 On the Team
+    %section
+      .grid-50.roster
+        .grid-container
+          .grid-50
+            %h3 Joining
+          .grid-50
+            = render partial: 'events/participate', locals: { event: @event } if @event.upcoming?
+
         - if @event.team_players.present?
           %ul
             - @event.team_players.each do |player|
@@ -25,11 +30,13 @@
           %p Hmmm, no one has joined yet?
           %p
             Why don't you 
-            = link_to 'Tweet it!', tweet_path(event_id: @event.id), method: :post
-      .grid-50
-        %h3 On the Bench
-        - if @event.bench_players.present?
-          %ul
-            - @event.bench_players.each do |player|
-              %li.host
-                = link_to image_tag(player.avatar_url), user_path(player), title: player.username
+            = link_to 'Tweet it!', tweet_path(event_id: @event.id), method: :post, class: 'button mobile-grid-100'
+      .grid-50.roster
+        .grid-container
+          .grid-100
+            %h3 Pending
+            - if @event.bench_players.present?
+              %ul
+                - @event.bench_players.each do |player|
+                  %li.host
+                    = link_to image_tag(player.avatar_url), user_path(player), title: player.username
