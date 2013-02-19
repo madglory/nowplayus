@@ -21,37 +21,9 @@ describe Event do
   it { should validate_presence_of(:title) }
   it { should validate_presence_of(:slots) }
   it { should validate_numericality_of(:slots) }
+  it { should validate_presence_of(:platform) }
 
-  context "using :platform_id" do
-    it "should be valid" do
-      expect(subject.valid?).to be_true
-    end
-  end
-
-  context "using :new_platform_name" do
-    it "should be valid" do
-      subject.platform = nil
-      expect(subject.valid?).to be_false
-      subject.new_platform_name = 'Foo'
-      expect(subject.valid?).to be_true
-    end
-  end
-
-  context "using both :platform_id and :new_platform_name" do
-    it "should be invalid" do
-      expect(subject.valid?).to be_true
-      subject.new_platform_name = 'Foo'
-      expect(subject.valid?).to be_false
-    end
-  end
-
-  context "using neither :platform_id or :new_platform_name" do
-    it "should be invalid" do
-      expect(subject.valid?).to be_true
-      subject.platform = false
-      expect(subject.valid?).to be_false
-    end
-  end
+  
   it "should validate between 0 and 10 slots" do
     expect(subject.valid?).to be_true
     subject.slots = 0
