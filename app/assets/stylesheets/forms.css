@@ -74,18 +74,18 @@ form button[type="submit"],
 .button {
 	display: inline-block;
   *display: inline;
-  padding: .285714286em .857142857em;
+  padding: .5em 1em;
   margin: .5em 0;
   *margin-left: .214285714em;
   font-family: 'Maven Pro', Verdana, Arial, sans-serif;
-  font-size: 1.4em;
+  font-size: 1.9em;
   line-height: inherit;
-  color: #fff;
+  color: #4283a9;
   text-align: center;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
   vertical-align: middle;
   cursor: pointer;
-  background-color: #006dcc;
+  background-color: #72bae4;
   border: 0;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
@@ -116,7 +116,7 @@ form button[type="submit"],
   *background-color: #51a351;
 }
 .button-info {
-  color: #ffffff;
+  color: #4283a9;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
   background-color: #72b9e3;
   *background-color: #72b9e3;
@@ -144,6 +144,6 @@ form button[type="submit"],
   form input[type="submit"],
   form button[type="submit"],
   .button {
-    padding: .75em 0;
+    padding: .5em 1em;
   }
 }
