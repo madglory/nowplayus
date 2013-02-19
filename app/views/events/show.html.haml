@@ -1,46 +1,35 @@
 %section.events.grid-container
   = render @event
+  .grid-10.mobile-grid-25
+    = link_to 'Back', '#'
+  .event-details.grid-90.mobile-grid-75{ class: @event_owner}
+    .grid-80
+      %h2
+        %span.with w/
+        = link_to @event.host_name, user_path(@event.host_name)
 
-.event-details{ class: @event_owner}
-  .grid-container
-    %h2
-      w/
-      = link_to @event.host_name, user_path(@event.host_name)
-
-    - if @event.description.present?
-      %p= @event.description
-
-  - if @event.upcoming?
-    %nav.page-links
-      = link_to "Promote on Twitter", '', class: 'button button-info mobile-grid-100 hide-on-desktop'
-      - if @event.host != current_user
-        - if @event.players.exists?(:id => current_user)
-          = link_to "Sorry, I can't make it.", user_event_participant_path(@event.host, @event), confirm: 'Are you sure?', method: :delete, class: 'button mobile-grid-100'
+      = content_tag :p, @event.description, class: 'description' if @event.description.present?
+    .grid-20
+      - if @event.host == current_user
+        = content_tag :div, class: 'cancel' do
+          = link_to "cancel event", user_event_path(current_user,@event), confirm: "Are you sure?", method: :delete, class: 'button button-danger mobile-grid-100'
+    %section.roster.grid-container
+      .grid-50
+        %h3 On the Team
+        - if @event.team_players.present?
+          %ul
+            - @event.team_players.each do |player|
+              %li.host
+                = link_to image_tag(player.avatar_url), user_path(player), title: player.username
         - else
-          = link_to "I want to join!", user_event_participants_path(@event.host, @event), method: :post, class: 'button mobile-grid-100'
-      - else
-        = link_to "Cancel the entire event!", user_event_path(current_user,@event), confirm: "Are you sure?", method: :delete, class: 'button button-danger mobile-grid-100'
-  
-  %section.roster.grid-container
-    .grid-50
-      %h3 On the Team
-      - if @event.bench_players.present?
-        %ul
-          - @event.team_players.each do |player|
-            %li.host
-              = link_to image_tag(player.avatar_url), user_path(player), title: player.username
-      - else
-        %p Hmmm, no one has joined yet?
-        %p
-          Why don't you promote this more on
-          = link_to "Twitter!", "#"
-
-    .grid-50
-      %h3 On the Bench
-      - if @event.bench_players.present?
-        %ul
-          - @event.bench_players.each do |player|
-            %li.host
-              = link_to image_tag(player.avatar_url), user_path(player), title: player.username
-      - else
-        %p Awesome! No one is left out warming the bench.
+          %p Hmmm, no one has joined yet?
+          %p
+            Why don't you 
+            = link_to 'Tweet it!', tweet_path(event_id: @event.id), method: :post
+      .grid-50
+        %h3 On the Bench
+        - if @event.bench_players.present?
+          %ul
+            - @event.bench_players.each do |player|
+              %li.host
+                = link_to image_tag(player.avatar_url), user_path(player), title: player.username
