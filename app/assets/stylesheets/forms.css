@@ -1,6 +1,10 @@
 form fieldset {
 	margin: 0 0 1em 0;
 	}
+form fieldset fieldset {
+  margin: 0;
+  padding-left: 0;
+}
 form fieldset.form-actions {
 	margin: 0;
 	}
@@ -22,7 +26,6 @@ form fieldset.radio ul li label {
 form fieldset.platform-accounts legend {
 	font-size: 1.6em;
 	font-weight: bold;
-	border-bottom: 1px solid #ddd;
 }
 
 form fieldset input.string,
@@ -52,7 +55,6 @@ form fieldset select {
   margin: 0;
   padding: 0.5em;
   font-size: 1.75em;
-	min-width: 25%;
 	margin: 0;
 	}
 form fieldset.radio ul {
@@ -75,10 +77,10 @@ form button[type="submit"],
 	display: inline-block;
   *display: inline;
   padding: .5em 1em;
-  margin: .5em 0;
+  margin: .5em .25em;
   *margin-left: .214285714em;
   font-family: 'Maven Pro', Verdana, Arial, sans-serif;
-  font-size: 2em;
+  font-size: 1.6em;
   line-height: inherit;
   color: #4283a9;
   text-align: center;
@@ -87,6 +89,7 @@ form button[type="submit"],
   cursor: pointer;
   background-color: #72bae4;
   border: 0;
+  -webkit-appearance: none;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
@@ -116,7 +119,7 @@ form button[type="submit"],
   *background-color: #51a351;
 }
 .button-info {
-  color: #4283a9;
+  color: #2d9478;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
   background-color: #62e0bb;
   *background-color: #62e0bb;
@@ -141,9 +144,16 @@ form button[type="submit"],
     width: 90%;
   }
 
+  form fieldset select {
+    width: 90%;
+  }
+
   form input[type="submit"],
   form button[type="submit"],
   .button {
-    padding: .5em 1em;
+    display: block;
+    padding: 0;
+    width: 100%;
+    font-size: 2.2em;
   }
 }
