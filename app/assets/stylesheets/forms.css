@@ -22,7 +22,18 @@ form fieldset.radio ul li label {
 	display: inline;
 	font-weight: normal;
 	}
-
+form fieldset input.boolean {
+  display: inline;
+  padding: 1em;
+}
+form fieldset label.boolean {
+  display: inline;
+  margin-left: 0.2em;
+}
+form fieldset .boolean .hint {
+  display: block;
+  font-size: 1.2em;
+}
 form fieldset.platform-accounts legend {
 	font-size: 1.6em;
 	font-weight: bold;
@@ -56,7 +67,7 @@ form fieldset select {
   padding: 0.5em;
   font-size: 1.75em;
 	margin: 0;
-	}
+}
 form fieldset.radio ul {
 	margin-top: 5px;
 	}
