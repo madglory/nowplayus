@@ -3,9 +3,7 @@
   .grid-10.mobile-grid-25.button
     = link_to 'Back', @event.host
 
-
-    
-  .event-details.grid-90.mobile-grid-75{ class: @event_owner}
+  .event-details.grid-70.prefix-10.suffix-10.mobile-grid-75{ class: @event_owner}
     .grid-80
       %h2
         %span.with w/
@@ -27,19 +25,30 @@
         - if @event.team_players.present?
           %ul.players
             - @event.team_players.each do |player|
-              %li.host
+              %li.player
                 = link_to image_tag(player.avatar_url), user_path(player), title: player.username
+                %h3
+                  = link_to player.username, user_path(player), title: player.username
+
+
         - else
           %p Hmmm, no one has joined yet?
           %p
-            Why don't you 
+            Why don't you
             = link_to 'Tweet it!', tweet_path(event_id: @event.id), method: :post, class: 'button mobile-grid-100'
+
       .grid-50.roster
         .grid-container
           .grid-100
             %h3 Pending
-            - if @event.bench_players.present?
-              %ul
-                - @event.bench_players.each do |player|
-                  %li.host
-                    = link_to image_tag(player.avatar_url), user_path(player), title: player.username
+
+        - if @event.bench_players.present?
+          %ul.players
+            - @event.bench_players.each do |player|
+              %li.player
+                = link_to image_tag(player.avatar_url), user_path(player), title: player.username
+                %h3
+                  = link_to player.username, user_path(player), title: player.username
+
+        - else
+          %p Bench is empty

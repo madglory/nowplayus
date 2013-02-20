@@ -40,6 +40,14 @@ body {
 	fieldset {
 		border: none;
 	}
+
+	alignright {
+		text-align: right;
+	}
+
+	nopadding {
+		padding: 0 !important;
+	}
 }
 
 header {
@@ -174,7 +182,7 @@ fieldset.callout {
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
 	border-radius: 40px;
 	border: 10px solid #efefef;
-	
+
 	background: #83c2e7; /* Old browsers */
 
 	background-image: -moz-linear-gradient(top,  #83c2e7 0%, #64a4c9 100%); /* FF3.6+ */
@@ -189,7 +197,7 @@ fieldset.callout {
 	-moz-background-clip: padding;     /* Firefox 3.6 */
 	-webkit-background-clip: padding;  /* Safari 4? Chrome 6? */
 	background-clip: padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
-	
+
 	&:hover {
 		text-decoration: none;
 	}
