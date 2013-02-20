@@ -1,44 +1,45 @@
 %section.events.grid-container
   = render @event
-  .event-actions.grid-10.mobile-grid-100
-    = link_to 'events', @event.host, class: 'button'
-    - if @event.host == current_user
-      = link_to "cancel event", @event, confirm: "Are you sure?", method: :delete, class: 'button button-danger mobile-grid-100'
-    - else
-      = render partial: 'events/participate', locals: { event: @event } if @event.upcoming?
+  .grid-10.mobile-grid-25.button
+    = link_to 'Back', @event.host
 
-  .event-details.grid-70.mobile-grid-100{ class: @event_owner}
-    %h2
-      %span.with w/
-      = link_to @event.host_name, user_path(@event.host_name)
+  .event-details.grid-70.prefix-10.suffix-10.mobile-grid-75{ class: @event_owner}
+    .grid-80
+      %h2
+        %span.with w/
+        = link_to @event.host_name, user_path(@event.host_name)
 
-    = content_tag :p, @event.description, class: 'description inline' if @event.description.present?
+    .grid-20
+      - if @event.host == current_user
+        = content_tag :div, class: 'cancel' do
+          = link_to "cancel event", @event, confirm: "Are you sure?", method: :delete, class: 'button button-danger mobile-grid-100'
+
+    .grid-100
+      = content_tag :p, @event.description, class: 'description inline' if @event.description.present?
 
 
     %section
       .grid-50.roster
-        %h3 Joining            
+        .grid-container
+          .grid-50
+            %h3 Joining
+          .grid-50
+            = render partial: 'events/participate', locals: { event: @event } unless @event.past? || @event.host == current_user 
 
-        - if @event.team_players.present?
-          %ul.players
-            - @event.team_players.each do |player|
-              %li.player
-                .grid-container
-                  .grid-20.suffix-10
-                    = link_to image_tag(player.avatar_url), user_path(player), title: player.username
-                  .grid-70
-                    %h3
-                      = link_to player.username, user_path(player), title: player.username
-
-
-        - else
-          %p Hmmm, no one has joined yet?
-          %p
-            Why don't you
-            = link_to 'Tweet it!', tweet_path(event_id: @event.id), method: :post
+        %ul.players
+          - @event.team_players.each do |player|
+            %li.player
+              .grid-container
+                .grid-20.suffix-10
+                  = link_to image_tag(player.avatar_url), user_path(player), title: player.username
+                .grid-70
+                  %h3
+                    = link_to player.platform_username(@platform), user_path(player), title: player.platform_username(@event.platform)
 
       .grid-50.roster
-        %h3 Pending
+        .grid-container
+          .grid-100
+            %h3 Pending
 
         - if @event.bench_players.present?
           %ul.players
