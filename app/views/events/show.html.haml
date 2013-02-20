@@ -1,7 +1,10 @@
 %section.events.grid-container
   = render @event
-  .grid-10.mobile-grid-25
-    = link_to 'Back', '#'
+  .grid-10.mobile-grid-25.button
+    = link_to 'Back', @event.host
+
+
+    
   .event-details.grid-90.mobile-grid-75{ class: @event_owner}
     .grid-80
       %h2
@@ -22,7 +25,7 @@
             = render partial: 'events/participate', locals: { event: @event } if @event.upcoming?
 
         - if @event.team_players.present?
-          %ul
+          %ul.players
             - @event.team_players.each do |player|
               %li.host
                 = link_to image_tag(player.avatar_url), user_path(player), title: player.username
