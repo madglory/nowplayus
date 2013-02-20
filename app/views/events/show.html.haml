@@ -1,30 +1,23 @@
 %section.events.grid-container
   = render @event
-  .grid-10.mobile-grid-25.button
-    = link_to 'Back', @event.host
+  .event-actions.grid-10.mobile-grid-100
+    = link_to 'events', @event.host, class: 'button'
+    - if @event.host == current_user
+      = link_to "cancel event", @event, confirm: "Are you sure?", method: :delete, class: 'button button-danger mobile-grid-100'
+    - else
+      = render partial: 'events/participate', locals: { event: @event } if @event.upcoming?
 
-  .event-details.grid-70.prefix-10.suffix-10.mobile-grid-75{ class: @event_owner}
-    .grid-80
-      %h2
-        %span.with w/
-        = link_to @event.host_name, user_path(@event.host_name)
+  .event-details.grid-70.mobile-grid-100{ class: @event_owner}
+    %h2
+      %span.with w/
+      = link_to @event.host_name, user_path(@event.host_name)
 
-    .grid-20
-      - if @event.host == current_user
-        = content_tag :div, class: 'cancel' do
-          = link_to "cancel event", @event, confirm: "Are you sure?", method: :delete, class: 'button button-danger mobile-grid-100'
-
-    .grid-100
-      = content_tag :p, @event.description, class: 'description inline' if @event.description.present?
+    = content_tag :p, @event.description, class: 'description inline' if @event.description.present?
 
 
     %section
       .grid-50.roster
-        .grid-container
-          .grid-50
-            %h3 Joining
-          .grid-50
-            = render partial: 'events/participate', locals: { event: @event } if @event.upcoming?
+        %h3 Joining            
 
         - if @event.team_players.present?
           %ul.players
@@ -42,12 +35,10 @@
           %p Hmmm, no one has joined yet?
           %p
             Why don't you
-            = link_to 'Tweet it!', tweet_path(event_id: @event.id), method: :post, class: 'button mobile-grid-100'
+            = link_to 'Tweet it!', tweet_path(event_id: @event.id), method: :post
 
       .grid-50.roster
-        .grid-container
-          .grid-100
-            %h3 Pending
+        %h3 Pending
 
         - if @event.bench_players.present?
           %ul.players

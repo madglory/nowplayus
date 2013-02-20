@@ -78,7 +78,7 @@ form button[type="submit"],
   margin: .5em 0;
   *margin-left: .214285714em;
   font-family: 'Maven Pro', Verdana, Arial, sans-serif;
-  font-size: 1.9em;
+  font-size: 2em;
   line-height: inherit;
   color: #4283a9;
   text-align: center;
@@ -118,8 +118,8 @@ form button[type="submit"],
 .button-info {
   color: #4283a9;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
-  background-color: #72b9e3;
-  *background-color: #72b9e3;
+  background-color: #62e0bb;
+  *background-color: #62e0bb;
 }
 
 .hint {
