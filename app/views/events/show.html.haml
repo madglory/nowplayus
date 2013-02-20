@@ -9,11 +9,15 @@
         %span.with w/
         = link_to @event.host_name, user_path(@event.host_name)
 
-      = content_tag :p, @event.description, class: 'description' if @event.description.present?
     .grid-20
       - if @event.host == current_user
         = content_tag :div, class: 'cancel' do
           = link_to "cancel event", @event, confirm: "Are you sure?", method: :delete, class: 'button button-danger mobile-grid-100'
+
+    .grid-100
+      = content_tag :p, @event.description, class: 'description inline' if @event.description.present?
+
+
     %section
       .grid-50.roster
         .grid-container
