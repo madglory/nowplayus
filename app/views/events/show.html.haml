@@ -30,9 +30,12 @@
           %ul.players
             - @event.team_players.each do |player|
               %li.player
-                = link_to image_tag(player.avatar_url), user_path(player), title: player.username
-                %h3
-                  = link_to player.username, user_path(player), title: player.username
+                .grid-container
+                  .grid-20.suffix-10
+                    = link_to image_tag(player.avatar_url), user_path(player), title: player.username
+                  .grid-70
+                    %h3
+                      = link_to player.username, user_path(player), title: player.username
 
 
         - else
@@ -50,9 +53,12 @@
           %ul.players
             - @event.bench_players.each do |player|
               %li.player
-                = link_to image_tag(player.avatar_url), user_path(player), title: player.username
-                %h3
-                  = link_to player.username, user_path(player), title: player.username
+                .grid-container
+                  .grid-20.suffix-10
+                    = link_to image_tag(player.avatar_url), user_path(player), title: player.username
+                  .grid-70
+                    %h3
+                      = link_to player.username, user_path(player), title: player.username
 
         - else
           %p Bench is empty
