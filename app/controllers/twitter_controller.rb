@@ -1,10 +1,13 @@
 class TwitterController < ApplicationController
   before_filter :require_login, :load_event
 
-  def update
+  def new
+  end
+
+  def create
     message = current_user == @event.host ? default_host_message : default_player_message
     Tweet.send! current_user, message
-    redirect_to :back, notice: 'Tweet sent!'
+    redirect_to @event, notice: 'Tweet sent!'
   end
 private
   def load_event
