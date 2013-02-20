@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @events = (@user.events.future).sort { |a,b| b.starts_at <=> a.starts_at }
+    @events = @user.events.future
 
     respond_to do |format|
       format.html # index.html.erb
@@ -36,7 +36,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        Participant.create! user_id: current_user, event_id: @event, is_host: true
+        Participant.create! user_id: current_user.id, event_id: @event.id, is_host: true
         format.html { redirect_to user_events_path(current_user), notice: 'Event was successfully created.' }
         format.json { render json: @event, status: :created }
       else
