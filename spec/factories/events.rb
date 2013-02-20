@@ -6,6 +6,6 @@ FactoryGirl.define do
     f.association :platform, factory: :platform
     f.starts_at_raw 'tomorrow 5pm'
     f.duration_raw '1 hr'
-    f.slots 1
+    f.total_players 3
   end
 end

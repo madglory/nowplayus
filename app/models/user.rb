@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :platform_accounts, dependent: :destroy
   has_many :participants
   has_many :events, through: :participants
-  has_many :events_created, class_name: 'Event'
+  has_many :hosted_events, class_name: 'Event'
 
   accepts_nested_attributes_for :authentications
   accepts_nested_attributes_for :platform_accounts, reject_if: :all_blank, allow_destroy: true
@@ -31,6 +31,10 @@ class User < ActiveRecord::Base
   end
 
   def platform_username(platform)
-    platform_accounts.select('username').find_by_platform_id(platform)
+    if platform_account = platform_accounts.select('username').find_by_platform_id(platform)
+      platform_account.username
+    else
+      username
+    end
   end
 end

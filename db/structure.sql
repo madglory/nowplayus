@@ -72,7 +72,7 @@ CREATE TABLE events (
     description text,
     starts_at timestamp without time zone,
     duration integer,
-    slots integer DEFAULT 1 NOT NULL,
+    total_players integer DEFAULT 1 NOT NULL,
     bench_count integer DEFAULT 0 NOT NULL,
     user_id integer,
     created_at timestamp without time zone NOT NULL,
@@ -111,7 +111,8 @@ CREATE TABLE participants (
     event_id integer,
     user_id integer,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    is_host boolean
 );
 
 
@@ -423,3 +424,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130215153724');
 INSERT INTO schema_migrations (version) VALUES ('20130218170157');
 
 INSERT INTO schema_migrations (version) VALUES ('20130219183118');
+
+INSERT INTO schema_migrations (version) VALUES ('20130220164041');
+
+INSERT INTO schema_migrations (version) VALUES ('20130220172214');
