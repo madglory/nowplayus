@@ -98,14 +98,14 @@ form button[type="submit"],
     }
 	}
 .button-warning {
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #faa732;
-  *background-color: #f89406;
+  color: #731515;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+  background-color: #cc4e4f;
+  *background-color: #cc4e4f;
 }
 .button-danger {
-  color: #ffffff;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+  color: #731515;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
   background-color: #cc4e4f;
   *background-color: #cc4e4f;
 }
