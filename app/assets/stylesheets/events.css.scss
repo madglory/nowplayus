@@ -12,6 +12,9 @@
       text-decoration: none;
     }
   }
+  .button a {
+    color: #4283a9;
+  }
   .event {
     margin: 0;
     padding: 1em 0;
@@ -144,6 +147,9 @@
     }
     .grid-container {
       border-bottom: 1px solid #d0d0d0;
+    }
+    ul {
+      float: left;
     }
     nav.page-links {
       margin: 0;
