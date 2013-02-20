@@ -7,7 +7,7 @@ describe Event do
     Event.new(
       title: 'Foo',
       platform_id: platform.id,
-      slots: 5,
+      total_players: 5,
       starts_at_raw: 'Tomorrow 5pm',
       duration_raw: '5hr')
   end
@@ -19,22 +19,22 @@ describe Event do
   it { should have_many(:participants) }
   it { should belong_to(:user) }
   it { should validate_presence_of(:title) }
-  it { should validate_presence_of(:slots) }
-  it { should validate_numericality_of(:slots) }
+  it { should validate_presence_of(:total_players) }
+  it { should validate_numericality_of(:total_players) }
   it { should validate_presence_of(:platform) }
 
   
-  it "should validate between 0 and 10 slots" do
+  it "should validate between 0 and 10 total_players" do
     expect(subject.valid?).to be_true
-    subject.slots = 0
+    subject.total_players = 0
     expect(subject.valid?).to be_false
 
     9.times do |n|
-      subject.slots = n+1
+      subject.total_players = n+1
       expect(subject.valid?).to be_true
     end
 
-    subject.slots = 10
+    subject.total_players = 10
     expect(subject.valid?).to be_false
   end
 

@@ -12,7 +12,7 @@ private
   end
 
   def default_player_message
-    "Join me, @#{@event.host_name} and #{@event.slots - 1} others for a game of #{@event.title} http://nowplay.us/events/#{@event.id} via @nowplayus ##{@event.platform_name.gsub(/\s/,'')}"
+    "Join me, @#{@event.host_name} and #{@event.total_players - 1} others for a game of #{@event.title} http://nowplay.us/events/#{@event.id} via @nowplayus ##{@event.platform_name.gsub(/\s/,'')}"
   end
 
   def default_host_message

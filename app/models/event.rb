@@ -4,25 +4,26 @@ require 'chronic_duration'
 class Event < ActiveRecord::Base
   attr_accessor :duration_raw, :starts_at_raw
   before_validation :parse_chronic
-  attr_accessible :starts_at_raw, :duration_raw, :description, :slots, :title, :platform_id, :time_zone
+  attr_accessible :starts_at_raw, :duration_raw, :description, :total_players, :title, :platform_id, :time_zone
   acts_as_paranoid
 
   belongs_to :platform
   belongs_to :user
   has_many :participants
   has_many :players, through: :participants, foreign_key: :user_id, class_name: 'User', source: :user, order: 'created_at ASC'
+
   accepts_nested_attributes_for :platform, reject_if: ->(attributes) { attributes['name'].blank? }
 
   validates :user, presence: true
   validates :title, presence: true
   validates :starts_at, presence: true
   validates :duration, presence: true
-  validates :slots, presence: true, numericality: { only_integer: true, greater_than: 0, less_than: 10 }
+  validates :total_players, presence: true, numericality: { only_integer: true, greater_than: 0, less_than: 10 }
   validates :platform, presence: true
 
 
   def self.past(cut_off=nil, clock=Time.zone)
-    events = where(["starts_at < ?", clock.now]).order("starts_at DESC")
+    events = where(["starts_at < ?", clock.now.utc]).order("starts_at DESC")
     if cut_off
       events.limit(cut_off)
     else
@@ -31,7 +32,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.future(cut_off=nil, clock=Time.zone)
-    events = where(["starts_at >= ?", clock.now]).order("starts_at ASC")
+    events = where(["starts_at >= ?", clock.now.utc]).order("starts_at ASC")
     if cut_off
       events.limit(cut_off)
     else
@@ -40,11 +41,11 @@ class Event < ActiveRecord::Base
   end
 
   def bench_players
-    players.drop(slots)
+    players.drop(total_players)
   end
 
   def team_players
-    players.first(slots)
+    players.first(total_players)
   end
 
   def host
@@ -76,8 +77,8 @@ class Event < ActiveRecord::Base
     (starts_at + duration).to_s :time
   end
 
-  def slots_filled
-    players.count >= slots ? slots : players.count
+  def player_count
+    players.count
   end
 
   def past?
