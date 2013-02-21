@@ -12,8 +12,10 @@
         us
       to schedule your gameplay, and make sure you're all online at the right time.
     %p.footnote * or make new friends!
-    - unless current_user
-      %fieldset.callout
+    %fieldset.callout
+      - if current_user
+        = link_to "Create an Event", new_event_path, class: 'callout-button'
+      - else
         = link_to 'Login', '/auth/twitter', class: 'callout-button twitter'
 
     %h3
