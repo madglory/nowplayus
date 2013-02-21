@@ -1,4 +1,4 @@
-=link_to 'Tweet it!', "#tweet-#{event.id}", class: 'modal-link promote'
+=link_to 'Tweet it!', (logged_in? ? "#tweet-#{event.id}" : '/auth/twitter'), class: 'modal-link promote hide-on-mobile'
 .modal{ id: "tweet-#{event.id}" }
   .modal-inner
     %h3 Tweet it!

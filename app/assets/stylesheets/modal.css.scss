@@ -10,7 +10,6 @@
 
 .modal {
   width: 100%;
-  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
@@ -22,15 +21,35 @@
   -webkit-animation-iteration-count: 1;
   -webkit-animation-direction: normal;
   .modal-inner {
-    position: absolute;
-    top: 10%;
-    left: 20%;
-    min-width: 60%;
+    margin: 2em auto 10em auto;
+    padding: 2em;
+    width: 50%;
     background: #e8e8e8;
     border: 1px solid #333;
+
+    h3 {
+      margin: 0;
+    }
+
+    .new_tweet { 
+      fieldset { padding: 0; }
+      label { display: none; }
+    }
   }
   &:target {
     display: table;
     height:100%
+  }
+}
+
+@media (max-width: 60em) {
+  .modal {
+    .modal-inner {
+      width: 80%;
+
+      textarea {
+        width: 100%;
+      }
+    }
   }
 }

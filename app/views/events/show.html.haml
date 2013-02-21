@@ -6,6 +6,7 @@
       = link_to "Cancel Event", @event, confirm: "Are you sure?", method: :delete, class: 'button button-danger mobile-grid-100'
     - else
       = render partial: 'events/participate', locals: { event: @event } unless @event.past?
+    =link_to 'Tweet it!', (logged_in? ? "#tweet-#{@event.id}" : '/auth/twitter'), class: 'button modal-link hide-on-desktop'
 
   .event-details.grid-70.mobile-grid-100{ class: @event_owner}
     %h2.grid-100

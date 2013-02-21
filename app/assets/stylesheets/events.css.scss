@@ -224,7 +224,12 @@ ul.players {
 }
 
 @media (max-width: 60em) {
-  .event {
+  .event .schedule {
+    font-size: 3em;
+  }
+  
+  .event .description,
+  .event .total_players {
     font-size: 45%;
   }
 
