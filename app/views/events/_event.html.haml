@@ -5,4 +5,4 @@
   .players.grid-30.mobile-grid-20
     .host.grid-33.mobile-grid-100= link_to image_tag(event.host_avatar_url), user_path(event.host)
     .total_players.grid-33.mobile-grid-33.hide-on-mobile= "#{event.player_count}/#{event.total_players}"
-    .grid-33.mobile-grid-33.hide-on-mobile= link_to 'Tweet it!', tweet_path(event_id: event.id), method: :post, class: 'promote'
+    .grid-33.mobile-grid-33.hide-on-mobile= render partial: 'events/tweet', locals: { event: event }

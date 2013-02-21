@@ -1,0 +1,5 @@
+=link_to 'Tweet it!', "#tweet-#{event.id}", class: 'modal-link promote'
+.modal{ id: "tweet-#{event.id}" }
+  .modal-inner
+    %h3 Tweet it!
+    = render partial: 'tweets/form', locals: { tweet: Tweet.new(user: current_user, event: event), event: event}
