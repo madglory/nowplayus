@@ -20,8 +20,13 @@ u1.save!
 
 u2 = User.new username: 'master_chief'
 u2.time_zone = 'EST'
-u2.avatar_url = 'http://aux.iconpedia.net/uploads/2008543944.png'
+u2.avatar_url = 'http://images2.wikia.nocookie.net/__cb20081207013819/halo/images/8/85/1228613897_Master_chief_halo.gif'
 u2.save!
+
+u3 = User.new username: 'kratos'
+u3.time_zone = 'EST'
+u3.avatar_url = 'http://mmii.info/icons/Koole321/games_chibiKratos.gif'
+u3.save!
 
 # Assign PlatformAccounts to Users
 pa1 = PlatformAccount.new username: 'claptrap_is_god' 
@@ -39,14 +44,20 @@ pa1.user = u1
 pa1.platform = p2
 pa1.save!
 
+pa3 = PlatformAccount.new username: 'kratos'
+pa3.user = u3
+pa3.platform = p1
+pa3.save!
+
 # Make some Events
-e1 = Event.new title: 'Call of Duty: Black Ops 2', platform_id: p1.id, starts_at_raw: 'Thursday 5pm', duration_raw: '2hr'
+e1 = Event.new title: 'Call of Duty: Black Ops 2', platform_id: p1.id, starts_at_raw: 'Thursday 5pm', duration_raw: '2hr', total_players: 3
 e1.user = u1
 e1.save!
-e2 = Event.new title: 'League of Legends', platform_id: p2.id, starts_at_raw: 'Friday 10:30pm', duration_raw: '4 hours'
+e2 = Event.new title: 'League of Legends', platform_id: p2.id, starts_at_raw: 'Friday 10:30pm', duration_raw: '4 hours', total_players: 3
 e2.user = u2
 e2.save!
 
 # Make some Participants
-Participant.create! user_id: u2.id, event_id: e1.id
-Participant.create! user_id: u1.id, event_id: e2.id
+Participant.create! user_id: u2.id, event_id: e1.id, is_host: true
+Participant.create! user_id: u3.id, event_id: e1.id, is_host: false
+Participant.create! user_id: u1.id, event_id: e2.id, is_host: true

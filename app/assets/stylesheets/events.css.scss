@@ -186,8 +186,9 @@ ul.players {
   padding: 0 0 2em 0;
   list-style: none;
   .player {
-    display: inline-block;
+    display: block;
     margin-top: 1em;
+    height: 5em;
     
     .avatar {
       float: left;
