@@ -25,8 +25,7 @@
               .avatar
                 = link_to image_tag(player.avatar_url), user_path(player), title: player.username
               .name
-                = link_to player.username, user_path(player), title: player.username
-
+                = link_to player.platform_username(@event.platform), user_path(player), title: @event.platform_name
       .grid-50.roster
         %h3 Pending
 
@@ -37,7 +36,7 @@
                 .avatar
                   = link_to image_tag(player.avatar_url), user_path(player), title: player.username
                 .name
-                  = link_to player.username, user_path(player), title: player.username
+                  = link_to player.platform_username(@event.platform), user_path(player), title: @event.platform_name
 
         - else
           %p Bench is empty
