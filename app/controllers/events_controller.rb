@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  skip_before_filter :require_login, :only => [:index, :show]
+  skip_before_filter :require_login, only: [:index, :show]
+  before_filter :load_event, only: [:show]
 
   def index
     @user = User.find(params[:user_id])
@@ -12,7 +13,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find params[:id], include: :players
     @event_owner = (current_user == @event.host ? 'mine' : 'theirs')
 
     respond_to do |format|
@@ -58,5 +58,9 @@ class EventsController < ApplicationController
         format.json { render json: event, alert: 'Not authorized!' }
       end
     end
+  end
+private
+  def load_event
+    @event = Event.find params[:id], include: :players
   end
 end

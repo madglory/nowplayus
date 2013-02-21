@@ -5,6 +5,6 @@
   = f.input :starts_at_raw, label: 'Start Time', placeholder: 'Eg: Tonight 8pm', required: true
   = f.input :duration_raw, label: 'Duration', placeholder: 'Eg: 2 Hours', required: true
   = f.input :description, label: 'Additional Information'
-  = f.input :total_players, collection: 1...10, label: 'How many players?'
+  = f.input :total_players, collection: 2...10, label: 'How many players?'
   %fieldset.form-actions
     = f.button :submit

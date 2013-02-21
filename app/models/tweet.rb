@@ -1,34 +1,33 @@
 class Tweet
-  attr_reader :client, :user
+  include ActiveModel::Validations
+  include ActiveModel::Conversion
+  extend ActiveModel::Naming
+  
+  attr_accessor :user, :event, :status
 
-  def self.send!(user, message)
-    tweet = Tweet.new user
-    tweet.update message
+  validates_presence_of :user, :event, :status
+  validates_length_of :status, maximum: 140, minimum: 1
+
+  def initialize(attributes = {})
+    attributes.each { |k,v| send("#{k}=", v) }
+    self.status ||= default_status unless event.blank? || user.blank?
   end
 
-  def initialize(user)
-    @user = user
-    raise TweetException, 'No Twitter Authentication' unless twitter_authentication
-    @client = Twitter::Client.new oauth_token: credentials[:token], oauth_token_secret: credentials[:token_secret]
+  def persisted?
+    false
   end
 
-  def update(message)
-    client.update message
-  end
-
-  class TweetException < Exception; end
 private
 
-  def credentials
-    raise TweetException, 'No OAuth Token' if twitter_authentication.token.blank?
-    {
-      token: twitter_authentication.token,
-      token_secret: twitter_authentication.token_secret
-    }
+  def default_status
+    event.host == user ? default_host_status : default_player_status
   end
 
+  def default_player_status
+    "Join me, @#{event.host_name} and #{event.total_players - 1} others for a game of #{event.title} http://nowplay.us/events/#{event.id} via @nowplayus ##{event.platform_name.gsub(/\s/,'')}"
+  end
 
-  def twitter_authentication
-    @twitter_authentication ||= user.authentications.find_by_provider('twitter')
+  def default_host_status
+    "Join me for a game of #{event.title} http://nowplay.us/events/#{event.id} via @nowplayus ##{event.platform_name.gsub(/\s/,'')}"
   end
 end
