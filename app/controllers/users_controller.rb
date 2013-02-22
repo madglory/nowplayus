@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_filter :require_login, only: [:index, :show, :new, :create]
-  before_filter :load_platforms, only: [:new, :edit, :update, :complete_registration]
+  before_filter :load_platforms, only: [:new, :edit, :update, :complete_registration, :confirm_registration]
   before_filter :load_user, only: [:show, :edit, :update, :destroy]
   before_filter :load_time_zones, only: [:edit, :update, :complete_registration]
 
@@ -89,6 +89,7 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, notice: 'Registration complete!' }
         format.json { head :no_content }
       else
+        @platform_accounts = @user.platform_accounts.includes :platform
         format.html { render action: "complete_registration", layout: 'minimal' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
