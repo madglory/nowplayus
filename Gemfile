@@ -25,6 +25,7 @@ group :development do
   gem 'guard-spork'
   gem 'haml-rails'
   gem 'spork'
+  gem 'heroku'
 end
 
 group :development, :test do
