@@ -4,4 +4,8 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Nowplayus::Application.config.secret_token = ENV['SECRET_TOKEN']
+if (Rails.env == 'production')
+  Nowplayus::Application.config.secret_token = ENV['SECRET_TOKEN']
+else
+  Nowplayus::Application.config.secret_token = '9f048fda6dd50421baffe6930f52664fa666650c5279c5ef1d122bc23a6390ea17dc280fdb6ebe06675cc46771542f0fdcfce974084a3eefed4ce42153ae903a'
+end

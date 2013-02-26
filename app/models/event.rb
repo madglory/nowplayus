@@ -32,7 +32,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.future(cut_off=nil, clock=Time.zone)
-    events = where(["starts_at >= ?", clock.now.utc]).order("starts_at ASC")
+    events = where(["(starts_at + duration*INTERVAL '1 second') >= ?", clock.now.utc]).order("starts_at ASC")
     if cut_off
       events.limit(cut_off)
     else
@@ -84,7 +84,7 @@ class Event < ActiveRecord::Base
   def past?
     starts_at < Time.zone.now ? true : false if starts_at.present?
   end
- 
+
   def upcoming?
     past? == false
   end
