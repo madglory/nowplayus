@@ -1,0 +1,6 @@
+%li
+  %h2
+    =image_tag game.icon_url unless game.icon_url.blank?
+    =link_to game.name, game
+  %p
+    =game.deck
