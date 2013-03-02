@@ -45,14 +45,14 @@
 %section.comments.grid-container
   .grid-100.mobile-grid-100
     - if current_user
-      =simple_form_for [@event, Comment.new] do |f|
+      = unsemantic_form_for [@event, Comment.new] do |f|
         =f.input :comment
         =f.submit
 
     - else
       %p
         You must
-        = link_to "login", login_path
+        = link_to "login", "/auth/twitter"
         to leave comment.
 
     %h2 Comments
