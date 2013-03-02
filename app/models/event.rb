@@ -1,19 +1,22 @@
-require 'chronic'
+ 'chronic'
 require 'chronic_duration'
 
 class Event < ActiveRecord::Base
   attr_accessor :duration_raw, :starts_at_raw
   before_validation :parse_chronic
-  attr_accessible :starts_at_raw, :duration_raw, :description, :total_players, :title, :platform_id, :time_zone
+  before_validation :parse_game
+  attr_accessible :starts_at_raw, :duration_raw, :description, :total_players, :platform_id, :time_zone, :title
   acts_as_paranoid
 
   belongs_to :platform
   belongs_to :user
+  has_one :game
   has_many :participants
   has_many :players, through: :participants, foreign_key: :user_id, class_name: 'User', source: :user, order: 'created_at ASC'
 
   accepts_nested_attributes_for :platform, reject_if: ->(attributes) { attributes['name'].blank? }
 
+  validates :game_id, presence: true
   validates :user, presence: true
   validates :title, presence: true
   validates :starts_at, presence: true
@@ -90,6 +93,11 @@ class Event < ActiveRecord::Base
   end
 
 private
+  def parse_game
+    game = Game.find_by_name(self.title)
+    self.game_id = game.id unless game.blank?
+  end
+
   def parse_chronic
     return false if starts_at_raw.blank? || duration_raw.blank?
     Chronic.time_class = Time.zone
