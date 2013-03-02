@@ -40,3 +40,22 @@
 
         - else
           %p Bench is empty
+
+
+%section.comments.grid-container
+  .grid-100.mobile-grid-100
+    - if current_user
+      =simple_form_for [@event, Comment.new] do |f|
+        =f.input :comment
+        =f.submit
+
+    - else
+      %p
+        You must
+        = link_to "login", login_path
+        to leave comment.
+
+    %h2 Comments
+    %ol
+      - @comments.each do |comment|
+        =render comment

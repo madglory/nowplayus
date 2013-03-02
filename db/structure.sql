@@ -64,6 +64,41 @@ ALTER SEQUENCE authentications_id_seq OWNED BY authentications.id;
 
 
 --
+-- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE comments (
+    id integer NOT NULL,
+    title character varying(50) DEFAULT ''::character varying,
+    comment text,
+    commentable_id integer,
+    commentable_type character varying(255),
+    user_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
+
+
+--
 -- Name: event_tweets; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -114,8 +149,8 @@ CREATE TABLE events (
     title character varying(255),
     deleted_at timestamp without time zone,
     platform_id integer,
-    notify_host boolean,
-    game_id integer
+    game_id integer,
+    notify_host boolean
 );
 
 
@@ -373,6 +408,13 @@ ALTER TABLE ONLY authentications ALTER COLUMN id SET DEFAULT nextval('authentica
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY event_tweets ALTER COLUMN id SET DEFAULT nextval('event_tweets_id_seq'::regclass);
 
 
@@ -431,6 +473,14 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 ALTER TABLE ONLY authentications
     ADD CONSTRAINT authentications_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY comments
+    ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
 
 
 --
@@ -495,6 +545,27 @@ ALTER TABLE ONLY new_participant_notifications
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_comments_on_commentable_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_comments_on_commentable_id ON comments USING btree (commentable_id);
+
+
+--
+-- Name: index_comments_on_commentable_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_comments_on_commentable_type ON comments USING btree (commentable_type);
+
+
+--
+-- Name: index_comments_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_comments_on_user_id ON comments USING btree (user_id);
 
 
 --
@@ -648,3 +719,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130302171702');
 INSERT INTO schema_migrations (version) VALUES ('20130302172754');
 
 INSERT INTO schema_migrations (version) VALUES ('20130302174014');
+
+INSERT INTO schema_migrations (version) VALUES ('20130302205410');
