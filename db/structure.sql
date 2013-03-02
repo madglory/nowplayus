@@ -149,8 +149,8 @@ CREATE TABLE events (
     title character varying(255),
     deleted_at timestamp without time zone,
     platform_id integer,
-    game_id integer,
-    notify_host boolean
+    notify_host boolean,
+    game_id integer
 );
 
 
