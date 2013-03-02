@@ -64,5 +64,10 @@ module Nowplayus
     config.after_initialize do |app|
       app.routes.append{ match '*a', :to => 'application#rescue_404' } unless config.consider_all_requests_local
     end
+
+    # Enable threaded mode
+    config.threadsafe! unless $rails_rake_task
+    config.dependency_loading = true if $rails_rake_task
+
   end
 end
