@@ -1,7 +1,7 @@
 class TweetSender
   attr_reader :client, :status, :user
 
-  def self.send_tweet(tweet)
+  def self.send!(tweet)
     sender = TweetSender.new tweet
     sender.send!
   end

@@ -119,7 +119,7 @@ private
   end
 
   def load_user
-    @user = User.find params[:id]
+    @user = User.find params[:id].downcase
   end
 
   def load_time_zones

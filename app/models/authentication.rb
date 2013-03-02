@@ -14,8 +14,16 @@ class Authentication < ActiveRecord::Base
       user_id: user.id,
       uid: hash['uid'],
       provider: hash['provider'],
-      token: hash['credentials']['token'],
+      # ensure the token/secret hash keys are universal and not Twitter specific
+      token: hash['credentials']['token'], 
       token_secret: hash['credentials']['secret']
     )
+  end
+
+  def update_tokens_from_hash(hash)
+    unless hash['credentials']['token'] == token
+      # ensure the token/secret hash keys are universal and not Twitter specific
+      self.update_attributes token: hash['credentials']['token'], token_secret: hash['credentials']['secret']
+    end
   end
 end

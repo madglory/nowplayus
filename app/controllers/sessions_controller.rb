@@ -1,8 +1,10 @@
 class SessionsController < ApplicationController
-  skip_before_filter :require_login, :except => [:destroy]
+  before_filter :require_login, only: [:destroy]
   
   def create
-    unless authentication = Authentication.find_from_hash(auth_hash)
+    if authentication = Authentication.find_from_hash(auth_hash)
+      authentication.update_tokens_from_hash(auth_hash)
+    else
       authentication = Authentication.create_from_hash(auth_hash)
     end
     

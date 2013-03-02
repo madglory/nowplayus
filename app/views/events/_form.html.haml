@@ -1,10 +1,11 @@
 = unsemantic_form_for @event do |f|
   = f.input :title, :url => autocomplete_game_name_games_path, :as => :autocomplete
   %fieldset
-    = f.input :platform_id, collection: Platform.select('id,name').all, include_blank: true, label: 'Platform'
+    = f.input :platform_id, collection: Platform.select('id,name').all, include_blank: true
   = f.input :starts_at_raw, label: 'Start Time', placeholder: 'Eg: Tonight 8pm', required: true
   = f.input :duration_raw, label: 'Duration', placeholder: 'Eg: 2 Hours', required: true
   = f.input :description, label: 'Additional Information'
   = f.input :total_players, collection: 2...10, label: 'How many players?'
+  = f.input :notify_host, label: 'Notify me when a new player joins'
   %fieldset.form-actions
     = f.button :submit
