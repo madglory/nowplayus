@@ -1,7 +1,9 @@
 %li
-  =markdown_format(comment.comment)
-  %p
-    Author:
-    =image_tag comment.user.avatar_url unless comment.user.nil?
-    =link_to comment.user.username, "#" unless comment.user.nil?
-    =comment.created_at
+  .avatar= image_tag comment.user.avatar_url unless comment.user.nil?
+  .comment
+    .author
+      = link_to comment.user.username, user_path(comment.user) unless comment.user.nil?
+    = markdown_format(comment.comment)
+    .timestamp
+      = distance_of_time_in_words_to_now(comment.created_at)
+      ago

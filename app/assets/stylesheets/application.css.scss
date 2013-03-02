@@ -361,6 +361,54 @@ fieldset.callout {
 	}
 }
 
+.comments ol {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	li {
+		margin-bottom: 2em;
+		
+		.comment {
+			padding-bottom: 1em;
+			border-bottom: 1px solid #d0d0d0;
+		}
+
+		&:last-child .comment {
+			border-bottom: none;
+		}
+	}
+
+	.avatar {
+		float: left;
+		width: 50px;
+
+		img {
+			width: 50px;
+			border-radius: 100px;
+      overflow: hidden;
+		}
+	}
+
+	.comment {
+		margin-left: 6em;
+
+		.author {
+			font-size: 2em;
+			line-height: 2.4em;
+		}
+
+		.timestamp {
+			font-size: 1.2em;
+			font-style: italic;
+		}
+
+		p {
+			margin-top: 0;
+		}
+	}
+}
+
 footer {
 	margin-top: 2em;
 	border-top: 1px solid #bbbbbb;
