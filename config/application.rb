@@ -66,7 +66,7 @@ module Nowplayus
     end
 
     # Enable threaded mode
-    # config.threadsafe!
+    config.threadsafe! unless $rails_rake_task
     config.dependency_loading = true if $rails_rake_task
 
   end

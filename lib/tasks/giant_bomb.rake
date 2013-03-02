@@ -12,7 +12,7 @@ namespace :giant_bomb do
 
       offset = 0
       if platform.giantbomb_id?
-        while offset < 1500
+        while offset < 100
           puts "Offset #{offset}"
           response = HTTParty.get("http://www.giantbomb.com/api/games/?api_key=#{ENV['GIANTBOMB_KEY']}&sort=date_added:desc&filter=platforms:#{platform.giantbomb_id}&format=json&limit=100&offset=#{offset}")
           # puts response.body, response.code, response.message, response.headers.inspect
