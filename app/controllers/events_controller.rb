@@ -15,6 +15,7 @@ class EventsController < ApplicationController
 
   def show
     @event_owner = (current_user == @event.host ? 'mine' : 'theirs')
+    @comments = @event.comments.all
 
     respond_to do |format|
       format.html # show.html.erb

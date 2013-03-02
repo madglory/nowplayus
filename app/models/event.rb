@@ -8,6 +8,7 @@ class Event < ActiveRecord::Base
   attr_accessible :starts_at_raw, :duration_raw, :description, :total_players, :platform_id, :time_zone, :title, :notify_host
 
   acts_as_paranoid
+  acts_as_commentable
 
   belongs_to :platform
   belongs_to :user

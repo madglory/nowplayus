@@ -1,0 +1,7 @@
+%li
+  =markdown_format(comment.comment)
+  %p
+    Author:
+    =image_tag comment.user.avatar_url unless comment.user.nil?
+    =link_to comment.user.username, "#" unless comment.user.nil?
+    =comment.created_at
