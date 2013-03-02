@@ -64,6 +64,40 @@ ALTER SEQUENCE authentications_id_seq OWNED BY authentications.id;
 
 
 --
+-- Name: event_tweets; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE event_tweets (
+    id integer NOT NULL,
+    event_id integer,
+    user_id integer,
+    status character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    sent boolean DEFAULT false NOT NULL
+);
+
+
+--
+-- Name: event_tweets_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE event_tweets_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: event_tweets_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE event_tweets_id_seq OWNED BY event_tweets.id;
+
+
+--
 -- Name: events; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -80,6 +114,7 @@ CREATE TABLE events (
     title character varying(255),
     deleted_at timestamp without time zone,
     platform_id integer,
+    notify_host boolean,
     game_id integer
 );
 
@@ -146,6 +181,40 @@ CREATE SEQUENCE games_id_seq
 --
 
 ALTER SEQUENCE games_id_seq OWNED BY games.id;
+
+
+--
+-- Name: new_participant_notifications; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE new_participant_notifications (
+    id integer NOT NULL,
+    message character varying(255),
+    sent boolean DEFAULT false NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    participant_id integer,
+    event_id integer
+);
+
+
+--
+-- Name: new_participant_notifications_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE new_participant_notifications_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: new_participant_notifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE new_participant_notifications_id_seq OWNED BY new_participant_notifications.id;
 
 
 --
@@ -270,7 +339,7 @@ CREATE TABLE users (
     slug character varying(255),
     time_zone character varying(255),
     avatar_url character varying(255),
-    keep_notified boolean
+    notify_via_email boolean
 );
 
 
@@ -304,6 +373,13 @@ ALTER TABLE ONLY authentications ALTER COLUMN id SET DEFAULT nextval('authentica
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY event_tweets ALTER COLUMN id SET DEFAULT nextval('event_tweets_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY events ALTER COLUMN id SET DEFAULT nextval('events_id_seq'::regclass);
 
 
@@ -312,6 +388,13 @@ ALTER TABLE ONLY events ALTER COLUMN id SET DEFAULT nextval('events_id_seq'::reg
 --
 
 ALTER TABLE ONLY games ALTER COLUMN id SET DEFAULT nextval('games_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY new_participant_notifications ALTER COLUMN id SET DEFAULT nextval('new_participant_notifications_id_seq'::regclass);
 
 
 --
@@ -348,6 +431,14 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 ALTER TABLE ONLY authentications
     ADD CONSTRAINT authentications_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: event_tweets_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY event_tweets
+    ADD CONSTRAINT event_tweets_pkey PRIMARY KEY (id);
 
 
 --
@@ -388,6 +479,14 @@ ALTER TABLE ONLY platforms
 
 ALTER TABLE ONLY participants
     ADD CONSTRAINT players_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: twitter_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY new_participant_notifications
+    ADD CONSTRAINT twitter_notifications_pkey PRIMARY KEY (id);
 
 
 --
@@ -526,6 +625,12 @@ INSERT INTO schema_migrations (version) VALUES ('20130220164041');
 
 INSERT INTO schema_migrations (version) VALUES ('20130220172214');
 
+INSERT INTO schema_migrations (version) VALUES ('20130302031636');
+
+INSERT INTO schema_migrations (version) VALUES ('20130302034814');
+
+INSERT INTO schema_migrations (version) VALUES ('20130302035122');
+
 INSERT INTO schema_migrations (version) VALUES ('20130302054229');
 
 INSERT INTO schema_migrations (version) VALUES ('20130302060618');
@@ -533,3 +638,13 @@ INSERT INTO schema_migrations (version) VALUES ('20130302060618');
 INSERT INTO schema_migrations (version) VALUES ('20130302062755');
 
 INSERT INTO schema_migrations (version) VALUES ('20130302141027');
+
+INSERT INTO schema_migrations (version) VALUES ('20130302163016');
+
+INSERT INTO schema_migrations (version) VALUES ('20130302165119');
+
+INSERT INTO schema_migrations (version) VALUES ('20130302171702');
+
+INSERT INTO schema_migrations (version) VALUES ('20130302172754');
+
+INSERT INTO schema_migrations (version) VALUES ('20130302174014');
