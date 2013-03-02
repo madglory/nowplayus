@@ -114,8 +114,8 @@ CREATE TABLE events (
     title character varying(255),
     deleted_at timestamp without time zone,
     platform_id integer,
+    notify_host boolean,
     game_id integer
-    notify_host boolean
 );
 
 
@@ -161,7 +161,29 @@ CREATE TABLE games (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     slug character varying(255)
+);
 
+
+--
+-- Name: games_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE games_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: games_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE games_id_seq OWNED BY games.id;
+
+
+--
 -- Name: new_participant_notifications; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -177,10 +199,6 @@ CREATE TABLE new_participant_notifications (
 
 
 --
--- Name: games_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE games_id_seq
 -- Name: new_participant_notifications_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -193,10 +211,6 @@ CREATE SEQUENCE new_participant_notifications_id_seq
 
 
 --
--- Name: games_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE games_id_seq OWNED BY games.id;
 -- Name: new_participant_notifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -374,6 +388,12 @@ ALTER TABLE ONLY events ALTER COLUMN id SET DEFAULT nextval('events_id_seq'::reg
 --
 
 ALTER TABLE ONLY games ALTER COLUMN id SET DEFAULT nextval('games_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY new_participant_notifications ALTER COLUMN id SET DEFAULT nextval('new_participant_notifications_id_seq'::regclass);
 
 
@@ -605,6 +625,12 @@ INSERT INTO schema_migrations (version) VALUES ('20130220164041');
 
 INSERT INTO schema_migrations (version) VALUES ('20130220172214');
 
+INSERT INTO schema_migrations (version) VALUES ('20130302031636');
+
+INSERT INTO schema_migrations (version) VALUES ('20130302034814');
+
+INSERT INTO schema_migrations (version) VALUES ('20130302035122');
+
 INSERT INTO schema_migrations (version) VALUES ('20130302054229');
 
 INSERT INTO schema_migrations (version) VALUES ('20130302060618');
@@ -612,12 +638,6 @@ INSERT INTO schema_migrations (version) VALUES ('20130302060618');
 INSERT INTO schema_migrations (version) VALUES ('20130302062755');
 
 INSERT INTO schema_migrations (version) VALUES ('20130302141027');
-
-INSERT INTO schema_migrations (version) VALUES ('20130302031636');
-
-INSERT INTO schema_migrations (version) VALUES ('20130302034814');
-
-INSERT INTO schema_migrations (version) VALUES ('20130302035122');
 
 INSERT INTO schema_migrations (version) VALUES ('20130302163016');
 

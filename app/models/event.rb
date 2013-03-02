@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
   attr_accessor :duration_raw, :starts_at_raw
   before_validation :parse_chronic
   before_validation :parse_game
-  attr_accessible :starts_at_raw, :duration_raw, :description, :total_players, :platform_id, :time_zone, :title
+  attr_accessible :starts_at_raw, :duration_raw, :description, :total_players, :platform_id, :time_zone, :title, :notify_host
 
   acts_as_paranoid
 

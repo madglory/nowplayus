@@ -1,5 +1,6 @@
 class EventTweetsWorker
   include Sidekiq::Worker
+  sidekiq_options retry: false
 
   def perform(event_tweet_id)
     event_tweet = EventTweet.find event_tweet_id
