@@ -124,7 +124,8 @@ CREATE TABLE games (
     thumb_url character varying(255),
     tiny_url character varying(255),
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    slug character varying(255)
 );
 
 
@@ -426,6 +427,13 @@ CREATE INDEX index_games_on_name ON games USING btree (name);
 
 
 --
+-- Name: index_games_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_games_on_slug ON games USING btree (slug);
+
+
+--
 -- Name: index_platform_accounts_on_platform_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -523,3 +531,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130302054229');
 INSERT INTO schema_migrations (version) VALUES ('20130302060618');
 
 INSERT INTO schema_migrations (version) VALUES ('20130302062755');
+
+INSERT INTO schema_migrations (version) VALUES ('20130302141027');
