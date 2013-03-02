@@ -79,7 +79,8 @@ CREATE TABLE events (
     updated_at timestamp without time zone NOT NULL,
     title character varying(255),
     deleted_at timestamp without time zone,
-    platform_id integer
+    platform_id integer,
+    game_id integer
 );
 
 
@@ -100,6 +101,50 @@ CREATE SEQUENCE events_id_seq
 --
 
 ALTER SEQUENCE events_id_seq OWNED BY events.id;
+
+
+--
+-- Name: games; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE games (
+    id integer NOT NULL,
+    giantbomb_id integer,
+    name character varying(255),
+    deck text,
+    description text,
+    original_game_rating character varying(255),
+    date_added timestamp without time zone,
+    original_release_date timestamp without time zone,
+    icon_url character varying(255),
+    medium_url character varying(255),
+    screen_url character varying(255),
+    small_url character varying(255),
+    super_url character varying(255),
+    thumb_url character varying(255),
+    tiny_url character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: games_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE games_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: games_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE games_id_seq OWNED BY games.id;
 
 
 --
@@ -176,7 +221,8 @@ CREATE TABLE platforms (
     id integer NOT NULL,
     name character varying(255),
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    giantbomb_id integer
 );
 
 
@@ -264,6 +310,13 @@ ALTER TABLE ONLY events ALTER COLUMN id SET DEFAULT nextval('events_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY games ALTER COLUMN id SET DEFAULT nextval('games_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY participants ALTER COLUMN id SET DEFAULT nextval('participants_id_seq'::regclass);
 
 
@@ -305,6 +358,14 @@ ALTER TABLE ONLY events
 
 
 --
+-- Name: games_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY games
+    ADD CONSTRAINT games_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: platform_accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -337,10 +398,31 @@ ALTER TABLE ONLY users
 
 
 --
+-- Name: index_events_on_game_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_events_on_game_id ON events USING btree (game_id);
+
+
+--
 -- Name: index_events_on_platform_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_events_on_platform_id ON events USING btree (platform_id);
+
+
+--
+-- Name: index_games_on_giantbomb_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_games_on_giantbomb_id ON games USING btree (giantbomb_id);
+
+
+--
+-- Name: index_games_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_games_on_name ON games USING btree (name);
 
 
 --
@@ -362,6 +444,13 @@ CREATE UNIQUE INDEX index_platform_accounts_on_platform_id_and_user_id ON platfo
 --
 
 CREATE INDEX index_platform_accounts_on_user_id ON platform_accounts USING btree (user_id);
+
+
+--
+-- Name: index_platforms_on_giantbomb_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_platforms_on_giantbomb_id ON platforms USING btree (giantbomb_id);
 
 
 --
@@ -428,3 +517,9 @@ INSERT INTO schema_migrations (version) VALUES ('20130219183118');
 INSERT INTO schema_migrations (version) VALUES ('20130220164041');
 
 INSERT INTO schema_migrations (version) VALUES ('20130220172214');
+
+INSERT INTO schema_migrations (version) VALUES ('20130302054229');
+
+INSERT INTO schema_migrations (version) VALUES ('20130302060618');
+
+INSERT INTO schema_migrations (version) VALUES ('20130302062755');
