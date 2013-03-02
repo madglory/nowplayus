@@ -21,6 +21,7 @@ gem 'simple_form'
 gem 'sorcery'
 gem 'twitter'
 gem 'will_paginate', '~> 3.0'
+gem 'icalendar'
 
 group :development do
   gem 'awesome_print'

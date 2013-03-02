@@ -8,6 +8,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.ics  # show.ics.rb
       format.json { render json: [@user, @events] }
     end
   end
