@@ -1,23 +1,5 @@
 .grid-container
   #intro
-    %h2
-      What is now
-      %span.highlight play
-      us?
-    %p
-      Tired of not being able to meet up with your friends in your favorite multiplayer games? Use
-      %strong
-        now
-        %span.highlight play
-        us
-      to schedule your gameplay, and make sure you're all online at the right time.
-    %p.footnote * or make new friends!
-    %fieldset.callout
-      - if current_user
-        = link_to "Create an Event", new_event_path, class: 'callout-button'
-      - else
-        = link_to 'Login', '/auth/twitter', class: 'callout-button twitter'
-
     %h3
       Scheduled game events with now
       %span.highlight play

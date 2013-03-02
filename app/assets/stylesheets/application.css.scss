@@ -90,6 +90,12 @@ header {
 	}
 
 	#main-menu {
+		li {
+			margin-right: 1em;
+		}
+	}
+
+	#user-menu {
 		text-align: right;
 
 		li {
@@ -122,20 +128,6 @@ header {
 
 #intro {
 	text-align: center;
-
-	h2,
-	p {
-		text-align: left;
-	}
-
-	.footnote {
-		margin-bottom: 6em;
-	}
-
-	h3 {
-		margin-top: 4em;
-		padding-bottom: 10px;
-	}
 }
 
 .wrapper {
@@ -183,30 +175,18 @@ fieldset.callout {
 
 	color: #4283a9;
 	font-size: 2.4em;
-	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
 	border-radius: 40px;
 	border: 10px solid #efefef;
 
 	background: #83c2e7; /* Old browsers */
-
-	background-image: -moz-linear-gradient(top,  #83c2e7 0%, #64a4c9 100%); /* FF3.6+ */
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#83c2e7), color-stop(100%,#64a4c9)); /* Chrome,Safari4+ */
-	background-image: -webkit-linear-gradient(top,  #83c2e7 0%,#64a4c9 100%); /* Chrome10+,Safari5.1+ */
-	background-image: -o-linear-gradient(top,  #83c2e7 0%,#64a4c9 100%); /* Opera 11.10+ */
-	background-image: -ms-linear-gradient(top,  #83c2e7 0%,#64a4c9 100%); /* IE10+ */
-	background-image: linear-gradient(to bottom,  #83c2e7 0%,#64a4c9 100%); /* W3C */
-	background-repeat: repeat;
-	background-position: 0 0;
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#83c2e7', endColorstr='#64a4c9',GradientType=0 ); /* IE6-9 */
-	-moz-background-clip: padding;     /* Firefox 3.6 */
-	-webkit-background-clip: padding;  /* Safari 4? Chrome 6? */
-	background-clip: padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
 
 	&:hover {
 		text-decoration: none;
 	}
 
 	&.twitter {
+		color: #4283a9;
 		padding-right: 3em;
 		background-image: url(twitter-button-icon.png), -moz-linear-gradient(top,  #83c2e7 0%, #64a4c9 100%); /* FF3.6+ */
 		background-image: url(twitter-button-icon.png), -webkit-gradient(linear, left top, left bottom, color-stop(0%,#83c2e7), color-stop(100%,#64a4c9)); /* Chrome,Safari4+ */
@@ -215,8 +195,25 @@ fieldset.callout {
 		background-image: url(twitter-button-icon.png), -ms-linear-gradient(top,  #83c2e7 0%,#64a4c9 100%); /* IE10+ */
 		background-image: url(twitter-button-icon.png), linear-gradient(to bottom,  #83c2e7 0%,#64a4c9 100%); /* W3C */
 		background-repeat: no-repeat, repeat;
-		background-position: 105px 16px, 0 0;
+		background-position: 150px 20px, 0 0;
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#83c2e7', endColorstr='#64a4c9',GradientType=0 ); /* IE6-9 */
+		-moz-background-clip: padding, padding;     /* Firefox 3.6 */
+		-webkit-background-clip: padding, padding;  /* Safari 4? Chrome 6? */
+		background-clip: padding-box, padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
+	}
+
+	&.facebook {
+		color: #1b3468;
+		padding-right: 3em;
+		background-image: url(facebook-button-icon.png), -moz-linear-gradient(top,  #536da4 0%, #344e85 100%); /* FF3.6+ */
+		background-image: url(facebook-button-icon.png), -webkit-gradient(linear, left top, left bottom, color-stop(0%,#536da4), color-stop(100%,#344e85)); /* Chrome,Safari4+ */
+		background-image: url(facebook-button-icon.png), -webkit-linear-gradient(top,  #536da4 0%,#344e85 100%); /* Chrome10+,Safari5.1+ */
+		background-image: url(facebook-button-icon.png), -o-linear-gradient(top,  #536da4 0%,#344e85 100%); /* Opera 11.10+ */
+		background-image: url(facebook-button-icon.png), -ms-linear-gradient(top,  #536da4 0%,#344e85 100%); /* IE10+ */
+		background-image: url(facebook-button-icon.png), linear-gradient(to bottom,  #536da4 0%,#344e85 100%); /* W3C */
+		background-repeat: no-repeat, repeat;
+		background-position: 160px 14px, 0 0;
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#536da4', endColorstr='#344e85',GradientType=0 ); /* IE6-9 */
 		-moz-background-clip: padding, padding;     /* Firefox 3.6 */
 		-webkit-background-clip: padding, padding;  /* Safari 4? Chrome 6? */
 		background-clip: padding-box, padding-box;      /* Firefox 4, Safari 5, Opera 10, IE 9 */
@@ -303,6 +300,20 @@ footer {
 @media (max-width: 60em) {
 	.wrapper {
 		width: 95%;
+	}
+
+	.callout-button {
+		font-size: 1.6em;
+
+		&.twitter {
+			background-position: 100px 12px, 0 0;
+			background-size: 25px, auto;
+		}
+
+		&.facebook {
+			background-position: 105px 10px, 0 0;
+			background-size: 13px, auto;
+		}
 	}
 
 	#intro {
