@@ -7,6 +7,14 @@ class ParticipantsController < ApplicationController
     participant = Participant.find_or_create_by_event_id_and_user_id(@event.id, current_user.id)
     respond_to do |format|
       if participant
+        # SEND NOTIFICATION IF HOST WANTS IT
+        # I KNOW THERE IS A BETTER WAY OF DOING THIS BUT I'M DIRTY
+        if @event.notify_host
+          if notification = NewParticipantNotification.create(participant_id: current_user.id, event_id: @event.id)
+            NewParticipantNotificationsWorker.perform_async notification.id
+          end
+        end
+
         format.html { redirect_to @event, notice: 'You joined the game!' }
         format.json { render json: participant, status: :created }
       else

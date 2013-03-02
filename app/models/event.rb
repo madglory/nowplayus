@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
   before_validation :parse_chronic
   before_validation :parse_game
   attr_accessible :starts_at_raw, :duration_raw, :description, :total_players, :platform_id, :time_zone, :title
+
   acts_as_paranoid
 
   belongs_to :platform
@@ -13,6 +14,8 @@ class Event < ActiveRecord::Base
   has_one :game
   has_many :participants
   has_many :players, through: :participants, foreign_key: :user_id, class_name: 'User', source: :user, order: 'created_at ASC'
+  has_many :event_tweets
+  has_many :new_participant_notifications
 
   accepts_nested_attributes_for :platform, reject_if: ->(attributes) { attributes['name'].blank? }
 

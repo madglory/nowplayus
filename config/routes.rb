@@ -11,7 +11,7 @@ Nowplayus::Application.routes.draw do
 
   resources :events, except: [:index] do
     resources :participants, only: [:create, :destroy]
-    resources :tweets, only: [:new, :create]
+    resources :event_tweets, only: [:new, :create]
   end
 
   match '/complete_registration', to: 'users#complete_registration', as: :complete_registration

@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_filter :load_event, only: [:show]
 
   def index
-    @user = User.find(params[:user_id])
+    @user = User.find params[:user_id].downcase
     @events = @user.events.future
 
     respond_to do |format|

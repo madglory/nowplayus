@@ -34,7 +34,7 @@ class PlatformAccounts < ApplicationController
 
 private
   def load_user
-    @user = User.find params[:user_id]
+    @user = User.find params[:user_id].downcase
   end
 
   def load_platform

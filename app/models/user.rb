@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :username, use: :slugged
-  attr_accessible :username, :email, :password, :password_confirmation, :time_zone, :keep_notified, :avatar_url
+  attr_accessible :username, :email, :password, :password_confirmation, :time_zone, :notify_via_email, :avatar_url
 
   authenticates_with_sorcery! do |config|
     config.authentications_class = Authentication
@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_many :participants
   has_many :events, through: :participants
   has_many :hosted_events, class_name: 'Event'
+  has_many :event_tweets
+  has_many :twitter_notifications
 
   accepts_nested_attributes_for :authentications
   accepts_nested_attributes_for :platform_accounts, reject_if: :all_blank, allow_destroy: true
@@ -23,7 +25,7 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password, message: "should match confirmation", if: 'password.present?'
 
   def self.create_from_hash!(hash)
-    create username: hash['info']['nickname'], avatar_url: hash['info']['image']
+    create username: hash['info']['nickname'], avatar_url: hash['info']['image'], email: hash['info']['email']
   end
 
   def registration_complete?
