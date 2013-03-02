@@ -105,7 +105,6 @@ header {
 }
 
 #banner {
-	margin-bottom: 2em;
 	background: url("header-bg.jpg") repeat-x 0px 0px;
 	height: 292px;
 
@@ -132,8 +131,12 @@ header {
 
 .wrapper {
 	margin: 0 auto;
+	padding-top: 2em;
 	width: 80%;
 }
+	nav.wrapper {
+		padding-top: 0;
+	}
 
 .footnote {
 	font-size: 1.2em;
@@ -282,6 +285,82 @@ fieldset.callout {
 		}
 	}
 
+#profile {
+	section {
+		margin-bottom: 2em;
+		padding: 2em;
+		height: 22.9em;
+		width: 49%;
+		background-color: #e6e6e6;
+		border: 2px solid #d6d6d6;
+		border-radius: 10px;
+
+		&:nth-child(odd) {
+			margin-right: 1%;
+		}
+		&:nth-child(even) {
+			margin-left: 1%;
+		}
+	}
+	
+	.avatar {
+		float: left;
+		width: 81px;
+
+		img {
+			width: 81px;
+			border-radius: 100px;
+      overflow: hidden;
+		}
+	}
+
+	.user-details {
+		margin-left: 9.1em;
+
+		h1, p {
+			margin: 0;
+		}
+	}
+
+	h2 {
+		margin: 0 .5em 1em .5em;
+		font-size: 2em;
+	}
+
+	figure {
+		margin: 0;
+		float: left;
+
+		img {
+			width: 100%;
+		}
+
+		figcaption {
+			text-align: center;
+			font-size: 1.2em;
+		}
+	}
+
+	#stats {
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+
+			li {
+				text-align: center;
+				font-size: 5em;
+				font-weight: bold;
+
+				span {
+					display: block;
+					font-size: .4em;
+				}
+			}
+		}
+	}
+}
+
 footer {
 	margin-top: 2em;
 	border-top: 1px solid #bbbbbb;
@@ -295,6 +374,21 @@ footer {
 		}
 	}
 
+}
+
+@media screen and (max-width: 767px) {
+	#profile {
+		section {
+			width: 100%;
+
+			&:nth-child(odd) {
+				margin-right: 0;
+			}
+			&:nth-child(even) {
+				margin-left: 0;
+			}
+		}
+	}
 }
 
 @media (max-width: 60em) {
