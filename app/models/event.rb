@@ -74,9 +74,9 @@ class Event < ActiveRecord::Base
     user.avatar_url
   end
 
-  def scheduled_start
+  def scheduled_start(without_time_zone=false)
     return '' if starts_at.blank?
-    starts_at.to_s :time
+    without_time_zone ? starts_at.to_s(:time) : starts_at.to_s(:time_with_zone)
   end
 
   def scheduled_end
