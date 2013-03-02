@@ -21,7 +21,8 @@ private
   end
 
   def not_authenticated
-    redirect_to :back, alert: "Please login first."
+    redirect_to(:back, alert: "Please login first.") if request.env["HTTP_REFERER"]
+    redirect_to(root_path, alert: "Please login first.")
   end
 
   def render_not_found(exception=nil)
