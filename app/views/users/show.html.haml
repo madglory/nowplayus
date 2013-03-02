@@ -1,18 +1,57 @@
-%section.events.grid-container
-  = render @user
+#profile.grid-container
+  %section#user.grid-50.mobile-grid-100
+    .avatar= image_tag(@user.avatar_url)
+    .user-details
+      %h1= @user.username
+      %p 
+        - @user.authentications.each do |auth|
+          = render partial: "authentications/#{auth.provider}", locals: { user: @user, authentication: auth }
+      %p Bacon ipsum dolor sit amet chuck ham hock bresaola pig ball tip rump. Jowl tri-tip ribeye, biltong pork loin beef ribs corned beef.
 
-.user-details
-  .grid-container
+  %section#platforms.grid-50.mobile-grid-100
+    %h2 Platform Profiles
 
-    - if @future_events.length > 0
-      %h3 Future Events
-      %section.events
-        - @future_events.each do |event|
-          = render event
+    - @platform_accounts.each do |account|
+      %figure.grid-25
+        = image_tag("#{account.platform.name.downcase}-on.png")
+        %figcaption #{account.username}
 
-      / .grid-100
-    /   - if @past_events.length > 0
-    /     %h3 Past Events
-    /     - @past_events.each do |event|
-    /       = render event
+  %section#stats.grid-50.mobile-grid-100
+    %h2 Stats
 
+    %ul
+      %li.grid-25 
+        00
+        %span Hosted
+      %li.grid-25
+        00
+        %span Joined
+      %li.grid-25
+        00
+        %span Watched
+      %li.grid-25
+        00
+        %span Groups
+
+  %section#games.grid-50.mobile-grid-100
+    %h2 Recent Games
+
+    / Fake data
+    %figure.grid-25
+      %img.xbox{src: "http://placehold.it/100x100"}
+      %figcaption Borderlands 2
+    %figure.grid-25
+      %img.ps{src: "http://placehold.it/100x100"}
+      %figcaption Call of Duty: Black Ops 2
+    %figure.grid-25
+      %img.steam{src: "http://placehold.it/100x100"}
+      %figcaption Halo 4
+    %figure.grid-25
+      %img.pc{src: "http://placehold.it/100x100"}
+      %figcaption League of Legends
+
+- if @future_events.length > 0
+  %h3 Future Events
+  %section.events
+    - @future_events.each do |event|
+      = render event
