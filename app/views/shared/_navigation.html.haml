@@ -1,11 +1,13 @@
 %nav.wrapper.grid-container
-  = link_to 'NowPlay.us', root_url, id: 'logo', class: 'grid-33'
-  %ul#main-menu.grid-66
+  = link_to 'NowPlay.us', root_url, id: 'logo', class: 'grid-20'
+  %ul#main-menu.grid-40
     - if current_user
-      %li= link_to "My Events", user_events_path(current_user)
+      %li= link_to "Events", events_path
       %li= link_to "Add Event", new_event_path
+  %ul#user-menu.grid-40
+    - if current_user
       %li= link_to "Edit Profile", edit_user_path(current_user)
       %li= link_to "Logout", :logout, class: 'navbar-link'
     - else
-      %li= link_to 'Login with Twitter',  '/auth/twitter',  class: 'navbar-link'
+      %li= link_to 'Login with Twitter', '/auth/twitter', class: 'navbar-link'
       %li= link_to 'Login with Facebook', '/auth/facebook', class: 'navbar-link'
