@@ -1,0 +1,6 @@
+.grid-container
+  %ul
+    - @games.each do |game|
+      = render game
+
+  = will_paginate @games
