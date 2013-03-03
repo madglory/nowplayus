@@ -3,6 +3,6 @@ class HomeController < ApplicationController
   layout 'home'
 
   def index
-    @events = Event.future(5)
+    # redirect_to event_path if current_user
   end
 end
