@@ -39,7 +39,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.save
         Participant.create! user_id: current_user.id, event_id: @event.id, is_host: true
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to new_event_event_tweet_path(@event) }
         format.json { render json: @event, status: :created }
       else
         format.html { render action: "new" }
