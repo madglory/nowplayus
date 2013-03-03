@@ -38,8 +38,14 @@
 
     %footer
       .wrapper.grid-container
-        %p &copy; 2013, NowPlay.us
+        %p
+          &copy;
+          = Date.current.year
+          NowPlay.us
         %p
           A social experiement of
           = link_to 'MadGlory Interactive', 'http://madgloryint.com'
+        %p
+          %small Game information provided by 
+            = link_to 'Giant Bomb', 'http://www.giantbomb', target: '_blank'
       = render partial: "shared/analytics"
