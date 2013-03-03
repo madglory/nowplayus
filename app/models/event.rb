@@ -1,4 +1,4 @@
- 'chronic'
+require 'chronic'
 require 'chronic_duration'
 
 class Event < ActiveRecord::Base
@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
 
   belongs_to :platform
   belongs_to :user
-  has_one :game
+  belongs_to :game
   has_many :participants
   has_many :players, through: :participants, foreign_key: :user_id, class_name: 'User', source: :user, order: 'created_at ASC'
   has_many :event_tweets
