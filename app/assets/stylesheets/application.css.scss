@@ -488,3 +488,30 @@ footer {
 		background-size: 40px;
 	}
 }
+
+.game-details {
+	font-size: 1.75em;
+	p {
+		font-size: 1em;
+	}
+
+	img {
+		background: #c5c5c5;
+		border: 1px solid #aaa;
+		padding: 0.5em;
+		margin: 0.5em;
+		display: block;
+	}
+
+	small {
+		font-size: 0.75em;
+	}
+
+	hr {
+		border: 0;
+		background: #ccc;
+		height: 1px;
+		padding: 0;
+	}
+}
+
