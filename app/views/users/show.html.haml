@@ -6,7 +6,7 @@
       %p
         - @user.authentications.each do |auth|
           = render partial: "authentications/#{auth.provider}", locals: { user: @user, authentication: auth }
-      = markdown_format(@user.bio)
+      = markdown_format(@user.bio) unless @user.bio.nil?
 
   %section#platforms.grid-50.mobile-grid-100
     %h2 Platform Profiles
