@@ -50,13 +50,14 @@
       %img.pc{src: "http://placehold.it/100x100"}
       %figcaption League of Legends
 
-.grid-container
+#user-future-events.grid-container
   - if @future_events.length > 0
-    %h3 Future Events
-    %h4
-      Subscribe via:
-      = link_to 'Ical Feed', user_url(@user, :protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
-      NEEDS AN ICON
-    %section.events
+    %h3.grid-50
+      Upcoming Events
+    %h3.grid-50.alignright
+      Subscribe via
+      = link_to 'Ical', user_url(@user, :protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
+
+    %section.events.grid-100
       - @future_events.each do |event|
         = render event
