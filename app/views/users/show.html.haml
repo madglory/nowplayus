@@ -6,7 +6,7 @@
       %p
         - @user.authentications.each do |auth|
           = render partial: "authentications/#{auth.provider}", locals: { user: @user, authentication: auth }
-      %p Bacon ipsum dolor sit amet chuck ham hock bresaola pig ball tip rump. Jowl tri-tip ribeye, biltong pork loin beef ribs corned beef.
+      = markdown_format(@user.bio) unless @user.bio.nil?
 
   %section#platforms.grid-50.mobile-grid-100
     %h2 Platform Profiles
@@ -21,41 +21,42 @@
 
     %ul
       %li.grid-25
-        00
+        =@user.hosted_events.count
         %span Hosted
       %li.grid-25
-        00
+        =@user.participants.count
         %span Joined
       %li.grid-25
-        00
-        %span Watched
+        =@user.event_tweets.count
+        %span Tweets
       %li.grid-25
-        00
-        %span Groups
+        =@user.comments.count
+        %span Comments
 
   %section#games.grid-50.mobile-grid-100
-    %h2 Recent Games
+    - if @past_events.length > 0
+      %h2 Recent Games
 
-    / Fake data
-    %figure.grid-25
-      %img.xbox{src: "http://placehold.it/100x100"}
-      %figcaption Borderlands 2
-    %figure.grid-25
-      %img.ps{src: "http://placehold.it/100x100"}
-      %figcaption Call of Duty: Black Ops 2
-    %figure.grid-25
-      %img.steam{src: "http://placehold.it/100x100"}
-      %figcaption Halo 4
-    %figure.grid-25
-      %img.pc{src: "http://placehold.it/100x100"}
-      %figcaption League of Legends
+      - @past_events.each do |event|
+        - if !event.game.nil?
+          %figure.grid-25
+            - if event.game
+              - if event.game.icon_url
+                %img{src: event.game.icon_url, title: event.game.name}
+              - else
+                %img{src: "/assets/lost-img.png", title: event.game.name}
 
-- if @future_events.length > 0
-  %h3 Upcoming Events
-  %h1
-    Subscribe via:
-    = link_to 'Ical Feed', user_url(@user, :protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
-    NEEDS AN ICON
-  %section.events
-    - @future_events.each do |event|
-      = render event
+              %figcaption
+                =event.game.name.truncate(33) unless event.game.nil?
+
+#user-future-events.grid-container
+  - if @future_events.length > 0
+    %h3.grid-50
+      Upcoming Events
+    %h3.grid-50.alignright
+      Subscribe via
+      = link_to 'Ical', user_url(@user, :protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
+
+    %section.events.grid-100
+      - @future_events.each do |event|
+        = render event

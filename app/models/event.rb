@@ -1,4 +1,4 @@
- 'chronic'
+require 'chronic'
 require 'chronic_duration'
 
 class Event < ActiveRecord::Base

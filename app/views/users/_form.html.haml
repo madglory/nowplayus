@@ -1,5 +1,6 @@
 = unsemantic_nested_form_for @user do |f|
   = f.input :email
+  = f.input :bio
   = f.input :notify_via_email, label: 'Keep me notified', hint: 'Allow Now Play Us to send occasional updates on new features and functionality.'
   = f.input :time_zone, priority: @time_zones
 
