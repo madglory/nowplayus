@@ -444,85 +444,6 @@ fieldset.callout {
 	}
 }
 
-footer {
-	border-top: 1px solid #bbbbbb;
-	padding: 1.5;
-	bottom: 0;
-
-	p {
-		font-size: 1.25em;
-		&.about {
-			text-align: right;
-		}
-	}
-
-}
-
-@media screen and (max-width: 767px) {
-	#profile {
-		section {
-			width: 100%;
-
-			&:nth-child(odd) {
-				margin-right: 0;
-			}
-			&:nth-child(even) {
-				margin-left: 0;
-			}
-		}
-	}
-}
-
-@media (max-width: 60em) {
-	.wrapper {
-		width: 95%;
-	}
-
-	.callout-button {
-		font-size: 1.6em;
-
-		&.twitter {
-			background-position: 100px 12px, 0 0;
-			background-size: 25px, auto;
-		}
-
-		&.facebook {
-			background-position: 105px 10px, 0 0;
-			background-size: 13px, auto;
-		}
-	}
-
-	#intro {
-		padding-top: 4em;
-
-		h3 {
-			margin-top: 2em;
-		}
-	}
-
-	header #main-menu li {
-		margin-left: .5em;
-	}
-
-	#banner {
-		height: 219px;
-
-		h2 {
-			font-size: 3em;
-		}
-	}
-
-	#main {
-		min-height: inherit;
-	}
-
-	.previous-page {
-		width: 40px;
-		height: 40px;
-		background-size: 40px;
-	}
-}
-
 .game-details {
 	font-size: 1.75em;
 	p {
@@ -547,5 +468,497 @@ footer {
 		height: 1px;
 		padding: 0;
 	}
+}
+
+.events {
+  margin: 0 0 2em 0;
+  a {
+    &.callout-button {
+      display: inline-block;
+    }
+    &:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+  .button a {
+    color: #4283a9;
+  }
+  .event {
+    margin: 0;
+    padding: 1em 0;
+    border-right: 1px solid #d0d0d0;
+    border-bottom: 1px solid #d0d0d0;
+    &:first-child {
+      border-top: 1px solid #d0d0d0;
+    }
+
+    &.theirs {
+      border-left: 7px solid $aqua-blue;
+      &:after {
+        border-top: 10px solid transparent;
+        border-right: 10px solid $background-color;
+        border-bottom: 10px solid transparent;
+        position: relative;
+        content: "";
+        top: -42px;
+        left: -7px;
+      }
+    }
+    &.mine {
+      border-left: 7px solid $light-blue;
+      &:after {
+        border-top: 10px solid transparent;
+        border-left: 10px solid $light-blue;
+        border-bottom: 10px solid transparent;
+        position: relative;
+        content: "";
+        top: -42px;
+        left: -4px;
+      }
+    }
+  }
+  .schedule {
+    padding-left: 0;
+    font-size: 4.8em;
+    text-align: center;
+    color: #000;
+
+    > span {
+      display: block;
+      &.date {
+        font-weight: 700;
+        line-height: .8;
+        letter-spacing: -0.2ex;
+      }
+      &.day {
+        font-size: .4em;
+        font-weight: 300;
+        text-transform: uppercase;
+        line-height: 2;
+      }
+    }
+  }
+  .description {
+    border-left: 1px solid #d0d0d0;
+
+    &.inline {
+      border: none;
+    }
+
+    a {
+      display: block;
+      &:hover {
+        h2 {
+          color: #444;
+        }
+      }
+    }
+    .title {
+      font-size: 3em;
+      line-height: 3.5;
+      list-style-type: none;
+    }
+    .game {
+      margin: 0 0 .2em 0;
+      padding: 0;
+      font-size: 3em;
+      line-height: 1;
+      color: #000;
+    }
+    .time {
+      font-size: 2em;
+      font-weight: 100;
+      color: #252525;
+    }
+  }
+
+  .host {
+    a {
+      display: block;
+      margin: 1em auto;
+
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 100px;
+        overflow: hidden;
+      }
+
+      h3 {
+        display: inline-block;
+      }
+
+    }
+  }
+
+  .total_players {
+    font-size: 3.6em;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #000;
+    text-align: center;
+  }
+  .promote {
+    display: block;
+    margin: 1.5em 0;
+    width: 48px;
+    height: 36px;
+    background: url("twitter-icon-lg.png") no-repeat;
+    text-indent: -9999px;
+    &:hover{
+      opacity: 0.6;
+    }
+  }
+}
+
+.event-actions {
+  margin-top: 2.8em;
+  padding-left: 0 !important;
+
+  .button {
+    display: block;
+    padding: .5em 0;
+    width: 100%;
+    font-size: 1.4em;
+  }
+}
+
+.event-details {
+  margin-top: 2em;
+
+  h2 {
+    margin: .25em 0;
+  }
+
+  .roster {
+    h3 {
+      margin: 0;
+      border-bottom: 1px solid #d0d0d0;
+    }
+    nav.page-links {
+      &.alignright {
+        text-align: right;
+      }
+      margin: 0;
+      a {
+        display: inline;
+        margin: 0;
+        padding: 5px 10px;
+      }
+    }
+  }
+}
+
+ul.players {
+  margin: 0;
+  padding: 0 0 2em 0;
+  list-style: none;
+  .player {
+    display: block;
+    margin-top: 1em;
+    height: 5em;
+    
+    .avatar {
+      float: left;
+      width: 50px;
+      height: 50px;
+      margin-right: 1em;
+
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 100px;
+      }
+    }
+    
+    .name {
+      float: left;
+      font-size: 2em;
+      line-height: 2.4;
+
+      a {
+        color: inherit;
+      }
+    }
+    
+    h3 {
+      font-weight: normal;
+    }
+    .grid-container {
+      border-bottom: 0;
+    }
+  }
+
+}
+
+footer {
+	border-top: 1px solid #bbbbbb;
+	padding: 1.5;
+	bottom: 0;
+
+	p {
+		font-size: 1.25em;
+		&.about {
+			text-align: right;
+		}
+	}
+
+}
+
+// @media screen and (max-width: 767px) {
+// 	#profile {
+// 		section {
+// 			width: 100%;
+
+// 			&:nth-child(odd) {
+// 				margin-right: 0;
+// 			}
+// 			&:nth-child(even) {
+// 				margin-left: 0;
+// 			}
+// 		}
+// 	}
+// }
+
+// @media (max-width: 60em) {
+// 	.wrapper {
+// 		width: 95%;
+// 	}
+
+// 	.callout-button {
+// 		font-size: 1.6em;
+
+// 		&.twitter {
+// 			background-position: 100px 12px, 0 0;
+// 			background-size: 25px, auto;
+// 		}
+
+// 		&.facebook {
+// 			background-position: 105px 10px, 0 0;
+// 			background-size: 13px, auto;
+// 		}
+// 	}
+
+// 	#intro {
+// 		padding-top: 4em;
+
+// 		h3 {
+// 			margin-top: 2em;
+// 		}
+// 	}
+
+// 	header #main-menu li {
+// 		margin-left: .5em;
+// 	}
+
+// 	#banner {
+// 		height: 219px;
+
+// 		h2 {
+// 			font-size: 3em;
+// 		}
+// 	}
+
+// 	#main {
+// 		min-height: inherit;
+// 	}
+
+// 	.previous-page {
+// 		width: 40px;
+// 		height: 40px;
+// 		background-size: 40px;
+// 	}
+
+// 	.event .schedule {
+//     font-size: 3em;
+//   }
+  
+//   .event .description,
+//   .event .total_players {
+//     font-size: 45%;
+//   }
+
+//   .events {
+//     .event-actions {
+//       padding: 2em 0;
+//     }
+
+//     .host a {
+//       width: 30px;
+//       height: 30px;
+
+//       img {
+//         width: 30px;
+//         height: 30px;
+//       }
+//     }
+
+//     .total_players {
+//       font-size: 3em;
+//       line-height: 2.4;
+//     }
+
+//     .promote {
+//       margin: 1.8em 0;
+//       width: 38px;
+//       height: 26px;
+//       background-size: 38px 26px;
+//       text-indent: -9999px;
+//     }
+//   }
+// }
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+	header {
+		#logo {
+			display: block;
+			margin: 0;
+			text-align: center;
+		}
+	}
+
+	.wrapper {
+		width: 95%;
+	}
+
+	#profile {
+		section {
+			width: auto;
+			height: auto;
+
+			&:nth-child(even),
+			&:nth-child(odd) {
+				margin-left: 0;
+				margin-right: 0;
+			}
+		}
+
+		#user {
+			font-size: .6em;
+
+			.avatar img {
+				width: 50px;
+			}
+		}
+
+		#stats ul {
+			font-size: 50%;
+		}
+	}
+
+	.events-header {
+		h2 {
+			font-size: 1.6em;
+			text-align: center;
+		}
+	}
+
+	.events {
+		.schedule {
+			font-size: 3.6em;
+		}
+		.description {
+			.game {
+				font-size: 1.4em;	
+			}
+			.time {
+				font-size: 1em;
+			}
+		}
+		.host a img {
+			width: 30px;
+			height: 30px;
+		}
+	}
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen 
+and (min-width : 321px) {
+/* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen 
+and (max-width : 320px) {
+	header {
+		#main-menu,
+		#user-menu {
+			display: block;
+			margin: 0;
+			width: 100%;
+			text-align: center;
+
+			li {
+				margin: 0 .5em;
+			}
+		}
+	}
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+	.events {
+		.description {
+			h2.game {
+				font-size: 2.3em;
+			}
+		}
+	}
+
+	#profile {
+		#stats {
+			ul {
+				li {
+					span {
+						font-size: .3em;
+					}
+				}
+			}
+		}
+	}
+}
+
+/* iPads (landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+/* Styles */
+}
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+	.wrapper {
+		width: 95%;
+	}
+}
+
+/* Desktops and laptops ----------- */
+@media only screen 
+and (min-width : 1224px) {
+/* Styles */
+}
+
+/* Large screens ----------- */
+@media only screen 
+and (min-width : 1824px) {
+/* Styles */
+}
+
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+/* Styles */
 }
 
