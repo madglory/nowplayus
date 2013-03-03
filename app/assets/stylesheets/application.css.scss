@@ -496,10 +496,10 @@ fieldset.callout {
         letter-spacing: -0.2ex;
       }
       &.day {
-        font-size: 18px;
+        font-size: .4em;
         font-weight: 300;
         text-transform: uppercase;
-        line-height: 28px;
+        line-height: 2;
       }
     }
   }
@@ -519,11 +519,11 @@ fieldset.callout {
       }
     }
     .title {
-      font-size: 30px;
-      line-height: 35px;
+      font-size: 3em;
+      line-height: 3.5;
       list-style-type: none;
     }
-    h2.game {
+    .game {
       margin: 0 0 .2em 0;
       padding: 0;
       font-size: 3em;
@@ -670,106 +670,259 @@ footer {
 
 }
 
-@media screen and (max-width: 767px) {
+// @media screen and (max-width: 767px) {
+// 	#profile {
+// 		section {
+// 			width: 100%;
+
+// 			&:nth-child(odd) {
+// 				margin-right: 0;
+// 			}
+// 			&:nth-child(even) {
+// 				margin-left: 0;
+// 			}
+// 		}
+// 	}
+// }
+
+// @media (max-width: 60em) {
+// 	.wrapper {
+// 		width: 95%;
+// 	}
+
+// 	.callout-button {
+// 		font-size: 1.6em;
+
+// 		&.twitter {
+// 			background-position: 100px 12px, 0 0;
+// 			background-size: 25px, auto;
+// 		}
+
+// 		&.facebook {
+// 			background-position: 105px 10px, 0 0;
+// 			background-size: 13px, auto;
+// 		}
+// 	}
+
+// 	#intro {
+// 		padding-top: 4em;
+
+// 		h3 {
+// 			margin-top: 2em;
+// 		}
+// 	}
+
+// 	header #main-menu li {
+// 		margin-left: .5em;
+// 	}
+
+// 	#banner {
+// 		height: 219px;
+
+// 		h2 {
+// 			font-size: 3em;
+// 		}
+// 	}
+
+// 	#main {
+// 		min-height: inherit;
+// 	}
+
+// 	.previous-page {
+// 		width: 40px;
+// 		height: 40px;
+// 		background-size: 40px;
+// 	}
+
+// 	.event .schedule {
+//     font-size: 3em;
+//   }
+  
+//   .event .description,
+//   .event .total_players {
+//     font-size: 45%;
+//   }
+
+//   .events {
+//     .event-actions {
+//       padding: 2em 0;
+//     }
+
+//     .host a {
+//       width: 30px;
+//       height: 30px;
+
+//       img {
+//         width: 30px;
+//         height: 30px;
+//       }
+//     }
+
+//     .total_players {
+//       font-size: 3em;
+//       line-height: 2.4;
+//     }
+
+//     .promote {
+//       margin: 1.8em 0;
+//       width: 38px;
+//       height: 26px;
+//       background-size: 38px 26px;
+//       text-indent: -9999px;
+//     }
+//   }
+// }
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+	header {
+		#logo {
+			display: block;
+			margin: 0;
+			text-align: center;
+		}
+	}
+
+	.wrapper {
+		width: 95%;
+	}
+
 	#profile {
 		section {
-			width: 100%;
+			width: auto;
+			height: auto;
 
+			&:nth-child(even),
 			&:nth-child(odd) {
+				margin-left: 0;
 				margin-right: 0;
 			}
-			&:nth-child(even) {
-				margin-left: 0;
+		}
+
+		#user {
+			font-size: .6em;
+
+			.avatar img {
+				width: 50px;
+			}
+		}
+
+		#stats ul {
+			font-size: 50%;
+		}
+	}
+
+	.events-header {
+		h2 {
+			font-size: 1.6em;
+			text-align: center;
+		}
+	}
+
+	.events {
+		.schedule {
+			font-size: 3.6em;
+		}
+		.description {
+			.game {
+				font-size: 1.4em;	
+			}
+			.time {
+				font-size: 1em;
+			}
+		}
+		.host a img {
+			width: 30px;
+			height: 30px;
+		}
+	}
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen 
+and (min-width : 321px) {
+/* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen 
+and (max-width : 320px) {
+	header {
+		#main-menu,
+		#user-menu {
+			display: block;
+			margin: 0;
+			width: 100%;
+			text-align: center;
+
+			li {
+				margin: 0 .5em;
 			}
 		}
 	}
 }
 
-@media (max-width: 60em) {
+/* iPads (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+	.events {
+		.description {
+			h2.game {
+				font-size: 2.3em;
+			}
+		}
+	}
+
+	#profile {
+		#stats {
+			ul {
+				li {
+					span {
+						font-size: .3em;
+					}
+				}
+			}
+		}
+	}
+}
+
+/* iPads (landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+/* Styles */
+}
+
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
 	.wrapper {
 		width: 95%;
 	}
+}
 
-	.callout-button {
-		font-size: 1.6em;
+/* Desktops and laptops ----------- */
+@media only screen 
+and (min-width : 1224px) {
+/* Styles */
+}
 
-		&.twitter {
-			background-position: 100px 12px, 0 0;
-			background-size: 25px, auto;
-		}
+/* Large screens ----------- */
+@media only screen 
+and (min-width : 1824px) {
+/* Styles */
+}
 
-		&.facebook {
-			background-position: 105px 10px, 0 0;
-			background-size: 13px, auto;
-		}
-	}
-
-	#intro {
-		padding-top: 4em;
-
-		h3 {
-			margin-top: 2em;
-		}
-	}
-
-	header #main-menu li {
-		margin-left: .5em;
-	}
-
-	#banner {
-		height: 219px;
-
-		h2 {
-			font-size: 3em;
-		}
-	}
-
-	#main {
-		min-height: inherit;
-	}
-
-	.previous-page {
-		width: 40px;
-		height: 40px;
-		background-size: 40px;
-	}
-
-	.event .schedule {
-    font-size: 3em;
-  }
-  
-  .event .description,
-  .event .total_players {
-    font-size: 45%;
-  }
-
-  .events {
-    .event-actions {
-      padding: 2em 0;
-    }
-
-    .host a {
-      width: 30px;
-      height: 30px;
-
-      img {
-        width: 30px;
-        height: 30px;
-      }
-    }
-
-    .total_players {
-      font-size: 3em;
-      line-height: 2.4;
-    }
-
-    .promote {
-      margin: 1.8em 0;
-      width: 38px;
-      height: 26px;
-      background-size: 38px 26px;
-      text-indent: -9999px;
-    }
-  }
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+/* Styles */
 }
 
