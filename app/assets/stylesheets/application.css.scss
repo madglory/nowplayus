@@ -71,6 +71,7 @@ header {
 
 		&:hover {
 			color: #fff;
+			text-decoration: none;
 		}
 	}
 
@@ -95,6 +96,12 @@ header {
 
 		li {
 			margin-left: 1em;
+		}
+
+		img {
+			width: 27px;
+			border-radius: 100px;
+			vertical-align: middle;
 		}
 	}
 }

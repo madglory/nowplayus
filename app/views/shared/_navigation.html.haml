@@ -7,7 +7,7 @@
       %li= link_to "Add Event", new_event_path
   %ul#user-menu.grid-40.mobile-grid-50
     - if current_user
-      %li= link_to "My Profile",   user_path(current_user)
+      %li= link_to image_tag(current_user.avatar_url) + " My Profile",   user_path(current_user)
       %li= link_to "Settings", edit_user_path(current_user)
       %li= link_to "Logout", :logout, class: 'navbar-link'
     - else
