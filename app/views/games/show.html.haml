@@ -1,15 +1,13 @@
 .grid-container
-  %p
-    =link_to "< All games", games_path
-
   %h2
     = @game.name
 
-  %p
-    = @game.deck.html_safe unless @game.deck.blank?
+  .game-details
+    %hr
+    =image_tag @game.screen_url unless @game.screen_url.blank?
+    %p
+      = @game.deck.html_safe unless @game.deck.blank?
 
-  =image_tag @game.screen_url unless @game.screen_url.blank?
+    =Sanitize.clean(@game.description, :elements => ['h2', 'p', 'img'], :attributes => {'img' => ['width', 'height', 'src', 'title', 'alt'], 'a' => ['href', 'title'], 'span' => ['class']}, :protocols => {'a' => {'href' => ['http', 'https', 'mailto']}}).html_safe unless @game.description.blank?
 
-  =Sanitize.clean(@game.description, :elements => ['h2', 'p', 'img'], :attributes => {'img' => ['width', 'height', 'src', 'title', 'alt'], 'a' => ['href', 'title'], 'span' => ['class']}, :protocols => {'a' => {'href' => ['http', 'https', 'mailto']}}).html_safe unless @game.description.blank?
-
-  %small Game Descriptions provided by <a target="_blank" href="http://www.giantbomb.com">Giant Bomb</a>.
+    %small Game Descriptions provided by <a target="_blank" href="http://www.giantbomb.com">Giant Bomb</a>.
