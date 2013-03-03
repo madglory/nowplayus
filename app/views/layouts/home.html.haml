@@ -22,11 +22,15 @@
     #banner
       .wrapper.grid-container
         %h2
-          Why play games by yourself...
+          Schedule multiplayer games
           %br
-          when you can
-          %span.highlight play
-          with us
+          any platform, any game, any time
+
+          / Why play games by yourself...
+          / %br
+          / when you can
+          / %span.highlight play
+          / with us
 
         %fieldset.callout
           = link_to 'Play Now', '/auth/twitter', class: 'callout-button twitter'
@@ -47,6 +51,6 @@
           = link_to 'MadGlory Interactive', 'http://madgloryint.com'
           %br
           %small
-            Game information provided by 
+            Game information provided by
             = link_to 'Giant Bomb', 'http://www.giantbomb', target: '_blank'
       = render partial: "shared/analytics"
