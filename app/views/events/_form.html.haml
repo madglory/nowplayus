@@ -6,6 +6,8 @@
   = f.input :duration_raw, label: 'Duration', placeholder: 'Eg: 2 Hours', required: true
   = f.input :description, label: 'Additional Information'
   = f.input :total_players, collection: 2...10, label: 'How many players?'
-  = f.input :notify_host, label: 'Notify me when a new player joins'
+  = f.input :notify_host, label: 'Notify me when a new player joins', hint: 'Make sure you follow @nowplayus on Twitter to get notifications.'
+  %fieldset
+    = render partial: 'shared/twitter_follow'
   %fieldset.form-actions
     = f.button :submit
