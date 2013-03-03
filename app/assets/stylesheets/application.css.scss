@@ -819,10 +819,16 @@ and (max-device-width : 480px) {
 			margin: 0;
 			text-align: center;
 		}
+
+		.avatar { display: none; }
 	}
 
 	.wrapper {
 		width: 95%;
+	}
+
+	#banner h2 {
+		font-size: 2em;
 	}
 
 	#profile {
@@ -904,6 +910,10 @@ and (max-width : 320px) {
 @media only screen 
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) {
+	#banner h2 {
+		font-size: 3em;
+	}
+	
 	.events {
 		.description {
 			h2.game {
