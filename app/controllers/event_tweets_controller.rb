@@ -2,7 +2,7 @@ class EventTweetsController < ApplicationController
   before_filter :require_login, :load_event
 
   def new
-    @event_tweet = current_user.event_tweets.build event_id: @event.id
+    @event_tweet = current_user.event_tweets.build event: @event
   end
 
   def create
