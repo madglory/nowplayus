@@ -26,8 +26,14 @@
     %footer
       .wrapper.grid-container
         %p.grid-50
-          &copy; 2013, NowPlay.us
+          &copy;
+          = Date.current.year
+          NowPlay.us
         %p.grid-50.about
-          An experiemental service from
+          An experimental service from
           = link_to 'MadGlory Interactive', 'http://madgloryint.com'
+          %br
+          %small
+            Game information provided by 
+            = link_to 'Giant Bomb', 'http://www.giantbomb', target: '_blank'
       = render partial: "shared/analytics"
