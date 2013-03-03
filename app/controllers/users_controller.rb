@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @platform_accounts = @user.platform_accounts.includes :platform
     @events        = @user.events
     @future_events = @user.events.future(5)
-    @past_events   = @user.events.past(5)
+    @past_events   = @user.events.past(4)
 
     respond_to do |format|
       format.html # show.html.erb

@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :username, use: :slugged
-  attr_accessible :username, :email, :password, :password_confirmation, :time_zone, :notify_via_email, :avatar_url
+  attr_accessible :username, :email, :password, :password_confirmation, :time_zone, :notify_via_email, :avatar_url, :bio
 
   authenticates_with_sorcery! do |config|
     config.authentications_class = Authentication
@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :hosted_events, class_name: 'Event'
   has_many :event_tweets
   has_many :twitter_notifications
+  has_many :comments
 
   accepts_nested_attributes_for :authentications
   accepts_nested_attributes_for :platform_accounts, reject_if: :all_blank, allow_destroy: true
