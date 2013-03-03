@@ -408,6 +408,21 @@ fieldset.callout {
 	}
 }
 
+.promo {
+	margin-top: -2em;
+
+	h1 { display: none; }
+
+	figure {
+		margin: 0;
+
+		figcaption {
+			padding: 1em;
+			font-size: 2em;
+		}
+	}
+}
+
 footer {
 	border-top: 1px solid #bbbbbb;
 	padding: 1.5;
