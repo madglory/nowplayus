@@ -4,8 +4,7 @@ require 'chronic_duration'
 class Event < ActiveRecord::Base
   attr_accessor :duration_raw, :starts_at_raw
   before_validation :parse_chronic
-  before_validation :parse_game
-  attr_accessible :starts_at_raw, :duration_raw, :description, :total_players, :platform_id, :time_zone, :title, :notify_host
+  attr_accessible :starts_at_raw, :duration_raw, :description, :total_players, :platform_id, :time_zone, :notify_host, :game_id
 
   acts_as_paranoid
   acts_as_commentable
@@ -18,11 +17,8 @@ class Event < ActiveRecord::Base
   has_many :event_tweets
   has_many :new_participant_notifications
 
-  accepts_nested_attributes_for :platform, reject_if: ->(attributes) { attributes['name'].blank? }
-
-  validates :game_id, presence: true
+  validates :game, presence: true
   validates :user, presence: true
-  validates :title, presence: true
   validates :starts_at, presence: true
   validates :duration, presence: true
   validates :total_players, presence: true, numericality: { only_integer: true, greater_than: 1, less_than: 10 }
@@ -45,6 +41,11 @@ class Event < ActiveRecord::Base
     else
       events
     end
+  end
+
+  def title
+    return '' if game.blank?
+    game.name 
   end
 
   def bench_players
@@ -97,10 +98,6 @@ class Event < ActiveRecord::Base
   end
 
 private
-  def parse_game
-    game = Game.find_by_name(self.title)
-    self.game_id = game.id unless game.blank?
-  end
 
   def parse_chronic
     return false if starts_at_raw.blank? || duration_raw.blank?

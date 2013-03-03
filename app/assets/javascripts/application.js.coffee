@@ -2,4 +2,5 @@
 #= require jquery_ujs
 #= require jquery-ui
 #= require jquery_nested_form
-#= require autocomplete-rails
+#= require select2
+#= require game_selector
