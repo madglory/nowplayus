@@ -53,10 +53,10 @@ class EventsController < ApplicationController
     respond_to do |format|
       if event.host == current_user
         event.destroy
-        format.html { redirect_to user_events_path(current_user), notice: 'Your event has been cancelled.' }
+        format.html { redirect_to events_path, notice: 'Your event has been cancelled.' }
         format.json { render json: event, notice: 'Your event has been cancelled.' }
       else
-        format.html { redirect_to user_events_path(current_user), alert: 'Not authorized!' }
+        format.html { redirect_to events_path, alert: 'Not authorized!' }
         format.json { render json: event, alert: 'Not authorized!' }
       end
     end

@@ -4,9 +4,7 @@ Nowplayus::Application.routes.draw do
     resources :platform_accounts, only: [:new, :create, :destroy]
   end
 
-  resources :games do
-    get :autocomplete_game_name, :on => :collection
-  end
+  resources :games, only: [:show, :index]
 
   resources :events do
     resources :participants, only: [:create, :destroy]
@@ -22,6 +20,5 @@ Nowplayus::Application.routes.draw do
   match '/logout', to: 'sessions#destroy', as: :logout
 
   get "/contest" => 'home#contest'
-
-  root :to => 'home#index'
+  root to: 'home#index'
 end

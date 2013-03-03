@@ -39,7 +39,6 @@ form fieldset.platform-accounts legend {
 	font-weight: bold;
 }
 
-form fieldset input.autocomplete,
 form fieldset input.string,
 form fieldset input.password,
 form fieldset textarea {
@@ -172,30 +171,13 @@ form button[type="submit"],
     font-size: 2.2em;
   }
 }
-
-.ui-autocomplete {
-  font-size: 1.75em;
-  border: 1px solid #ccc;
-  background: #eee;
-  list-style: none;
-  margin: 0;
-  padding: 0.5em;
-}
-  .ui-autocomplete li {
-    border-bottom: 1px solid #ccc;
-    padding: 0; margin: 0;
-  }
-    .ui-autocomplete a {
-      padding: 0.5em;
-      margin: 0;
-      color: #000;
-      display: block;
-    }
-    .ui-autocomplete a:hover {
-      background: #fff;
-      text-decoration: none;
-    }
-
-
-/*<ul class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem" style="z-index: 1; top: -814px; left: 328px; display: none; position: relative; width: 1801px;">
-<li class="ui-menu-item" role="menuitem"><a class="ui-corner-all" tabindex="-1">Borderlands 2</a></li></ul>*/
+.game-result td {vertical-align: top }
+.game-info { padding-left: 10px; vertical-align: top; }
+.game-image img { width: 50px;}
+.game-name { margin: 0; font-size: 1.6em; }
+.game-synopsis { margin: 0; color: #888; font-size: 1.2em; }
+.select2-highlighted .game-synopsis { color: #eee; }
+.select2-container { width: 100%; }
+.bigdrop.select2-container .select2-results {max-height: 300px;}
+.bigdrop .select2-results {max-height: 300px;}
+.select2-container > a > span { font-size: 1.2em; }
