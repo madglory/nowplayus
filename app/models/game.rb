@@ -4,6 +4,6 @@ class Game < ActiveRecord::Base
   # attr_accessible :title, :body
   friendly_id :name, use: :slugged
 
-  belongs_to :event
+  has_many :events
 
 end

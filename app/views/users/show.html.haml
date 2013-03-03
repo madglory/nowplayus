@@ -6,7 +6,7 @@
       %p
         - @user.authentications.each do |auth|
           = render partial: "authentications/#{auth.provider}", locals: { user: @user, authentication: auth }
-      %p Bacon ipsum dolor sit amet chuck ham hock bresaola pig ball tip rump. Jowl tri-tip ribeye, biltong pork loin beef ribs corned beef.
+      = markdown_format(@user.bio)
 
   %section#platforms.grid-50.mobile-grid-100
     %h2 Platform Profiles
@@ -34,21 +34,20 @@
         %span Comments
 
   %section#games.grid-50.mobile-grid-100
-    %h2 Recent Games
+    - if @past_events.length > 0
+      %h2 Recent Games
 
-    / Fake data
-    %figure.grid-25
-      %img.xbox{src: "http://placehold.it/100x100"}
-      %figcaption Borderlands 2
-    %figure.grid-25
-      %img.ps{src: "http://placehold.it/100x100"}
-      %figcaption Call of Duty: Black Ops 2
-    %figure.grid-25
-      %img.steam{src: "http://placehold.it/100x100"}
-      %figcaption Halo 4
-    %figure.grid-25
-      %img.pc{src: "http://placehold.it/100x100"}
-      %figcaption League of Legends
+      - @past_events.each do |event|
+        - if !event.game.nil?
+          %figure.grid-25
+            - if event.game
+              - if event.game.icon_url
+                %img{src: event.game.icon_url, title: event.game.name}
+              - else
+                %img{src: "/assets/lost-img.png", title: event.game.name}
+
+              %figcaption
+                =event.game.name.truncate(33) unless event.game.nil?
 
 #user-future-events.grid-container
   - if @future_events.length > 0
