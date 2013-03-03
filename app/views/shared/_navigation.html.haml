@@ -1,10 +1,11 @@
 %nav.wrapper.grid-container
-  = link_to 'NowPlay.us', root_url, id: 'logo', class: 'grid-20'
-  %ul#main-menu.grid-40
+  %h1 Now Play Us
+  = link_to image_tag("now-play-us-logo.png"), root_url, id: 'logo', class: 'grid-20 mobile-grid-100'
+  %ul#main-menu.grid-40.mobile-grid-50
     - if current_user
       %li= link_to "Events", events_path
       %li= link_to "Add Event", new_event_path
-  %ul#user-menu.grid-40
+  %ul#user-menu.grid-40.mobile-grid-50
     - if current_user
       %li= link_to "Edit Profile", edit_user_path(current_user)
       %li= link_to "Logout", :logout, class: 'navbar-link'

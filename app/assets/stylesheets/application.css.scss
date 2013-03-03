@@ -63,6 +63,8 @@ header {
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF222222', endColorstr='#FF111111', GradientType=0);
 	border-color:#252525;
 
+	nav h1 { display: none; }
+
 	a {
 		color: #777;
 		text-decoration: none;
@@ -80,13 +82,6 @@ header {
 			display: inline-block;
 			font-size: 1.4em;
 		}
-	}
-
-	#logo {
-		display: block;
-		height: 23px;
-		text-indent: -9999px;
-		background: transparent url(now-play-us-logo.png) no-repeat 10px 0;
 	}
 
 	#main-menu {
@@ -118,15 +113,19 @@ header {
 }
 
 #main {
-	min-height: 60em;
-
 	span.highlight {
 		margin: 0 -.3em;
 	}
 }
 
 #intro {
+	padding-top: 5em;
 	text-align: center;
+
+	img {
+		margin-bottom: -4px;
+		width: 100%;
+	}
 }
 
 .wrapper {
@@ -180,7 +179,7 @@ fieldset.callout {
 	font-size: 2.4em;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
 	border-radius: 40px;
-	border: 10px solid #efefef;
+	border: 2px solid #efefef;
 
 	background: #83c2e7; /* Old browsers */
 
@@ -410,7 +409,6 @@ fieldset.callout {
 }
 
 footer {
-	margin-top: 2em;
 	border-top: 1px solid #bbbbbb;
 	padding: 1.5;
 	bottom: 0;
