@@ -330,6 +330,11 @@ fieldset.callout {
 		h1, p {
 			margin: 0;
 		}
+
+		.user-bio {
+			height: 12em;
+			overflow-y: scroll;
+		}
 	}
 
 	h2 {
