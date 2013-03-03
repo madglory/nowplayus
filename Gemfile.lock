@@ -124,6 +124,7 @@ GEM
       rubyzip
     heroku-api (0.3.7)
       excon (~> 0.16.10)
+    high_voltage (1.2.2)
     hike (1.2.1)
     http_parser.rb (0.5.3)
     httparty (0.10.2)
@@ -324,6 +325,7 @@ DEPENDENCIES
   haml
   haml-rails
   heroku
+  high_voltage
   httparty
   icalendar
   jquery-rails
