@@ -3,14 +3,14 @@
     .avatar= image_tag(@user.avatar_url)
     .user-details
       %h1= @user.username
-      %p 
+      %p
         - @user.authentications.each do |auth|
           = render partial: "authentications/#{auth.provider}", locals: { user: @user, authentication: auth }
       %p Bacon ipsum dolor sit amet chuck ham hock bresaola pig ball tip rump. Jowl tri-tip ribeye, biltong pork loin beef ribs corned beef.
 
   %section#platforms.grid-50.mobile-grid-100
     %h2 Platform Profiles
-    
+
     - @platform_accounts.each do |account|
       %figure.grid-25
         = image_tag("#{account.platform.name.downcase}-on.png")
@@ -20,7 +20,7 @@
     %h2 Stats
 
     %ul
-      %li.grid-25 
+      %li.grid-25
         00
         %span Hosted
       %li.grid-25
@@ -51,11 +51,11 @@
       %figcaption League of Legends
 
 - if @future_events.length > 0
-  %h3 Future Events
+  %h3 Upcoming Events
   %h1
-    LOLWUT?! HI I'm an ICAL FEED!!
-    = link_to 'Ical Feed', user_events_url(@user, :format => :ics, '' => Time.now.to_i)
-    NO WE CAN WIN ZEE MATCHES FOR JOY!
+    Subscribe via:
+    = link_to 'Ical Feed', user_url(@user, :protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
+    NEEDS AN ICON
   %section.events
     - @future_events.each do |event|
       = render event

@@ -5,9 +5,10 @@ class Ical
   include Rails.application.routes.url_helpers
 
 
-  def initialize(events = [], user = User.new)
+  def initialize(events = [], options = {})
+    @title = ' - ' + options[:title] if options[:title]
+    puts @title
     @calendar = Calendar.new
-    @user = user
 
     add_events(events) if events
 
@@ -16,7 +17,7 @@ class Ical
 
   def add_events(events)
     events.each do |e|
-      @calendar.custom_property('X-WR-CALNAME', 'NowPlayUs - '+@user.username)
+      @calendar.custom_property('X-WR-CALNAME', 'NowPlayUs'+@title)
 
       @calendar.event do
         # Add all basic data

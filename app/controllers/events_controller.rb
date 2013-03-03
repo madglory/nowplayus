@@ -3,12 +3,11 @@ class EventsController < ApplicationController
   before_filter :load_event, only: [:show]
 
   def index
-    @user = User.find params[:user_id].downcase
-    @events = @user.events.future
+    @events = Event.future
 
     respond_to do |format|
       format.html # index.html.erb
-      format.ics  # show.ics.rb
+      format.ics  # index.ics.rb
       format.json { render json: [@user, @events] }
     end
   end

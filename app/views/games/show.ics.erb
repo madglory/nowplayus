@@ -1,0 +1,4 @@
+<%=
+  ical = Ical.new(@events, :title => @game.name + ' Matches')
+  ical.to_s
+%>

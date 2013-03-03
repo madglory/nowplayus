@@ -1,4 +1,4 @@
 <%=
-  ical = Ical.new(@events, @user)
+  ical = Ical.new(@events, :title => 'All Matches')
   ical.to_s
 %>

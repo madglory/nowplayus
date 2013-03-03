@@ -1,7 +1,6 @@
 Nowplayus::Application.routes.draw do
 
   resources :users do
-    resources :events, only: [:index]
     resources :platform_accounts, only: [:new, :create, :destroy]
   end
 
@@ -9,7 +8,7 @@ Nowplayus::Application.routes.draw do
     get :autocomplete_game_name, :on => :collection
   end
 
-  resources :events, except: [:index] do
+  resources :events do
     resources :participants, only: [:create, :destroy]
     resources :event_tweets, only: [:new, :create]
     resources :comments

@@ -1,4 +1,9 @@
 %section.events.grid-container
+  %h1 All upcoming matches
+  %h3
+    Subscribe via:
+    = link_to 'Ical Feed NEED AN ICON', events_url(:protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
+  %br
   - @events.each do |event|
     = render event
   - if @events.blank?
