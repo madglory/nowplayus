@@ -149,8 +149,8 @@ CREATE TABLE events (
     title character varying(255),
     deleted_at timestamp without time zone,
     platform_id integer,
-    notify_host boolean,
-    game_id integer
+    game_id integer,
+    notify_host boolean
 );
 
 
@@ -374,7 +374,8 @@ CREATE TABLE users (
     slug character varying(255),
     time_zone character varying(255),
     avatar_url character varying(255),
-    notify_via_email boolean
+    notify_via_email boolean,
+    bio text
 );
 
 
@@ -721,3 +722,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130302172754');
 INSERT INTO schema_migrations (version) VALUES ('20130302174014');
 
 INSERT INTO schema_migrations (version) VALUES ('20130302205410');
+
+INSERT INTO schema_migrations (version) VALUES ('20130303032545');
