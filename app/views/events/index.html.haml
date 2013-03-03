@@ -1,16 +1,14 @@
-%section.events.grid-container
+%section.events-header.grid-container
   %h2.grid-50
     All upcoming matches
   %h2.grid-50.alignright
     Subscribe via
     = link_to 'Ical', events_url(:protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
 
-  %br
-
-  %section.events.grid-100
-    - @events.each do |event|
-      = render event
-    - if @events.blank?
-      %p It looks like you don't have any scheduled game events.
-      %fieldset.callout
-        = link_to 'Create an Event', new_event_path, class: 'callout-button'
+%section.events.grid-100
+  - @events.each do |event|
+    = render event
+  - if @events.blank?
+    %p It looks like you don't have any scheduled game events.
+    %fieldset.callout
+      = link_to 'Create an Event', new_event_path, class: 'callout-button'

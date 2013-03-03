@@ -151,26 +151,6 @@ form button[type="submit"],
   font-size: 1.5em;
 }
 
-@media (max-width: 60em) {
-  form fieldset input.string,
-  form fieldset input.password,
-  form fieldset textarea {
-    width: 90%;
-  }
-
-  form fieldset select {
-    width: 90%;
-  }
-
-  form input[type="submit"],
-  form button[type="submit"],
-  .button {
-    display: block;
-    padding: 0;
-    width: 100%;
-    font-size: 2.2em;
-  }
-}
 .game-result td {vertical-align: top }
 .game-info { padding-left: 10px; vertical-align: top; }
 .game-image img { width: 50px;}

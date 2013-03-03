@@ -1,5 +1,5 @@
 #profile.grid-container
-  %section#user.grid-50.mobile-grid-100
+  %section#user.grid-50
     .avatar= image_tag(@user.avatar_url)
     .user-details
       %h1= @user.username
@@ -9,38 +9,38 @@
       .user-bio  
         = markdown_format(@user.bio) unless @user.bio.nil?
 
-  %section#platforms.grid-50.mobile-grid-100
+  %section#platforms.grid-50.clearfix
     %h2 Platform Profiles
 
     - @platform_accounts.each do |account|
-      %figure.grid-25
+      %figure.grid-25.mobile-grid-50
         = image_tag("#{account.platform.name.downcase}-on.png")
         %figcaption #{account.username}
 
-  %section#stats.grid-50.mobile-grid-100
+  %section#stats.grid-50.clearfix
     %h2 Stats
 
     %ul
-      %li.grid-25
+      %li.grid-25.mobile-grid-25
         =@user.hosted_events.count
         %span Hosted
-      %li.grid-25
+      %li.grid-25.mobile-grid-25
         =@user.participants.count
         %span Joined
-      %li.grid-25
+      %li.grid-25.mobile-grid-25
         =@user.event_tweets.count
         %span Tweets
-      %li.grid-25
+      %li.grid-25.mobile-grid-25
         =@user.comments.count
         %span Comments
 
-  %section#games.grid-50.mobile-grid-100
+  %section#games.grid-50.clearfix
     - if @past_events.length > 0
       %h2 Recent Games
 
       - @past_events.each do |event|
         - if !event.game.nil?
-          %figure.grid-25
+          %figure.grid-25.mobile-grid-50
             - if event.game
               - if event.game.icon_url
                 %img{src: event.game.icon_url, title: event.game.name}
@@ -50,14 +50,14 @@
               %figcaption
                 =event.game.name.truncate(33) unless event.game.nil?
 
-#user-future-events.grid-container
+%section.events-header.grid-container
   - if @future_events.length > 0
-    %h3.grid-50
+    %h2.grid-50
       Upcoming Events
-    %h3.grid-50.alignright
+    %h2.grid-50.alignright
       Subscribe via
       = link_to 'Ical', user_url(@user, :protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
 
-    %section.events.grid-100
-      - @future_events.each do |event|
-        = render event
+%section.events.grid-100
+  - @future_events.each do |event|
+    = render event
