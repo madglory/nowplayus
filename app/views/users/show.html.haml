@@ -21,17 +21,17 @@
 
     %ul
       %li.grid-25
-        00
+        =@user.hosted_events.count
         %span Hosted
       %li.grid-25
-        00
+        =@user.participants.count
         %span Joined
       %li.grid-25
-        00
-        %span Watched
+        =@user.event_tweets.count
+        %span Tweets
       %li.grid-25
-        00
-        %span Groups
+        =@user.comments.count
+        %span Comments
 
   %section#games.grid-50.mobile-grid-100
     %h2 Recent Games
@@ -50,12 +50,13 @@
       %img.pc{src: "http://placehold.it/100x100"}
       %figcaption League of Legends
 
-- if @future_events.length > 0
-  %h3 Upcoming Events
-  %h1
-    Subscribe via:
-    = link_to 'Ical Feed', user_url(@user, :protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
-    NEEDS AN ICON
-  %section.events
-    - @future_events.each do |event|
-      = render event
+.grid-container
+  - if @future_events.length > 0
+    %h3 Future Events
+    %h4
+      Subscribe via:
+      = link_to 'Ical Feed', user_url(@user, :protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
+      NEEDS AN ICON
+    %section.events
+      - @future_events.each do |event|
+        = render event

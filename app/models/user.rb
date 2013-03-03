@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :hosted_events, class_name: 'Event'
   has_many :event_tweets
   has_many :twitter_notifications
+  has_many :comments
 
   accepts_nested_attributes_for :authentications
   accepts_nested_attributes_for :platform_accounts, reject_if: :all_blank, allow_destroy: true
