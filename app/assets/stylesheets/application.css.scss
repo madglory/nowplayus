@@ -420,8 +420,13 @@ fieldset.callout {
 
 	h1 { display: none; }
 
+
 	figure {
 		margin: 0;
+
+		img {
+			width: 100%;
+		}
 
 		figcaption {
 			padding: 1em;
