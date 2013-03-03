@@ -25,6 +25,7 @@ class EventsController < ApplicationController
   def new
     @user = current_user
     @event = @user.hosted_events.new
+    @event.notify_host = true
 
     respond_to do |format|
       format.html # new.html.erb
