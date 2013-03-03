@@ -1,9 +1,9 @@
 class Game < ActiveRecord::Base
-  extend FriendlyId
+  attr_accessible :name
 
-  # attr_accessible :title, :body
+  extend FriendlyId
   friendly_id :name, use: :slugged
 
-  belongs_to :event
+  has_many :events
 
 end

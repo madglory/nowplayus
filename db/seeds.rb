@@ -9,8 +9,8 @@ Event.all.each { |p| p.destroy }
 Participant.all.each { |p| p.destroy }
 
 # Make some Platforms
-p1 = Platform.create! name: 'XBOX'
-p2 = Platform.create! name: 'PS3'
+p1 = Platform.create! name: 'XBOX', giantbomb_id: 20
+p2 = Platform.create! name: 'PS3', giantbomb_id: 88
 
 # Make some Users
 u1 = User.new username: 'claptrap'
@@ -29,12 +29,12 @@ u3.avatar_url = 'http://mmii.info/icons/Koole321/games_chibiKratos.gif'
 u3.save!
 
 # Assign PlatformAccounts to Users
-pa1 = PlatformAccount.new username: 'claptrap_is_god' 
+pa1 = PlatformAccount.new username: 'claptrap_is_god'
 pa1.user = u1
 pa1.platform_id = Platform.first.id
 pa1.save!
 
-pa2 = PlatformAccount.new username: 'masterchief' 
+pa2 = PlatformAccount.new username: 'masterchief'
 pa2.user = u2
 pa2.platform = p1
 pa2.save!
@@ -49,12 +49,19 @@ pa3.user = u3
 pa3.platform = p1
 pa3.save!
 
+g1 = Game.new name: 'Derp\'s Quest'
+g1.save
+g2 = Game.new name: 'Foo\'s Mission'
+g2.save
+
 # Make some Events
 e1 = Event.new title: 'Call of Duty: Black Ops 2', platform_id: p1.id, starts_at_raw: 'Thursday 5pm', duration_raw: '2hr', total_players: 3
 e1.user = u1
+e1.game = g1
 e1.save!
 e2 = Event.new title: 'League of Legends', platform_id: p2.id, starts_at_raw: 'Friday 10:30pm', duration_raw: '4 hours', total_players: 3
 e2.user = u2
+e2.game = g2
 e2.save!
 
 # Make some Participants

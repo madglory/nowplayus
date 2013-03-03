@@ -4,6 +4,11 @@ namespace :giant_bomb do
   task :update_games => :environment do
     puts "Updating games from Giant Bomb"
 
+    if (Rails.env == 'production')
+      @giantbomb_key = ENV['GIANTBOMB_KEY']
+    else
+      @giantbomb_key = '058008a8afcd045e6b54935e58ca9325e14f7958'
+    end
 
     @platforms = Platform.all
 
@@ -14,7 +19,7 @@ namespace :giant_bomb do
       if platform.giantbomb_id?
         while offset < 100
           puts "Offset #{offset}"
-          response = HTTParty.get("http://www.giantbomb.com/api/games/?api_key=#{ENV['GIANTBOMB_KEY']}&sort=date_added:desc&filter=platforms:#{platform.giantbomb_id}&format=json&limit=100&offset=#{offset}")
+          response = HTTParty.get("http://www.giantbomb.com/api/games/?api_key=#{@giantbomb_key}&sort=date_added:desc&filter=platforms:#{platform.giantbomb_id}&format=json&limit=100&offset=#{offset}")
           # puts response.body, response.code, response.message, response.headers.inspect
 
           response['results'].each do |item|
@@ -56,7 +61,13 @@ namespace :giant_bomb do
   task :import_game => :environment do |t, args|
     puts "#{ENV['GAME_ID']}"
 
-    response = HTTParty.get("http://www.giantbomb.com/api/games/?api_key=058008a8afcd045e6b54935e58ca9325e14f7958&format=json&filter=id:#{ENV['GAME_ID']}")
+    if (Rails.env == 'production')
+      @giantbomb_key = ENV['GIANTBOMB_KEY']
+    else
+      @giantbomb_key = '058008a8afcd045e6b54935e58ca9325e14f7958'
+    end
+
+    response = HTTParty.get("http://www.giantbomb.com/api/games/?api_key=#{@giantbomb_key}&format=json&filter=id:#{ENV['GAME_ID']}")
     response['results'].each do |item|
       puts item['name']
 
