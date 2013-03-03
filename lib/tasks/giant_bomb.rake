@@ -19,7 +19,7 @@ namespace :giant_bomb do
       if platform.giantbomb_id?
         while offset < 100
           puts "Offset #{offset}"
-          response = HTTParty.get("http://www.giantbomb.com/api/games/?api_key=#{@giantbomb_key}&sort=date_added:desc&filter=platforms:#{platform.giantbomb_id}&format=json&limit=100&offset=#{offset}")
+          response = HTTParty.get("http://www.giantbomb.com/api/games/?api_key=#{@giantbomb_key}&sort=date_last_updated:desc&filter=platforms:#{platform.giantbomb_id}&format=json&limit=100&offset=#{offset}")
           # puts response.body, response.code, response.message, response.headers.inspect
 
           response['results'].each do |item|
