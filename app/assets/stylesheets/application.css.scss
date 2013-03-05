@@ -302,7 +302,7 @@ fieldset.callout {
 		height: 22.9em;
 		width: 49%;
 		background-color: #e6e6e6;
-		border: 2px solid #d6d6d6;
+		border: 1px solid #d6d6d6;
 		border-radius: 10px;
 
 		&:nth-child(odd) {
@@ -470,6 +470,20 @@ fieldset.callout {
 	}
 }
 
+img.game {
+/* Safari 3-4, iOS 1-3.2, Android 1.6- */
+  -webkit-border-radius: 8px;
+  border: 1px solid #d6d6d6;
+
+  /* Firefox 1-3.6 */
+  -moz-border-radius: 8px;
+  border: 1px solid #d6d6d6; 
+  
+  /* Opera 10.5, IE 9, Safari 5, Chrome, Firefox 4, iOS 4, Android 2.1+ */
+  border-radius: 8px;
+  border: 1px solid #d6d6d6;
+}
+
 .events {
   margin: 0 0 2em 0;
   a {
@@ -487,10 +501,10 @@ fieldset.callout {
   .event {
     margin: 0;
     padding: 1em 0;
-    border-right: 1px solid #d0d0d0;
-    border-bottom: 1px solid #d0d0d0;
+    border-right: 1px solid #d5d5d5;
+    border-bottom: 1px solid #d5d5d5;
     &:first-child {
-      border-top: 1px solid #d0d0d0;
+      border-top: 1px solid #d5d5d5;
     }
 
     &.theirs {
@@ -540,7 +554,7 @@ fieldset.callout {
     }
   }
   .description {
-    border-left: 1px solid #d0d0d0;
+    border-left: 1px solid #d5d5d5;
 
     &.inline {
       border: none;

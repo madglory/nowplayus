@@ -1,5 +1,6 @@
 form fieldset {
-	margin: 0 0 1em 0;
+	margin: 0 0 3em 0;
+  padding: 0;
 	}
 form fieldset fieldset {
   margin: 0;
@@ -35,7 +36,7 @@ form fieldset .boolean .hint {
   font-size: 1.2em;
 }
 form fieldset.platform-accounts legend {
-	font-size: 1.6em;
+	font-size: 1.9em;
 	font-weight: bold;
 }
 
@@ -71,6 +72,7 @@ form fieldset select {
   font-size: 1.75em;
 	margin: 0;
 }
+
 form fieldset.radio ul {
 	margin-top: 5px;
 	}
@@ -91,8 +93,10 @@ form button[type="submit"],
 	display: inline-block;
   *display: inline;
   padding: .5em 1em;
-  margin: .5em .25em;
-  *margin-left: .214285714em;
+  margin: 0;
+  margin-bottom: 20px;
+/*  margin: .5em .25em;
+*/*margin-left: .214285714em;
   font-family: 'Maven Pro', Verdana, Arial, sans-serif;
   font-size: 1.6em;
   line-height: inherit;

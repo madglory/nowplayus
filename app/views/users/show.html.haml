@@ -43,7 +43,7 @@
           %figure.grid-25.mobile-grid-50
             - if event.game
               - if event.game.icon_url
-                %img{src: event.game.icon_url, title: event.game.name}
+                %img.game{src: event.game.icon_url, title: event.game.name}
               - else
                 %img{src: "/assets/lost-img.png", title: event.game.name}
 
