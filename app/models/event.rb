@@ -45,7 +45,7 @@ class Event < ActiveRecord::Base
 
   def title
     return '' if game.blank?
-    game.name 
+    game.name
   end
 
   def bench_players
@@ -90,7 +90,7 @@ class Event < ActiveRecord::Base
   end
 
   def past?
-    starts_at < Time.zone.now ? true : false if starts_at.present?
+    starts_at+duration < Time.zone.now ? true : false if starts_at.present? and duration.present?
   end
 
   def upcoming?
