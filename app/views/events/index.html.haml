@@ -5,10 +5,10 @@
     Subscribe via
     = link_to 'Ical', events_url(:protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
 
-%section.events.grid-100
-  - @events.each do |event|
-    = render event
-  - if @events.blank?
-    %p It looks like you don't have any scheduled game events.
-    %fieldset.callout
-      = link_to 'Create an Event', new_event_path, class: 'callout-button'
+  %section.events.grid-100
+    - @events.each do |event|
+      = render event
+    - if @events.blank?
+      %p It looks like you don't have any scheduled game events.
+      %fieldset.callout
+        = link_to 'Create an Event', new_event_path, class: 'callout-button'
