@@ -59,6 +59,6 @@
       Subscribe via
       = link_to 'Ical', user_url(@user, :protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
 
-%section.events.grid-100
-  - @future_events.each do |event|
-    = render event
+  %section.events.grid-100
+    - @future_events.each do |event|
+      = render event
