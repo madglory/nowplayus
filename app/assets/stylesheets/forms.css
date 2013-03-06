@@ -164,4 +164,4 @@ form button[type="submit"],
 .select2-container { width: 100%; }
 .bigdrop.select2-container .select2-results {max-height: 300px;}
 .bigdrop .select2-results {max-height: 300px;}
-.select2-container > a > span { font-size: 1.2em; }
+.select2-container > a > span { font-size: 1.75em; }
