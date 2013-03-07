@@ -1,5 +1,5 @@
 class ParticipantsController < ApplicationController
-  before_filter :require_login, :load_event, :load_host, :redirect_host
+  before_filter :load_event, :load_host, :redirect_host
 
   def create
     participant = Participant.new event_id: @event.id, user_id: current_user.id
