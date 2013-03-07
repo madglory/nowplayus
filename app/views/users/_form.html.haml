@@ -14,7 +14,7 @@
   %section#email.grid-50.clearfix
     = f.input :email, label: false, placeholder: 'your@email.com'
   %section#time_zone.grid-50
-    = f.input :time_zone, priority: @time_zones, label: false
+    = f.input :time_zone, priority: @time_zones, label: false, hint: 'By default, Now Play Us displays events in Eastern Time, but you can change that here.'
   %section#profile_links.grid-50
     %ul
       - @user.authentications.each do |auth|

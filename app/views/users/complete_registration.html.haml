@@ -2,8 +2,8 @@
   %h1 Complete your registration
   = unsemantic_nested_form_for @user, url: {action: 'confirm_registration'} do |f|
     = f.input :email
-    = f.input :notify_via_email, label: 'Keep me notified', hint: 'Allow Now Play Us to send occasional updates on new features and functionality.', input_html: { checked: true }
-    = f.input :time_zone, priority: @time_zones, include_blank: true
+    = f.input :send_newsletter, label: 'Let us send occasional updates. No spam!', input_html: { checked: true }
+    = f.input :time_zone, priority: @time_zones, include_blank: true, hint: 'By default, Now Play Us displays events in Eastern Time, but you can change that here.'
     %fieldset.platform-accounts
       %legend Platform Accounts
       %p Add a platform account to display your username to others when playing a game on different networks (ie. XBOX, PSN, EA, etc.)
