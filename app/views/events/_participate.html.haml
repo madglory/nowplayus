@@ -1,4 +1,7 @@
 - if @event.players.exists?(:id => current_user)
   = link_to "Leave", event_participant_path(@event), confirm: 'Are you sure?', method: :delete, class: 'button-danger button mobile-grid-100'
 - else
-  = link_to "Join In", event_participants_path(@event), method: :post, class: 'button-info button mobile-grid-100'
+  - if logged_in?
+    = link_to "Join In", event_participants_path(@event), method: :post, class: 'button-info button mobile-grid-100'
+  - else
+    = link_to "Login to Join", "/auth/twitter", method: :post, class: 'button-info button mobile-grid-100'
