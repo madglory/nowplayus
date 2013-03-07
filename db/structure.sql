@@ -40,7 +40,8 @@ CREATE TABLE authentications (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     token character varying(255),
-    token_secret character varying(255)
+    token_secret character varying(255),
+    nickname character varying(255)
 );
 
 
@@ -374,8 +375,12 @@ CREATE TABLE users (
     slug character varying(255),
     time_zone character varying(255),
     avatar_url character varying(255),
-    notify_via_email boolean,
-    bio text
+    send_newsletter boolean,
+    bio text,
+    preferred_notification_method character varying(255),
+    notify_for_new_participants boolean DEFAULT false,
+    notify_for_new_comments boolean DEFAULT false,
+    notify_before_events_start boolean DEFAULT false
 );
 
 
@@ -724,3 +729,11 @@ INSERT INTO schema_migrations (version) VALUES ('20130302174014');
 INSERT INTO schema_migrations (version) VALUES ('20130302205410');
 
 INSERT INTO schema_migrations (version) VALUES ('20130303032545');
+
+INSERT INTO schema_migrations (version) VALUES ('20130306165503');
+
+INSERT INTO schema_migrations (version) VALUES ('20130306200726');
+
+INSERT INTO schema_migrations (version) VALUES ('20130306202236');
+
+INSERT INTO schema_migrations (version) VALUES ('20130306215919');
