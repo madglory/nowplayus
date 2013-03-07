@@ -29,8 +29,19 @@ class User < ActiveRecord::Base
     create username: hash['info']['nickname'], avatar_url: hash['info']['image'], email: hash['info']['email']
   end
 
+  def update_from_hash!(hash)
+    details = {
+      avatar_url: hash['info']['image']
+    }
+    update_attributes details
+  end
+
   def registration_complete?
     email.present? && time_zone.present?
+  end
+
+  def available_notification_methods
+    authentications.map(&:provider) << 'email'
   end
 
   def platform_username(platform)

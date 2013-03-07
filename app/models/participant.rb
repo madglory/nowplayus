@@ -4,4 +4,6 @@ class Participant < ActiveRecord::Base
   belongs_to :host, class_name: 'User', conditions: "participants.is_host = true"
   belongs_to :player, class_name: 'User', conditions: "participants.is_host = false"
   belongs_to :event
+
+  validates_uniqueness_of :event_id, scope: [:user_id]
 end

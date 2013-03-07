@@ -3,9 +3,10 @@ class SessionsController < ApplicationController
   
   def create
     if authentication = Authentication.find_from_hash(auth_hash)
-      authentication.update_tokens_from_hash(auth_hash)
+      authentication.update_from_hash!(auth_hash)
+      authentication.user.update_from_hash!(auth_hash)
     else
-      authentication = Authentication.create_from_hash(auth_hash)
+      authentication = Authentication.create_from_hash!(auth_hash)
     end
     
     user = authentication.user

@@ -1,17 +1,33 @@
 = unsemantic_nested_form_for @user do |f|
-  = f.input :email
-  = f.input :bio
-  = f.input :notify_via_email, label: 'Keep me notified', hint: 'Allow Now Play Us to send occasional updates on new features and functionality.'
-  = f.input :time_zone, priority: @time_zones
-
-  %fieldset.platform-accounts
-    %legend Platform Accounts
+  %section#user.grid-50
+    .avatar= image_tag @user.avatar_url
+    .user-details
+      %h1= @user.username
+      = f.input :bio, label: false, placeholder: 'About you...'
+  %section#platform_accounts.grid-50
+    %h3 Platform Accounts
     = f.fields_for :platform_accounts do |paf|
-      = paf.collection_select :platform_id, @platforms, :id, :name, label: 'Platform'
-      = paf.input :username
+      = paf.collection_select :platform_id, @platforms, :id, :name, label: false
+      = paf.input :username, label: false, placeholder: 'username'
       = paf.link_to_remove 'Remove Platform Account'
     = f.link_to_add 'Add a Platform Account', :platform_accounts
-
-  %fieldset.form-actions
-    = f.button :submit
-    = link_to 'View Profile', @user, class: 'button button-info'
+  %section#email.grid-50.clearfix
+    = f.input :email, label: false, placeholder: 'your@email.com'
+  %section#time_zone.grid-50
+    = f.input :time_zone, priority: @time_zones, label: false
+  %section#profile_links.grid-50
+    %ul
+      - @user.authentications.each do |auth|
+        %li{class: auth.provider}= render partial: "authentications/#{auth.provider}", locals: { username: auth.nickname }
+  %section#notifications.grid-50
+    %h3 Notifications
+    = f.input :send_newsletter, label: 'Let us send occasional updates. No spam!'
+    = f.input :preferred_notification_method, as: :select, collection: current_user.available_notification_methods, include_blank: false
+    %fieldset
+      .boolean.input
+      %label= render partial: 'shared/twitter_follow'
+      %span.hint Make sure you're following @nowplayus to receive direct message notifications
+  .grid-100
+    %fieldset.form-actions
+      = f.button :submit
+      = link_to 'View Profile', @user, class: 'button button-info'
