@@ -21,7 +21,7 @@ class Event < ActiveRecord::Base
   validates :user, presence: true
   validates :starts_at, presence: true
   validates :duration, presence: true
-  validates :total_players, presence: true, numericality: { only_integer: true, greater_than: 1, less_than: 10 }
+  validates :total_players, presence: true, numericality: { only_integer: true, greater_than: 1, less_than: 19 }
   validates :platform, presence: true
 
 

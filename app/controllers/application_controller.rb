@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :require_login, except: :rescue_404
-  before_filter :set_time_zone
+  around_filter :set_time_zone
 
   unless config.consider_all_requests_local || Rails.env != 'production'
     rescue_from Exception, with: :render_error
@@ -17,7 +17,10 @@ class ApplicationController < ActionController::Base
 
 private
   def set_time_zone
-    Time.zone = current_user.time_zone if logged_in?
+    old_time_zone, Time.zone = Time.zone, (logged_in? ? current_user.time_zone : ::Rails.application.config.time_zone)
+    yield
+  ensure
+    Time.zone = old_time_zone
   end
 
   def not_authenticated
