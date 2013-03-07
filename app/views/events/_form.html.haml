@@ -1,13 +1,13 @@
 = unsemantic_form_for @event do |f|
-  = f.input :game_id, as: :hidden, class: 'bigdrop'
-  %fieldset
-    = f.input :platform_id, collection: Platform.select('id,name').all, include_blank: true
+  = f.input :game_id, as: :hidden, class: 'bigdrop'  
+  = f.input :platform_id, collection: Platform.select('id,name').all, include_blank: true
   = f.input :starts_at_raw, label: 'Start Time', placeholder: 'Eg: Tonight 8pm', required: true
   = f.input :duration_raw, label: 'Duration', placeholder: 'Eg: 2 Hours', required: true
   = f.input :description, label: 'Additional Information'
   = f.input :total_players, collection: 2...19, label: 'How many players?'
-  = f.input :notify_host, label: 'Notify me when a new player joins', hint: 'Make sure you follow @nowplayus on Twitter to get notifications.'
+  = f.input :notify_host, label: 'Notify me when a player joins', hint: 'Make sure you follow @nowplayus on Twitter to receive Direct Message notifications.'
   %fieldset
     = render partial: 'shared/twitter_follow'
+
   %fieldset.form-actions
     = f.button :submit
