@@ -1,7 +1,9 @@
 %h1=user.username
 
-%p
-  = link_to "Twitter Profile", user_twitter_link(user), :target => "_blank"
+%ul
+  - user.authentications.each do |authentication|
+    %li
+      %p= render partial: "authentications/#{authentication.provider}", locals: { username: authentication.nickname }
 
 %h2 Platform Profiles
 
