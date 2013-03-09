@@ -1,5 +1,6 @@
 class ParticipantObserver < ActiveRecord::Observer
   def after_create(participant)
+    return if participant.is_host
     event = participant.event
     return unless event.notify_host
     notification = NewParticipantNotification.create(participant_id: participant.user_id, event_id: participant.event_id)
