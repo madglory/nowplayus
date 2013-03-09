@@ -16,6 +16,7 @@ Nowplayus::Application.routes.draw do
   match '/confirm_registration', to: 'users#confirm_registration', via: :put
 
   match '/auth/:provider/callback', to: 'sessions#create'
+  match '/auth/failure', to: 'sessions#destroy', via: :get
   match '/login', to: 'sessions#new', as: :login
   match '/logout', to: 'sessions#destroy', as: :logout
 
