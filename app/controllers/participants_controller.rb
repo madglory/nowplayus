@@ -5,7 +5,7 @@ class ParticipantsController < ApplicationController
     participant = Participant.new event_id: @event.id, user_id: current_user.id
     respond_to do |format|
       if participant.save
-        format.html { redirect_to @event, notice: 'You joined the game!' }
+        format.html { redirect_to event_path(@event, anchor: "tweet-#{@event.id}"), notice: 'You joined the game!' }
         format.json { render json: participant, status: :created }
       else
         format.html { redirect_to @event, alert: 'Something went wrong' }
