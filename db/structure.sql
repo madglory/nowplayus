@@ -150,8 +150,8 @@ CREATE TABLE events (
     title character varying(255),
     deleted_at timestamp without time zone,
     platform_id integer,
-    game_id integer,
-    notify_host boolean
+    notify_host boolean,
+    game_id integer
 );
 
 
@@ -251,6 +251,39 @@ CREATE SEQUENCE new_participant_notifications_id_seq
 --
 
 ALTER SEQUENCE new_participant_notifications_id_seq OWNED BY new_participant_notifications.id;
+
+
+--
+-- Name: notification_subscriptions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE notification_subscriptions (
+    id integer NOT NULL,
+    user_id integer,
+    subscribable_type character varying(255),
+    subscribable_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: notification_subscriptions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE notification_subscriptions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: notification_subscriptions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE notification_subscriptions_id_seq OWNED BY notification_subscriptions.id;
 
 
 --
@@ -449,6 +482,13 @@ ALTER TABLE ONLY new_participant_notifications ALTER COLUMN id SET DEFAULT nextv
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY notification_subscriptions ALTER COLUMN id SET DEFAULT nextval('notification_subscriptions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY participants ALTER COLUMN id SET DEFAULT nextval('participants_id_seq'::regclass);
 
 
@@ -511,6 +551,14 @@ ALTER TABLE ONLY events
 
 ALTER TABLE ONLY games
     ADD CONSTRAINT games_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: notification_subscriptions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY notification_subscriptions
+    ADD CONSTRAINT notification_subscriptions_pkey PRIMARY KEY (id);
 
 
 --
@@ -737,3 +785,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130306200726');
 INSERT INTO schema_migrations (version) VALUES ('20130306202236');
 
 INSERT INTO schema_migrations (version) VALUES ('20130306215919');
+
+INSERT INTO schema_migrations (version) VALUES ('20130309194317');
