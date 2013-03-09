@@ -43,24 +43,12 @@
 
 
 %section.comments.grid-container
-  .push-10.grid-70.mobile-grid-70
+  .push-10.grid-70.mobile-grid-100
     %h2 Comments
-
-    - if @comments.size > 0
-      %ol
-        - @comments.each do |comment|
-          =render comment
-    - else
-      %p What are you waiting for? Start the trash talking now.
-
-    - if current_user
-      = unsemantic_form_for [@event, Comment.new] do |f|
-        =f.input :comment
-        =f.submit
-
-    - else
+    = render partial: 'comments/list', locals: { comments: @comments }
+    = render partial: 'comments/form', locals: { commentable: @event } if logged_in?
+    = render partial: 'shared/login', locals: { message: 'You must be logged in to comment.' } unless logged_in?
+    - if @notification_subscription.present?
       %p
-        You must
-        = link_to "login", "/auth/twitter"
-        to leave comment.
-
+        = link_to 'Unsubscribe', notification_subscription_path(@notification_subscription), method: :delete, confirm: 'Are you sure?'
+        from notifications about this event.

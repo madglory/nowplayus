@@ -1,0 +1,6 @@
+- if comments.present?
+  %ol
+    - comments.each do |comment|
+      = render comment
+- else
+  %p What are you waiting for? Start the discussion!
