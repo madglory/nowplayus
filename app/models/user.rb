@@ -7,14 +7,17 @@ class User < ActiveRecord::Base
     config.authentications_class = Authentication
   end
 
+  before_save :bigger_twitter_avatar, if: ->(user) { user.avatar_url =~ /twimg/ }
+
   has_many :authentications, dependent: :destroy
-  has_many :platform_accounts, dependent: :destroy
-  has_many :participants
-  has_many :events, through: :participants
-  has_many :hosted_events, class_name: 'Event'
-  has_many :event_tweets
-  has_many :twitter_notifications
   has_many :comments
+  has_many :events, through: :participants
+  has_many :event_tweets
+  has_many :hosted_events, class_name: 'Event'
+  has_many :notification_subscriptions
+  has_many :participants
+  has_many :platform_accounts, dependent: :destroy
+  has_many :twitter_notifications
 
   accepts_nested_attributes_for :authentications
   accepts_nested_attributes_for :platform_accounts, reject_if: :all_blank, allow_destroy: true
@@ -50,5 +53,9 @@ class User < ActiveRecord::Base
     else
       username
     end
+  end
+private
+  def bigger_twitter_avatar
+    self.avatar_url.sub! /_normal/, ''
   end
 end
