@@ -15,6 +15,7 @@ class EventsController < ApplicationController
   def show
     @event_owner = (current_user == @event.host ? 'mine' : 'theirs')
     @comments = @event.comments.all
+    @notification_subscription = current_user.notification_subscriptions.find_by_subscribable_id_and_subscribable_type(@event.id,'Event') if logged_in?
 
     respond_to do |format|
       format.html # show.html.erb
