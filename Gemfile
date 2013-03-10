@@ -27,7 +27,6 @@ gem 'twitter'
 gem 'will_paginate', '~> 3.0'
 
 group :development do
-  gem 'awesome_print'
   gem 'guard-livereload'
   gem 'guard-rspec'
   gem 'guard-spork'
@@ -37,6 +36,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'awesome_print'
   gem 'factory_girl_rails'
   gem 'pry'
   gem 'rspec-rails'
