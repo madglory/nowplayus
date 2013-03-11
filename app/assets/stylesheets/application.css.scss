@@ -774,269 +774,103 @@ footer {
 
 }
 
-// @media screen and (max-width: 767px) {
-// 	#profile {
-// 		section {
-// 			width: 100%;
 
-// 			&:nth-child(odd) {
-// 				margin-right: 0;
-// 			}
-// 			&:nth-child(even) {
-// 				margin-left: 0;
-// 			}
-// 		}
-// 	}
-// }
+/* #Media Queries
+================================================== */
 
-// @media (max-width: 60em) {
-// 	.wrapper {
-// 		width: 95%;
-// 	}
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (min-width: 959px) {
+  .wrapper {
+    width: 95% !important;
+  }
 
-// 	.callout-button {
-// 		font-size: 1.6em;
+  .event {
+    h2 {
+    }
 
-// 		&.twitter {
-// 			background-position: 100px 12px, 0 0;
-// 			background-size: 25px, auto;
-// 		}
-
-// 		&.facebook {
-// 			background-position: 105px 10px, 0 0;
-// 			background-size: 13px, auto;
-// 		}
-// 	}
-
-// 	#intro {
-// 		padding-top: 4em;
-
-// 		h3 {
-// 			margin-top: 2em;
-// 		}
-// 	}
-
-// 	header #main-menu li {
-// 		margin-left: .5em;
-// 	}
-
-// 	#banner {
-// 		height: 219px;
-
-// 		h2 {
-// 			font-size: 3em;
-// 		}
-// 	}
-
-// 	#main {
-// 		min-height: inherit;
-// 	}
-
-// 	.previous-page {
-// 		width: 40px;
-// 		height: 40px;
-// 		background-size: 40px;
-// 	}
-
-// 	.event .schedule {
-//     font-size: 3em;
-//   }
-
-//   .event .description,
-//   .event .total_players {
-//     font-size: 45%;
-//   }
-
-//   .events {
-//     .event-actions {
-//       padding: 2em 0;
-//     }
-
-//     .host a {
-//       width: 30px;
-//       height: 30px;
-
-//       img {
-//         width: 30px;
-//         height: 30px;
-//       }
-//     }
-
-//     .total_players {
-//       font-size: 3em;
-//       line-height: 2.4;
-//     }
-
-//     .promote {
-//       margin: 1.8em 0;
-//       width: 38px;
-//       height: 26px;
-//       background-size: 38px 26px;
-//       text-indent: -9999px;
-//     }
-//   }
-// }
-
-/* Smartphones (portrait and landscape) ----------- */
-@media only screen
-and (min-device-width : 320px)
-and (max-device-width : 480px) {
-	header {
-		#logo {
-			display: block;
-			margin: 0;
-			text-align: center;
-		}
-
-		.avatar { display: none; }
-	}
-
-	.wrapper {
-		width: 95%;
-	}
-
-	#banner h2 {
-		font-size: 2em;
-	}
-
-	#profile {
-		section {
-			width: auto;
-			height: auto;
-
-			&:nth-child(even),
-			&:nth-child(odd) {
-				margin-left: 0;
-				margin-right: 0;
-			}
-		}
-
-		#user {
-			font-size: .6em;
-
-			.avatar img {
-				width: 50px;
-			}
-		}
-
-		#stats ul {
-			font-size: 50%;
-		}
-	}
-
-	.events-header {
-		h2 {
-			font-size: 1.6em;
-			text-align: center;
-		}
-	}
-
-	.events {
-		.schedule {
-			font-size: 3.6em;
-		}
-		.description {
-			.game {
-				font-size: 1.4em;
-			}
-			.time {
-				font-size: 1em;
-			}
-		}
-		.host a img {
-			width: 30px;
-			height: 30px;
-		}
-	}
+    span.date {
+      font-size: 40px !important;
+    }
+  }
 }
 
-/* Smartphones (landscape) ----------- */
-@media only screen
-and (min-width : 321px) {
-/* Styles */
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  .wrapper {
+    width: 95% !important;
+  }
+
+  .event {
+    h2 {
+      font-size: 26px !important;
+    }
+
+    span.day {
+    }
+
+    span.date {
+      font-size: 32px !important;
+    }
+
+    span.time {
+    }
+
+  }
 }
 
-/* Smartphones (portrait) ----------- */
-@media only screen
-and (max-width : 320px) {
-	header {
-		#main-menu,
-		#user-menu {
-			display: block;
-			margin: 0;
-			width: 100%;
-			text-align: center;
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+  .wrapper {
+    width: 100% !important;
+  }
 
-			li {
-				margin: 0 .5em;
-			}
-		}
-	}
+  .event {
+    h2 {
+      font-size: 18px !important;
+    }
+  }
 }
 
-/* iPads (portrait and landscape) ----------- */
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px) {
-	#banner h2 {
-		font-size: 3em;
-	}
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .wrapper {
+    width: 100% !important;
+  }
 
-	.events {
-		.description {
-			h2.game {
-				font-size: 2.3em;
-			}
-		}
-	}
-
-	#profile {
-		#stats {
-			ul {
-				li {
-					span {
-						font-size: .3em;
-					}
-				}
-			}
-		}
-	}
+  .event {
+    h2 {
+      font-size: 24px !important;
+    }
+  }
 }
 
-/* iPads (landscape) ----------- */
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
-and (orientation : landscape) {
-/* Styles */
-}
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+  .wrapper {
+    width: 90% !important;
+  }
 
-/* iPads (portrait) ----------- */
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
-and (orientation : portrait) {
-	.wrapper {
-		width: 95%;
-	}
-}
+  .event {
+    h2 {
+      font-size: 18px !important;
+    }
 
-/* Desktops and laptops ----------- */
-@media only screen
-and (min-width : 1224px) {
-/* Styles */
-}
+    span.day {
+      font-size: 14px !important;
+    }
 
-/* Large screens ----------- */
-@media only screen
-and (min-width : 1824px) {
-/* Styles */
-}
+    span.date {
+      font-size: 24px !important;
+    }
 
-/* iPhone 4 ----------- */
-@media
-only screen and (-webkit-min-device-pixel-ratio : 1.5),
-only screen and (min-device-pixel-ratio : 1.5) {
-/* Styles */
-}
+    span.time {
+      font-size: 14px !important;
+    }
 
+     img {
+      margin-left: -10px;
+      width: 25px !important;
+      height: 25px !important;
+    }
+  }
+}
