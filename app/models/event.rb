@@ -3,8 +3,7 @@ require 'chronic_duration'
 
 class Event < ActiveRecord::Base
   attr_accessor :duration_raw, :starts_at_raw
-  before_validation :parse_chronic
-  attr_accessible :starts_at_raw, :duration_raw, :description, :total_players, :platform_id, :time_zone, :notify_host, :game_id
+  attr_accessible :starts_at_raw, :duration_raw, :description, :total_players, :platform_id, :notify_host, :game_id
 
   acts_as_paranoid
   acts_as_commentable
@@ -19,6 +18,8 @@ class Event < ActiveRecord::Base
 
   validates :game, presence: true
   validates :user, presence: true
+  validate :starts_at_raw_present_and_parseable?
+  validate :duration_raw_present_and_parseable?
   validates :starts_at, presence: true
   validates :duration, presence: true
   validates :total_players, presence: true, numericality: { only_integer: true, greater_than: 1, less_than: 19 }
@@ -98,12 +99,19 @@ class Event < ActiveRecord::Base
   end
 
 private
+  def starts_at_raw_present_and_parseable?
+    if event_time = Chronic.parse(starts_at_raw)
+      self.starts_at = event_time
+    else
+      errors.add :starts_at_raw, 'is not a valid date/time'
+    end
+  end
 
-  def parse_chronic
-    return false if starts_at_raw.blank? || duration_raw.blank?
-    Chronic.time_class = Time.zone
-    event_time = Chronic.parse starts_at_raw
-    self.starts_at = event_time.utc
-    self.duration = ChronicDuration.parse duration_raw
+  def duration_raw_present_and_parseable?
+    if event_duration = Chronic.parse(duration_raw)
+      self.duration = event_duration
+    else
+      errors.add :duration_raw, 'is not a valid duration'
+    end
   end
 end
