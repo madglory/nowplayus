@@ -100,16 +100,16 @@ class Event < ActiveRecord::Base
 
 private
   def starts_at_raw_present_and_parseable?
-    if !starts_at_raw.nil? && event_time = Chronic.parse(starts_at_raw)
-      self.starts_at = event_time
+    if event_time = Chronic.parse(starts_at_raw)
+      self.starts_at = event_time.utc
     else
       errors.add :starts_at_raw, 'is not a valid date/time'
     end
   end
 
   def duration_raw_present_and_parseable?
-    if !duration_raw.nil? && event_duration = ChronicDuration.parse(duration_raw)
-      self.duration = event_duration
+    if event_duration = ChronicDuration.parse(duration_raw)
+      self.duration = event_duration.utc
     else
       errors.add :duration_raw, 'is not a valid duration'
     end
