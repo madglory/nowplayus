@@ -109,7 +109,7 @@ private
 
   def duration_raw_present_and_parseable?
     if event_duration = ChronicDuration.parse(duration_raw)
-      self.duration = event_duration.utc
+      self.duration = event_duration
     else
       errors.add :duration_raw, 'is not a valid duration'
     end
