@@ -100,6 +100,7 @@ class Event < ActiveRecord::Base
 
 private
   def starts_at_raw_present_and_parseable?
+    Chronic.time_class = Time.zone
     if event_time = Chronic.parse(starts_at_raw)
       self.starts_at = event_time.utc
     else
