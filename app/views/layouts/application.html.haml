@@ -1,39 +1,34 @@
 !!!
-%html{lang: 'en'}
+%html{ lang:'en' }
   %head
-    %title= @title.nil? ? "Now Play Us" : @title
-
+    %title= @title.nil? ? "Now Play Us" : "Now Play Us - #{@title}"
     = render partial: 'shared/meta'
-
     = stylesheet_link_tag "application", 'http://fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900'
-    = javascript_include_tag "application"
+    = javascript_include_tag "vendor/custom.modernizr"
     = csrf_meta_tags
-
-    /[if lt IE 9]
-      %script(src="http://html5shiv.googlecode.com/svn/trunk/html5.js")
-    /[if lt IE 8]
 
     = render partial: 'shared/favicons'
   %body
-
-    %header
-      = render partial: 'shared/navigation'
-
-    #main.wrapper{ rel: 'main' }
+    = render partial: 'shared/navigation'
+    %section#main
       = render partial: 'shared/flash_messages'
       = yield
-
-    %footer
-      .wrapper.grid-container
-        %p.grid-50
-          &copy;
-          = Date.current.year
-          NowPlay.us
-        %p.grid-50.about
-          An experimental service from
-          = link_to 'MadGlory Interactive', 'http://madgloryint.com'
-          %br
-          %small
+      #push
+    %footer#footer
+      .row
+        .large-12.columns
+          %p
+            &copy;
+            = Date.current.year
+            Now Play Us. Follow us on 
+            = link_to content_tag('strong','Twitter'), 'https://twitter.com/nowplayus'
+            &amp; like us on 
+            = link_to content_tag('strong','Facebook'), 'https://www.facebook.com/NowPlayUs'
+          %p
+            An experimental service from
+            = link_to content_tag('strong','MadGlory Interactive'), 'http://madgloryint.com'
+          %p
             Game information provided by 
             = link_to 'Giant Bomb', 'http://www.giantbomb.com', target: '_blank'
-      = render partial: "shared/analytics"
+    = render partial: "shared/analytics"
+    = javascript_include_tag "application"  

@@ -1,4 +1,4 @@
-= unsemantic_form_for @event do |f|
+= simple_form_for @event do |f|
   = f.input :game_id, as: :hidden, class: 'bigdrop'  
   = f.input :platform_id, collection: Platform.select('id,name').all, include_blank: true
   = f.input :starts_at_raw, label: 'Start Time', placeholder: 'Eg: Tonight 8pm', required: true

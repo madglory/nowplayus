@@ -1,5 +1,5 @@
-=link_to 'Tweet it!', (logged_in? ? "#tweet-#{event.id}" : '/auth/twitter'), class: 'modal-link promote hide-on-mobile'
-.modal{ id: "tweet-#{event.id}" }
-  .modal-inner
-    %h3 Tweet it!
-    = render partial: 'tweets/form', locals: { tweet: EventTweet.new(user: current_user, event: event), event: event}
+=link_to 'Tweet it!', (logged_in? ? '#' : '/auth/twitter'), class: 'promote', data: { reveal_id: "tweet-#{event.id}"}
+.reveal-modal.large{ id: "tweet-#{event.id}" }
+  %h3 Tweet it!
+  <a class="close-reveal-modal">&#215;</a>
+  = render partial: 'tweets/form', locals: { tweet: EventTweet.new(user: current_user, event: event), event: event}

@@ -1,8 +1,6 @@
 %article.event{ class: (current_user == event.host ? 'mine' : 'theirs')}
-  .grid-70.mobile-grid-85
-    .schedule.grid-10.mobile-grid-25= render partial: 'events/schedule', locals: { event: event }
-    .description.grid-90.mobile-grid-75= render partial: 'events/description', locals: { event: event }
-  .players.grid-30.mobile-grid-15
-    .host.grid-33.mobile-grid-100= link_to image_tag(event.host_avatar_url), user_path(event.host)
-    .total_players.grid-33.mobile-grid-33.hide-on-mobile= "#{event.player_count}/#{event.total_players}"
-    .grid-33.mobile-grid-33= render partial: 'events/tweet', locals: { event: event }
+  .large-1.small-2.columns.schedule= render partial: 'events/schedule', locals: { event: event }
+  .small-8.columns.description= render partial: 'events/description', locals: { event: event }
+  .large-1.small-2.columns.host= link_to image_tag(event.host_avatar_url), user_path(event.host)
+  .small-1.columns.total_players= "#{event.player_count}/#{event.total_players}"
+  = render partial: 'events/tweet', locals: { event: event }

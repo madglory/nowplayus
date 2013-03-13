@@ -1,15 +1,15 @@
-%section.events.grid-container
+%section.events
   = render @event
-  .event-actions.grid-10.mobile-grid-100
+  .event-actions
     = link_to 'Events', @event.host, class: 'button'
     - if @event.host == current_user
       = link_to "Cancel Event", @event, confirm: "Are you sure?", method: :delete, class: 'button button-danger mobile-grid-100'
     - else
       = render partial: 'events/participate', locals: { event: @event } unless @event.past?
-    =link_to 'Tweet it!', (logged_in? ? "#tweet-#{@event.id}" : '/auth/twitter'), class: 'button modal-link hide-on-desktop'
+    = render partial: 'events/tweet', locals: { event: @event }
 
-  .event-details.grid-70.mobile-grid-100{ class: @event_owner}
-    %h2.grid-100
+  .event-details{ class: @event_owner}
+    %h2
       %span.with w/
       = link_to @event.host_name, user_path(@event.host_name)
 
@@ -17,7 +17,7 @@
 
 
     %section
-      .grid-50.roster
+      .roster
         %h3 Joining
         %ul.players
           - @event.team_players.each do |player|
@@ -26,7 +26,7 @@
                 = link_to image_tag(player.avatar_url), user_path(player), title: player.username
               .name
                 = link_to player.platform_username(@event.platform), user_path(player), title: @event.platform_name
-      .grid-50.roster
+      .roster
         %h3 Pending
 
         - if @event.bench_players.present?
@@ -42,13 +42,12 @@
           %p Bench is empty
 
 
-%section.comments.grid-container
-  .push-10.grid-70.mobile-grid-100
-    %h2 Comments
-    = render partial: 'comments/list', locals: { comments: @comments }
-    = render partial: 'comments/form', locals: { commentable: @event } if logged_in?
-    = render partial: 'shared/login', locals: { message: 'You must be logged in to comment.' } unless logged_in?
-    - if @notification_subscription.present?
-      %p
-        = link_to 'Unsubscribe', notification_subscription_path(@notification_subscription), method: :delete, confirm: 'Are you sure?'
-        from notifications about this event.
+%section.comments
+  %h2 Comments
+  = render partial: 'comments/list', locals: { comments: @comments }
+  = render partial: 'comments/form', locals: { commentable: @event } if logged_in?
+  = render partial: 'shared/login', locals: { message: 'You must be logged in to comment.' } unless logged_in?
+  - if @notification_subscription.present?
+    %p
+      = link_to 'Unsubscribe', notification_subscription_path(@notification_subscription), method: :delete, confirm: 'Are you sure?'
+      from notifications about this event.

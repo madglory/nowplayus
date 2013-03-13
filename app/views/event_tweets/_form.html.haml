@@ -1,4 +1,4 @@
-= unsemantic_form_for [@event, @event_tweet] do |f|
+= simple_form_for [@event, @event_tweet] do |f|
   = f.input :status, as: :text, :label => false
   = f.button :submit, 'Send Tweet!'
   = link_to 'I\'ll do this later', event_path(@event), class: 'button button-danger'

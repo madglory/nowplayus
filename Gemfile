@@ -16,10 +16,9 @@ gem 'omniauth-twitter'
 gem 'paranoia'
 gem 'party_foul'
 gem 'pg'
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 gem 'redcarpet'
 gem 'sanitize'
-gem 'sass-rails', '~> 3.2.3'
 gem 'sidekiq'
 gem 'simple_form'
 gem 'sorcery'
@@ -55,7 +54,8 @@ group :production do
 end
 
 group :assets do
-  gem 'bootstrap-sass'
+  gem 'sass-rails', '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'zurb-foundation', '~> 4.0.0'
 end

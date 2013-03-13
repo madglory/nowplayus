@@ -1,6 +1,6 @@
 .grid-container
   %h1 Complete your registration
-  = unsemantic_nested_form_for @user, url: {action: 'confirm_registration'} do |f|
+  = nested_form_for @user, url: {action: 'confirm_registration'} do |f|
     = f.input :email
     = f.input :send_newsletter, label: 'Let us send occasional updates. No spam!', input_html: { checked: true }
     = f.input :time_zone, priority: @time_zones, include_blank: true, hint: 'By default, Now Play Us displays events in Eastern Time, but you can change that here.'

@@ -1,16 +1,22 @@
-%nav.wrapper.grid-container
-  %h1 Now Play Us
-  = link_to image_tag("now-play-us-logo.png"), root_url, id: 'logo', class: 'grid-15 mobile-grid-100'
-  %ul#main-menu.grid-45.mobile-grid-100
-    %li= link_to "Blog", "http://blog.nowplay.us"
-    %li= link_to "Events", events_path
-    - if current_user
-      %li= link_to "Add Event", new_event_path
-  %ul#user-menu.grid-40.mobile-grid-100
-    - if current_user
-      %li= link_to image_tag(current_user.avatar_url, class: "avatar") + " My Profile",   user_path(current_user)
-      %li= link_to "Settings", edit_user_path(current_user)
-      %li= link_to "Logout", :logout, class: 'navbar-link'
-    - else
-      %li= link_to 'Login with Twitter', '/auth/twitter', class: 'navbar-link'
-      -#li= link_to 'Login with Facebook', '/auth/facebook', class: 'navbar-link'
+.contain-to-grid
+  %nav.top-bar
+    %ul.title-area
+      %li.name
+        %h1
+          = link_to image_tag("now-play-us-logo.png", alt: 'Now Play Us'), root_url
+      %li.toggle-topbar.menu-icon
+        =link_to content_tag(:span, 'Menu'), '#'
+    %section.top-bar-section
+      %ul.right
+        - if logged_in?
+          %li
+            = link_to image_tag(current_user.avatar_url, class: 'avatar') + " Profile", user_path(current_user)
+          %li= link_to "Settings", edit_user_path(current_user)
+          %li= link_to "Logout", logout_path
+        - else
+          %li= link_to 'Login with Twitter', '/auth/twitter'
+      %ul.left
+        %li= link_to "Blog", "http://blog.nowplay.us"
+        - if logged_in?
+          %li= link_to "Events", events_path
+          %li= link_to "Add Event", new_event_path

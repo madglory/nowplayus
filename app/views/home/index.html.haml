@@ -1,21 +1,23 @@
-.grid-container
-  .grid-33
-    %h3.aligncenter Organize
-
-    %p.aligncenter
-      Schedule a time to play your favorite multiplayer games today or in advance
-
-  .grid-33
-    %h3.aligncenter Promote
-
-    %p.aligncenter
-      Use your existing social network to promote your game and find other players
-
-  .grid-33
-    %h3.aligncenter Play
-
-    %p.aligncenter
-      Jump  online with your team and enjoy a great game!
-
-  #intro
+#banner
+  .row
+    .large-12.columns
+      %h2
+        Schedule multiplayer games
+        %br
+        any platform, any game, any time
+  #callout.row
+    .small-8.small-centered.columns
+      = link_to 'Play Now', '/auth/twitter', class: 'button round twitter'
+.row
+  .large-4.columns
+    %h3 Organize
+    %p Schedule a time to play your favorite multiplayer games today or in advance
+  .large-4.columns
+    %h3 Promote
+    %p Use your existing social network to promote your game and find other players
+  .large-4.columns
+    %h3 Play
+    %p Jump online with your team and enjoy a great game!
+.row
+  .large-12.columns
     = image_tag("preview-slides.png")
