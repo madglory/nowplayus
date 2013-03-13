@@ -18,8 +18,8 @@ class Event < ActiveRecord::Base
 
   validates :game, presence: true
   validates :user, presence: true
-  validate :starts_at_raw_present_and_parseable?
-  validate :duration_raw_present_and_parseable?
+  validate :starts_at_raw_present_and_parseable?, on: :create
+  validate :duration_raw_present_and_parseable?, on: :create
   validates :starts_at, presence: true
   validates :duration, presence: true
   validates :total_players, presence: true, numericality: { only_integer: true, greater_than: 1, less_than: 19 }
