@@ -3,8 +3,8 @@
   = link_to image_tag("now-play-us-logo.png"), root_url, id: 'logo', class: 'grid-15 mobile-grid-100'
   %ul#main-menu.grid-45.mobile-grid-100
     %li= link_to "Blog", "http://blog.nowplay.us"
+    %li= link_to "Events", events_path
     - if current_user
-      %li= link_to "Events", events_path
       %li= link_to "Add Event", new_event_path
   %ul#user-menu.grid-40.mobile-grid-100
     - if current_user
