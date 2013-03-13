@@ -55,7 +55,7 @@ g2 = Game.new name: 'Foo\'s Mission'
 g2.save
 
 # Make some Events
-e1 = Event.new game_id: Game.first.id, platform_id: p1.id, starts_at_raw: 'Thursday 5pm', duration_raw: '2hr', total_players: 3
+e1 = Event.new game_id: Game.first.id, platform_id: p1.id, starts_at_raw: 'Thursday 5pm', duration_raw: '2 hours', total_players: 3
 e1.user = u1
 e1.game = g1
 e1.save!
