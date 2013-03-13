@@ -13,7 +13,7 @@
       %span.with w/
       = link_to @event.host_name, user_path(@event.host_name)
 
-    = content_tag :p, @event.description, class: 'description inline' if @event.description.present?
+    = markdown_format(@event.description) if @event.description.present?
 
 
     %section
