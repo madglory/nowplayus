@@ -196,7 +196,8 @@ CREATE TABLE games (
     tiny_url character varying(255),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    slug character varying(255)
+    slug character varying(255),
+    hashtag character varying(255)
 );
 
 
@@ -787,3 +788,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130306202236');
 INSERT INTO schema_migrations (version) VALUES ('20130306215919');
 
 INSERT INTO schema_migrations (version) VALUES ('20130309194317');
+
+INSERT INTO schema_migrations (version) VALUES ('20130313230623');

@@ -20,10 +20,10 @@ private
   end
 
   def default_player_status
-    "Join me, @#{event.host_name} and #{event.total_players - 1} others for a game of #{event.title} via @nowplayus http://nowplay.us/events/#{event.id} ##{event.platform_name.gsub(/\s/,'')}"
+    "Join me, @#{event.host_name} and others for a game of #{event.title} via @nowplayus http://nowplay.us/events/#{event.id} ##{event.platform_name.gsub(/\s/,'')} #{event.game.hashtag}"
   end
 
   def default_host_status
-    "Join me for a game of #{event.title} via @nowplayus http://nowplay.us/events/#{event.id} ##{event.platform_name.gsub(/\s/,'')}"
+    "Join me for a game of #{event.title} via @nowplayus http://nowplay.us/events/#{event.id} ##{event.platform_name.gsub(/\s/,'')} #{event.game.hashtag}"
   end
 end
