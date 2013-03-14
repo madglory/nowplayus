@@ -6,7 +6,7 @@ describe User do
   it { should have_many(:participants) }
   it { should have_many(:events).through(:participants) }
   it { should have_many(:hosted_events).class_name('Event') }
-  it { should belong_to(:clan) }
+  it { should have_many(:clans).through(:memberships) }
   it { should validate_presence_of(:username) }
   it { should validate_uniqueness_of(:username) }
   it { should ensure_length_of(:password).is_at_least(3).with_message(/must be at least \d characters long/) }

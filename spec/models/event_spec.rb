@@ -7,7 +7,7 @@ describe Event do
   let(:game) { create :game }
 
   subject do
-    Event.new(
+    e = Event.new(
       platform_id: platform.id,
       game_id: game.id,
       total_players: 5,

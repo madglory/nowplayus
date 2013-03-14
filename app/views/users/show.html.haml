@@ -1,24 +1,25 @@
-#profile.grid-container
-  %section#user.grid-50
-    .avatar= image_tag(@user.avatar_url)
-    .user-details
-      %h1= @user.username
-      %ul
-        - @user.authentications.each do |auth|
-          %li
-            %p= render partial: "authentications/#{auth.provider}", locals: { username: auth.nickname }
-      .user-bio
-        = markdown_format(@user.bio) unless @user.bio.nil?
+.row
+  #profile
+    %section#user.columns.large-6
+      .avatar= image_tag(@user.avatar_url)
+      .user-details
+        %h1= @user.username
+        %ul
+          - @user.authentications.each do |auth|
+            %li
+              %p= render partial: "authentications/#{auth.provider}", locals: { username: auth.nickname }
+        .user-bio
+          = markdown_format(@user.bio) unless @user.bio.nil?
 
-  %section#platforms.grid-50
-    %h2 Platform Profiles
+    %section#platforms.columns.large-6
+      %h2 Platform Profiles
 
-    - @platform_accounts.each do |account|
-      %figure.grid-25.mobile-grid-50
-        = image_tag("#{account.platform.name.downcase}-on.png")
-        %figcaption #{account.username}
-
-  %section#stats.grid-50
+      - @platform_accounts.each do |account|
+        %figure.grid-25.mobile-grid-50
+          = image_tag("#{account.platform.name.downcase}-on.png")
+          %figcaption #{account.username}
+.row
+  %section#stats.columns.large-6
     %h2 Stats
 
     %ul
@@ -35,7 +36,7 @@
         =@user.comments.count
         %span Comments
 
-  %section#games.grid-50
+  %section#games.columns.large-6
     - if @past_events.length > 0
       %h2 Recent Games
 
@@ -51,15 +52,15 @@
 
                 %figcaption
                   =event.game.name.truncate(33) unless event.game.nil?
+.row
+  %section.events-header.columns.large-12
+    - if @future_events.length > 0
+      %h2.grid-50
+        Upcoming Events
+      %h2.grid-50.alignright
+        Subscribe via
+        = link_to 'Ical', user_url(@user, :protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
 
-%section.events-header.grid-container
-  - if @future_events.length > 0
-    %h2.grid-50
-      Upcoming Events
-    %h2.grid-50.alignright
-      Subscribe via
-      = link_to 'Ical', user_url(@user, :protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
-
-  %section.events.grid-100
-    - @future_events.each do |event|
-      = render event
+    %section.events.grid-100
+      - @future_events.each do |event|
+        = render event
