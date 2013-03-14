@@ -18,5 +18,6 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find params[:id]
+    @upcoming_events = @game.events.future
   end
 end
