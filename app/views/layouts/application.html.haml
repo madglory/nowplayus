@@ -4,8 +4,12 @@
     %title= @title.nil? ? "Now Play Us" : "Now Play Us - #{@title}"
     = render partial: 'shared/meta'
     = stylesheet_link_tag "application", 'http://fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900'
-    = javascript_include_tag "vendor/custom.modernizr"
+    = javascript_include_tag "vendor/custom.modernizr", "application"
     = csrf_meta_tags
+
+    /[if lt IE 9]
+      %script(src="http://html5shiv.googlecode.com/svn/trunk/html5.js")
+    /[if lt IE 8]
 
     = render partial: 'shared/favicons'
   %body
@@ -16,19 +20,17 @@
       #push
     %footer#footer
       .row
-        .large-12.columns
+        .large-4.columns
           %p
             &copy;
             = Date.current.year
-            Now Play Us. Follow us on 
-            = link_to content_tag('strong','Twitter'), 'https://twitter.com/nowplayus'
-            &amp; like us on 
-            = link_to content_tag('strong','Facebook'), 'https://www.facebook.com/NowPlayUs'
+            NowPlay.us
+        .large-8.columns.copyright
           %p
             An experimental service from
             = link_to content_tag('strong','MadGlory Interactive'), 'http://madgloryint.com'
           %p
-            Game information provided by 
+            Game information provided by
             = link_to 'Giant Bomb', 'http://www.giantbomb.com', target: '_blank'
     = render partial: "shared/analytics"
-    = javascript_include_tag "application"  
+    = javascript_include_tag "application"

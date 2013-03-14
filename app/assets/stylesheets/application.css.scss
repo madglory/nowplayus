@@ -21,9 +21,11 @@ nav {
     }
   }
 }
+
 #main {
   border-bottom: 2px solid #dfdfdf;
 }
+
 #banner{
   background: url("header-bg.jpg") repeat-x 0px 0px;
   height: 292px;
@@ -41,17 +43,21 @@ nav {
   }
 }
 
-#push, #footer {
+#push {
   height: 60px;
 }
+
 #footer {
+  padding-top: 2em;
+  height: 4em;
   p {
     font-size: 0.8em;
     padding: 0;
     margin: 0;
-    a {
-      color: #333;
-    }
+  }
+
+  .copyright {
+    text-align: right;
   }
 }
 

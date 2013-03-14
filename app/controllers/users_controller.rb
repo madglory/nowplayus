@@ -81,7 +81,7 @@ class UsersController < ApplicationController
   def complete_registration
     @user = current_user
     @platform_accounts = @user.platform_accounts.includes :platform
-    render layout: 'minimal'
+    # render layout: 'minimal'
   end
 
   def confirm_registration
