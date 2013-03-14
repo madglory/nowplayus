@@ -6,4 +6,12 @@ class Game < ActiveRecord::Base
 
   has_many :events
 
+  def hashtag
+    if self.read_attribute(:hashtag).nil?
+      "##{self.slug.gsub(/-/,'')}"
+    else
+      self.read_attribute(:hashtag)
+    end
+  end
+
 end

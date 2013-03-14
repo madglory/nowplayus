@@ -65,6 +65,37 @@ ALTER SEQUENCE authentications_id_seq OWNED BY authentications.id;
 
 
 --
+-- Name: clans; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE clans (
+    id integer NOT NULL,
+    name character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: clans_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE clans_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: clans_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE clans_id_seq OWNED BY clans.id;
+
+
+--
 -- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -150,8 +181,8 @@ CREATE TABLE events (
     title character varying(255),
     deleted_at timestamp without time zone,
     platform_id integer,
-    notify_host boolean,
-    game_id integer
+    game_id integer,
+    notify_host boolean
 );
 
 
@@ -217,6 +248,38 @@ CREATE SEQUENCE games_id_seq
 --
 
 ALTER SEQUENCE games_id_seq OWNED BY games.id;
+
+
+--
+-- Name: memberships; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE memberships (
+    id integer NOT NULL,
+    user_id integer,
+    clan_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: memberships_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE memberships_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: memberships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE memberships_id_seq OWNED BY memberships.id;
 
 
 --
@@ -413,7 +476,8 @@ CREATE TABLE users (
     preferred_notification_method character varying(255),
     notify_for_new_participants boolean DEFAULT false,
     notify_for_new_comments boolean DEFAULT false,
-    notify_before_events_start boolean DEFAULT false
+    notify_before_events_start boolean DEFAULT false,
+    clan_id integer
 );
 
 
@@ -447,6 +511,13 @@ ALTER TABLE ONLY authentications ALTER COLUMN id SET DEFAULT nextval('authentica
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY clans ALTER COLUMN id SET DEFAULT nextval('clans_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
 
 
@@ -469,6 +540,13 @@ ALTER TABLE ONLY events ALTER COLUMN id SET DEFAULT nextval('events_id_seq'::reg
 --
 
 ALTER TABLE ONLY games ALTER COLUMN id SET DEFAULT nextval('games_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY memberships ALTER COLUMN id SET DEFAULT nextval('memberships_id_seq'::regclass);
 
 
 --
@@ -522,6 +600,14 @@ ALTER TABLE ONLY authentications
 
 
 --
+-- Name: clans_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY clans
+    ADD CONSTRAINT clans_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -551,6 +637,14 @@ ALTER TABLE ONLY events
 
 ALTER TABLE ONLY games
     ADD CONSTRAINT games_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY memberships
+    ADD CONSTRAINT memberships_pkey PRIMARY KEY (id);
 
 
 --
@@ -655,6 +749,27 @@ CREATE INDEX index_games_on_name ON games USING btree (name);
 --
 
 CREATE UNIQUE INDEX index_games_on_slug ON games USING btree (slug);
+
+
+--
+-- Name: index_memberships_on_clan_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_memberships_on_clan_id ON memberships USING btree (clan_id);
+
+
+--
+-- Name: index_memberships_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_memberships_on_user_id ON memberships USING btree (user_id);
+
+
+--
+-- Name: index_memberships_on_user_id_and_clan_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_memberships_on_user_id_and_clan_id ON memberships USING btree (user_id, clan_id);
 
 
 --
@@ -787,3 +902,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130306202236');
 INSERT INTO schema_migrations (version) VALUES ('20130306215919');
 
 INSERT INTO schema_migrations (version) VALUES ('20130309194317');
+
+INSERT INTO schema_migrations (version) VALUES ('20130311014240');
+
+INSERT INTO schema_migrations (version) VALUES ('20130313231956');

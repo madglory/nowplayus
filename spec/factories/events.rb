@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
   factory :event do |f|
-    f.sequence(:title) { |n| "GAME #{n}" }
+    # f.sequence(:title) { |n| "GAME #{n}" }
     f.association :user, factory: :user
     f.association :game, factory: :game
     f.association :platform, factory: :platform
