@@ -4,6 +4,8 @@ Nowplayus::Application.routes.draw do
     resources :platform_accounts, only: [:new, :create, :destroy]
   end
 
+  resources :clans
+
   resources :games, only: [:show, :index]
   resources :notification_subscriptions, only: [:destroy]
   resources :events do

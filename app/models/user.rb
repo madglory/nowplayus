@@ -18,8 +18,11 @@ class User < ActiveRecord::Base
   has_many :participants
   has_many :platform_accounts, dependent: :destroy
   has_many :twitter_notifications
+  has_many :memberships
+  has_many :clans, through: :memberships
 
   accepts_nested_attributes_for :authentications
+  accepts_nested_attributes_for :clans
   accepts_nested_attributes_for :platform_accounts, reject_if: :all_blank, allow_destroy: true
 
   validates :username, presence: true, uniqueness: true

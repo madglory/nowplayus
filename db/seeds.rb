@@ -12,15 +12,21 @@ Participant.all.each { |p| p.destroy }
 p1 = Platform.create! name: 'XBOX', giantbomb_id: 20
 p2 = Platform.create! name: 'PS3', giantbomb_id: 88
 
+# Make some Platforms
+c1 = Clan.create! name: 'El1T3'
+c2 = Clan.create! name: 'FOO'
+
 # Make some Users
 u1 = User.new username: 'claptrap'
 u1.time_zone = 'Tijuana'
 u1.avatar_url = 'http://www.achievementstats.com/images/icons/unlocked/6173.jpg'
+u1.clan = c1
 u1.save!
 
 u2 = User.new username: 'master_chief'
 u2.time_zone = 'EST'
 u2.avatar_url = 'http://images2.wikia.nocookie.net/__cb20081207013819/halo/images/8/85/1228613897_Master_chief_halo.gif'
+u2.clan = c2
 u2.save!
 
 u3 = User.new username: 'kratos'

@@ -11,8 +11,13 @@
       = paf.input :username, label: false, placeholder: 'username'
       = paf.link_to_remove 'Remove Platform Account'
     = f.link_to_add 'Add a Platform Account', :platform_accounts
-  %section#email.grid-50.clearfix
-    = f.input :email, label: false, placeholder: 'your@email.com'
+  %section#email.grid-50
+    = f.input :email, label: false, placeholder: 'your@email.com', label: 'Email'
+  %section#clan.grid-50
+    = f.fields_for :clans do |clan|
+      = clan.input :name, label: 'Choose a Clan Tag (optional)'
+      = clan.link_to_remove 'Remove Platform Account'
+    = f.link_to_add('Add a Clan', :clans)
   %section#time_zone.grid-50
     = f.input :time_zone, priority: @time_zones, label: false, hint: 'By default, Now Play Us displays events in Eastern Time, but you can change that here.'
   %section#profile_links.grid-50

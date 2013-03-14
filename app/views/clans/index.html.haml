@@ -1,0 +1,7 @@
+%section.clans-header.grid-container
+  %h2.grid-50
+    All clans
+
+  %section.events.grid-100
+    - @clans.each do |clan|
+      = render clan
