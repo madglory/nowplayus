@@ -2,16 +2,17 @@
   .large-4.columns
     %h4
       All Upcoming Games
-  .large-4.columns.last.align-right
-    %p
+  .large-4.columns.offset-4
+    %p.text-right
       Subscribe via
       = link_to 'Ical', events_url(:protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
 
-%section.events.row
+%section.events
   - @events.each do |event|
     = render event
   - if @events.blank?
-    .large-12.columns
-      %p It looks like you don't have any scheduled game events.
-      #callout
-        = link_to 'Create an Event', new_event_path, class: 'callout-button'
+    .row
+      .large-12.columns
+        %p It looks like you don't have any scheduled game events.
+        #callout
+          = link_to 'Create an Event', new_event_path, class: 'callout-button'

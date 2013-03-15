@@ -1,3 +1,5 @@
-= simple_form_for [commentable, Comment.new] do |f|
-  =f.input :comment
-  =f.submit 'Comment', class: 'mobile-grid-100'
+.row
+  .large-6.columns
+    = simple_form_for [commentable, Comment.new] do |f|
+      =f.input :comment
+      =f.submit 'Comment', class: 'button small radius expand'

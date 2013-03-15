@@ -1,15 +1,16 @@
-.grid-container
-  %h1 Complete your registration
-  = nested_form_for @user, url: {action: 'confirm_registration'} do |f|
-    = f.input :email
-    = f.input :send_newsletter, label: 'Let us send occasional updates. No spam!', input_html: { checked: true }
-    = f.input :time_zone, priority: @time_zones, include_blank: true, hint: 'By default, Now Play Us displays events in Eastern Time, but you can change that here.'
-    %fieldset.platform-accounts
-      %legend Platform Accounts
-      %p Add a platform account to display your username to others when playing a game on different networks (ie. XBOX, PSN, EA, etc.)
-      = f.fields_for :platform_accounts do |paf|
-        = paf.collection_select :platform_id, @platforms, :id, :name, label: 'Platform'
-        = paf.input :username
-        = paf.link_to_remove 'Remove Platform Account'
-      = f.link_to_add 'Add a Platform Account', :platform_accounts
-    = f.button :submit, 'Now Play!'
+.row
+  .large-12.columns
+    %h1 Complete your registration
+    = simple_nested_form_for @user, url: {action: 'confirm_registration'} do |f|
+      = f.input :email
+      = f.input :send_newsletter, label: 'Let us send occasional updates. No spam!', input_html: { checked: true }
+      = f.input :time_zone, priority: @time_zones, include_blank: true, hint: 'By default, Now Play Us displays events in Eastern Time, but you can change that here.'
+      %fieldset.platform-accounts
+        %legend Platform Accounts
+        %p Add a platform account to display your username to others when playing a game on different networks (ie. XBOX, PSN, EA, etc.)
+        = f.fields_for :platform_accounts do |paf|
+          = paf.collection_select :platform_id, @platforms, :id, :name, label: 'Platform'
+          = paf.input :username
+          = paf.link_to_remove 'Remove Platform Account'
+        = f.link_to_add 'Add a Platform Account', :platform_accounts
+      = f.button :submit, 'Now Play!'

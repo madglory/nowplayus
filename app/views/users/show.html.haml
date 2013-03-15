@@ -1,66 +1,71 @@
-.row
-  #profile
-    %section#user.columns.large-6
-      .avatar= image_tag(@user.avatar_url)
-      .user-details
-        %h1= @user.username
-        %ul
-          - @user.authentications.each do |auth|
-            %li
-              %p= render partial: "authentications/#{auth.provider}", locals: { username: auth.nickname }
-        .user-bio
+#profile.row
+  %section.columns.large-12
+    .panel.radius.callout#user
+      .row
+        .avatar.small-4.columns= image_tag(@user.avatar_url)
+        .user-details.small-8.columns
+          %h1= @user.username
+          %ul
+            - @user.authentications.each do |auth|
+              %li
+                %p= render partial: "authentications/#{auth.provider}", locals: { username: auth.nickname }
+      .row
+        .user-bio.large-12.columns
           = markdown_format(@user.bio) unless @user.bio.nil?
-
-    %section#platforms.columns.large-6
+.row
+  %section#platforms.columns.large-6
+    .panel.radius
       %h2 Platform Profiles
-
-      - @platform_accounts.each do |account|
-        %figure.grid-25.mobile-grid-50
-          = image_tag("#{account.platform.name.downcase}-on.png")
-          %figcaption #{account.username}
-.row
+      %ul.small-block-grid-4
+        - @platform_accounts.each do |account|
+          %li
+            %figure
+              = image_tag("#{account.platform.name.downcase}-on.png")
+              %figcaption.text-center #{account.username}
   %section#stats.columns.large-6
-    %h2 Stats
+    .panel.radius
+      %h2 Stats
 
-    %ul
-      %li.grid-25.mobile-grid-25
-        =@user.hosted_events.count
-        %span Hosted
-      %li.grid-25.mobile-grid-25
-        =@user.participants.count
-        %span Joined
-      %li.grid-25.mobile-grid-25
-        =@user.event_tweets.count
-        %span Tweets
-      %li.grid-25.mobile-grid-25
-        =@user.comments.count
-        %span Comments
+      %ul.small-block-grid-4
+        %li
+          %h2.text-center=@user.hosted_events.count
+          %h5.text-center Hosted
+        %li
+          %h2.text-center=@user.participants.count
+          %h5.text-center Joined
+        %li
+          %h2.text-center=@user.event_tweets.count
+          %h5.text-center Tweets
+        %li
+          %h2.text-center=@user.comments.count
+          %h5.text-center Comments
+- if @past_events.length > 0
+  .row
+    %section#games.columns.large-12
+      .panel.radius
+        %h3 Recent Games
+        - @past_events.each do |event|
+          - if !event.game.nil?
+            %figure
+              - if event.game
+                =link_to game_path(event.game) do
+                  - if event.game.icon_url
+                    %img.game{src: event.game.icon_url, title: event.game.name}
+                  - else
+                    %img{src: "/assets/lost-img.png", title: event.game.name}
 
-  %section#games.columns.large-6
-    - if @past_events.length > 0
-      %h2 Recent Games
-
-      - @past_events.each do |event|
-        - if !event.game.nil?
-          %figure.grid-25.mobile-grid-50
-            - if event.game
-              =link_to game_path(event.game) do
-                - if event.game.icon_url
-                  %img.game{src: event.game.icon_url, title: event.game.name}
-                - else
-                  %img{src: "/assets/lost-img.png", title: event.game.name}
-
-                %figcaption
-                  =event.game.name.truncate(33) unless event.game.nil?
-.row
-  %section.events-header.columns.large-12
-    - if @future_events.length > 0
-      %h2.grid-50
+                  %figcaption.text-center
+                    =event.game.name.truncate(33) unless event.game.nil?
+- if @future_events.length > 0
+  .row
+    %section.events-header.columns.large-6
+      %h3
         Upcoming Events
-      %h2.grid-50.alignright
+    .large-6.columns.text-right
+      %h3
         Subscribe via
         = link_to 'Ical', user_url(@user, :protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
 
-    %section.events.grid-100
-      - @future_events.each do |event|
-        = render event
+  %section.events
+    - @future_events.each do |event|
+      = render event

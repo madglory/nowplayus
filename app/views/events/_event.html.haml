@@ -1,7 +1,7 @@
-.row
-  %article.event{ class: (current_user == event.host ? 'mine' : 'theirs')}
-    .large-1.small-2.columns.schedule= render partial: 'events/schedule', locals: { event: event }
-    .small-8.columns.description= render partial: 'events/description', locals: { event: event }
-    .large-1.small-2.columns.host= link_to image_tag(event.host_avatar_url), user_path(event.host)
-    .small-1.columns.total_players= "#{event.player_count}/#{event.total_players}"
-    = render partial: 'events/tweet', locals: { event: event }
+%article.row.event{ class: (current_user == event.host ? 'mine' : 'theirs')}
+  .small-2.large-1.columns.schedule= render partial: 'events/schedule', locals: { event: event }
+  .small-8.columns.description= render partial: 'events/description', locals: { event: event }
+  .small-2.large-1.columns.host= link_to image_tag(event.host_avatar_url), user_path(event.host), class: 'avatar'
+  .small-hide.large-1.columns.total_players
+    %h2= "#{event.player_count}/#{event.total_players}"
+  .small-hide.large-1.columns.promote= render partial: 'events/tweet', locals: { event: event }

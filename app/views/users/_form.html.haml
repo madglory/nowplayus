@@ -7,46 +7,56 @@
         %h1
           Name:
           = @user.username
+  .row
+    #user.large-6.columns
+      .panel.radius
         = user_form.input :bio, label: false, placeholder: 'About you...'
-  %div.row
-    %div.large-6.columns
-      %h3 Platform Accounts
-      = user_form.fields_for :platform_accounts do |platform_account_form|
-        = platform_account_form.collection_select :platform_id, @platforms, :id, :name, label: false
-        = platform_account_form.input :username, label: false, placeholder: 'username'
-        = platform_account_form.link_to_remove 'Remove Platform Account'
-      = user_form.link_to_add 'Add a Platform Account', :platform_accounts
-    %div.large-6.columns
-      %h3 Clans
-      = user_form.fields_for :clans do |clan_form|
-        = clan_form.input :name, label: false, placeholder: 'MLG'
-        = clan_form.link_to_remove 'Remove Clan Account'
-      = user_form.link_to_add 'Add a Clan', :platform_accounts
-  %div.row
-    %div.large-6.columns
-      %h3 Email
-      = user_form.input :email, label: false, placeholder: 'your@email.com'
-    %div.large-6.columns
-      %h3 Time Zone
-      = user_form.input :time_zone, priority: @time_zones, label: false, hint: 'By default, Now Play Us displays events in Eastern Time, but you can change that here.'
-  %div.row
-    %div.large-6.columns
-      %h3 Social Networks
-      %ul
-        - @user.authentications.each do |auth|
-          %li{class: auth.provider}= render partial: "authentications/#{auth.provider}", locals: { username: auth.nickname }
-    %div.large-6.columns
-      %h3 Notifications
-      = user_form.input :send_newsletter, label: 'Let us send occasional updates. No spam!'
-      = user_form.input :preferred_notification_method, as: :select, collection: current_user.available_notification_methods, include_blank: false
-  %div.row
-    %div.large-6.columns
-      %h3 Notifications
-      %fieldset
-        %label= render partial: 'shared/twitter_follow'
-        %span.hint Make sure you're following @nowplayus to receive direct message notifications
-  %div.row
-    %div.large-12.columns
-      %fieldset.form-actions
-        = user_form.submit 'Submit', :class => 'button'
-        = link_to 'View Profile', @user, class: 'button button-info'
+    #platform_accounts.large-6.columns
+      .panel.radius
+        %h3 Platform Accounts
+        = user_form.fields_for :platform_accounts do |platform_account_form|
+          = platform_account_form.collection_select :platform_id, @platforms, :id, :name, label: false
+          = platform_account_form.input :username, label: false, placeholder: 'username'
+          = platform_account_form.link_to_remove 'Remove Platform Account'
+        = user_form.link_to_add 'Add a Platform Account', :platform_accounts
+  .row
+    #email.large-6.columns
+      .panel.radius
+        %h3 Email
+        = user_form.input :email, label: false, placeholder: 'your@email.com'
+    #time-zone.large-6.columns
+      .panel.radius
+        %h3 Time Zone
+        = user_form.input :time_zone, priority: @time_zones, label: false
+        %small By default, Now Play Us displays events in Eastern Time, but you can change that here.
+  .row
+    .large-6.columns
+      .panel.radius
+        %h3 Clans
+        = user_form.fields_for :clans do |clan_form|
+          = clan_form.input :name, label: false, placeholder: 'MLG'
+          = clan_form.link_to_remove 'Remove Clan Account'
+        = user_form.link_to_add 'Add a Clan', :clans
+  .row
+    #profile_links.large-6.columns
+      .panel.radius
+        %h3 Social Networks
+        %ul
+          - @user.authentications.each do |auth|
+            %li{class: auth.provider}= render partial: "authentications/#{auth.provider}", locals: { username: auth.nickname }
+    #notifications.large-6.columns
+      .panel.radius
+        %h3 Notifications
+        %p
+          = render partial: 'shared/twitter_follow'
+          %br
+          %small Make sure you're following @nowplayus to receive direct message notifications
+        .row
+          = user_form.input :send_newsletter, label: 'Let us send occasional updates. No spam!', label_class: 'small-11 columns', input_html: { class: 'small-1 columns' }
+        %br
+        = user_form.input :preferred_notification_method, label: 'Preferred Method', as: :select, collection: current_user.available_notification_methods, include_blank: false
+  .row
+    .large-4.columns
+      = user_form.submit 'Submit', class: 'button radius expand success'
+    .large-4.columns.offset-4
+      = link_to 'View Profile', @user, class: 'button radius expand small'

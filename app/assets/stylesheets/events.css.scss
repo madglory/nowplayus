@@ -1,0 +1,144 @@
+.events {
+  .event {
+    border-right: 1px solid #d5d5d5;
+    border-bottom: 1px solid #d5d5d5;
+    &:first-child {
+      border-top: 1px solid #d5d5d5;
+    }
+
+    &.theirs {
+      border-left: 7px solid #62e0bb;
+      &:after {
+        border-top: 10px solid transparent;
+        border-right: 10px solid #ededed;
+        border-bottom: 10px solid transparent;
+        position: relative;
+        content: "";
+        top: -42px;
+        left: -7px;
+      }
+    }
+    &.mine {
+      border-left: 7px solid #72bae4;
+      &:after {
+        border-top: 10px solid transparent;
+        border-left: 10px solid #72bae4;
+        border-bottom: 10px solid transparent;
+        position: relative;
+        content: "";
+        top: -42px;
+        left: -4px;
+      }
+    }
+  }
+  .schedule {
+    margin-top: .6em;
+    padding-left: 0;
+    text-align: center;
+    color: #000;
+
+    > h2 {
+      &.date {
+        margin: 0;
+        padding: 0;
+        line-height: 1.0em;
+        letter-spacing: -0.2ex;
+      }
+    }
+    > h4 {
+      &.day {
+        margin: 0;
+        padding: 0;
+        font-weight: 300;
+        text-transform: uppercase;
+        line-height: 0.6em;
+      }
+    }
+  }
+  .description {
+    margin-top: .6em;
+    border-left: 1px solid #d5d5d5;
+
+    &.inline {
+      border: none;
+    }
+
+    a {
+      display: block;
+      &:hover {
+        h2 {
+          color: #444;
+        }
+      }
+    }
+    .title {
+      list-style-type: none;
+    }
+    .game {
+      line-height: 1.2em;
+      margin: 0;
+      padding: 0;
+      color: #000;
+    }
+    .time {
+      font-weight: 100;
+      color: #252525;
+    }
+  }
+
+  .host {
+    margin-top: 1em;
+  }
+
+  .total_players {
+    h2 {
+      font-weight: 100;
+    }
+  }
+  .promote {
+    margin-top: 1em;
+    .button {
+      margin: 0 auto;
+      background: url("twitter-icon-lg.png") no-repeat;
+      text-indent: -9999px;
+      border:none;
+      box-shadow: none;
+    }
+    &:hover{
+      opacity: 0.6;
+    }
+  }
+}
+
+.event-details{
+  h2 {
+    span.with {
+      font-weight: 100;
+    }
+  }
+  .player {
+    h3 {
+      line-height: 0.8em;
+    }
+    a {
+      vertical-align: middle;
+    }
+  }
+  .button {
+    &.twitter{
+      text-indent: -20px;
+      background-image: url('twitter-button-icon.png');
+      background-repeat: no-repeat;
+      background-position: 50% 60%;
+      text-indent: -9999px;
+    }
+  }
+  .without-padding {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .half-padding {
+    padding-right: 0.46875em;
+    padding-left: 0.46875em;
+  }
+}

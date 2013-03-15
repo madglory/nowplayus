@@ -1,53 +1,38 @@
 %section.events
   = render @event
-  .event-actions
-    = link_to 'Events', @event.host, class: 'button'
-    - if @event.host == current_user
-      = link_to "Cancel Event", @event, confirm: "Are you sure?", method: :delete, class: 'button button-danger mobile-grid-100'
-    - else
-      = render partial: 'events/participate', locals: { event: @event } unless @event.past?
-    = render partial: 'events/tweet', locals: { event: @event }
+  .event-details.row{ class: @event_owner}
+    %nav.large-2.columns.half-padding
+      = link_to 'Events', @event.host, class: 'small radius button expand'
+      - if @event.host == current_user
+        = link_to "Cancel Event", @event, confirm: "Are you sure?", method: :delete, class: 'button small  radius expand'
+      - else
+        = render partial: 'participate', locals: { event: @event } unless @event.past?
+      = render partial: 'tweet', locals: { event: @event }
 
-  .event-details{ class: @event_owner}
-    %h2
-      %span.with w/
-      = link_to @event.host_name, user_path(@event.host_name)
+    .large-10.columns
+      %h2
+        %span.with w/
+        = link_to @event.host_name, user_path(@event.host_name)
 
-    = markdown_format(@event.description) if @event.description.present?
-
-
-    %section
-      .roster
-        %h3 Joining
-        %ul.players
-          - @event.team_players.each do |player|
-            %li.player
-              .avatar
-                = link_to image_tag(player.avatar_url), user_path(player), title: player.username
-              .name
-                = link_to player.platform_username(@event.platform), user_path(player), title: @event.platform_name
-      .roster
-        %h3 Pending
-
-        - if @event.bench_players.present?
-          %ul.players
-            - @event.bench_players.each do |player|
-              %li.player
-                .avatar
-                  = link_to image_tag(player.avatar_url), user_path(player), title: player.username
-                .name
-                  = link_to player.platform_username(@event.platform), user_path(player), title: @event.platform_name
-
-        - else
-          %p Bench is empty
+      = markdown_format(@event.description) if @event.description.present?
 
 
-%section.comments
-  %h2 Comments
-  = render partial: 'comments/list', locals: { comments: @comments }
-  = render partial: 'comments/form', locals: { commentable: @event } if logged_in?
-  = render partial: 'shared/login', locals: { message: 'You must be logged in to comment.' } unless logged_in?
-  - if @notification_subscription.present?
-    %p
-      = link_to 'Unsubscribe', notification_subscription_path(@notification_subscription), method: :delete, confirm: 'Are you sure?'
-      from notifications about this event.
+      %section.roster.row
+        .large-6.columns
+          %h3 Joining
+          = render partial: 'player_list', locals: { players: @event.team_players, event: @event }
+        .large-6.columns
+          %h3 Pending
+          = render partial: 'player_list', locals: { players: @event.bench_players, event: @event } if @event.bench_players.present?
+          = content_tag :p, 'Bench is empty' if @event.bench_players.blank?
+
+      = render partial: 'comments/list', locals: { comments: @comments }
+      = render partial: 'comments/form', locals: { commentable: @event } if logged_in?
+      = render partial: 'shared/login', locals: { message: 'You must be logged in to comment.' } unless logged_in?
+- if @notification_subscription.present?
+  .notification-removal.row
+    .large-12.columns
+      %p
+      %small
+        = link_to 'Unsubscribe', notification_subscription_path(@notification_subscription), method: :delete, confirm: 'Are you sure?'
+        from notifications about this event.

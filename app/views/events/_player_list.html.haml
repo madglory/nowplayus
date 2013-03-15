@@ -1,0 +1,7 @@
+%ul.players.small-block-grid-1
+  - players.each do |player|
+    %li.player
+      %h3
+        %span
+          = link_to image_tag(player.avatar_url), user_path(player), title: player.username, class: 'avatar'
+        = link_to player.platform_username(event.platform), user_path(player), title: event.platform_name

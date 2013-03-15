@@ -72,7 +72,8 @@ CREATE TABLE clans (
     id integer NOT NULL,
     name character varying(255),
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    slug character varying(255)
 );
 
 
@@ -181,8 +182,8 @@ CREATE TABLE events (
     title character varying(255),
     deleted_at timestamp without time zone,
     platform_id integer,
-    game_id integer,
-    notify_host boolean
+    notify_host boolean,
+    game_id integer
 );
 
 
@@ -227,7 +228,8 @@ CREATE TABLE games (
     tiny_url character varying(255),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    slug character varying(255)
+    slug character varying(255),
+    hashtag character varying(255)
 );
 
 
@@ -288,12 +290,12 @@ ALTER SEQUENCE memberships_id_seq OWNED BY memberships.id;
 
 CREATE TABLE new_participant_notifications (
     id integer NOT NULL,
-    message character varying(255),
     sent boolean DEFAULT false NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    participant_id integer,
-    event_id integer
+    event_id integer,
+    protocol character varying(255),
+    participant character varying(255)
 );
 
 
@@ -696,6 +698,13 @@ ALTER TABLE ONLY users
 
 
 --
+-- Name: index_clans_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_clans_on_slug ON clans USING btree (slug);
+
+
+--
 -- Name: index_comments_on_commentable_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -905,4 +914,14 @@ INSERT INTO schema_migrations (version) VALUES ('20130309194317');
 
 INSERT INTO schema_migrations (version) VALUES ('20130311014240');
 
+INSERT INTO schema_migrations (version) VALUES ('20130311174043');
+
+INSERT INTO schema_migrations (version) VALUES ('20130311174353');
+
+INSERT INTO schema_migrations (version) VALUES ('20130311174716');
+
+INSERT INTO schema_migrations (version) VALUES ('20130313230623');
+
 INSERT INTO schema_migrations (version) VALUES ('20130313231956');
+
+INSERT INTO schema_migrations (version) VALUES ('20130315003329');

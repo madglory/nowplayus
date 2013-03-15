@@ -1,6 +1,11 @@
+
+.comments-header.row
+  .large-12.columns
+    %h2 Comments
 - if comments.present?
-  %ol
+  .comments.row
     - comments.each do |comment|
       = render comment
 - else
-  %p What are you waiting for? Start the discussion!
+  .row
+    %p.large-12.columns What are you waiting for? Start the discussion!

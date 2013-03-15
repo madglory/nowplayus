@@ -1,9 +1,9 @@
-%li{id: "comment-#{comment.id}"}
-  .avatar= image_tag comment.user.avatar_url unless comment.user.nil?
-  .comment
-    .author
-      = link_to comment.user.username, user_path(comment.user) unless comment.user.nil?
-    = markdown_format(comment.comment)
-    .timestamp
-      = distance_of_time_in_words_to_now(comment.created_at)
-      ago
+.large-1.small-2.columns
+  =link_to image_tag(comment.user.avatar_url), comment.user, class: 'avatar' unless comment.user.nil?
+.comment.large-11.small-10.columns{id: "comment-#{comment.id}"}
+  .author
+    = link_to comment.user.username, user_path(comment.user) unless comment.user.nil?
+  = markdown_format(comment.comment)
+  .timestamp
+    = distance_of_time_in_words_to_now(comment.created_at)
+    ago

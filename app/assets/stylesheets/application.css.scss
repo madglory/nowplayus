@@ -7,7 +7,10 @@
 html, body{
   height: 100%;
 }
-nav {
+* textarea{
+  height: 6em !important;
+}
+nav#menu {
   .avatar {
     width: 27px;
     padding: 0;
@@ -24,6 +27,14 @@ nav {
 
 #main {
   border-bottom: 2px solid #dfdfdf;
+  a.avatar {
+    display: inline-block;
+    img {
+      width: 50px;
+      border-radius: 100px;
+      overflow: hidden;
+    }
+  }
 }
 
 #banner{
@@ -38,30 +49,57 @@ nav {
     color: #fff;
   }
   #callout {
-    margin-top: 40px;
+    margin-top: 50px;
     text-align:center;
+    a.twitter {
+      border: 2px solid #efefef;
+      color: #4283a9;
+      font-size: 1.4em;
+      padding: 18px 24px;
+      background-image: url('twitter-button-icon.png');
+      background-repeat: no-repeat;
+      background-position: 85% 55%;
+      width: 200px;
+      text-align: left;
+    }
+    a.twitter:hover {
+      color: darken(#4283a9, 15%);
+    }
   }
 }
+
 
 #push {
   height: 60px;
 }
 
 #footer {
-  padding-top: 2em;
+  margin-top: .6em;
   height: 4em;
+  #icon {
+    img {
+      padding: 1em 0;
+    }
+  }
   p {
     font-size: 0.8em;
     padding: 0;
     margin: 0;
   }
-
+  a {
+    color: #333;
+    &:hover {
+      color: #000;
+    }
+  }
   .copyright {
     text-align: right;
   }
 }
 
-.comments ol {
+
+ol.comments {
+
   margin: 0;
   padding: 0;
   list-style: none;
@@ -79,32 +117,24 @@ nav {
     }
   }
 
-  .avatar {
-    float: left;
-    width: 50px;
+}
 
-    img {
-      width: 50px;
-      border-radius: 100px;
-      overflow: hidden;
-    }
+.panel.callout {
+  box-shadow: none !important;
+}
+
+* .button, input.button {
+  &.expand, &.radius, &.small {
+    margin: .6em 0 0;
+    padding-top: .5625em;
+    padding-bottom: .625em;
+    border: none;
+    box-shadow: none;
   }
+}
 
-  .comment {
-    margin-left: 6em;
-
-    .author {
-      font-size: 2em;
-      line-height: 2.4em;
-    }
-
-    .timestamp {
-      font-size: 1.2em;
-      font-style: italic;
-    }
-
-    p {
-      margin-top: 0;
-    }
+@media only screen and (max-width:"768px") {
+  .small-hide {
+    display: none;
   }
 }

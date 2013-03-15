@@ -1,3 +1,5 @@
-%p
-  = link_to 'Login with Twitter', '/auth/twitter'
-  = content_tag :small, message if message
+.row
+  .large-12.columns
+    = content_tag :p, message if message
+    %p
+      = link_to 'Login with Twitter', '/auth/twitter'
