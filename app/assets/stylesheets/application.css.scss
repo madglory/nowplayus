@@ -26,13 +26,19 @@ nav#menu {
 }
 
 #main {
+  min-height: 88%;
+  height: auto !important;
+  height: 88%;
+  padding-bottom: 10px;
   border-bottom: 2px solid #dfdfdf;
   a.avatar {
     display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    overflow: hidden;
     img {
       width: 50px;
-      border-radius: 100px;
-      overflow: hidden;
     }
   }
 }
@@ -44,7 +50,6 @@ nav#menu {
   h2 {
     margin: 0;
     font-weight: normal;
-    // font-size: 3.0em;
     line-height: 1.5;
     color: #fff;
   }
@@ -68,14 +73,8 @@ nav#menu {
   }
 }
 
-
-#push {
-  height: 60px;
-}
-
 #footer {
-  margin-top: .6em;
-  height: 4em;
+  height: 60px;
   #icon {
     img {
       padding: 1em 0;
@@ -98,26 +97,15 @@ nav#menu {
 }
 
 
-ol.comments {
-
-  margin: 0;
-  padding: 0;
-  list-style: none;
-
-  li {
-    margin-bottom: 2em;
-
-    .comment {
-      padding-bottom: 1em;
-      border-bottom: 1px solid #d0d0d0;
-    }
-
-    &:last-child .comment {
-      border-bottom: none;
-    }
+.comment {
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  border-bottom: 1px solid #d0d0d0;
+  &:last-child {
+    border-bottom: none;
   }
-
 }
+
 
 .panel.callout {
   box-shadow: none !important;
@@ -130,6 +118,11 @@ ol.comments {
     padding-bottom: .625em;
     border: none;
     box-shadow: none;
+  }
+  i {
+    font-size: 1.2em;
+    line-height: 0em;
+    vertical-align: middle;
   }
 }
 

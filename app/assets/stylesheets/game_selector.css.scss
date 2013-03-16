@@ -1,0 +1,95 @@
+// 
+// 
+// .game-image img { width: 50px;}
+// .game-name { margin: 0; font-size: 1.6em; }
+// .game-synopsis { margin: 0; color: #888; font-size: 1.2em; }
+// .select2-highlighted .game-synopsis { color: #eee; }
+// .bigdrop.select2-container .select2-results {max-height: 300px;}
+// .bigdrop .select2-results {max-height: 300px;}
+// .select2-container > a > span { font-size: 1.2em; }
+// .select-2-choice { line-height: 2em;}
+.select2-container {
+  width: 100%;
+  margin-bottom: 1em;
+
+  > a.select2-choice {
+    line-height: 1.2em;
+    padding-top: 0.6em;
+    padding-bottom: 1.6em;
+  }
+}
+.select2-drop {
+  .select2-input {
+    background-color: white;
+    font-family: inherit;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.75);
+    display: block;
+    font-size: 0.875em;
+    margin: 0 0 .5em 0;
+    padding: 0.5em;
+    height: 2.3125em;
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.15s linear;
+    -moz-transition: all 0.15s linear;
+    transition: all 0.15s linear;
+  }
+  .select2-results {
+    li.select2-no-results {
+      background: transparent;
+    }
+    .select2-result{
+      &.select2-highlighted {
+        background: #72bae4;
+      }
+      .select2-result-label {
+        padding: 2px;
+      }
+    }
+    
+    .game-result {
+      width: 100%;
+      margin: 0;
+      td {
+        vertical-align: top;
+        &.game-image {
+          width: 80px;
+        }
+        &.game-info {
+          padding-left: 10px;
+          vertical-align: top;
+          h3.game-name {
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+          p.game-synopsis {
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width:"768px") {
+  .select2-drop .select2-results .game-result {
+    td {
+      &.game-image {
+        width: 40px;
+        img {
+          width: 40px;
+        }
+      }
+      &.game-info {
+        p.game-synopsis {
+          display: none;
+        }
+      }
+    }
+  }
+}

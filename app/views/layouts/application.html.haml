@@ -4,7 +4,7 @@
     %title= @title.nil? ? "Now Play Us" : "Now Play Us - #{@title}"
     = render partial: 'shared/meta'
     = stylesheet_link_tag "application", 'http://fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900'
-    = javascript_include_tag "vendor/custom.modernizr", "application"
+    = javascript_include_tag "vendor/custom.modernizr"
     = csrf_meta_tags
 
     /[if lt IE 9]
@@ -17,7 +17,6 @@
     %section#main
       = render partial: 'shared/flash_messages'
       = yield
-      #push
     %footer#footer
       .row
         .large-6.small-10.columns

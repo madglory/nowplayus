@@ -2,6 +2,13 @@
   .small-2.large-1.columns.schedule= render partial: 'events/schedule', locals: { event: event }
   .small-8.columns.description= render partial: 'events/description', locals: { event: event }
   .small-2.large-1.columns.host= link_to image_tag(event.host_avatar_url), user_path(event.host), class: 'avatar'
-  .small-hide.large-1.columns.total_players
-    %h2= "#{event.player_count}/#{event.total_players}"
-  .small-hide.large-1.columns.promote= render partial: 'events/tweet', locals: { event: event }
+  .small-hide.large-2.columns.quick-stats
+    %ul.small-block-grid-2
+      %li
+        %h2
+          %i.standard.ss-user
+          .stat=event.total_players
+      %li
+        %h2
+          %i.block.ss-chat
+          .stat=event.comments.count
