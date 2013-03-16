@@ -25,6 +25,7 @@ class Event < ActiveRecord::Base
   validates :total_players, presence: true, numericality: { only_integer: true, greater_than: 1, less_than: 19 }
   validates :platform, presence: true
 
+  delegate :hashtag, :to => :game, :allow_nil => true
 
   def self.past(cut_off=nil, clock=Time.zone)
     events = where(["starts_at < ?", clock.now.utc]).order("starts_at DESC")
