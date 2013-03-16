@@ -1,11 +1,11 @@
 %section.events-header.row
-  .large-4.columns
+  .small-6.columns
     %h4
       All Upcoming Games
-  .large-4.columns.large-offset-4
-    %p.text-right
-      Subscribe via
-      = link_to 'Ical', events_url(:protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
+  .small-6.columns
+    %h4.text-right
+      Subscribe via iCal
+      = link_to content_tag(:i,'',class: 'block ss-alarmclock'), events_url(:protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
 
 %section.events
   - @events.each do |event|

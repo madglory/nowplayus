@@ -10,17 +10,47 @@ html, body{
 * textarea{
   height: 6em !important;
 }
-nav#menu {
-  .avatar {
-    width: 27px;
+.top-bar-section ul li > a {
+  i {
+    font-size: 18px;
     padding: 0;
     margin: 0;
-    position: relative;
-    top: 9px;
+    line-height: 1em;
+    vertical-align: middle;
+  }
+}
+nav#menu {
+  .avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 48px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
   }
   .name {
-    img {
-      margin-top: 10px;
+    a img {
+      vertical-align: middle;
+    }
+  }
+}
+@media only screen and (max-width: "940px") {
+  nav#menu .top-bar-section {
+    height: 45px;
+    background-color: #333;
+    ul {
+      width: auto;
+      li {
+        display: inline;
+        a {
+          display: inline-block;
+          width: auto;
+          height: 45px;
+          padding-right: 8px;
+          padding-left: 8px;
+        }
+      }
     }
   }
 }

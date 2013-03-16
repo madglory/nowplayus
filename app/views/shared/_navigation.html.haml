@@ -10,13 +10,23 @@
       %ul.right
         - if logged_in?
           %li
-            = link_to image_tag(current_user.avatar_url, class: 'avatar') + " Profile", user_path(current_user)
-          %li= link_to "Settings", edit_user_path(current_user)
-          %li= link_to "Logout", logout_path
+            = link_to user_path(current_user), title: "Profile" do
+              %img.avatar{ src: current_user.avatar_url }
+              Profile
+          %li
+            = link_to new_event_path, title: 'Add Event' do
+              %i.standard.ss-calendaradd
+          %li
+            = link_to edit_user_path(current_user), title: 'Settings' do
+              %i.block.ss-settings
+          %li
+            = link_to logout_path, title: 'Log Out' do
+              %i.block.ss-power
         - else
-          %li= link_to 'Login with Twitter', '/auth/twitter'
+          %li
+            = link_to '/auth/twitter' do
+              Log in with Twitter
+              %i.foundicon-twitter
       %ul.left
         %li= link_to "Blog", "http://blog.nowplay.us"
-        - if logged_in?
-          %li= link_to "Events", events_path
-          %li= link_to "Add Event", new_event_path
+        %li= link_to "Events", events_path
