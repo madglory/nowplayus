@@ -21,7 +21,7 @@ private
 
   def default_player_status
     if event.past?
-      "Enjoyed joining @#{event.host_name} and others for a game of #{event.title} via @nowplayus http://nowplay.us/events/#{event.id} ##{event.platform_name.gsub(/\s/,'')} #{event.hashtag}"
+      "Enjoyed playing with @#{event.host_name} and others for a game of #{event.title} via @nowplayus http://nowplay.us/events/#{event.id} ##{event.platform_name.gsub(/\s/,'')} #{event.hashtag}"
     else
       "Join me, @#{event.host_name} and others for a game of #{event.title} via @nowplayus http://nowplay.us/events/#{event.id} ##{event.platform_name.gsub(/\s/,'')} #{event.hashtag}"
     end
