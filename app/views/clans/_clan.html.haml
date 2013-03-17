@@ -1,8 +1,4 @@
-%article.clan
-  .grid-70.mobile-grid-80
-    .schedule.grid-10.mobile-grid-25= clan.name
-    .description.grid-90.mobile-grid-75= '1'
-  .players.grid-30.mobile-grid-20
-    .host.grid-33.mobile-grid-100= link_to clan.name, clan_path(clan)
-    .total_players.grid-33.mobile-grid-33.hide-on-mobile= '1'
-    .grid-33.mobile-grid-33= '1'
+%article.row.clan
+  .larg-12.columns
+    = clan.name
+    = link_to clan.name, clan_path(clan)
