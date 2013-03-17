@@ -7,15 +7,11 @@
     = javascript_include_tag "vendor/custom.modernizr"
     = csrf_meta_tags
 
-    /[if lt IE 9]
-      %script(src="http://html5shiv.googlecode.com/svn/trunk/html5.js")
-    /[if lt IE 8]
-
     = render partial: 'shared/favicons'
   %body
     = render partial: 'shared/navigation'
     %section#main
-      = render partial: 'shared/flash_messages'
+      = render partial: 'shared/flash_messages' if flash.present?
       = yield
     %footer#footer
       .row
