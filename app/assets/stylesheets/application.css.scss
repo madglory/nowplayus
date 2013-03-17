@@ -1,7 +1,7 @@
 /*
- *= require_self
  *= require foundation_and_overrides
  *= require_tree .
+ *= require_self
  */
 
 html, body{
@@ -10,13 +10,19 @@ html, body{
 * textarea{
   height: 6em !important;
 }
-.top-bar-section ul li > a {
-  i {
-    font-size: 18px;
-    padding: 0;
-    margin: 0;
-    line-height: 1em;
-    vertical-align: middle;
+
+.top-bar {
+  .name h1 a {
+    padding-left: 0px;
+  }
+  .top-bar-section ul li > a {
+    i {
+      font-size: 18px;
+      padding: 0;
+      margin: 0;
+      line-height: 1em;
+      vertical-align: middle;
+    }
   }
 }
 nav#menu {
