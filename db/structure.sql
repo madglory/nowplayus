@@ -182,8 +182,8 @@ CREATE TABLE events (
     title character varying(255),
     deleted_at timestamp without time zone,
     platform_id integer,
-    notify_host boolean,
-    game_id integer
+    game_id integer,
+    notify_host boolean
 );
 
 
@@ -290,12 +290,12 @@ ALTER SEQUENCE memberships_id_seq OWNED BY memberships.id;
 
 CREATE TABLE new_participant_notifications (
     id integer NOT NULL,
+    message character varying(255),
     sent boolean DEFAULT false NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    event_id integer,
-    protocol character varying(255),
-    participant character varying(255)
+    participant_id integer,
+    event_id integer
 );
 
 
@@ -913,12 +913,6 @@ INSERT INTO schema_migrations (version) VALUES ('20130306215919');
 INSERT INTO schema_migrations (version) VALUES ('20130309194317');
 
 INSERT INTO schema_migrations (version) VALUES ('20130311014240');
-
-INSERT INTO schema_migrations (version) VALUES ('20130311174043');
-
-INSERT INTO schema_migrations (version) VALUES ('20130311174353');
-
-INSERT INTO schema_migrations (version) VALUES ('20130311174716');
 
 INSERT INTO schema_migrations (version) VALUES ('20130313230623');
 

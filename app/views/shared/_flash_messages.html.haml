@@ -1,5 +1,5 @@
 - if flash.present?
   .row
-    .large-12
+    .columns.large-12
     - flash.each do |name, msg|
       = content_tag :div, msg, class: "alert-box #{name == :notice ? 'success' : 'alert'}", data: { dismiss: 'alert' } if msg.is_a?(String)
