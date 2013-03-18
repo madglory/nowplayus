@@ -1,0 +1,20 @@
+// Requires an events collection, and an optional user
+.row
+  %section.events-header.columns.small-6
+    %h4
+      Upcoming Events
+  - if @ical_link
+    .small-6.columns.text-right
+      %h4.text-right
+        Subscribe via iCal
+        != @ical_link
+
+%section.events
+  - @events.each do |event|
+    = render event
+  - if @events.blank?
+    .row
+      .large-12.columns
+        %p Uh oh, it looks there are no upcoming events.  How about you schedule one!
+        #callout
+          = link_to 'Create an Event', new_event_path, class: 'callout-button'

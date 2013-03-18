@@ -40,32 +40,7 @@
           %h2.text-center=@user.comments.count
           %h5.text-center Comments
 - if @past_events.length > 0
-  .row
-    %section#games.columns.large-12
-      .panel.radius
-        %h3 Recent Games
-        - @past_events.each do |event|
-          - if !event.game.nil?
-            %figure
-              - if event.game
-                =link_to game_path(event.game) do
-                  - if event.game.icon_url
-                    %img.game{src: event.game.icon_url, title: event.game.name}
-                  - else
-                    %img{src: "/assets/lost-img.png", title: event.game.name}
-
-                  %figcaption.text-center
-                    =event.game.name.truncate(33) unless event.game.nil?
+  =render "events/recent_events", :events => @past_events
 - if @future_events.length > 0
-  .row
-    %section.events-header.columns.small-6
-      %h4
-        Upcoming Events
-    .small-6.columns.text-right
-      %h4
-        Subscribe via iCal
-        = link_to content_tag(:i,'',class: 'block ss-alarmclock'), user_url(@user, :protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
-
-  %section.events
-    - @future_events.each do |event|
-      = render event
+  - @ical_link = link_to content_tag(:i,'',class: 'block ss-alarmclock'), user_url(@user, :protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
+  =render "events/upcoming_events", :events => @future_events, :ical_link => @ical_link
