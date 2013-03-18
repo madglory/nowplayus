@@ -11,9 +11,7 @@
 
 %section.events
   - @events.each do |event|
-    .row.event-container
-      .large-12.columns
-        = render event
+    = render event
   - if @events.blank?
     .row
       .large-12.columns
