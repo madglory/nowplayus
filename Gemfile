@@ -1,28 +1,28 @@
 source 'https://rubygems.org'
 
 gem 'acts_as_commentable', '3.0.1'
-gem 'chronic'
-gem 'chronic_duration'
+gem 'chronic', '0.9.1'
+gem 'chronic_duration', '0.10.2'
 gem 'friendly_id', '~> 4.0.1'
-gem 'haml'
-gem 'high_voltage'
-gem 'httparty'
-gem 'icalendar'
+gem 'haml', '3.1.7'
+gem 'high_voltage', '1.2.2'
+gem 'httparty', '0.10.2'
+gem 'icalendar', '1.2.2'
 gem 'jquery-rails'
-gem 'nested_form'
-gem 'omniauth'
-gem 'omniauth-facebook'
-gem 'omniauth-twitter'
-gem 'paranoia'
-gem 'party_foul'
-gem 'pg'
+gem 'nested_form', '0.3.1'
+gem 'omniauth', '1.1.3'
+gem 'omniauth-facebook', '1.4.0'
+gem 'omniauth-twitter', '0.0.14'
+gem 'paranoia', '1.2.0'
+gem 'party_foul', '1.2.1'
+gem 'pg', '0.14.1'
 gem 'rails', '3.2.12'
-gem 'redcarpet'
-gem 'sanitize'
-gem 'sidekiq'
-gem 'simple_form'
-gem 'sorcery'
-gem 'twitter'
+gem 'redcarpet', '2.2.2'
+gem 'sanitize', '2.0.3'
+gem 'sidekiq', '2.7.5'
+gem 'simple_form', '2.0.4'
+gem 'sorcery', '0.7.13'
+gem 'twitter', '4.5.0'
 gem 'will_paginate', '~> 3.0'
 
 group :development do
@@ -32,6 +32,7 @@ group :development do
   gem 'haml-rails'
   gem 'spork'
   gem 'quiet_assets'
+  gem 'webrick', '1.3.1'
 end
 
 group :development, :test do
@@ -50,7 +51,7 @@ group :test do
 end
 
 group :production do
-  gem 'puma'
+  gem 'puma', '1.6.3'
 end
 
 group :assets do
