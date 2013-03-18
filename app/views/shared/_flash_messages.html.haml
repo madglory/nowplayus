@@ -1,3 +1,3 @@
-  .row
-    - flash.each do |name, msg|
-      .columns.large-12= content_tag :div, msg, class: "alert-box #{name == :notice ? 'success' : 'alert'}", data: { dismiss: 'alert' } if msg.is_a?(String)
+.row
+  - flash.each do |name, msg|
+    .columns.large-12= content_tag :div, msg, class: "alert-box #{name == :notice ? 'success' : 'alert'}", data: { dismiss: 'alert' } if msg.is_a?(String)
