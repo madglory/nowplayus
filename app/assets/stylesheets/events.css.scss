@@ -2,6 +2,8 @@
   .event {
     border-right: 1px solid #d5d5d5;
     border-bottom: 1px solid #d5d5d5;
+    margin-left: 0px;
+    margin-right: 0px;
     &:first-child {
       border-top: 1px solid #d5d5d5;
     }
@@ -123,7 +125,7 @@
       }
       i {
         vertical-align: middle;
-        line-height: 1em;    
+        line-height: 1em;
       }
     }
   }
