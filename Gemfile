@@ -32,6 +32,7 @@ group :development do
   gem 'haml-rails'
   gem 'spork'
   gem 'heroku'
+  gem 'quiet_assets'
 end
 
 group :development, :test do
