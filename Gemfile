@@ -31,7 +31,6 @@ group :development do
   gem 'guard-spork'
   gem 'haml-rails'
   gem 'spork'
-  gem 'heroku'
   gem 'quiet_assets'
 end
 
