@@ -13,6 +13,7 @@
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/structure.sql
+/db/schema.rb
 
 # Ignore compiled assets
 /public/assets
