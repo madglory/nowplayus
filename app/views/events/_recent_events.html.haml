@@ -1,17 +1,12 @@
 // Requires an @events collection
-.row
-    %section#games.columns.large-12
-      .panel.radius
-        %h3 Recent Games
-        - @events.each do |event|
-          - if !event.game.nil?
-            %figure
-              - if event.game
-                =link_to game_path(event.game) do
-                  - if event.game.icon_url
-                    %img.game{src: event.game.icon_url, title: event.game.name}
-                  - else
-                    %img{src: "/assets/lost-img.png", title: event.game.name}
+%h5 Recent Games
+- events.each do |event|
+  %ul.small.block-grid-4
+    %li
+      =link_to game_path(event.game) do
+        - if event.game.icon_url
+          %img.game{src: event.game.icon_url, title: event.game.name}
+        - else
+          %img.game{src: "/assets/lost-img.png", title: event.game.name}
 
-                  %figcaption.text-center
-                    =event.game.name.truncate(33) unless event.game.nil?
+      %p.text-center=event.game.name.truncate(33)

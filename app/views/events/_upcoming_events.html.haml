@@ -1,11 +1,11 @@
 // Requires an events collection, and an optional user
 .row
-  %section.events-header.columns.small-6
-    %h4
-      Upcoming Events
-  - if @ical_link
-    .small-6.columns.text-right
-      %h4.text-right
+  %section.events-header.columns.large-12
+    %h4.text-center
+      Scheduled game events with
+      = raw 'now<span class="blue">play</span>us'
+    - if @ical_link
+      %p.ical.text-right
         Subscribe via iCal
         != @ical_link
 

@@ -1,11 +1,42 @@
 #profile {
-  #user {
+  #user, #platforms-games {
     margin-top: 1em;
-    h2 {
-        line-height: 1em;
+  }
+  #user{
+    #stats {
+      border-top: 1px solid #cdcdcd;
+      margin: 15px -20px -20px -20px;
+      li {
+        border-left: 1px solid #cdcdcd;
+
+        h2 {
+          margin-bottom: 0;
+        }
+
+        h5 {
+          margin-bottom: 0;
+          font-weight: 100;
+          font-size: 1em;
+        }
+      }
+      li:first-child {
+        border-left: none;
+      }
     }
-    a.avatar {
-      vertical-align: middle;
+  }
+  #platforms, #games {
+    ul {
+      margin: 0 -10px -20px -10px;
+    }
+  }
+  #platforms {
+
+  }
+  #games {
+    ul li p {
+      margin-bottom: 0;
+      font-size: .8em;
+      font-weight: 700;
     }
   }
 }

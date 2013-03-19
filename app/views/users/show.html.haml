@@ -1,32 +1,13 @@
 #profile.row
-  %section.columns.large-12
-    .panel.radius.callout#user
+  %section.columns.large-6
+    .panel.radius#user
       .row
-        .avatar.small-4.columns= image_tag(@user.avatar_url)
-        .user-details.small-8.columns
-          %h1= @user.username
-          %ul
-            - @user.authentications.each do |auth|
-              %li
-                %p= render partial: "authentications/#{auth.provider}", locals: { username: auth.nickname }
-      .row
-        .user-bio.large-12.columns
-          = markdown_format(@user.bio) unless @user.bio.nil?
-.row
-  %section#platforms.columns.large-6
-    .panel.radius
-      %h2 Platform Profiles
-      %ul.small-block-grid-4
-        - @platform_accounts.each do |account|
-          %li
-            %figure
-              = image_tag("#{account.platform.name.downcase}-on.png")
-              %figcaption.text-center #{account.username}
-  %section#stats.columns.large-6
-    .panel.radius
-      %h2 Stats
-
-      %ul.small-block-grid-4
+        .small-2.columns= link_to image_tag(@user.avatar_url), '#', class: 'avatar'
+        .user-details.small-10.columns
+          %h3= @user.username
+          .user-bio
+            = markdown_format(@user.bio) unless @user.bio.nil?
+      %ul#stats.small-block-grid-4
         %li
           %h2.text-center=@user.hosted_events.count
           %h5.text-center Hosted
@@ -39,8 +20,17 @@
         %li
           %h2.text-center=@user.comments.count
           %h5.text-center Comments
-- if @past_events.length > 0
-  =render "events/recent_events", :events => @past_events
+  %section#platforms-games.columns.large-6
+    .panel.radius#platforms
+      %h5 Game Accounts
+      %ul.small-block-grid-2
+        - @platform_accounts.each do |account|
+          %li
+            .row
+              .columns.small-4= image_tag("#{account.platform.name.downcase}-on.png")
+              .columns.small-8= account.username
+    - if @past_events.length > 0
+      .panel.radius#games=render "events/recent_events", :events => @past_events
 - if @future_events.length > 0
   - @ical_link = link_to content_tag(:i,'',class: 'block ss-alarmclock'), user_url(@user, :protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
   =render "events/upcoming_events", :events => @future_events, :ical_link => @ical_link
