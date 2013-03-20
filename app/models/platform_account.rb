@@ -4,7 +4,7 @@ class PlatformAccount < ActiveRecord::Base
   attr_accessible :username, :platform_id
 
   validates :user, presence: true
-  validates_uniqueness_of :user_id, scope: :platform_id
+  validates_uniqueness_of :username, scope: :platform_id
   validates :platform, presence: true
   validates :username, presence: true
 end
