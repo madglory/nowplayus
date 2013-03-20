@@ -94,6 +94,10 @@
     }
   }
 
+  .timestamp {
+    font-size: .6em;
+    font-style: italic;
+  }
   .host {
     // margin-top: 1em;
   }
@@ -107,14 +111,16 @@
         padding-bottom: 0;
       }
     }
-    h2 {
+    h3 {
       padding: 0;
       margin: 0;
+      color: rgb(194, 194, 194);
       .stat {
+
         display: block;
         background-color: #5db0e0;
         font-size: 18px;
-        color: black;
+        color: white;
         width: 20px;
         height: 20px;
         border-radius: 40px;
@@ -123,7 +129,7 @@
         left: 20px;
         margin: 0;
         padding: 0;
-        border: 1px solid black;
+        border: 1px solid #ededed;
         text-align: center;
         line-height: 1.3em;
         font-size: 14px;
@@ -137,10 +143,12 @@
 }
 
 .event-details{
+  margin-top: 2em;
   #joining, #pending {
     border-bottom: 1px solid #d0d0d0;
   }
   h2 {
+    font-size: 1.5em;
     span.with {
       font-weight: 100;
     }
@@ -148,6 +156,7 @@
   .player {
     h3 {
       line-height: 0.8em;
+      font-size: 1.3em;
     }
     a {
       vertical-align: middle;

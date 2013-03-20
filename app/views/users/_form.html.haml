@@ -1,12 +1,13 @@
 = simple_nested_form_for @user do |user_form|
   %div.row
     %div.large-6.columns
-      .avatar= image_tag @user.avatar_url
-    %div.large-6.columns
-      .user-details
-        %h1
-          Name:
-          = @user.username
+      %div.small-2.columns
+        .avatar= image_tag @user.avatar_url
+      %div.small-10
+        .user-details
+          %h1
+            Name:
+            = @user.username      
   .row
     .large-6.columns
       .panel.radius
@@ -24,12 +25,7 @@
       .panel.radius
         %h3 Email
         = user_form.input :email, label: false, placeholder: 'your@email.com'
-    #time-zone.large-6.columns
-      .panel.radius
-        %h3 Time Zone
-        = user_form.input :time_zone, priority: @time_zones, label: false
-        %small By default, Now Play Us displays events in Eastern Time, but you can change that here.
-  .row
+
     .large-6.columns
       .panel.radius
         %h3 Clans
@@ -38,12 +34,13 @@
           = clan_form.link_to_remove 'Remove Clan Account'
         = user_form.link_to_add 'Add a Clan', :clans
   .row
-    #profile_links.large-6.columns
-      .panel.radius
-        %h3 Social Networks
-        %ul
-          - @user.authentications.each do |auth|
-            %li{class: auth.provider}= render partial: "authentications/#{auth.provider}", locals: { username: auth.nickname }
+    //Hide the social accounts until facebook is integrated.
+    / #profile_links.large-6.columns
+    /   .panel.radius
+    /     %h3 Social Networks
+    /     %ul
+    /       - @user.authentications.each do |auth|
+    /         %li{class: auth.provider}= render partial: "authentications/#{auth.provider}", locals: { username: auth.nickname }
     #notifications.large-6.columns
       .panel.radius
         %h3 Notifications
@@ -55,6 +52,11 @@
           = user_form.input :send_newsletter, label: 'Let us send occasional updates. No spam!', label_class: 'small-11 columns', input_html: { class: 'small-1 columns' }
         %br
         = user_form.input :preferred_notification_method, label: 'Preferred Method', as: :select, collection: current_user.available_notification_methods, include_blank: false
+    #time-zone.large-6.columns
+      .panel.radius
+        %h3 Time Zone
+        = user_form.input :time_zone, priority: @time_zones, label: false
+        %small By default, Now Play Us displays events in Eastern Time, but you can change that here.
   .row
     .large-4.columns
       = user_form.submit 'Submit', class: 'button radius expand success'

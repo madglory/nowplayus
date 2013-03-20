@@ -18,12 +18,12 @@
 
       %section.roster.row
         .large-6.columns
-          %h3#joining Joining
+          %h3#joining Playing
           = render partial: 'player_list', locals: { players: @event.team_players, event: @event }
         .large-6.columns
-          %h3#pending Pending
+          %h3#pending Support
           = render partial: 'player_list', locals: { players: @event.bench_players, event: @event } if @event.bench_players.present?
-          = content_tag :p, 'Bench is empty' if @event.bench_players.blank?
+          = content_tag :p, 'Recruit more players if desired' if @event.bench_players.blank?
 
       = render partial: 'comments/list', locals: { comments: @comments }
       = render partial: 'comments/form', locals: { commentable: @event } if logged_in?
