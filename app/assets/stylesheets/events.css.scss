@@ -8,67 +8,42 @@
     }
 
     &.theirs {
-      border-left: 7px solid #62e0bb;
-      // THIS STYLE IS CAUSING THE HEIGHT OF 
-      // .event.row TO BE TALLER THAN IT SHOULD
-      // &:after {
-      //   border-top: 10px solid transparent;
-      //   border-right: 10px solid #ededed;
-      //   border-bottom: 10px solid transparent;
-      //   position: relative;
-      //   content: "";
-      //   top: -42px;
-      //   left: -7px;
-      // }
+      background-image: url('event-border-theirs.png');
+      background-repeat: no-repeat;
+      background-position: left center;
     }
     &.mine {
-      // THIS STYLE IS CAUSING THE HEIGHT OF 
-      // .event.row TO BE TALLER THAN IT SHOULD
-      border-left: 7px solid #72bae4;
-      // &:after {
-      //   border-top: 10px solid transparent;
-      //   border-left: 10px solid #72bae4;
-      //   border-bottom: 10px solid transparent;
-      //   position: relative;
-      //   content: "";
-      //   top: -42px;
-      //   left: -4px;
-      // }
+      background-image: url('event-border-mine.png');
+      background-repeat: no-repeat;
+      background-position: left center;
     }
   }
 
-  .schedule, .description, .host, .quick-stats {
+  .schedule, .description, .quick-stats {
     margin-top: .6em;
   }
 
   .schedule {
-    // margin-top: .6em;
-    margin-right: -7px;
-    margin-left: 0px;
-    padding-left: 0;
+    // margin-left: 0px;
+    // padding-left: 5px;
     text-align: center;
     color: #000;
 
     > h2.date {
-      vertical-align: baseline;
       font-weight: 700;
-      font-size: 3em;
-      margin: 0;
-      line-height: .7em;
+      margin: -5px 0 0 0;
+      line-height: 1em;
       letter-spacing: -.2ex;
     }
     > p.day {
       margin-bottom: 0;
+      margin-top: .2em;
+      line-height: 1em;
       text-transform: uppercase;
     }
   }
   .description {
-    // margin-top: .6em;
     border-left: 1px solid #d5d5d5;
-
-    &.inline {
-      border: none;
-    }
 
     a {
       display: block;
@@ -82,13 +57,18 @@
       list-style-type: none;
     }
     .game {
-      line-height: .7em;
-      margin: 0;
+      line-height: 1em;
+      margin: -5px 0 0 0;
       padding: 0;
       color: #000;
+      width: 100%;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
     .time {
-      margin: 0.275em 0;
+      margin: .2em 0 0 0;
+      line-height: 1em;
       font-weight: 100;
       color: #252525;
     }
@@ -99,24 +79,24 @@
     font-style: italic;
   }
   .host {
-    // margin-top: 1em;
+    .avatar {
+      width: 46px !important;
+      height: 46px !important;
+      margin: .6em 0 .6em -1em;
+    }
   }
 
   .quick-stats {
-    // margin-top: 1em;
     ul {
-      // height: 3em;
       li {
-        // height: auto;
         padding-bottom: 0;
       }
     }
     h3 {
       padding: 0;
-      margin: 0;
+      margin: .2em 0 0 0;
       color: rgb(194, 194, 194);
       .stat {
-
         display: block;
         background-color: #5db0e0;
         font-size: 18px;
@@ -143,7 +123,7 @@
 }
 
 .event-details{
-  margin-top: 2em;
+  margin-top: 1em;
   #joining, #pending {
     border-bottom: 1px solid #d0d0d0;
   }
