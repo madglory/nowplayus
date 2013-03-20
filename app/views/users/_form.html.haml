@@ -1,49 +1,23 @@
 = simple_nested_form_for @user do |user_form|
-  %div.row
-    %div.large-6.columns
-      %div.small-2.columns
-        .avatar= image_tag @user.avatar_url
-      %div.small-10
-        .user-details
-          %h1
-            Name:
-            = @user.username      
+  .row
+    .large-12.columns
+      %h1
+        = link_to image_tag(@user.avatar_url), '#', class: 'avatar'
+        = @user.username      
   .row
     .large-6.columns
       .panel.radius
+        %h5 Bio
         = user_form.input :bio, label: false, placeholder: 'About you...'
-    #platform_accounts.large-6.columns
       .panel.radius
-        %h3 Platform Accounts
-        = user_form.fields_for :platform_accounts do |platform_account_form|
-          = platform_account_form.collection_select :platform_id, @platforms, :id, :name, label: false
-          = platform_account_form.input :username, label: false, placeholder: 'username'
-          = platform_account_form.link_to_remove 'Remove Platform Account'
-        = user_form.link_to_add 'Add a Platform Account', :platform_accounts
-  .row
-    #email.large-6.columns
-      .panel.radius
-        %h3 Email
+        %h5 Email
         = user_form.input :email, label: false, placeholder: 'your@email.com'
-
-    .large-6.columns
-      .panel.radius
-        %h3 Clans
-        = user_form.fields_for :clans do |clan_form|
-          = clan_form.input :name, label: false, placeholder: 'MLG'
-          = clan_form.link_to_remove 'Remove Clan Account'
-        = user_form.link_to_add 'Add a Clan', :clans
-  .row
-    //Hide the social accounts until facebook is integrated.
-    / #profile_links.large-6.columns
-    /   .panel.radius
-    /     %h3 Social Networks
-    /     %ul
-    /       - @user.authentications.each do |auth|
-    /         %li{class: auth.provider}= render partial: "authentications/#{auth.provider}", locals: { username: auth.nickname }
-    #notifications.large-6.columns
-      .panel.radius
-        %h3 Notifications
+      .panel.radius#time_zone
+        %h5 Time Zone
+        = user_form.input :time_zone, priority: @time_zones, label: false
+        %small By default, Now Play Us displays events in Eastern Time, but you can change that here.
+      .panel.radius#notifications
+        %h5 Notifications
         %p
           = render partial: 'shared/twitter_follow'
           %br
@@ -52,13 +26,16 @@
           = user_form.input :send_newsletter, label: 'Let us send occasional updates. No spam!', label_class: 'small-11 columns', input_html: { class: 'small-1 columns' }
         %br
         = user_form.input :preferred_notification_method, label: 'Preferred Method', as: :select, collection: current_user.available_notification_methods, include_blank: false
-    #time-zone.large-6.columns
+    #platform_accounts.large-6.columns
       .panel.radius
-        %h3 Time Zone
-        = user_form.input :time_zone, priority: @time_zones, label: false
-        %small By default, Now Play Us displays events in Eastern Time, but you can change that here.
+        %h5 Platform Accounts
+        %p Add your username for the various gaming platforms you play on. We'll display this on event pages so the people you are playing with can add you.
+        = user_form.fields_for :platform_accounts do |platform_account_form|
+          = platform_account_form.collection_select :platform_id, @platforms, :id, :name, label: 'Platform'
+          = platform_account_form.input :username, label: false
+          = platform_account_form.link_to_remove 'Remove Platform Account'
+        = user_form.link_to_add 'Add a Platform Account', :platform_accounts
+
   .row
     .large-4.columns
       = user_form.submit 'Submit', class: 'button radius expand success'
-    .large-4.columns.offset-4
-      = link_to 'View Profile', @user, class: 'button radius expand small'
