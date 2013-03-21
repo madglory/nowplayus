@@ -19,11 +19,16 @@
           %p
             &copy;
             = Date.current.year
-            Now Play Us. Follow us on
+            Now Play Us.
             = link_to content_tag('strong','Twitter'), 'https://twitter.com/nowplayus'
-            and like us on 
+            &middot;
             = link_to content_tag('strong','Facebook'), 'https://facebook.com/nowplayus'
-            %br
+            &middot;
+            = link_to content_tag(:strong,'Blog'), 'http://blog.nowplayus.com'
+            &middot;
+            %a{ href: 'javascript:void(0)', data: { 'uv-lightbox' => 'classic_widget', 'uv-mode' => 'feedback', 'uv-primary-color' => '#72bae4', 'uv-link-color' => '#72bae4', 'uv-forum-id' => '195670'}}
+              %strong Feedback
+          %p
             An experimental service from
             = link_to content_tag('strong','MadGlory Interactive'), 'http://madgloryint.com'
           %p
