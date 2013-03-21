@@ -1,0 +1,22 @@
+.row
+  .large-6.small-12.columns
+    = image_tag 'controller-icon.png', class: "hide-for-small"
+    %p
+      &copy;
+      = Date.current.year
+      Now Play Us.
+      = link_to content_tag('strong','Twitter'), 'https://twitter.com/nowplayus'
+      &middot;
+      = link_to content_tag('strong','Facebook'), 'https://facebook.com/nowplayus'
+      &middot;
+      = link_to content_tag(:strong,'Blog'), 'http://blog.nowplayus.com'
+      &middot;
+      %a{ href: 'javascript:void(0)', data: { 'uv-lightbox' => 'classic_widget', 'uv-mode' => 'feedback', 'uv-primary-color' => '#72bae4', 'uv-link-color' => '#72bae4', 'uv-forum-id' => '195670'}}
+        %strong Feedback
+    %p
+      An experimental service from
+      = link_to content_tag('strong','MadGlory Interactive'), 'http://madgloryint.com'
+  #icon.large-6.small-12.columns.text-right
+    %p.giant-bomb
+      All game information provided by
+      = link_to 'Giant Bomb', 'http://www.giantbomb.com', target: '_blank'
