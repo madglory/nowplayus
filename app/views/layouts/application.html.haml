@@ -14,28 +14,7 @@
       = render partial: 'shared/flash_messages' if flash.present?
       = yield
     %footer#footer
-      .row
-        .large-6.small-10.columns
-          %p
-            &copy;
-            = Date.current.year
-            Now Play Us.
-            = link_to content_tag('strong','Twitter'), 'https://twitter.com/nowplayus'
-            &middot;
-            = link_to content_tag('strong','Facebook'), 'https://facebook.com/nowplayus'
-            &middot;
-            = link_to content_tag(:strong,'Blog'), 'http://blog.nowplayus.com'
-            &middot;
-            %a{ href: 'javascript:void(0)', data: { 'uv-lightbox' => 'classic_widget', 'uv-mode' => 'feedback', 'uv-primary-color' => '#72bae4', 'uv-link-color' => '#72bae4', 'uv-forum-id' => '195670'}}
-              %strong Feedback
-          %p
-            An experimental service from
-            = link_to content_tag('strong','MadGlory Interactive'), 'http://madgloryint.com'
-          %p
-            Game information provided by
-            = link_to 'Giant Bomb', 'http://www.giantbomb.com', target: '_blank'
-        #icon.large-6.small-2.columns.text-right
-          %p= image_tag 'controller-icon.png'
+      = render partial: 'shared/footer'
     = render partial: "shared/analytics"
     = javascript_include_tag "application"
     = yield :modals
