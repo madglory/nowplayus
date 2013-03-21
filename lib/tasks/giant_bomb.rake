@@ -83,14 +83,14 @@ namespace :giant_bomb do
         game.original_release_date = item['original_release_date']
       end
 
-      game.icon_url   = item['icon_url']
-      game.medium_url = item['medium_url']
-      game.screen_url = item['screen_url']
+      game.icon_url   = item['image']['icon_url']
+      game.medium_url = item['image']['medium_url']
+      game.screen_url = item['image']['screen_url']
 
-      game.small_url  = item['small_url']
-      game.super_url  = item['super_url']
-      game.thumb_url  = item['thumb_url']
-      game.tiny_url   = item['tiny_url']
+      game.small_url  = item['image']['small_url']
+      game.super_url  = item['image']['super_url']
+      game.thumb_url  = item['image']['thumb_url']
+      game.tiny_url   = item['image']['tiny_url']
 
       game.save
     end
