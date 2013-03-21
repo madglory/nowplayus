@@ -1,12 +1,13 @@
 // Requires an @events collection
 %h5 Recent Games
-- events.each do |event|
-  %ul.small.block-grid-4
+%ul.large-block-grid-4
+  - events.each do |event|
     %li
       =link_to game_path(event.game) do
         - if event.game.icon_url
-          %img.game{src: event.game.icon_url, title: event.game.name}
+          %img.game{src: event.game.icon_url, title: event.game.name, width: 100}
         - else
           %img.game{src: "/assets/lost-img.png", title: event.game.name}
 
-      %p.text-center=event.game.name.truncate(33)
+          %p
+            =event.game.name
