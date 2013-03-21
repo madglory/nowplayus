@@ -1,17 +1,18 @@
-.grid-container
-  .grid-100
+.row
+  .large-6.columns
     %h2
       = @game.name
-
-    %hr
-    =image_tag @game.screen_url unless @game.screen_url.blank?
     %p
       = @game.deck.html_safe unless @game.deck.blank?
 
+  .large-6.columns.pull
+    =image_tag @game.screen_url unless @game.screen_url.blank?
+.row
+  .large-12.columns
     - if @upcoming_events.size > 0
       %h2 Upcoming Matches
 
-    %section.events.grid-100
+    %section.events
       - @upcoming_events.each do |event|
         = render event
 
@@ -19,5 +20,3 @@
 
     .game-details
       =Sanitize.clean(@game.description, :elements => ['h2', 'h3', 'h4',  'p', 'img', 'ul', 'li','table', 'tr', 'td', 'thead'], :attributes => {'img' => ['width', 'height', 'src', 'title', 'alt'], 'a' => ['href', 'title'], 'span' => ['class']}, :protocols => {'a' => {'href' => ['http', 'https', 'mailto']}}).html_safe unless @game.description.blank?
-
-      %small Game Descriptions provided by <a target="_blank" href="http://www.giantbomb.com">Giant Bomb</a>.
