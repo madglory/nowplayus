@@ -10,9 +10,9 @@
         != @ical_link
 
 %section.events
-  - @events.each do |event|
+  - events.each do |event|
     = render event
-  - if @events.blank?
+  - if events.blank?
     .row
       .large-12.columns
         %p Uh oh, it looks there are no upcoming events.  How about you schedule one!
