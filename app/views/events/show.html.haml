@@ -1,9 +1,10 @@
 %section.events
   = render @event
   .event-details.row{ class: @event_owner}
-    %nav.large-1.columns
+    %nav.large-1.columns.without-padding-large.half-padding-small
       - if @event.host == current_user
-        = link_to "Cancel Event", @event, confirm: "Are you sure?", method: :delete, class: 'button small  radius expand'
+        = link_to @event, confirm: "Are you sure?", method: :delete, class: 'button small radius expand alert' do
+          %i.standard.ss-calendarremove
       - else
         = render partial: 'participate', locals: { event: @event } unless @event.past?
       = render partial: 'tweet', locals: { event: @event }

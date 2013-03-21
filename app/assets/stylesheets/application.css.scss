@@ -198,6 +198,9 @@ nav#menu {
     font-size: 1.2em;
     line-height: 0em;
     vertical-align: middle;
+    &.standard {
+      line-height: .5em;
+    }
   }
 }
 
@@ -205,5 +208,19 @@ nav#menu {
 @media only screen and (max-width:"768px") {
   .small-hide {
     display: none;
+  }
+}
+
+@media only screen and (min-width: "940px") {
+  .without-padding-large {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+}
+
+@media only screen and (max-width: "940px") {
+  .half-padding-small {
+    padding-right: 0.46875em !important;
+    padding-left: 0.46875em !important;
   }
 }

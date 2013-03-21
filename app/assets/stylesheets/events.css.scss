@@ -151,19 +151,11 @@
       text-indent: -9999px;
     }
   }
-  .without-padding {
-    padding-right: 0;
-    padding-left: 0;
-  }
-  .half-padding {
-    padding-right: 0.46875em;
-    padding-left: 0.46875em;
-  }
 }
 @media only screen and (min-width: "940px") {
-   .events {
+  .events {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
-   }
+  }
 }
