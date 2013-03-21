@@ -29,8 +29,11 @@
             .row
               .columns.small-3= image_tag("#{account.platform.name.downcase}-on.png")
               .columns.small-9= account.username
+
     - if @past_events.length > 0
       .panel.radius#games=render "events/recent_events", :events => @past_events
+
+
 - if @future_events.length > 0
   - @ical_link = link_to content_tag(:i,'',class: 'block ss-alarmclock'), user_url(@user, :protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
   =render "events/upcoming_events", :events => @future_events, :ical_link => @ical_link
