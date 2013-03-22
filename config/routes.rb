@@ -23,5 +23,7 @@ Nowplayus::Application.routes.draw do
   match '/login', to: 'sessions#new', as: :login
   match '/logout', to: 'sessions#destroy', as: :logout
 
+  match '/contest', to: 'home#contest', as: :contest
+
   root to: 'home#index'
 end
