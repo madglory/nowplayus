@@ -7,30 +7,29 @@
           %h3= @user.username
           .user-bio
             = markdown_format(@user.bio) unless @user.bio.nil?
-      .row.stats
-        %ul#stats.small-block-grid-4
-          %li
-            %h2.text-center=@user.hosted_events.count
-            %h5.text-center Hosted
-          %li
-            %h2.text-center=@user.participants.count
-            %h5.text-center Joined
-          %li
-            %h2.text-center=@user.event_tweets.count
-            %h5.text-center Tweets
-          %li
-            %h2.text-center=@user.comments.count
-            %h5.text-center Comments
+
+      %ul#stats.small-block-grid-4
+        %li
+          %h2.text-center=@user.hosted_events.count
+          %h5.text-center Hosted
+        %li
+          %h2.text-center=@user.participants.count
+          %h5.text-center Joined
+        %li
+          %h2.text-center=@user.event_tweets.count
+          %h5.text-center Tweets
+        %li
+          %h2.text-center=@user.comments.count
+          %h5.text-center Comments
   %section#platforms-games.columns.large-6
     .panel.radius#platforms
       %h5 Game Accounts
       %ul.small-block-grid-2
         - @platform_accounts.each do |account|
           %li
-            .row
-              .columns.small-3= image_tag("#{account.platform.name.downcase}-on.png")
-              .columns.small-9= account.username
-
+            %p
+              = image_tag("#{account.platform.name.downcase}-on.png", title: "[#{account.platform.name}]" )
+              = account.username
     - if @past_events.length > 0
       .panel.radius#games=render "events/recent_events", :events => @past_events
 
