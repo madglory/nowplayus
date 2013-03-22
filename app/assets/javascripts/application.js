@@ -7,3 +7,6 @@
 //= require game_selector
 //= require_self
 $(document).foundation();
+$(document).on('nested:fieldRemoved', function (event) {
+  $('[required]', event.field).removeAttr('required');
+});
