@@ -8,12 +8,12 @@
     }
 
     &.theirs {
-      background-image: url('event-border-theirs.png');
+      background-image: image-url('event-border-theirs.png');
       background-repeat: no-repeat;
       background-position: left center;
     }
     &.mine {
-      background-image: url('event-border-mine.png');
+      background-image: image-url('event-border-mine.png');
       background-repeat: no-repeat;
       background-position: left center;
     }
@@ -151,7 +151,7 @@
   .button {
     &.twitter{
       text-indent: -20px;
-      background-image: url('twitter-button-icon.png');
+      background-image: image-url('twitter-button-icon.png');
       background-repeat: no-repeat;
       background-position: 50% 60%;
       text-indent: -9999px;

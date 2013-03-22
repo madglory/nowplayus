@@ -52,6 +52,7 @@ end
 
 group :production do
   gem 'puma', '1.6.3'
+  gem 'dalli', '~> 2.6'
 end
 
 group :assets do
