@@ -1,0 +1,25 @@
+#promo
+  .row
+    .large-12.columns
+      =image_tag "fill-er-up-contest.png"
+
+      %p Now Play Us is growing! And we want to give our users a little sumtin sumtin just because you’re all awesome.
+
+      %p From today through the rest of the week <strong>(Sunday March 31st 11:59pm)</strong>, anyone that creates an event, and fills it up with other NPU users, will be entered into a drawing to win some cool swag! It’s that simple.
+
+      %p Here’s some rules:
+      %ol
+        %li Create an event with a minimum of 4 people and Fill ‘er Up!
+        %li Fill up that event anyway you can. Promote the event on twitter with our handy tweet feature, or tell your friends to come and join up!
+        %li Every event you create that get’s filled up, you get an entry. Create 10 events, and fill all of those events, you get 10 entries!
+        %li Events must take place before the end of the weekend!
+        %li Winner will be picked at random at the end of the week!
+        %li Entrants must have an active NPU account on the site at time of drawing!
+
+      %p
+        Simple right? What are you waiting for, go
+        - if current_user
+          =link_to "Fill ‘er Up!", new_event_path
+
+        - else
+          =link_to "Fill ‘er Up!", '/auth/twitter'
