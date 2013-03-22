@@ -210,6 +210,18 @@ nav#menu {
   }
 }
 
+.game-detail {
+  img {
+    margin: 1em;
+    border-radius: 0.5em;
+  }
+}
+
+.top-players {
+  margin-top: 1em;
+}
+
+
 // A way to hide stuff on mobile devices
 @media only screen and (max-width:"768px") {
   .small-hide {
