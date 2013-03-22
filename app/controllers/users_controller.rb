@@ -81,7 +81,6 @@ class UsersController < ApplicationController
   def complete_registration
     @user = current_user
     @platform_accounts = @user.platform_accounts.includes :platform
-    # render layout: 'minimal'
   end
 
   def confirm_registration
@@ -92,7 +91,7 @@ class UsersController < ApplicationController
         format.json { head :no_content }
       else
         @platform_accounts = @user.platform_accounts.includes :platform
-        format.html { render action: "complete_registration", layout: 'minimal' }
+        format.html { render action: "complete_registration" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
