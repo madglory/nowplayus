@@ -1,7 +1,7 @@
 / Fav and touch icons
-%link{ rel: "apple-touch-icon", type: 'image/png', sizes: "144x144", href: '/ico/apple-touch-icon-144x144.png' }
-%link{ rel: "apple-touch-icon", type: 'image/png', sizes: "114x114", href: '/ico/apple-touch-icon-114x114.png' }
-%link{ rel: "apple-touch-icon", type: 'image/png', sizes: "72x72", href: '/ico/apple-touch-icon-72x72.png' }
-%link{ rel: "apple-touch-icon", type: 'image/png', href: '/ico/apple-touch-icon-57x57.png' }
-%link{ rel: "shortcut icon", type: 'image/png', href: '/ico/favicon.png' }
-%link{ rel: "shortcut icon", type: 'image/x-icon', href: '/ico/favicon.ico' }
+= favicon_link_tag '/ico/apple-touch-icon-144x144.png', { rel: "apple-touch-icon", type: 'image/png', sizes: "144x144" }
+= favicon_link_tag '/ico/apple-touch-icon-114x114.png', { rel: "apple-touch-icon", type: 'image/png', sizes: "114x114" }
+= favicon_link_tag '/ico/apple-touch-icon-72x72.png',   { rel: "apple-touch-icon", type: 'image/png', sizes: "72x72" }
+= favicon_link_tag '/ico/apple-touch-icon-57x57.png',   { rel: "apple-touch-icon", type: 'image/png'}
+= favicon_link_tag '/ico/favicon.png',                  { rel: "shortcut icon",    type: 'image/png' }
+= favicon_link_tag '/ico/favicon.ico',                  { rel: "shortcut icon",    type: 'image/x-icon' }
