@@ -7,19 +7,20 @@
           %h3= @user.username
           .user-bio
             = markdown_format(@user.bio) unless @user.bio.nil?
-      %ul#stats.small-block-grid-4
-        %li
-          %h2.text-center=@user.hosted_events.count
-          %h5.text-center Hosted
-        %li
-          %h2.text-center=@user.participants.count
-          %h5.text-center Joined
-        %li
-          %h2.text-center=@user.event_tweets.count
-          %h5.text-center Tweets
-        %li
-          %h2.text-center=@user.comments.count
-          %h5.text-center Comments
+      .row.stats
+        %ul#stats.small-block-grid-4
+          %li
+            %h2.text-center=@user.hosted_events.count
+            %h5.text-center Hosted
+          %li
+            %h2.text-center=@user.participants.count
+            %h5.text-center Joined
+          %li
+            %h2.text-center=@user.event_tweets.count
+            %h5.text-center Tweets
+          %li
+            %h2.text-center=@user.comments.count
+            %h5.text-center Comments
   %section#platforms-games.columns.large-6
     .panel.radius#platforms
       %h5 Game Accounts
