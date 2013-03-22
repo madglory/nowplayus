@@ -23,6 +23,27 @@ html, body{
   height: 6em !important;
 }
 
+select {
+  padding: 10px;
+  margin: 0 0 1em 0;
+  -webkit-border-radius: none !important;
+  -moz-border-radius: none !important;
+  border-radius: none !important;
+  border: 1px solid #ccc;
+  background: #fff;
+  background-image: url('down_arrow_select.png');
+  background-repeat: no-repeat;
+  background-position: 99% center;
+  color:rgba(0, 0, 0, 0.75);
+  outline:none;
+  display: inline-block;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance:none;
+  cursor:pointer;
+}
+
+
 p.ical {
   padding-top: 0;
   padding-bottom: 0;
