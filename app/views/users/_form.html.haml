@@ -7,29 +7,28 @@
   .row
     .large-6.columns
       .panel.radius
-        %h5 Bio
-        = user_form.input :bio, label: false, placeholder: 'About you...'
+        = user_form.input :bio, placeholder: 'About you...'
       .panel.radius
-        %h5 Email
-        = user_form.input :email, label: false, placeholder: 'your@email.com'
+        = user_form.input :email, placeholder: 'your@email.com'
+        %p= user_form.input :send_newsletter, label: 'Let us send occasional updates. No spam!', label_class: 'left', input_html: { class: 'left' }
       .panel.radius#time_zone
-        %h5 Time Zone
-        = user_form.input :time_zone, priority: @time_zones, label: false
-        %small By default, Now Play Us displays events in Eastern Time, but you can change that here.
+        = user_form.input :time_zone, priority: @time_zones, hint: content_tag(:small,tooltip("What's this?", "#{site_name} displays times in your time zone when logged in"))
       .panel.radius#notifications
         %h5 Notifications
         %p
           = render partial: 'shared/twitter_follow'
           %br
-          %small Make sure you're following @nowplayus to receive direct message notifications
-        .row
-          = user_form.input :send_newsletter, label: 'Let us send occasional updates. No spam!', label_class: 'small-11 columns', input_html: { class: 'small-1 columns' }
+          %small
+            Make sure you're following 
+            = raw "@#{site_name}"
+            to receive direct message notifications
         %br
         = user_form.input :preferred_notification_method, label: 'Preferred Method', as: :select, collection: current_user.available_notification_methods, include_blank: false
     #platform_accounts.large-6.columns
       .panel.radius
-        %h5 Platform Accounts
-        %p Add your username for the various gaming platforms you play on. We'll display this on event pages so the people you are playing with can add you.
+        %h5
+          Game Networks
+          %small= tooltip("What's this?", "Add your username for the various gaming networks you play on. #{site_name} will display this on event pages so the people you are playing with can add you.")
         = user_form.fields_for :platform_accounts do |platform_account_form|
           = platform_account_form.collection_select :platform_id, @platforms, :id, :name, label: 'Platform'
           = platform_account_form.input :username, label: false
@@ -37,5 +36,5 @@
         = user_form.link_to_add 'Add a Platform Account', :platform_accounts
 
   .row
-    .large-4.columns
-      = user_form.submit 'Submit', class: 'button radius expand success'
+    .large-4.columns.large-offset-4
+      = user_form.button :submit, 'Save Profile', class: 'button radius expand success'

@@ -1,4 +1,4 @@
-=link_to content_tag(:i,'',class: 'foundicon-twitter'), (logged_in? ? '#' : '/auth/twitter'), class: 'button small radius expand', data: { reveal_id: "tweet-#{event.id}"}
+=link_to content_tag(:i,'',class: 'foundicon-twitter'), (logged_in? ? '#' : '/auth/twitter'), class: 'button radius expand', data: { reveal_id: "tweet-#{event.id}"}
 - content_for :modals do
   .reveal-modal.xlarge{ id: "tweet-#{event.id}" }
     %h3 Tweet it!
