@@ -7,18 +7,13 @@
     margin-top: 1em;
   }
   #user{
-    min-height: 385px;
-    position: relative;
     #stats {
       border-top: 1px solid #cdcdcd;
       margin: 15px -20px -20px -20px;
-      margin: 0;
       padding: 0;
-      width: 100%;
-      margin-left: -4px;
       li {
         border-left: 1px solid #cdcdcd;
-
+        padding: 0 5px 10px 5px;
         h2 {
           margin-bottom: 0;
         }
@@ -40,24 +35,34 @@
     }
   }
   #platforms {
-    min-height: 156px;
+    ul {
+      li {
+        p {
+          font-weight: 700;
+          img {
+            vertical-align: middle;
+          }
+        }
+      }
+    }
   }
   #games {
-    ul li p {
-      margin-bottom: 0;
-      font-size: .7em;
-      font-weight: 700;
-      text-align: center;
+    ul li {
+      p {
+        margin-bottom: 0;
+        font-size: .7em;
+        font-weight: 700;
+        text-align: center;
+        width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      img {
+        border-radius: 5px;
+        width: 100px;
+        height: 100px;
+      }
     }
-    ul li img {
-      border-radius: 5px;
-      width: 100%;
-    }
-  }
-  .row.stats {
-    position: absolute;
-    bottom: 0;
-    padding: 0;
-    width: 100%;
   }
 }
