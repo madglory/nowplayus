@@ -32,7 +32,11 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password, message: "should match confirmation", if: 'password.present?'
 
   def self.create_from_hash!(hash)
-    create username: hash['info']['nickname'], avatar_url: hash['info']['image'], email: hash['info']['email']
+    create(
+      username: hash['info']['nickname'],
+      avatar_url: hash['info']['image'],
+      email: hash['info']['email'],
+      bio: hash['info']['description'])
   end
 
   def update_from_hash!(hash)
