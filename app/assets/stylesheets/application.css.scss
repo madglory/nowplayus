@@ -111,7 +111,7 @@ nav#menu {
 /********* Home Page **********/
 /******************************/
 #banner{
-  background: url("header-bg.jpg") repeat-x 0px 0px;
+  background: image-url("header-bg.jpg") repeat-x 0px 0px;
   height: 292px;
   margin-bottom: 30px;
 
@@ -128,7 +128,7 @@ nav#menu {
       color: #4283a9;
       font-size: 1.4em;
       padding: 18px 24px;
-      background-image: url('twitter-button-icon.png');
+      background-image: image-url('twitter-button-icon.png');
       background-repeat: no-repeat;
       background-position: 85% 55%;
       width: 200px;
