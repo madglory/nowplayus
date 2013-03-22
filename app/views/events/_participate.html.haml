@@ -1,7 +1,7 @@
 - if @event.players.exists?(:id => current_user)
-  = link_to content_tag(:i,'',class: 'block ss-deleteuser'), event_participant_path(@event), confirm: 'Are you sure?', method: :delete, class: 'button small expand radius alert', title: 'Leave Game'
+  = link_to content_tag(:i,'',class: 'block ss-icon ss-symbolicons-block ss-deleteuser'), event_participant_path(@event), confirm: 'Are you sure?', method: :delete, class: 'button small expand radius alert', title: 'Leave Game'
 - else
   - if logged_in?
-    = link_to content_tag(:i,'',class: 'block ss-adduser'), event_participants_path(@event), method: :post, class: 'button small expand radius success', title: 'Join Game'
+    = link_to content_tag(:i,'',class: 'block ss-icon ss-symbolicons-block ss-adduser'), event_participants_path(@event), method: :post, class: 'button small expand radius success', title: 'Join Game'
   - else
-    = link_to content_tag(:i,'',class: 'block ss-power'), "/auth/twitter", method: :post, class: 'button small expand radius success', title: 'Log In to Join'
+    = link_to content_tag(:i,'',class: 'block ss-icon ss-symbolicons-block ss-power'), "/auth/twitter", method: :post, class: 'button small expand radius success', title: 'Log In to Join'
