@@ -1,17 +1,24 @@
 = simple_form_for @event do |f|
-  = f.input :game_id, as: :hidden, input_html: { class: 'bigdrop' }
-  = f.input :platform_id, collection: Platform.select('id,name').all, include_blank: true
-  = f.input :starts_at_raw, label: 'Start Time', placeholder: 'Eg: Tonight 8pm', required: true
-  = f.input :duration_raw, label: 'Duration', placeholder: 'Eg: 2 Hours', required: true
-  = f.input :description, label: 'Additional Information'
-  = f.input :total_players, collection: 2...19, label: 'How many players?'
+  .panel.radius
+    = f.input :game_id, as: :hidden, input_html: { class: 'bigdrop' }
+    .row
+      .large-6.columns
+        %p= f.input :starts_at_raw, label: 'Start Time', placeholder: 'Eg: Tonight 8pm', required: true
+      .large-6.columns
+        %p= f.input :duration_raw, label: 'Duration', placeholder: 'Eg: 2 Hours', required: true
+    .row
+      .large-6.columns
+        %p= f.input :platform_id, collection: Platform.select('id,name').all, include_blank: true
+      .large-6.columns
+        %p= f.input :total_players, collection: 2...19, label: 'How many players?'
+    %p= f.input :description, label: 'Additional Information'
   .panel.radius
     %h4 Notifications
-    %p= f.input :notify_host, label_class: 'small-11 columns', input_html: { class: 'small-1 columns' }, label: 'Notify me when a player joins'
+    %p= f.input :notify_host, label_class: 'left', input_html: { class: 'left' }, label: 'Notify me when a player joins'
     %p
       = render partial: 'shared/twitter_follow'
       %br
-      %small Make sure you follow @nowplayus on Twitter to receive Direct Message notifications.
+      %small= raw "Make sure you follow @#{site_name} on Twitter to receive Direct Message notifications."
   .row
-    .large-3.columns
-      = f.button :submit, 'Schedule', class: 'button small radius expand'
+    .large-4.columns.large-offset-4
+      = f.button :submit, 'Schedule', class: 'button radius expand'
