@@ -35,6 +35,24 @@ p.ical {
 }
 
 /******************************/
+/********* Glory Bar  *********/
+/******************************/
+
+#glory-bar {
+  background: #73bae5;
+
+  p {
+    padding: 0.25em;
+    margin: 0;
+    text-align: center;
+    a {
+      font-weight: bold;
+      color: #fff;
+    }
+  }
+}
+
+/******************************/
 /********* Navigation *********/
 /******************************/
 .top-bar {
