@@ -1,4 +1,4 @@
-.row
+.row.game-detail
   .large-6.columns
     %h2
       = @game.name
@@ -7,16 +7,17 @@
 
   .large-6.columns.pull
     =image_tag @game.screen_url unless @game.screen_url.blank?
+
 .row
   .large-12.columns
+    %h3 Upcoming Matches
     - if @upcoming_events.size > 0
-      %h2 Upcoming Matches
+      %section.events
+        - @upcoming_events.each do |event|
+          = render event
 
-    %section.events
-      - @upcoming_events.each do |event|
-        = render event
+    - else
+      %p
+        No upcoming matches.
+        = link_to "Create a match now", new_event_path
 
-    %h2 Game Description
-
-    .game-details
-      =Sanitize.clean(@game.description, :elements => ['h2', 'h3', 'h4',  'p', 'img', 'ul', 'li','table', 'tr', 'td', 'thead'], :attributes => {'img' => ['width', 'height', 'src', 'title', 'alt'], 'a' => ['href', 'title'], 'span' => ['class']}, :protocols => {'a' => {'href' => ['http', 'https', 'mailto']}}).html_safe unless @game.description.blank?
