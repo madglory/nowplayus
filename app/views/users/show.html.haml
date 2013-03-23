@@ -2,7 +2,11 @@
   %section.columns.large-6
     .panel.radius#user
       .row
-        .small-2.columns= link_to image_tag(@user.avatar_url), '#', class: 'avatar'
+        .small-2.columns
+          = link_to image_tag(@user.avatar_url), twitter_url(@user), class: 'avatar', :target => '_blank'
+          %p
+            = link_to '', twitter_url(@user), class: 'foundicon-twitter', :target => '_blank'
+
         .user-details.small-10.columns
           %h3= @user.username
           .user-bio

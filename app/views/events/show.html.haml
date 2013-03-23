@@ -4,7 +4,7 @@
     %nav.large-1.columns.without-padding-large.half-padding-small
       - if @event.host == current_user
         = link_to @event, confirm: "Are you sure?", method: :delete, class: 'button radius expand alert' do
-          %i.standard.ss-calendarremove
+          %i.ss-icon.ss-standard.ss-calendaradd
       - else
         = render partial: 'participate', locals: { event: @event } unless @event.past?
       = render partial: 'tweet', locals: { event: @event }

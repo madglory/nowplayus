@@ -270,6 +270,11 @@ nav#menu {
   .giant-bomb {
     text-align: left;
   }
+
+  .user-bio {
+    height: auto !important;
+    overflow: hide !important;
+  }
 }
 
 @media only screen and (min-width: "940px") {

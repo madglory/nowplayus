@@ -2,7 +2,7 @@
   h1 .avatar {
     vertical-align: middle;
   }
-  
+
   #user, #platforms-games {
     margin-top: 1em;
   }
@@ -27,6 +27,11 @@
       li:first-child {
         border-left: none;
       }
+    }
+
+    .user-bio {
+      height: 9.7em;
+      overflow: auto;
     }
   }
   #platforms, #games {
