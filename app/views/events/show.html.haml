@@ -4,10 +4,14 @@
     %nav.large-1.columns.without-padding-large.half-padding-small
       - if @event.host == current_user
         = link_to @event, confirm: "Are you sure?", method: :delete, class: 'button radius expand alert' do
-          %i.ss-icon.ss-standard.ss-calendaradd
+          %i.ss-icon.ss-standard.ss-calendarremove
       - else
         = render partial: 'participate', locals: { event: @event } unless @event.past?
       = render partial: 'tweet', locals: { event: @event }
+
+      - if @event.game
+        =link_to game_path(@event.game), class: 'button radius expand', title: 'Game info' do
+          %i.block.ss-videogame
 
     .large-11.columns
       %h2
