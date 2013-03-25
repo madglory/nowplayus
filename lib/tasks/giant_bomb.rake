@@ -4,7 +4,7 @@ namespace :giant_bomb do
   task :update_games => :environment do
     puts "Updating games from Giant Bomb"
 
-    if (Rails.env == 'production')
+    if ['production','staging'].include?(Rails.env)
       @giantbomb_key = ENV['GIANTBOMB_KEY']
     else
       @giantbomb_key = '058008a8afcd045e6b54935e58ca9325e14f7958'
@@ -62,7 +62,7 @@ namespace :giant_bomb do
   task :import_game => :environment do |t, args|
     puts "#{ENV['GAME_ID']}"
 
-    if (Rails.env == 'production')
+    if ['production','staging'].include?(Rails.env)
       @giantbomb_key = ENV['GIANTBOMB_KEY']
     else
       @giantbomb_key = '058008a8afcd045e6b54935e58ca9325e14f7958'
