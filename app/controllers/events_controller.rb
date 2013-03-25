@@ -6,8 +6,8 @@ class EventsController < ApplicationController
     @events = Event.future
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.ics  # index.ics.rb
+      format.html
+      format.ics
       format.json { render json: [@user, @events] }
     end
   end
@@ -18,7 +18,7 @@ class EventsController < ApplicationController
     @notification_subscription = current_user.notification_subscriptions.find_by_subscribable_id_and_subscribable_type(@event.id,'Event') if logged_in?
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render json: [current_user, event] }
     end
   end
@@ -29,7 +29,7 @@ class EventsController < ApplicationController
     @event.notify_host = true
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       format.json { render json: @event }
     end
   end

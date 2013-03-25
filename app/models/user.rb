@@ -14,7 +14,9 @@ class User < ActiveRecord::Base
   has_many :events, through: :participants
   has_many :event_tweets
   has_many :hosted_events, class_name: 'Event'
+  has_many :notifications
   has_many :notification_subscriptions
+  has_one :notification_setting
   has_many :participants
   has_many :platform_accounts, dependent: :destroy
   has_many :twitter_notifications
@@ -30,6 +32,9 @@ class User < ActiveRecord::Base
   validates_presence_of :email, on: :update
   validates_length_of :password, minimum: 3, message: "must be at least 3 characters long", if: 'password.present?'
   validates_confirmation_of :password, message: "should match confirmation", if: 'password.present?'
+
+  delegate :send_notification_for_participant?, to: :notification_setting, allow_nil: true
+  delegate :send_notification_for_comment?, to: :notification_setting, allow_nil: true
 
   def self.create_from_hash!(hash)
     create(
@@ -60,6 +65,10 @@ class User < ActiveRecord::Base
     else
       username
     end
+  end
+
+  def to_s
+    username
   end
 private
   def bigger_twitter_avatar

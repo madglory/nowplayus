@@ -58,6 +58,7 @@ namespace :giant_bomb do
 
   end
 
+  desc "Import a specific game; Set GAME_ID=XXXXX"
   task :import_game => :environment do |t, args|
     puts "#{ENV['GAME_ID']}"
 

@@ -99,6 +99,10 @@ class Event < ActiveRecord::Base
     past? == false
   end
 
+  def to_s
+    title
+  end
+
 private
   def starts_at_raw_present_and_parseable?
     Chronic.time_class = Time.zone
@@ -110,9 +114,10 @@ private
   end
 
   def duration_raw_present_and_parseable?
-    if event_duration = ChronicDuration.parse(duration_raw)
+    begin
+      event_duration = ChronicDuration.parse(duration_raw)
       self.duration = event_duration
-    else
+    rescue => e
       errors.add :duration_raw, 'is not a valid duration'
     end
   end

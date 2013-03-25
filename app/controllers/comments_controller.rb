@@ -6,4 +6,9 @@ class CommentsController < ApplicationController
       redirect_to @event
     end
   end
+
+  def show
+    comment = Comment.find params[:id]
+    redirect_to comment.commentable, anchor: "comment-#{comment.id}"
+  end
 end

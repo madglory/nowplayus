@@ -1,0 +1,10 @@
+A new comment on <%= @commentable %>
+
+============================================================================
+VIEW or REPLY to this comment: http://nowplay.us/comments/<%= @comment.id %>
+============================================================================
+
+<%= @comment.comment %>
+
+____________________________________________________________________________
+This email was sent to <%= @user.email %> from Now Play Us because you elected to receive notifications for comments on events in which you participate. If you wish to stop receiving comments for <%= @commentable %>, please visit http://nowplay.us/unwatch/<%= @notification_subscription.to_param %>

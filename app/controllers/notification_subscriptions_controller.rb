@@ -17,8 +17,12 @@ class NotificationSubscriptionsController < ApplicationController
   end
 
   def destroy
-    notification_subscription = NotificationSubscription.find_by_id_and_user_id params[:id], current_user.id
-    binding.pry
+    if params[:user_id_and_id]
+      notification_subscription = NotificationSubscription.find_by_params params[:user_id_and_id]
+    else
+      notification_subscription = NotificationSubscription.find params[:id]
+    end
+
     notification_subscription.destroy
     respond_to do |format|
       format.html { redirect_to notification_subscription.subscribable, notice: "You will no longer receive notifications for this #{notification_subscription.subscribable_type.downcase}" }

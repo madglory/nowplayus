@@ -6,7 +6,7 @@
       = @game.deck.html_safe unless @game.deck.blank?
 
   .large-6.columns.pull
-    =image_tag @game.screen_url unless @game.screen_url.blank?
+    %h2=image_tag @game.screen_url unless @game.screen_url.blank?
 
 .row
   .large-12.columns
