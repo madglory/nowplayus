@@ -37,6 +37,7 @@ class UsersController < ApplicationController
 
   def edit
     @platform_accounts = @user.platform_accounts.includes :platform
+    @notification_setting = @user.notification_setting
     unless @user == current_user
       redirect_to root_path, alert: "Not permitted"
     end

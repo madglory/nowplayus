@@ -1,40 +1,17 @@
+%h2
+  = link_to image_tag(@user.avatar_url), '#', class: 'avatar'
+  = @user.username
 = simple_nested_form_for @user do |user_form|
-  .row
-    .large-12.columns
-      %h1
-        = link_to image_tag(@user.avatar_url), '#', class: 'avatar'
-        = @user.username      
   .row
     .large-6.columns
       .panel.radius
-        = user_form.input :bio, placeholder: 'About you...'
-      .panel.radius
         = user_form.input :email, placeholder: 'your@email.com'
         %p= user_form.input :send_newsletter, label: 'Let us send occasional updates. No spam!', label_class: 'left', input_html: { class: 'left' }
-      .panel.radius#time_zone
-        = user_form.input :time_zone, priority: @time_zones, hint: content_tag(:small,tooltip("What's this?", "#{site_name} displays times in your time zone when logged in"))
-      .panel.radius#notifications
-        %h5 Notifications
-        %p
-          = render partial: 'shared/twitter_follow'
-          %br
-          %small
-            Make sure you're following 
-            = raw "@#{site_name}"
-            to receive direct message notifications
-        %br
-        = user_form.input :preferred_notification_method, label: 'Preferred Method', as: :select, collection: current_user.available_notification_methods, include_blank: false
-    #platform_accounts.large-6.columns
+        = user_form.input :time_zone, priority: @time_zones, label: content_tag(:span,tooltip("Time Zone", "#{site_name} displays times in your time zone when logged in", class: 'tip-top'))
+    .large-6.columns
       .panel.radius
-        %h5
-          Game Networks
-          %small= tooltip("What's this?", "Add your username for the various gaming networks you play on. #{site_name} will display this on event pages so the people you are playing with can add you.")
-        = user_form.fields_for :platform_accounts do |platform_account_form|
-          = platform_account_form.collection_select :platform_id, @platforms, :id, :name, label: 'Platform'
-          = platform_account_form.input :username, label: false
-          = platform_account_form.link_to_remove 'Remove Platform Account'
-        = user_form.link_to_add 'Add a Platform Account', :platform_accounts
+        = user_form.input :bio, placeholder: 'About you...'
 
   .row
-    .large-4.columns.large-offset-4
+    .large-4.columns
       = user_form.button :submit, 'Save Profile', class: 'button radius expand success'

@@ -9,7 +9,6 @@ describe User do
   it { should have_many(:clans).through(:memberships) }
   it { should validate_presence_of(:username) }
   it { should validate_uniqueness_of(:username) }
-  it { should ensure_length_of(:password).is_at_least(3).with_message(/must be at least \d characters long/) }
 
   context "on create" do
     subject { User.new }

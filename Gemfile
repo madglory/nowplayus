@@ -50,7 +50,7 @@ group :test do
   gem 'shoulda'
 end
 
-group :production do
+group :production, :staging do
   gem 'puma', '1.6.3'
   gem 'dalli', '~> 2.6'
 end

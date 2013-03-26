@@ -1,4 +1,4 @@
-- if Rails.env == 'production'
+- if ['production','staging'].include?(Rails.env)
   / GA-Code only in Production Env
   :javascript
     var _gaq = _gaq || [];

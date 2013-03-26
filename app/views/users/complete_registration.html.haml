@@ -15,19 +15,9 @@
           = user_form.input :email, placeholder: 'your@email.com'
           %p= user_form.input :send_newsletter, label: 'Let us send occasional updates. No spam!', label_class: 'left', input_html: { checked: true, class: 'left' }, value: true
           = user_form.input :time_zone, priority: @time_zones, hint: content_tag(:small,tooltip("What's this?", "#{site_name} displays times in your time zone when logged in"))
-
           %p
             %br
             = render 'shared/twitter_follow'
-
-        -#.panel.radius
-        -#  = user_form.input :bio, placeholder: 'About you...'
-              
-        -#.panel.radius#notifications
-        -#  %h5
-        -#    Notifications
-        -#    %small=tooltip("What's this?", "#{site_name} can send you notifications via Twitter when someone joins your events. Notifications are turned off by default, but you can turn it on when you add an event.")
-        -#  = user_form.input :preferred_notification_method, label: 'Preferred Method', as: :select, collection: current_user.available_notification_methods, include_blank: false
       #platform_accounts.large-6.columns
         .panel.radius
           %h5
@@ -38,7 +28,6 @@
             = platform_account_form.input :username, label: false
             = platform_account_form.link_to_remove 'Remove Platform Account'
           = user_form.link_to_add 'Add a Platform Account', :platform_accounts
-
     .row
       .large-4.columns.large-offset-4
         = user_form.button :submit, "Let's Play!", class: 'button radius expand success'

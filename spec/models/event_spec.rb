@@ -41,6 +41,25 @@ describe Event do
     expect(subject.valid?).to be_false
   end
 
+  it "should validate :starts_at_raw_present_and_parseable?" do
+    ['',nil].each do |value|
+      subject.starts_at_raw = 'Tomorrow at Noon'
+      expect(subject.valid?).to be_true
+      subject.starts_at_raw = value
+      expect(subject.valid?).to be_false
+    end
+  end
+
+  it "should validate :duration_raw_present_and_parseable?" do
+    ['',nil].each do |value|
+      subject.duration_raw = '1hr'
+      expect(subject.valid?).to be_true
+      subject.duration_raw = value
+      expect(subject.valid?).to be_false
+    end
+
+  end
+
   it "should validate presence of user" do
     expect(subject.valid?).to be_true
     subject.user = nil
@@ -49,13 +68,15 @@ describe Event do
 
   it "should validate presence of starts_at" do
     expect(subject.valid?).to be_true
-    subject.starts_at_raw = nil
+    subject.starts_at = nil
+    subject.should_receive(:starts_at_raw_present_and_parseable?)
     expect(subject.valid?).to be_false
   end
 
   it "should validate presence of duration" do
     expect(subject.valid?).to be_true
-    subject.duration_raw = nil
+    subject.duration = nil
+    subject.should_receive(:duration_raw_present_and_parseable?)
     expect(subject.valid?).to be_false
   end
 

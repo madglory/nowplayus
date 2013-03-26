@@ -4,4 +4,13 @@ class NotificationSubscription < ActiveRecord::Base
   belongs_to :subscribable, polymorphic: true
 
   validates_presence_of :user, :subscribable
+
+  def self.find_by_param(param)
+    user_id, id = param.split('-')
+    find_by_user_id_and_id(user_id, id)
+  end
+
+  def to_param
+    "#{user_id}-#{id}"
+  end
 end
