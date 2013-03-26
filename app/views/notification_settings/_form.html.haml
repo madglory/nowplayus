@@ -1,0 +1,25 @@
+%h2 Notificaion Settings
+%p
+  = site_name
+  can send notifications to your registered email and/or Twitter account. Any new updates for the various Notificaiton Types will automatically be sent to you via the checked methods.
+= simple_form_for [@user,@notification_setting] do |f|
+  %table{ width: '100%'}
+    %thead
+      %tr
+        %th Notification Type
+        %th.text-center Email
+        %th.text-center
+          Twitter DM
+          = content_tag(:span,tooltip("*", "Be sure to follow @#{site_name} on Twitter in order to receive direct messages", class: 'tip-top'))
+    %tbody
+      %tr
+        %td= content_tag(:span,tooltip("New Comments", "#{site_name} will notify you whenever a comment is posted to an item you are watching", class: 'tip-top'))
+        %td.text-center= f.input :comment_via_email, label: false
+        %td.text-center= f.input :comment_via_direct_message, label: false
+      %tr
+        %td= content_tag(:span,tooltip("New Players", "#{site_name} will notify you whenever a new player joins an event you are watching", class: 'tip-top'))
+        %td.text-center= f.input :participant_via_email, label: false
+        %td.text-center= f.input :participant_via_direct_message, label: false
+  .row
+    .large-4.columns.large-offset-4
+      = f.button :submit, 'Update Notificaiton Settings', class: 'button radius expand success'

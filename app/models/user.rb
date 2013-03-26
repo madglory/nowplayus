@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :username, use: :slugged
-  attr_accessible :username, :email, :password, :password_confirmation, :time_zone, :notify_via_email, :avatar_url, :bio
+  attr_accessible :username, :email, :password, :password_confirmation, :time_zone, :send_newsletter, :avatar_url, :bio
 
   authenticates_with_sorcery! do |config|
     config.authentications_class = Authentication

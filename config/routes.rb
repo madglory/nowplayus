@@ -2,6 +2,7 @@ Nowplayus::Application.routes.draw do
 
   resources :users do
     resources :platform_accounts, only: [:new, :create, :destroy]
+    resources :notification_settings, only: [:edit, :update]
   end
 
   resources :clans, only: [:show, :index]

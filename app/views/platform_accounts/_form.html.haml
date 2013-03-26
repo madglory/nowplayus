@@ -1,0 +1,20 @@
+.row
+  .large-12.columns
+    %h2 Game Accounts
+    %p
+      Add your username for the various gaming platforms you play on.
+      = site_name
+      will display this for events that you join as well as your profile so the people you are playing with can find you in-game.
+    = simple_nested_form_for @user do |user_form|
+      = user_form.fields_for :platform_accounts do |platform_account_form|      
+        = platform_account_form.collection_select :platform_id, @platforms, :id, :name, label: 'Platform'
+        = platform_account_form.input :username, label: false
+        %p.text-right= platform_account_form.link_to_remove 'Remove', class: 'button small radius alert'
+        %hr
+      = user_form.link_to_add :platform_accounts do
+        .row
+          .large-4.columns
+            %button.button.radius.expand Add a Game Account
+      .row
+        .large-4.columns
+          = user_form.button :submit, "Save Game Accounts", class: 'button radius expand success'

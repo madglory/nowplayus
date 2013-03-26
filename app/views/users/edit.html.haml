@@ -1,2 +1,15 @@
-#profile
-  = render 'form'
+.row
+  .large-12.columns
+    #profile.section-container.tabs{ data: { section: 'tabs', options: 'deep_linking: true' } }
+      %section.section
+        %p.title
+          %a{href: '#user-settings'} General
+        .content{data: { slug: 'user-settings' }}= render 'form'
+      %section.section
+        %p.title
+          %a{href: '#game-accounts'} Game Accounts
+        .content{data: { slug: 'game-accounts' }}= render 'platform_accounts/form'
+      %section.section
+        %p.title
+          %a{href: '#notification-settings'} Notifications
+        .content{data: { slug: 'notification-settings' }}= render 'notification_settings/form'
