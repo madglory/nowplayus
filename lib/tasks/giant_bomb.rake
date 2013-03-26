@@ -10,49 +10,48 @@ namespace :giant_bomb do
       @giantbomb_key = '058008a8afcd045e6b54935e58ca9325e14f7958'
     end
 
-    @platforms = Platform.all
+    
 
-    @platforms.each do |platform|
-      puts "PLATFORM: #{ platform.name }"
+    Game::PLATFORMS.each do |platform_name,platform_id|
+      puts "PLATFORM: #{ platform_name }"
 
       offset = 0
-      if platform.giantbomb_id?
-        while offset < 100
-          puts "Offset #{offset}"
-          response = HTTParty.get("http://www.giantbomb.com/api/games/?api_key=#{@giantbomb_key}&sort=date_last_updated:desc&filter=platforms:#{platform.giantbomb_id}&format=json&limit=100&offset=#{offset}")
-          # puts response.body, response.code, response.message, response.headers.inspect
 
-          response['results'].each do |item|
-            puts item['name']
+      while offset < 100
+        puts "Offset #{offset}"
+        response = HTTParty.get("http://www.giantbomb.com/api/games/?api_key=#{@giantbomb_key}&sort=date_last_updated:desc&filter=platforms:#{platform_id}&format=json&limit=100&offset=#{offset}")
+        # puts response.body, response.code, response.message, response.headers.inspect
 
-            game = Game.find_or_create_by_giantbomb_id(item['id'])
+        response['results'].each do |item|
+          puts item['name']
 
-            game.name = item['name']
+          game = Game.find_or_create_by_giantbomb_id(item['id'])
 
-            game.deck = item['deck']
-            game.description = item['description']
+          game.name = item['name']
 
-            game.date_added = item['date_added']
-            if item['original_release_date']
-              game.original_release_date = item['original_release_date']
-            end
+          game.deck = item['deck']
+          game.description = item['description']
 
-            if item['image']
-              game.icon_url   = item['image']['icon_url']
-              game.medium_url = item['image']['medium_url']
-              game.screen_url = item['image']['screen_url']
-
-              game.small_url  = item['image']['small_url']
-              game.super_url  = item['image']['super_url']
-              game.thumb_url  = item['image']['thumb_url']
-              game.tiny_url   = item['image']['tiny_url']
-            end
-
-            game.save
+          game.date_added = item['date_added']
+          if item['original_release_date']
+            game.original_release_date = item['original_release_date']
           end
 
-          offset = offset + 100
+          if item['image']
+            game.icon_url   = item['image']['icon_url']
+            game.medium_url = item['image']['medium_url']
+            game.screen_url = item['image']['screen_url']
+
+            game.small_url  = item['image']['small_url']
+            game.super_url  = item['image']['super_url']
+            game.thumb_url  = item['image']['thumb_url']
+            game.tiny_url   = item['image']['tiny_url']
+          end
+
+          game.save
         end
+
+        offset = offset + 100
       end
     end
 

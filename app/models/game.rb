@@ -6,6 +6,11 @@ class Game < ActiveRecord::Base
 
   has_many :events
 
+  PLATFORMS = {
+    'Xbox' => 20,
+    'PS3'  => 88,
+    'PC'   => 94 }
+
   def hashtag
     return "##{name.gsub(/\W/,'')}" if read_attribute(:hashtag).blank?
     "##{super.gsub(/\W/,'')}"
