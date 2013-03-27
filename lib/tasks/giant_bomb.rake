@@ -15,6 +15,7 @@ namespace :giant_bomb do
         response = HTTParty.get("http://www.giantbomb.com/api/games/?api_key=#{GIANTBOMB_KEY}&sort=date_last_updated:desc&filter=platforms:#{platform_id}&format=json&limit=100&offset=#{offset}")
 
         response['results'].each do |item|
+          puts item['name']
           data = GiantBombData.new item
           game = Game.find_or_create_by_giantbomb_id(item['id'])
           game.update_attributes data.to_hash
