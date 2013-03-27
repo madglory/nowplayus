@@ -1,6 +1,6 @@
 class NotificationWorker
   include Sidekiq::Worker
-  sidekiq_options retry: 3
+  sidekiq_options retry: false
 
   attr_reader :actionable_type, :actionable, :notification, :notification_setting, :user, :types
 

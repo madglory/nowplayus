@@ -5,7 +5,7 @@ class ParticipantNotificationDecorator < Decorators::Base
   end
 
   def twitter_message
-    "@#{player} is in for #{short_title} http://nowplay.us/events/#{event.id}"
+    "@#{player} is in for #{short_title} http://nowplay.us/events/#{event.id}?t=#{Time.now.to_i}"
   end
 
   def scheduled_time_with_date

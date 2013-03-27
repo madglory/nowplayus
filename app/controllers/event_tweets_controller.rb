@@ -8,7 +8,7 @@ class EventTweetsController < ApplicationController
   def create
     event_tweet = current_user.event_tweets.build params[:event_tweet].merge(event: @event)
     if event_tweet.save
-      EventTweetsWorker.perform_async event_tweet.id
+      EventTweetsWorker.perform_in 15.seconds, event_tweet.id
       redirect_to @event, notice: 'Tweet sent. Thanks!'
     else
       redirect_to @event, notice: 'Sorry, we were unable to send your tweet :('

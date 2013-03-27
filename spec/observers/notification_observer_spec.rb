@@ -7,12 +7,14 @@ describe NotificationObserver do
   let(:notification) { create(:notification, actionable: event, user: user)}
 
   context "after_create" do
-    it "should enqueue a notification job" do
+    it "should enqueue a notification job at a later time (15 seconds)" do
       # don't turn observer on until we need it
       ActiveRecord::Base.observers.enable :notification_observer
       subject.after_create(notification)
 
-      NotificationWorker.jobs.first.should eql({"class" => NotificationWorker, "args" => [1]})
+      expect(NotificationWorker.jobs.first['class']).to eql NotificationWorker
+      expect(NotificationWorker.jobs.first['args']).to eql [1]
+      expect(NotificationWorker.jobs.first.keys.include?("at")).to be_true
     end
   end
 end

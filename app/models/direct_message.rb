@@ -23,7 +23,7 @@ class DirectMessage
     nowplayus.direct_message_create credentials[:uid].to_i, message
   end
 
-  class TwitterNotificationSenderError < StandardError; end
+  class DirectMessageError < StandardError; end
 private
 
   def credentials
