@@ -32,7 +32,7 @@
         - @platform_accounts.each do |account|
           %li
             %p
-              = image_tag("#{account.platform.name.downcase}-on.png", title: "[#{account.platform.name}]" )
+              = image_tag("#{account.platform.icon}", title: "[#{account.platform.name}]" )
               = account.username
     - if @past_events.length > 0
       .panel.radius#games=render "events/recent_events", :events => @past_events
