@@ -2,7 +2,7 @@ class NotificationSettingsController < ApplicationController
   before_filter :require_login
 
   def edit
-    @notificaiton_setting = current_user.notification_setting
+    @notification_setting = current_user.notification_setting
   end
 
   def update
