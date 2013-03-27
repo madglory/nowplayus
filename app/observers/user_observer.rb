@@ -1,5 +1,5 @@
 class UserObserver < ActiveRecord::Observer
   def after_create(user)
-    user.notification_setting.create
+    user.create_notification_setting
   end
 end
