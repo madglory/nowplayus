@@ -21,7 +21,7 @@ class NotificationWorker
 
 private
   def email
-    NotificationMailer.send("#{actionable_type}_email", user, actionable).deliver
+    NotificationMailer.send("#{actionable_type}_email", notification).deliver
   end
 
   def direct_message

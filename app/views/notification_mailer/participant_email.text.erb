@@ -1,0 +1,13 @@
+New Player!
+
+<%= @view.player %> is in for the game of <%= @view.title %> on <%= @view.scheduled_time_with_date %>
+
+http://nowplay.us/events/<%= @view.event.id %>
+
+
+_________________________________________________________________________________
+This email was sent to <%= @view.to_email %> from Now Play Us because you elected
+to receive notifications for comments on events in which you participate. If you
+wish, you can turn off notifications for
+<%= @view.title %> on <%= @view.scheduled_time_with_date %>
+by visiting http://nowplay.us/unwatch/<%= @view.notification_subscription.to_param %>

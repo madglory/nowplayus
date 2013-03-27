@@ -7,5 +7,6 @@ Time::DATE_FORMATS.merge!(
   datetime_short:    '%m/%d %I:%M',
   date:              '%e',
   day:               '%a',
-  time_zone:         '%Z'
+  time_zone:         '%Z',
+  date_time_long:    '%A, %b %e %Y at %l:%M%p %Z',
 )

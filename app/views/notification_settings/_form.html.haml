@@ -1,7 +1,7 @@
-%h2 Notificaion Settings
+%h2 Notification Settings
 %p
   = site_name
-  can send notifications to your registered email and/or Twitter account. Any new updates for the various Notificaiton Types will automatically be sent to you via the checked methods.
+  can send notifications to your registered email and/or Twitter account. Any new updates for the various Notification Types will automatically be sent to you via the checked methods.
 = simple_form_for [@user,@notification_setting] do |f|
   %table{ width: '100%'}
     %thead
@@ -22,4 +22,4 @@
         %td.text-center= f.input :participant_via_direct_message, label: false
   .row
     .large-4.columns.large-offset-4
-      = f.button :submit, 'Update Notificaiton Settings', class: 'button radius expand success'
+      = f.button :submit, 'Update Notification Settings', class: 'button radius expand success'
