@@ -10,7 +10,7 @@ describe NotificationSubscription do
   let(:event) { create(:event) }
   let(:user) { create(:user) }
 
-  describe "#find_by_params" do
+  describe "#find_by_param" do
     it "should split param by hyphen and find_by_user_id_and_id" do
       ns = NotificationSubscription.create user_id: user.id, subscribable_id: event.id, subscribable_type: 'Event'
       NotificationSubscription.find_by_param("#{user.id}-#{ns.id}").should eql ns

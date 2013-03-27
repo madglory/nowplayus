@@ -18,7 +18,7 @@ class NotificationSubscriptionsController < ApplicationController
 
   def destroy
     if params[:user_id_and_id]
-      notification_subscription = NotificationSubscription.find_by_params params[:user_id_and_id]
+      notification_subscription = NotificationSubscription.find_by_param params[:user_id_and_id]
     else
       notification_subscription = NotificationSubscription.find params[:id]
     end
