@@ -1,5 +1,5 @@
 class Game < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :deck, :description, :date_added, :original_release_date, :icon_url, :medium_url, :screen_url, :small_url, :super_url, :thumb_url, :tiny_url
 
   extend FriendlyId
   friendly_id :name, use: :slugged
