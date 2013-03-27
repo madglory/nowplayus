@@ -1,10 +1,10 @@
 A new comment on <%= @view.commentable %>
 
 ============================================================================
-VIEW or REPLY to this comment: http://nowplay.us/comments/<%= @view.comment.id %>
+VIEW or REPLY to this comment: <%= comment_url(@view.comment) %>
 ============================================================================
 
 <%= @view.comment_text %>
 
 ____________________________________________________________________________
-This email was sent to <%= @view.to_email %> from Now Play Us because you elected to receive notifications for comments on events in which you participate. If you wish to stop receiving comments for <%= @view.commentable %>, please visit http://nowplay.us/unwatch/<%= @view.notification_subscription.to_param %>
+This email was sent to <%= @view.to_email %> from Now Play Us because you elected to receive notifications for comments on events in which you participate. If you wish to stop receiving comments for <%= @view.commentable %>, please visit <%= unwatch_url(user_id_and_id: @view.notification_subscription.to_param) %>

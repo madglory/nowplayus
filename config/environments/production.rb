@@ -86,4 +86,7 @@ Nowplayus::Application.configure do
 
 
   config.middleware.use('PartyFoul::Middleware')
+
+  # Default options for URL helper
+  Rails.application.routes.default_url_options[:host] = 'nowplay.us'
 end

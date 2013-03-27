@@ -5,11 +5,11 @@
   </head>
   <body>
     <h1>New Player!</h1>
-    <p><a href="http://nowplay.us/users/<%= @view.player.slug %>"><%= @view.player %></a> is in for the game of <a href="http://nowplay.us/events/<%= @view.event.id %>"><%= @view.title %></a> on <%= @view.scheduled_time_with_date %></p>
+    <p><a href="<%= user_url(@view.player) %>"><%= @view.player %></a> is in for the game of <a href="<%= event_url(@view.event) %>"><%= @view.title %></a> on <%= @view.scheduled_time_with_date %></p>
     <hr>
     <p>
       <small>
-        This email was sent to <%= @view.to_email %> from Now Play Us because you elected to receive notifications for comments on events in which you participate. If you wish, you can <a href="http://nowplay.us/unwatch/<%= @view.notification_subscription.to_param %>">turn off notifications for <%= @view.title %> on <%= @view.scheduled_time_with_date %></a>.
+        This email was sent to <%= @view.to_email %> from Now Play Us because you elected to receive notifications for comments on events in which you participate. If you wish, you can <a href="<%= unwatch_url(user_id_and_id: @view.notification_subscription.to_param) %>">turn off notifications for <%= @view.title %> on <%= @view.scheduled_time_with_date %></a>.
       </small>
     </p>
   </body>

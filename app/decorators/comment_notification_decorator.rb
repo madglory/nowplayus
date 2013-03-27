@@ -5,7 +5,7 @@ class CommentNotificationDecorator < Decorators::Base
   end
 
   def twitter_message
-    "@#{commenter} just commented on #{commentable.to_s.truncate(50)} http://nowplay.us/comments/#{actionable.id}?t=#{Time.now.to_i}"
+    "@#{commenter} just commented on #{commentable.to_s.truncate(50)} #{comment_url(comment)}?t=#{Time.now.to_i}"
   end
 
   def recipient

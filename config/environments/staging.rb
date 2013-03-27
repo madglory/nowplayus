@@ -70,6 +70,9 @@ Nowplayus::Application.configure do
     authentication: :plain
   }
 
+  # Default options for URL helper
+  Rails.application.routes.default_url_options[:host] = 'npu-staging.herokuapp.com'
+
   # Enable threaded mode
   config.threadsafe! unless $rails_rake_task
 

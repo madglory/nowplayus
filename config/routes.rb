@@ -18,7 +18,7 @@ Nowplayus::Application.routes.draw do
 
   match '/complete_registration', to: 'users#complete_registration', as: :complete_registration
   match '/confirm_registration', to: 'users#confirm_registration', via: :put
-  match '/unwatch/:user_id_and_id', to: 'notification_subscriptions#destroy', via: :get
+  match '/unwatch/:user_id_and_id', to: 'notification_subscriptions#destroy', via: :get, as: :unwatch
 
   match '/auth/:provider/callback', to: 'sessions#create', via: :get
   match '/auth/failure', to: 'sessions#destroy', via: :get

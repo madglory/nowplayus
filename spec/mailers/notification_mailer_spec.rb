@@ -26,11 +26,11 @@ describe NotificationMailer do
     end
 
     it "should render the body with a link to the comment" do
-      expect(subject.body.encoded).to match("http://nowplay.us/comments/#{comment.id}")
+      expect(subject.body.encoded).to match(comment_url(comment))
     end
 
     it "should render the body with a link to unwatch the event" do
-      expect(subject.body.encoded).to match("http://nowplay.us/unwatch/#{notification_subscription.to_param}")
+      expect(subject.body.encoded).to match(unwatch_url(user_id_and_id: notification_subscription.to_param))
     end
   end
 
@@ -49,11 +49,11 @@ describe NotificationMailer do
     end
 
     it "should render the body with a link to the event" do
-      expect(subject.body.encoded).to match("http://nowplay.us/events/#{event.id}")
+      expect(subject.body.encoded).to match(event_url(event))
     end
 
     it "should render the body with a link to unwatch the event" do
-      expect(subject.body.encoded).to match("http://nowplay.us/unwatch/#{notification_subscription.to_param}")
+      expect(subject.body.encoded).to match(unwatch_url(user_id_and_id: notification_subscription.to_param))
     end
   end
 end
