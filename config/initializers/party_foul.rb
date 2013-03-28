@@ -22,4 +22,6 @@ PartyFoul.configure do |config|
 
   # The branch for your deployed code
   config.branch = Rails.env == 'production' ? 'master' : 'development'
+
+  config.additional_labels = ['staging'] if Rails.env == 'staging'
 end
