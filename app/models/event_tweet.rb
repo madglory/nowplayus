@@ -1,5 +1,5 @@
 class EventTweet < ActiveRecord::Base
-  include ActionController::UrlWriter
+  include Rails.application.routes.url_helpers
   attr_accessible :status, :user, :event
   after_initialize :default_status
 
