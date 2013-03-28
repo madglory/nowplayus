@@ -15,6 +15,14 @@ Nowplayus::Application.configure do
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :user_name => ENV['MAILTRAP_USER_NAME'],
+    :password => ENV['MAILTRAP_PASSWORD'],
+    :address => ENV['MAILTRAP_HOST'],
+    :port => ENV['MAILTRAP_PORT'],
+    :authentication => :plain
+  }
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

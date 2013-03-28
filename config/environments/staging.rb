@@ -60,14 +60,13 @@ Nowplayus::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    port:           '587',
-    address:        'smtp.mandrillapp.com',
-    user_name:      ENV['MANDRILL_USERNAME'],
-    password:       ENV['MANDRILL_APIKEY'],
-    domain:         'heroku.com',
-    authentication: :plain
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :user_name => ENV['MAILTRAP_USER_NAME'],
+    :password => ENV['MAILTRAP_PASSWORD'],
+    :address => ENV['MAILTRAP_HOST'],
+    :port => ENV['MAILTRAP_PORT'],
+    :authentication => :plain
   }
 
   # Default options for URL helper
