@@ -50,6 +50,9 @@ Spork.prefork do
 
     # Add FactoryGirl methods
     config.include FactoryGirl::Syntax::Methods
+
+    # Add routing URL helpers
+    config.include Rails.application.routes.url_helpers
   end
 end
 
