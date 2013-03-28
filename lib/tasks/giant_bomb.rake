@@ -1,7 +1,5 @@
-GIANTBOMB_KEY = ['production','staging'].include?(Rails.env) ? ENV['GIANTBOMB_KEY'] : '058008a8afcd045e6b54935e58ca9325e14f7958'
-
 namespace :giant_bomb do
-  desc "TODO"
+  desc "Imports 1000 games for each platform in Game::PLATFORMS; Must have GIANTBOMB_KEY env var set"
   task :update_games => :environment do
     puts "Updating games from Giant Bomb" 
 
@@ -12,7 +10,7 @@ namespace :giant_bomb do
         offset = pass * 100
         puts "Fetching records #{offset + 1} - #{offset + 100}"
 
-        response = HTTParty.get("http://www.giantbomb.com/api/games/?api_key=#{GIANTBOMB_KEY}&sort=date_last_updated:desc&filter=platforms:#{platform_id}&format=json&limit=100&offset=#{offset}")
+        response = HTTParty.get("http://www.giantbomb.com/api/games/?api_key=#{ENV['GIANTBOMB_KEY']}&sort=date_last_updated:desc&filter=platforms:#{platform_id}&format=json&limit=100&offset=#{offset}")
 
         response['results'].each do |item|
           puts item['name']
@@ -24,11 +22,11 @@ namespace :giant_bomb do
     end
   end
 
-  desc "Import a specific game; Set GAME_ID=XXXXX"
+  desc "Import a specific game; Set GAME_ID=XXXXX; Must have GIANTBOMB_KEY env var set"
   task :import_game => :environment do |t, args|
     puts "#{ENV['GAME_ID']}"    
 
-    response = HTTParty.get("http://www.giantbomb.com/api/games/?api_key=#{GIANTBOMB_KEY}&format=json&filter=id:#{ENV['GAME_ID']}")
+    response = HTTParty.get("http://www.giantbomb.com/api/games/?api_key=#{ENV['GIANTBOMB_KEY']}&format=json&filter=id:#{ENV['GAME_ID']}")
     response['results'].each do |item|
       puts item['name']
 
