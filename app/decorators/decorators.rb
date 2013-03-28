@@ -3,6 +3,7 @@ module Decorators
     include ActionView::Helpers::TagHelper
     include ActionView::Helpers::UrlHelper
     include ActionView::Helpers::TextHelper
+    include Rails.application.routes.url_helpers
     
     def initialize(subject)
       subject.public_methods.each do |method|
