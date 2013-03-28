@@ -30,7 +30,7 @@ private
 
   def default_host_status
     if event.past?
-      "Played a game of #{event.title} via @nowplayus #{event_url(event)} #{event.platform_hashtag)} #{event.game_hashtag}"
+      "Played a game of #{event.title} via @nowplayus #{event_url(event)} #{event.platform_hashtag} #{event.game_hashtag}"
     else
       "Join me for a game of #{event.title} via @nowplayus #{event_url(event)} #{event.platform_hashtag} #{event.game_hashtag}"
     end
