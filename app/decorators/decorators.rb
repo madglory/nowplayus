@@ -1,7 +1,6 @@
 module Decorators
   class Base
     include ActionView::Helpers::TagHelper
-    include ActionView::Helpers::UrlHelper
     include ActionView::Helpers::TextHelper
     include Rails.application.routes.url_helpers
     
