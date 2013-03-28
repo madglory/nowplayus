@@ -12,7 +12,6 @@ class Game < ActiveRecord::Base
     'PC'   => 94 }
 
   def hashtag
-    return "##{name.gsub(/\W/,'')}" if read_attribute(:hashtag).blank?
-    "##{super.gsub(/\W/,'')}"
+    "##{slug.split('-').map(&:capitalize).join}"
   end
 end

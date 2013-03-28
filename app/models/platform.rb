@@ -10,4 +10,8 @@ class Platform < ActiveRecord::Base
   def icon
     "#{slug}.png"
   end
+
+  def hashtag
+    "##{slug.split('-').map(&:capitalize).join}"
+  end
 end

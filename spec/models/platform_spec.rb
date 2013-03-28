@@ -9,4 +9,13 @@ describe Platform do
     subject.name = existing_platform.name.downcase
     expect(subject.valid?).to be_false
   end
+
+  describe "#hashtag" do
+    subject { create(:platform, name: 'Big Ass Platform Name') }
+    context "blank" do
+      it "returns the slug stripped of all hyphens and camelcase" do
+        expect(subject.hashtag).to eql "##{subject.slug.split('-').map(&:capitalize).join}"
+      end
+    end
+  end
 end

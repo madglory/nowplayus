@@ -4,17 +4,10 @@ describe Game do
   it { should have_many(:events) }
 
   describe "#hashtag" do
-    subject { create(:game) }
+    subject { create(:game, name: 'Big Ass Game Name') }
     context "blank" do
-      it "returns the name, stripped of all non-word characters" do
-        expect(subject.hashtag).to eql "##{subject.name.gsub(/\W/,'')}"
-      end
-    end
-
-    context "not blank" do
-      it "returns the hashtag, stripped of all non-word characters" do
-        subject.hashtag = "#FREAKING AWESOME!!!"
-        expect(subject.hashtag).to eql "#FREAKINGAWESOME"
+      it "returns the slug stripped of all hyphens and camelcase" do
+        expect(subject.hashtag).to eql "##{subject.slug.split('-').map(&:capitalize).join}"
       end
     end
   end

@@ -1,4 +1,5 @@
 class EventTweet < ActiveRecord::Base
+  include ActionController::UrlWriter
   attr_accessible :status, :user, :event
   after_initialize :default_status
 
@@ -21,17 +22,17 @@ private
 
   def default_player_status
     if event.past?
-      "Joined  @#{event.host_name} and others for a game of #{event.title} via @nowplayus http://nowplay.us/events/#{event.id} ##{event.platform_name.gsub(/\s/,'')} #{event.hashtag}"
+      "Joined @#{event.host_name} and others for a game of #{event.title} via @nowplayus #{event_url(event)} #{event.platform_hashtag} #{event.game_hashtag}"
     else
-      "Join me, @#{event.host_name} and others for a game of #{event.title} via @nowplayus http://nowplay.us/events/#{event.id} ##{event.platform_name.gsub(/\s/,'')} #{event.hashtag}"
+      "Join me, @#{event.host_name} and others for a game of #{event.title} via @nowplayus #{event_url(event)} #{event.platform_hashtag} #{event.game_hashtag}"
     end
   end
 
   def default_host_status
     if event.past?
-      "Played a game of #{event.title} via @nowplayus http://nowplay.us/events/#{event.id} ##{event.platform_name.gsub(/\s/,'')} #{event.hashtag}"
+      "Played a game of #{event.title} via @nowplayus #{event_url(event)} #{event.platform_hashtag)} #{event.game_hashtag}"
     else
-      "Join me for a game of #{event.title} via @nowplayus http://nowplay.us/events/#{event.id} ##{event.platform_name.gsub(/\s/,'')} #{event.hashtag}"
+      "Join me for a game of #{event.title} via @nowplayus #{event_url(event)} #{event.platform_hashtag} #{event.game_hashtag}"
     end
   end
 end
