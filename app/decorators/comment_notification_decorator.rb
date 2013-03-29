@@ -1,11 +1,12 @@
-class CommentNotificationDecorator < Decorators::Base
+class CommentNotificationDecorator < Draper::Decorator
+  delegate :user, :actionable
 
   def notification_subscription
     user.notification_subscriptions.find_by_subscribable_type_and_subscribable_id( commentable_type, commentable_id)
   end
 
   def twitter_message
-    "@#{commenter} just commented on #{commentable.to_s.truncate(50)} #{comment_url(comment)}?t=#{Time.now.to_i}"
+    "@#{commenter} just commented on #{commentable.to_s.truncate(50)} #{h.comment_url(comment)}?t=#{Time.now.to_i}"
   end
 
   def recipient

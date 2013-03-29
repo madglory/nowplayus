@@ -1,11 +1,12 @@
-class ParticipantNotificationDecorator < Decorators::Base
+class ParticipantNotificationDecorator < Draper::Decorator
+  delegate :actionable, :user
 
   def notification_subscription
     user.notification_subscriptions.find_by_subscribable_type_and_subscribable_id('Event',event.id)
   end
 
   def twitter_message
-    "@#{player} is in for #{short_title} #{event_url(event)}?t=#{Time.now.to_i}"
+    "@#{player} is in for #{short_title} #{h.event_url(event)}?t=#{Time.now.to_i}"
   end
 
   def scheduled_time_with_date
