@@ -6,11 +6,13 @@
   <body>
     <h1>A new comment on <%= @view.commentable %></h1>
     <p>
-      <a href="<%= comment_url(@view.comment) %>">VIEW or REPLY to this comment</a>
+      <a href="<%= user_url(@view.commenter) %>">@<%= @view.commenter %></a> said:
     </p>
-    <hr>
     <%= @view.comment_text %>
     <hr>
+    <p>
+      <a href="<%= comment_url(@view.comment) %>">VIEW or REPLY to this comment</a>
+    </p>
     <p>
       <small>
         This email was sent to <%= @view.to_email %> from Now Play Us because you elected to receive notifications for comments on events you have participated in. If you wish to stop receiving comments for <%= @view.commentable %>, please <a href="<%= unwatch_url(user_id_and_id: @view.notification_subscription.to_param) %>">turn off notifications for <%= @view.commentable %></a>

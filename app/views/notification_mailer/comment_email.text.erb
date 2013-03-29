@@ -1,10 +1,12 @@
 A new comment on <%= @view.commentable %>
 
+@<%= @view.commenter %> said:
+
+<%= @view.comment_text %>
+
 ============================================================================
 VIEW or REPLY to this comment: <%= comment_url(@view.comment) %>
 ============================================================================
-
-<%= @view.comment_text %>
 
 ____________________________________________________________________________
 This email was sent to <%= @view.to_email %> from Now Play Us because you elected to receive notifications for comments on events in which you participate. If you wish to stop receiving comments for <%= @view.commentable %>, please visit <%= unwatch_url(user_id_and_id: @view.notification_subscription.to_param) %>
