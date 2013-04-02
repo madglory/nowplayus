@@ -10,6 +10,9 @@
 # Ignore the db config
 /config/database.yml
 
+# Ignore the local config variables
+/config/initializers/heroku_env.rb
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/structure.sql
