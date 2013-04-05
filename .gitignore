@@ -28,4 +28,7 @@
 # Ignore local dev config files
 .sublime*
 .rbenv*
+.ruby-*
+.rvmrc
+/config/initializers/heroku_env.rb
 .DS_Store
