@@ -2,6 +2,7 @@ require 'chronic'
 require 'chronic_duration'
 
 class Event < ActiveRecord::Base
+  include Followed
   attr_accessor :duration_raw, :starts_at_raw
   attr_accessible :starts_at_raw, :duration_raw, :description, :total_players, :platform_id, :notify_host, :game_id
 

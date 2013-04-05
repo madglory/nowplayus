@@ -9,6 +9,8 @@
 
 # Ignore the db config
 /config/database.yml
+/config/initializers/heroku_env.rb
+
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -25,4 +27,6 @@
 # Ignore local dev config files
 .sublime*
 .rbenv*
+.ruby-*
+.rvmrc
 .DS_Store
