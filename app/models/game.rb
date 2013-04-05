@@ -7,9 +7,11 @@ class Game < ActiveRecord::Base
   has_many :events
 
   PLATFORMS = {
-    'Xbox' => 20,
-    'PS3'  => 88,
-    'PC'   => 94 }
+    'Xbox'  => 20,
+    'PS3'   => 88,
+    'PC'    => 94,
+    'Wii'   =>  36,
+    'Wii U' => 139}
 
   def hashtag
     "##{slug.split('-').map(&:capitalize).join}"
