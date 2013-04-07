@@ -35,7 +35,7 @@ module Following
     $redis.scard(self.following_redis_key("#{object_type.to_s.downcase}:following"))
   end
   
-  # users that self follows
+  # things that self follows
   def following(object_type = self)
     klass = object_class(object_type)
     object_ids = $redis.smembers(self.following_redis_key("#{klass.to_s.downcase}:following"))
