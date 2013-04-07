@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   extend FriendlyId
+  include Following
+  include Followed
   friendly_id :username, use: :slugged
   attr_accessible :username, :email, :password, :password_confirmation, :time_zone, :send_newsletter, :avatar_url, :bio
 
