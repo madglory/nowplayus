@@ -3,11 +3,14 @@ Nowplayus::Application.routes.draw do
   resources :users do
     resources :platform_accounts, only: [:new, :create, :destroy]
     resources :notification_settings, only: [:edit, :update]
+    resources :follows, only: [:create, :destroy]
   end
 
   resources :clans, only: [:show, :index]
   resources :comments, only: [:show]
-  resources :games, only: [:show, :index]
+  resources :games, only: [:show, :index] do
+    resources :follows, only: [:create, :destroy]
+  end
   resources :notification_subscriptions, only: [:destroy]
   resources :events do
     resources :notification_subscriptions, only: [:create]

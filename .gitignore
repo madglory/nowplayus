@@ -9,6 +9,8 @@
 
 # Ignore the db config
 /config/database.yml
+/config/initializers/heroku_env.rb
+
 
 # Ignore the local config variables
 /config/initializers/heroku_env.rb
