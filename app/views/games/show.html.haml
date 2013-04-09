@@ -7,6 +7,16 @@
 
   .large-6.columns.pull
     %h2=image_tag @game.screen_url unless @game.screen_url.blank?
+    .row
+      .large-2.columns
+      %ul#game-follow.small-block-grid-4
+        %li
+          %h4.text-left 1.4k
+          %h5.text-left Followers
+        %li
+          %h4.text-left 303
+          %h5.text-left Events
+        %a.button Follow
 
 .row
   .large-12.columns
