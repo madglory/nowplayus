@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-
+    @title = 'Gamers!'
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     @events        = @user.events
     @future_events = @user.events.future(5)
     @past_events   = @user.events.past(4)
+    @title = @user.username
 
     respond_to do |format|
       format.html # show.html.erb
@@ -28,7 +29,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-
+    @title = 'New User'
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @user }
@@ -38,6 +39,7 @@ class UsersController < ApplicationController
   def edit
     @platform_accounts = @user.platform_accounts.includes :platform
     @notification_setting = @user.notification_setting
+    @title = 'Settings'
     unless @user == current_user
       redirect_to root_path, alert: "Not permitted"
     end
@@ -45,7 +47,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-
+    @title = 'New User'
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -60,6 +62,7 @@ class UsersController < ApplicationController
   def update
     @platform_accounts = @user.platform_accounts.includes :platform
     @notification_setting = @user.notification_setting
+    @title = 'Settings'
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
