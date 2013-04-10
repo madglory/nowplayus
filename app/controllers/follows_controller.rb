@@ -5,7 +5,7 @@ class FollowsController < ApplicationController
   def create
     current_user.follow! @followable
     respond_to do |format|
-      format.html { redirect_to @followable, notice: "You are now following this #{notification_subscription.subscribable_type.downcase}" }
+      format.html { redirect_to @followable, notice: "You are now following this #{@followable.class.to_s.downcase}" }
       format.json { render json: @followable, status: :created }
     end
   end
@@ -13,7 +13,7 @@ class FollowsController < ApplicationController
   def destroy
     current_user.unfollow! @followable
     respond_to do |format|
-      format.html { redirect_to @followable, notice: "You are no longer following this #{notification_subscription.subscribable_type.downcase}" }
+      format.html { redirect_to @followable, notice: "You are no longer following this #{@followable.class.to_s.downcase}" }
       format.json { head :no_content }
     end
   end
