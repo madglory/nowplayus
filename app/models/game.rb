@@ -12,7 +12,7 @@ class Game < ActiveRecord::Base
     'Xbox'  => 20,
     'PS3'   => 88,
     'PC'    => 94,
-    'Wii'   =>  36,
+    'Wii'   => 36,
     'Wii U' => 139}
 
   def hashtag

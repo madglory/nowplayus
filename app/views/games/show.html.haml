@@ -1,22 +1,23 @@
 .row.game-detail
   .large-6.columns
-    %h2
+    %h2#game-name
       = @game.name
     %p
       = @game.deck.html_safe unless @game.deck.blank?
 
   .large-6.columns.pull
-    %h2=image_tag @game.screen_url unless @game.screen_url.blank?
-    .row
-      .large-2.columns
-      %ul#game-follow.small-block-grid-4
-        %li
-          %h4.text-left 1.4k
-          %h5.text-left Followers
-        %li
-          %h4.text-left 303
-          %h5.text-left Events
-        %a.button Follow
+    / .panel.radius
+    #game-cover= image_tag @game.screen_url unless @game.screen_url.blank?
+    %ul#game-follow.small-block-grid-2
+      %li.text-center
+        %h4= @game.followers_count
+        %h5 Followers
+      %li.text-left
+        - if logged_in?
+          = link_to 'Follow', game_follows_path(@game), method: :post, class: 'right button small secondary' unless @game.followed_by?(current_user)
+          = link_to 'Unfollow', game_follow_path(@game), method: :delete, class: 'right button small secondary' if @game.followed_by?(current_user)
+        %h4= @game.events.count
+        %h5 Events
 
 .row
   .large-12.columns

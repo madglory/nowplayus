@@ -178,27 +178,7 @@ nav#menu {
     }
   }
 }
-/******************************/
-/********* Game Page **********/
-/******************************/
-ul#game-follow {
-  li {
-    border-left: 1px solid #cdcdcd;
-    h4 {
-      font-size: 1.25em;
-      padding: 0;
-      margin: 0;
-    }
-    h5 {
-      font-size: 0.750em;
-      padding: 0;
-      margin: 0;
-    }
-  }
-  li:first-child {
-    border-left: none;
-  }
-}
+
 /******************************/
 /*********** Footer ***********/
 /******************************/
@@ -270,11 +250,6 @@ ul#game-follow {
   }
 }
 
-.game-detail {
-  img {
-    border-radius: 0.2em;
-  }
-}
 
 .top-players {
   margin-top: 1em;
