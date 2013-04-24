@@ -23,6 +23,23 @@ html, body{
   height: 6em !important;
 }
 
+nav.events {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 1em;
+  padding: 0;
+
+  a {
+    margin: 0;
+    padding: 1em 0.5em 1em ;
+    font-size: 0.85em;
+    color: #6d6d6d;
+    display: inline-block;
+  }
+  a.current {
+    color: #000;
+  }
+}
+
 select {
   padding: 10px;
   margin: 0 0 1em 0;
@@ -53,6 +70,10 @@ p.ical {
 
 .blue {
   color: #72bae4
+}
+
+.alignright {
+  text-align: right;
 }
 
 /******************************/

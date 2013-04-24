@@ -1,3 +1,8 @@
 = link_to event_path(event) do
-  %h2.game= "#{event.title}"
-  %p.time= "#{event.scheduled_start(logged_in?)} on #{event.platform_name}"
+  %h3.game= "#{event.title}"
+  %p.time
+    = "#{event.scheduled_start(logged_in?)} - #{event.scheduled_end(logged_in?)} on #{event.platform_name}"
+    %i.standard.ss-chat
+      = event.comments.count
+    %i.standard.ss-user
+      = event.player_count

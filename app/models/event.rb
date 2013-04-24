@@ -83,9 +83,9 @@ class Event < ActiveRecord::Base
     without_time_zone ? starts_at.to_s(:time) : starts_at.to_s(:time_with_zone)
   end
 
-  def scheduled_end
+  def scheduled_end(without_time_zone=false)
     return '' if duration.blank? || starts_at.blank?
-    (starts_at + duration).to_s :time
+    without_time_zone ? (starts_at + duration).to_s(:time) : (starts_at + duration).to_s(:time_with_zone)
   end
 
   def player_count
@@ -102,6 +102,19 @@ class Event < ActiveRecord::Base
 
   def to_s
     title
+  end
+
+  def humanize_start_date(without_time_zone=false)
+    # start_date = without_time_zone ? starts_at.midnight(:time) : starts_at.midnight(:time_with_zone)
+    start_date = without_time_zone ? starts_at.midnight : starts_at.midnight
+    if start_date.today?
+      "Today"
+    # elsif start_date.tomorrow?
+    #   "Tomorrow"
+    else
+      d = without_time_zone ? starts_at.to_s(:date) : starts_at.to_s(:date_with_zone)
+      d.to_time.strftime('%A, %B %e')
+    end
   end
 
 private

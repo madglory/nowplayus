@@ -1,14 +1,3 @@
-%article.row.event{ class: (current_user == event.host ? 'mine' : 'theirs')}
-  .small-2.large-1.columns.schedule= render partial: 'events/schedule', locals: { event: event }
-  .small-8.columns.description= render partial: 'events/description', locals: { event: event }
-  .small-2.large-1.columns.host.text-center= link_to image_tag(event.host_avatar_url), user_path(event.host), class: 'avatar'
-  .small-hide.large-2.columns.quick-stats
-    %ul.small-block-grid-2
-      %li
-        %h3
-          %i.standard.ss-user
-          .stat=event.player_count
-      %li
-        %h3
-          %i.block.ss-chat
-          .stat=event.comments.count
+%article.row.event{ class: (current_user == event.host ? 'mine' : 'theirs')+" "+(new_date ? 'newdate': '')}
+  .small-2.large-1.columns.schedule= render partial: 'events/event_host', locals: { event: event }
+  .small-8.large-11.columns.description= render partial: 'events/description', locals: { event: event }

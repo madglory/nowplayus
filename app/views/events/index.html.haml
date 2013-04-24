@@ -1,2 +1,12 @@
+/ .row
+/   .large-12.columns
+/     %nav.events
+/       = link_to "My Events", events_path, :class => 'current'
+/       = link_to "Suggestions", events_path
+/       = link_to "Popular", events_path
+/       = link_to "Everyone", events_path
+/       - if @ical_link
+/         = @ical_link
+
 - @ical_link = link_to content_tag(:i,'',class: 'block ss-alarmclock'), events_url(:protocol => 'webcal', :format => :ics, '' => Time.now.to_i)
 = render 'events/upcoming_events', :events => @events, :ical_link => @ical_link

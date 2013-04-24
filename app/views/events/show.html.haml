@@ -1,5 +1,5 @@
 %section.events
-  = render @event
+  = render partial: 'event', locals: { event: @event, new_date: true }
   .event-details.row{ class: @event_owner}
     %nav.large-1.columns.without-padding-large.half-padding-small
       - if @event.host == current_user
