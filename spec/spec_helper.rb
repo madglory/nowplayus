@@ -31,6 +31,7 @@ Spork.prefork do
     config.before(:each) do
       DatabaseCleaner.start
       DatabaseCleaner.clean
+      $redis.flushdb
     end
 
     # If true, the base class of anonymous controllers will be inferred

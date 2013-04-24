@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.future
-
+    @title = 'Events'
     respond_to do |format|
       format.html
       format.ics
@@ -17,6 +17,7 @@ class EventsController < ApplicationController
     @comments = @event.comments.all
     @notification_subscription = current_user.notification_subscriptions.find_by_subscribable_id_and_subscribable_type(@event.id,'Event') if logged_in?
 
+    @title = "#{@event.title} - #{@event.starts_at.to_s(:date_time_long)}"
     respond_to do |format|
       format.html
       format.json { render json: [current_user, event] }
@@ -27,7 +28,7 @@ class EventsController < ApplicationController
     @user = current_user
     @event = @user.hosted_events.new
     @event.notify_host = true
-
+    @title = 'New Event'
     respond_to do |format|
       format.html
       format.json { render json: @event }
@@ -36,7 +37,7 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.hosted_events.new(params[:event])
-
+    @title = 'New Event'
     respond_to do |format|
       if @event.save
         Participant.create! user_id: current_user.id, event_id: @event.id, is_host: true
